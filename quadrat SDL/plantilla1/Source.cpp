@@ -7,9 +7,11 @@ SDL_Renderer* g_pRenderer = 0;
 
 int main(int argc, char* args[]) {
 	SDL_Rect rectangle;
-	
+	SDL_Surface* image;
+
+	image = SDL_LoadBMP("foton.bmp");
 	SDL_Init(SDL_INIT_EVERYTHING);
-	g_pWindow = SDL_CreateWindow("Chapter 1", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 640, 480, SDL_WINDOW_SHOWN);
+	g_pWindow = SDL_CreateWindow("Pre-Game", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 640, 480, SDL_WINDOW_SHOWN);
 	if (g_pWindow != 0) {
 		g_pRenderer = SDL_CreateRenderer(g_pWindow, -1, SDL_RENDERER_PRESENTVSYNC);
 	}
