@@ -7,9 +7,7 @@ SDL_Renderer* g_pRenderer = 0;
 
 int main(int argc, char* args[]) {
 	SDL_Rect rectangle;
-	SDL_Surface* image;
-
-	image = SDL_LoadBMP("foton.bmp");
+	
 	SDL_Init(SDL_INIT_EVERYTHING);
 	g_pWindow = SDL_CreateWindow("Pre-Game", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 640, 480, SDL_WINDOW_SHOWN);
 	if (g_pWindow != 0) {
@@ -32,11 +30,9 @@ int main(int argc, char* args[]) {
 	SDL_Event event;
 	SDL_Rect bullet[2];
 
-
-
 	bool running = true;
 	bool up = false, down = false, right = false, left=false, space=false;
-	int posbx = 0, posby = 0, cont = 0;
+	int cont = 0;
 	while (running) {
 		if (SDL_PollEvent(&event)) {
 			if (event.type == SDL_KEYUP) {
@@ -118,7 +114,6 @@ int main(int argc, char* args[]) {
 		SDL_RenderPresent(g_pRenderer);
 		
 	}
-	int surface;
 	
 	SDL_Quit();
 	return EXIT_SUCCESS;
