@@ -74,11 +74,10 @@ int main(int argc, char* args[]) {
 					break;
 				case SDLK_SPACE:
 					space = true;
-					bullet[0].x = rectangle.x;
-					bullet[0].y = rectangle.y;
+					bullet[cont].x = rectangle.x;
+					bullet[cont].y = rectangle.y;
 
-					bullet[1].x = rectangle.x;
-					bullet[1].y = rectangle.y;
+				
 				default:
 					break;
 				}
@@ -96,9 +95,9 @@ int main(int argc, char* args[]) {
 		SDL_RenderClear(g_pRenderer);
 
 		if (space) {
-			space=false;
-			bullet[cont].x = 25;
-			bullet[cont].y = 25;
+			space = false;
+			bullet[cont].x = rectangle.x + 25;
+			bullet[cont].y = rectangle.y + 25;
 			bullet[cont].w = 20;
 			bullet[cont].h = 10;
 			cont++;
@@ -107,7 +106,7 @@ int main(int argc, char* args[]) {
 			}
 		}
 		for (int i = 0; i < 2; i++) {
-			bullet[i].x += 5;
+			bullet[i].x += 10;
 			SDL_SetRenderDrawColor(g_pRenderer, 0, 0, 255, 255);
 			SDL_RenderFillRect(g_pRenderer, &bullet[i]);
 		}
