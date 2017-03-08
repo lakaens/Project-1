@@ -74,11 +74,11 @@ int main(int argc, char* args[]) {
 					break;
 				case SDLK_SPACE:
 					space = true;
-					bullet[0].x = rectangle.x;
-					bullet[0].y = rectangle.y;
+					bullet[cont].x = rectangle.x;
+					bullet[cont].y = rectangle.y;
 
-					bullet[1].x = rectangle.x;
-					bullet[1].y = rectangle.y;
+					/*bullet[1].x = rectangle.x;
+					bullet[1].y = rectangle.y;*/
 				default:
 					break;
 				}
@@ -97,11 +97,13 @@ int main(int argc, char* args[]) {
 
 		if (space) {
 			space=false;
-			bullet[cont].x = 25;
-			bullet[cont].y = 25;
+			bullet[cont].x = rectangle.x + 25;
+			bullet[cont].y = rectangle.y + 25;
 			bullet[cont].w = 20;
 			bullet[cont].h = 10;
+			
 			cont++;
+
 			if (cont == 2) {
 				cont = 0;
 			}
