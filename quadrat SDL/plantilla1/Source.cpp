@@ -57,7 +57,7 @@ int main(int argc, char* args[]) {
 					break;
 				}
 			}
-			if (event.type == SDL_KEYDOWN) {
+			if (event.type == SDL_KEYDOWN && event.key.repeat == 0) {
 				switch (event.key.keysym.sym) {
 				case SDLK_ESCAPE:
 					running = false;
@@ -74,23 +74,13 @@ int main(int argc, char* args[]) {
 				case SDLK_LEFT:
 					left = true;
 					break;
-<<<<<<< HEAD
-				case SDLK_SPACE:
-					space = true;
-					bullet[cont].x = rectangle.x;
-					bullet[cont].y = rectangle.y;
-
-					/*bullet[1].x = rectangle.x;
-					bullet[1].y = rectangle.y;*/
-=======
 				case SDLK_w:
 					w = true;
-					event.key.repeat == 0;
 					bullet[cont].x = rectangle.x;
 					bullet[cont].y = rectangle.y;
 
 				
->>>>>>> origin/master
+
 				default:
 					break;
 				}
@@ -108,22 +98,13 @@ int main(int argc, char* args[]) {
 		
 		SDL_RenderClear(g_pRenderer);
 
-<<<<<<< HEAD
-		if (space) {
-			space=false;
-			bullet[cont].x = rectangle.x + 25;
-			bullet[cont].y = rectangle.y + 25;
-			bullet[cont].w = 20;
-			bullet[cont].h = 10;
-			
-=======
 		if (w) {
 			w = false;
 			bullet[cont].x = rectangle.x + 15;
 			bullet[cont].y = rectangle.y + 15;
 			bullet[cont].w = 10;
 			bullet[cont].h = 40;
->>>>>>> origin/master
+
 			cont++;
 
 			if (cont == 2) {
