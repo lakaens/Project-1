@@ -7,11 +7,15 @@ SDL_Renderer* g_pRenderer = 0;
 
 int main(int argc, char* args[]) {
 	SDL_Rect rectangle;
-	
+	SDL_Texture* ship = NULL;
+
+
+
 	SDL_Init(SDL_INIT_EVERYTHING);
-	g_pWindow = SDL_CreateWindow("Chapter 1", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 640, 480, SDL_WINDOW_SHOWN);
+	g_pWindow = SDL_CreateWindow("Pre-Game", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 640, 480, SDL_WINDOW_SHOWN);
 	if (g_pWindow != 0) {
 		g_pRenderer = SDL_CreateRenderer(g_pWindow, -1, SDL_RENDERER_PRESENTVSYNC);
+		ship = SDL_CreateTextureFromSurface(g_pRenderer, SDL_LoadBMP("foton.bmp"));
 	}
 	else {
 		return 1;
@@ -30,11 +34,9 @@ int main(int argc, char* args[]) {
 	SDL_Event event;
 	SDL_Rect bullet[2];
 
-
-
 	bool running = true;
-	bool up = false, down = false, right = false, left=false, space=false;
-	int posbx = 0, posby = 0, cont = 0;
+	bool up = false, down = false, right = false, left=false, w=false;
+	int cont = 0;
 	while (running) {
 		if (SDL_PollEvent(&event)) {
 			if (event.type == SDL_KEYUP) {
@@ -72,6 +74,7 @@ int main(int argc, char* args[]) {
 				case SDLK_LEFT:
 					left = true;
 					break;
+<<<<<<< HEAD
 				case SDLK_SPACE:
 					space = true;
 					bullet[cont].x = rectangle.x;
@@ -79,6 +82,15 @@ int main(int argc, char* args[]) {
 
 					/*bullet[1].x = rectangle.x;
 					bullet[1].y = rectangle.y;*/
+=======
+				case SDLK_w:
+					w = true;
+					event.key.repeat == 0;
+					bullet[cont].x = rectangle.x;
+					bullet[cont].y = rectangle.y;
+
+				
+>>>>>>> origin/master
 				default:
 					break;
 				}
@@ -93,8 +105,10 @@ int main(int argc, char* args[]) {
 
 
 		SDL_SetRenderDrawColor(g_pRenderer, 255, 0, 0, 255);
+		
 		SDL_RenderClear(g_pRenderer);
 
+<<<<<<< HEAD
 		if (space) {
 			space=false;
 			bullet[cont].x = rectangle.x + 25;
@@ -102,6 +116,14 @@ int main(int argc, char* args[]) {
 			bullet[cont].w = 20;
 			bullet[cont].h = 10;
 			
+=======
+		if (w) {
+			w = false;
+			bullet[cont].x = rectangle.x + 15;
+			bullet[cont].y = rectangle.y + 15;
+			bullet[cont].w = 10;
+			bullet[cont].h = 40;
+>>>>>>> origin/master
 			cont++;
 
 			if (cont == 2) {
@@ -109,17 +131,16 @@ int main(int argc, char* args[]) {
 			}
 		}
 		for (int i = 0; i < 2; i++) {
-			bullet[i].x += 5;
+			bullet[i].y -= 10;
 			SDL_SetRenderDrawColor(g_pRenderer, 0, 0, 255, 255);
 			SDL_RenderFillRect(g_pRenderer, &bullet[i]);
 		}
 
-		SDL_SetRenderDrawColor(g_pRenderer, 0, 0, 255, 255);
-		SDL_RenderFillRect(g_pRenderer, &rectangle);
+		SDL_RenderCopy(g_pRenderer, ship, NULL, &rectangle);
 		SDL_RenderPresent(g_pRenderer);
 		
 	}
-	int surface;
+
 	
 	SDL_Quit();
 	return EXIT_SUCCESS;
