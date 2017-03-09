@@ -7,15 +7,16 @@ SDL_Renderer* g_pRenderer = 0;
 
 int main(int argc, char* args[]) {
 	SDL_Rect rectangle;
+
 	SDL_Texture* ship = NULL;
 
 
-
 	SDL_Init(SDL_INIT_EVERYTHING);
+	
 	g_pWindow = SDL_CreateWindow("Pre-Game", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 640, 480, SDL_WINDOW_SHOWN);
 	if (g_pWindow != 0) {
 		g_pRenderer = SDL_CreateRenderer(g_pWindow, -1, SDL_RENDERER_PRESENTVSYNC);
-		ship = SDL_CreateTextureFromSurface(g_pRenderer, SDL_LoadBMP("foton.bmp"));
+		ship = SDL_CreateTextureFromSurface(g_pRenderer, SDL_LoadBMP("player.bmp"));
 	}
 	else {
 		return 1;
@@ -32,11 +33,13 @@ int main(int argc, char* args[]) {
 
 
 	SDL_Event event;
-	SDL_Rect bullet[2];
+	SDL_Rect bulletw[2];
+	SDL_Rect bulletq[2];
+	SDL_Rect bullete[2];
 
 	bool running = true;
-	bool up = false, down = false, right = false, left=false, w=false;
-	int cont = 0;
+	bool up = false, down = false, right = false, left=false, w=false, q = false, e = false;
+	int contw = 0, contq = 0, conte = 0;
 	while (running) {
 		if (SDL_PollEvent(&event)) {
 			if (event.type == SDL_KEYUP) {
@@ -76,10 +79,22 @@ int main(int argc, char* args[]) {
 					break;
 				case SDLK_w:
 					w = true;
-					bullet[cont].x = rectangle.x;
-					bullet[cont].y = rectangle.y;
+					bulletw[contw].x = rectangle.x;
+					bulletw[contw].y = rectangle.y;
+					break;	
+				case SDLK_q:
+					q = true;
+					bulletq[contq].x = rectangle.x;
+					bulletq[contq].y = rectangle.y;
+					break;
 
-				
+				case SDLK_e:
+					e = true;
+					/*
+					bullete[conte].x = rectangle.x;
+					bullete[conte].y = rectangle.y;
+					*/
+					break;
 
 				default:
 					break;
@@ -100,21 +115,58 @@ int main(int argc, char* args[]) {
 
 		if (w) {
 			w = false;
-			bullet[cont].x = rectangle.x + 15;
-			bullet[cont].y = rectangle.y + 15;
-			bullet[cont].w = 10;
-			bullet[cont].h = 40;
+			bulletw[contw].x = rectangle.x + 15;
+			bulletw[contw].y = rectangle.y + 15;
+			bulletw[contw].w = 10;
+			bulletw[contw].h = 40;
 
-			cont++;
+			contw++;
 
-			if (cont == 2) {
-				cont = 0;
+			if (contw == 2) {
+				contw = 0;
 			}
 		}
 		for (int i = 0; i < 2; i++) {
-			bullet[i].y -= 10;
+			bulletw[i].y -= 10;
 			SDL_SetRenderDrawColor(g_pRenderer, 0, 0, 255, 255);
-			SDL_RenderFillRect(g_pRenderer, &bullet[i]);
+			SDL_RenderFillRect(g_pRenderer, &bulletw[i]);
+		}
+
+		if (q) {
+			q = false;
+			bulletq[contq].x = rectangle.x + 15;
+			bulletq[contq].y = rectangle.y + 15;
+			bulletq[contq].w = 10;
+			bulletq[contq].h = 40;
+			contq++;
+			if (contq == 2) {
+				contq = 0;
+			}
+
+		}
+		for (int i = 0; i < 2; i++) {
+			bulletq[i].x -= 10;
+			bulletq[i].y -= 10;
+			SDL_SetRenderDrawColor(g_pRenderer, 0, 0, 255, 255);
+			SDL_RenderFillRect(g_pRenderer, &bulletq[i]);
+		}
+		if (e) {
+			e = false;
+			bullete[contq].x = rectangle.x + 15;
+			bullete[contq].y = rectangle.y + 15;
+			bullete[contq].w = 10;
+			bullete[contq].h = 40;
+			conte++;
+			if (conte == 2) {
+				conte = 0;
+			}
+
+		}
+		for (int i = 0; i < 2; i++) {
+			bullete[i].x += 10;
+			bullete[i].y -= 10;
+			SDL_SetRenderDrawColor(g_pRenderer, 0, 0, 255, 255);
+			SDL_RenderFillRect(g_pRenderer, &bullete[i]);
 		}
 
 		SDL_RenderCopy(g_pRenderer, ship, NULL, &rectangle);
