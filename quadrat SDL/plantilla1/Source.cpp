@@ -9,6 +9,7 @@ int main(int argc, char* args[]) {
 	SDL_Rect rectangle;
 
 	SDL_Texture* ship = NULL;
+	SDL_Texture* laser = NULL;
 
 
 	SDL_Init(SDL_INIT_EVERYTHING);
@@ -17,6 +18,7 @@ int main(int argc, char* args[]) {
 	if (g_pWindow != 0) {
 		g_pRenderer = SDL_CreateRenderer(g_pWindow, -1, SDL_RENDERER_PRESENTVSYNC);
 		ship = SDL_CreateTextureFromSurface(g_pRenderer, SDL_LoadBMP("player.bmp"));
+		laser=SDL_CreateTextureFromSurface(g_pRenderer,SDL_LoadBMP("laser.bmp"));
 	}
 	else {
 		return 1;
@@ -128,9 +130,12 @@ int main(int argc, char* args[]) {
 		}
 		for (int i = 0; i < 2; i++) {
 			bulletw[i].y -= 10;
-			SDL_SetRenderDrawColor(g_pRenderer, 0, 0, 255, 255);
-			SDL_RenderFillRect(g_pRenderer, &bulletw[i]);
+			//SDL_SetRenderDrawColor(g_pRenderer, 0, 0, 255, 255);
+			SDL_RenderCopy(g_pRenderer, laser, NULL, &bulletw[i]);
+			//SDL_RenderFillRect(g_pRenderer, &bulletw[i]);
+			
 		}
+		
 
 		if (q) {
 			q = false;
@@ -147,8 +152,9 @@ int main(int argc, char* args[]) {
 		for (int i = 0; i < 2; i++) {
 			bulletq[i].x -= 10;
 			bulletq[i].y -= 10;
-			SDL_SetRenderDrawColor(g_pRenderer, 0, 0, 255, 255);
-			SDL_RenderFillRect(g_pRenderer, &bulletq[i]);
+			//SDL_SetRenderDrawColor(g_pRenderer, 0, 0, 255, 255);
+			//SDL_RenderFillRect(g_pRenderer, &bulletq[i]);
+			SDL_RenderCopy(g_pRenderer, laser, NULL, &bulletq[i]);
 		}
 		if (e) {
 			e = false;
@@ -165,8 +171,9 @@ int main(int argc, char* args[]) {
 		for (int i = 0; i < 2; i++) {
 			bullete[i].x += 10;
 			bullete[i].y -= 10;
-			SDL_SetRenderDrawColor(g_pRenderer, 0, 0, 255, 255);
-			SDL_RenderFillRect(g_pRenderer, &bullete[i]);
+			//SDL_SetRenderDrawColor(g_pRenderer, 0, 0, 255, 255);
+			//SDL_RenderFillRect(g_pRenderer, &bullete[i]);
+			SDL_RenderCopy(g_pRenderer, laser, NULL, &bullete[i]);
 		}
 
 		SDL_RenderCopy(g_pRenderer, ship, NULL, &rectangle);
