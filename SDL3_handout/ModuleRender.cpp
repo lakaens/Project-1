@@ -43,6 +43,7 @@ update_status ModuleRender::PreUpdate()
 	// TODO 7: Clear the screen to black before starting every frame
 
 	// TODO 10: Blit our test texture to check functionality
+	//Blit(tex, 0, 0,);
 
 	return update_status::UPDATE_CONTINUE;
 }
@@ -50,6 +51,7 @@ update_status ModuleRender::PreUpdate()
 update_status ModuleRender::PostUpdate()
 {
 	// TODO 8: Switch buffers so we actually render
+	SDL_RenderPresent(renderer);
 
 	return update_status::UPDATE_CONTINUE;
 }

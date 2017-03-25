@@ -10,6 +10,9 @@
 ModuleTextures::ModuleTextures() : Module()
 {
 	// TODO 5: Initialize all texture pointers to nullptr
+	for (int i = 0; i < last_texture; i++) {
+		textures[last_texture] = nullptr;
+	}
 }
 
 // Destructor
@@ -41,6 +44,7 @@ bool ModuleTextures::CleanUp()
 	LOG("Freeing textures and Image library");
 
 	// TODO 6: Free all textures
+
 
 	IMG_Quit();
 	return true;
