@@ -29,7 +29,7 @@ bool ModuleInput::Init()
 // Called every draw update
 update_status ModuleInput::Update()
 {
-	update_status ret = update_status::UPDATE_CONTINUE;
+	update_status ret = UPDATE_CONTINUE;
 	SDL_PumpEvents();
 
 	keyboard = SDL_GetKeyboardState(NULL);
@@ -38,8 +38,8 @@ update_status ModuleInput::Update()
 	// and quit the game
 	
 	if (keyboard[SDL_SCANCODE_ESCAPE]) {
-				ret = update_status::UPDATE_STOP;
-			}
+				ret = UPDATE_STOP;
+		}
 
 	return ret;
 }
