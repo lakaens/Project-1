@@ -5,7 +5,7 @@
 #include "SDL_mixer\include\SDL_mixer.h"
 #include "Globals.h"
 
-#define Musictime 1.0f
+#define Musictime 2.0f
 
 class ModuleAudio : public Module 
 {

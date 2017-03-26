@@ -5,7 +5,7 @@
 #include "ModuleAudio.h"
 #include "ModuleBackground.h"
 
-ModuleBackground::ModuleBackground(): Module() {
+ModuleBackground::ModuleBackground() {
 	background.x = 0;
 	background.y = 0;
 	background.w = 224;
@@ -18,14 +18,16 @@ ModuleBackground::~ModuleBackground() {
 bool ModuleBackground::Start() {
 
 	bool ret = true;
-	texture = App->textures->Load("Game/stage1r.png");
+	texture = App->textures->Load("mapa1.png");
 	return ret;
 }
 update_status ModuleBackground::Update() {
 	update_status ret = UPDATE_CONTINUE;
 	
-	App->render->Blit(texture, 0, -2036 + SCREEN_HEIGHT, &background, 0.75f);
-
+	if (!App->render->Blit(texture, 0, 0, &background, 0.75f))
+	{
+		ret = UPDATE_ERROR;
+	}
 	
 
 	return ret;
