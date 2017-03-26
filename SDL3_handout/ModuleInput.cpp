@@ -27,16 +27,13 @@ bool ModuleInput::Init()
 }
 
 // Called every draw update
-update_status ModuleInput::Update()
+update_status ModuleInput::PreUpdate()
 {
 	update_status ret = UPDATE_CONTINUE;
 	SDL_PumpEvents();
 
 	keyboard = SDL_GetKeyboardState(NULL);
 
-	// TODO 1: find out how to detect if the ESC key was pressed
-	// and quit the game
-	
 	if (keyboard[SDL_SCANCODE_ESCAPE]) {
 				ret = UPDATE_STOP;
 		}
