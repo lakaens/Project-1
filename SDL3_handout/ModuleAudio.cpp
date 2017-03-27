@@ -19,7 +19,7 @@ bool ModuleAudio::Init()
 	int initogg = MIX_INIT_OGG;
 	int ogg = Mix_Init(initogg);
 	float time= Musictime;
-	music = Mix_LoadMUS("arcadefunk.ogg");
+	music = Mix_LoadMUS("Game/stage.wav");
 
 	SDL_Init(0);
 	if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) < 0) {
@@ -42,7 +42,7 @@ bool ModuleAudio::Init()
 	}
 	else {
 		if (time > 0.0f) {
-			if (Mix_FadeInMusic(music, -1, (int)(time*500.0f)) < 0) {
+			if (Mix_FadeInMusic(music, -1, (int)(time*1000.0f)) < 0) {
 				LOG("Error fade in music: %s", Mix_GetError());
 				res = false;
 			}

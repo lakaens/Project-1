@@ -7,7 +7,7 @@
 
 ModuleBackground::ModuleBackground() {
 	background.x = 0;
-	background.y = SCREEN_HEIGHT;
+	background.y = 3200;
 	background.w = 224;
 	background.h = 3070;
 }
@@ -28,7 +28,7 @@ bool ModuleBackground::Start() {
 update_status ModuleBackground::Update() {
 	update_status ret = UPDATE_CONTINUE;
 	
-	if (!App->render->Blit(texture, 0, 0, &background, 0.75f)) {
+	if (!App->render->Blit(texture, background.x, SCREEN_HEIGHT - background.y, &background, 0.75f)) {
 		ret = UPDATE_ERROR;
 		LOG("Blit error: %s", SDL_GetError());
 	}
