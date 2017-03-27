@@ -19,9 +19,9 @@ bool ModuleAudio::Init()
 	int initogg = MIX_INIT_OGG;
 	int ogg = Mix_Init(initogg);
 	float time= Musictime;
-	music = Mix_LoadMUS("arcadefunk.ogg");
+	
 
-	SDL_Init(0);
+	SDL_Init(SDL_INIT_AUDIO);
 	if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) < 0) {
 	LOG("SDL_AUDIO could not initialize! SDL_Error: %s", Mix_GetError());
 		res = false;
@@ -32,11 +32,9 @@ bool ModuleAudio::Init()
 		res = false;
 	}
 
-	if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) < 0) {
-		LOG("ERROR SDL_MIXER: %s", Mix_GetError());
-		res = false;
-	}
+	music = Mix_LoadMUS("stage.ogg");
 	if (music == NULL) {
+		LOG("Error sdl music: %s", SDL_GetError());
 		LOG("Error loading music: %s", Mix_GetError());
 		res = false;
 	}
