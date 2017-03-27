@@ -20,7 +20,8 @@ typedef unsigned int uint;
 // Configuration -----------
 #define SCREEN_SIZE 2
 #define SCREEN_WIDTH 224
-#define SCREEN_HEIGHT 3370
+#define SCREEN_HEIGHT 256
+#define SCREEN_SPEED 2.0f
 #define WIN_FULLSCREEN 0
 #define WIN_FULLSCREEN_DESKTOP 0
 #define WIN_BORDERLESS 0

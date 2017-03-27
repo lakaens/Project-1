@@ -49,13 +49,8 @@ update_status ModuleRender::PreUpdate()
 }
 update_status ModuleRender::Update()
 {
-	int speed = 3;
-
-	if (App->input->keyboard[SDL_SCANCODE_UP] == 1) {
-		camera.y += speed;
-	}
-	if (App->input->keyboard[SDL_SCANCODE_DOWN] == 1) {
-		camera.y -= speed;
+	if (camera.y != 7200) {
+		camera.y += SCREEN_SPEED;
 	}
 	return update_status::UPDATE_CONTINUE;
 }

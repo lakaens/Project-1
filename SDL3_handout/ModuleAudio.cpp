@@ -19,7 +19,7 @@ bool ModuleAudio::Init()
 	int initogg = MIX_INIT_OGG;
 	int ogg = Mix_Init(initogg);
 	float time= Musictime;
-	music = Mix_LoadMUS("Game/stage.wav");
+	music = Mix_LoadMUS("arcadefunk.ogg");
 
 	SDL_Init(0);
 	if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) < 0) {
