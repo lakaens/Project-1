@@ -26,8 +26,12 @@ bool Application::Init()
 {
 	bool ret = true;
 
-	for(int i = 0; i < NUM_MODULES && ret == true; ++i)
-		ret = modules[i]->Init();
+	for (int i = 0; i < NUM_MODULES && ret == true; ++i) {
+		if (modules[i] == background)
+			ret = background->Start();
+		else
+			ret = modules[i]->Init();
+	}
 
 	return ret;
 }
