@@ -4,7 +4,9 @@
 #include "ModuleInput.h"
 #include "ModuleTextures.h"
 #include "ModuleAudio.h"
-#include "ModuleBackground.h"
+#include "ModuleStage1.h"
+#include "ModuleStage2.h"
+#include "ModuleFadeToBlack.h"
 
 Application::Application()
 {
@@ -13,7 +15,10 @@ Application::Application()
 	modules[2] = input = new ModuleInput();
 	modules[3] = textures = new ModuleTextures();
 	modules[4] = audio = new ModuleAudio();
-	modules[5] = background = new ModuleBackground();
+	modules[5] = stage1 = new ModuleStage1();
+	modules[6] = stage2 = new ModuleStage2();
+	modules[7] = fade = new ModuleFadeToBlack();
+	modules[8] = player = new ModulePlayer();
 }	
 
 Application::~Application()
@@ -27,8 +32,8 @@ bool Application::Init()
 	bool ret = true;
 
 	for (int i = 0; i < NUM_MODULES && ret == true; ++i) {
-		if (modules[i] == background)
-			ret = background->Start();
+		if (modules[i] == stage1)
+			ret = stage1->Start();
 		else
 			ret = modules[i]->Init();
 	}

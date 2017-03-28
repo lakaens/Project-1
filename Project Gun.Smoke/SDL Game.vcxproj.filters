@@ -41,10 +41,22 @@
     <ClInclude Include="ModuleAudio.h">
       <Filter>Modules</Filter>
     </ClInclude>
-    <ClInclude Include="ModuleBackground.h">
+    <ClInclude Include="Animation.h">
+      <Filter>containers</Filter>
+    </ClInclude>
+    <ClInclude Include="ModuleFadetoblack.h">
       <Filter>Modules</Filter>
     </ClInclude>
-    <ClInclude Include="Animation.h">
+    <ClInclude Include="ModuleStage1.h">
+      <Filter>Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="ModuleStage2.h">
+      <Filter>Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="ModulePlayer.h">
+      <Filter>Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="p2Point.h">
       <Filter>containers</Filter>
     </ClInclude>
   </ItemGroup>
@@ -73,7 +85,16 @@
     <ClCompile Include="ModuleAudio.cpp">
       <Filter>Modules</Filter>
     </ClCompile>
-    <ClCompile Include="ModuleBackground.cpp">
+    <ClCompile Include="ModuleStage1.cpp">
+      <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleStage2.cpp">
+      <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleFadetoblack.cpp">
+      <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="ModulePlayer.cpp">
       <Filter>Modules</Filter>
     </ClCompile>
   </ItemGroup>
