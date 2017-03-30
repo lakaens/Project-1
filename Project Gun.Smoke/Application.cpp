@@ -7,6 +7,7 @@
 #include "ModuleStage1.h"
 #include "ModuleStage2.h"
 #include "ModuleFadeToBlack.h"
+#include "ModulePlayer.h"
 
 Application::Application()
 {
@@ -23,7 +24,7 @@ Application::Application()
 
 Application::~Application()
 {
-	for(int i = 0; i < NUM_MODULES; ++i)
+	for (int i = NUM_MODULES - 1; i >= 0; --i)
 		delete modules[i];
 }
 
@@ -31,12 +32,16 @@ bool Application::Init()
 {
 	bool ret = true;
 
-	for (int i = 0; i < NUM_MODULES && ret == true; ++i) {
-		if (modules[i] == stage1)
-			ret = stage1->Start();
-		else
-			ret = modules[i]->Init();
-	}
+	// Player will be enabled on the first update of a new scene
+	player->Disable();
+	// Disable the map that you do not start with
+	stage2->Disable();
+
+	for (int i = 0; i < NUM_MODULES && ret == true; ++i)
+		ret = modules[i]->Init();
+
+	for (int i = 0; i < NUM_MODULES && ret == true; ++i)
+		ret = modules[i]->IsEnabled() ? modules[i]->Start() : true;
 
 	return ret;
 }
@@ -45,14 +50,14 @@ update_status Application::Update()
 {
 	update_status ret = UPDATE_CONTINUE;
 
-	for(int i = 0; i < NUM_MODULES && ret == UPDATE_CONTINUE; ++i)
-		ret = modules[i]->PreUpdate();
+	for (int i = 0; i < NUM_MODULES && ret == UPDATE_CONTINUE; ++i)
+		ret = modules[i]->IsEnabled() ? modules[i]->PreUpdate() : UPDATE_CONTINUE;
 
-	for(int i = 0; i < NUM_MODULES && ret == UPDATE_CONTINUE; ++i)
-		ret = modules[i]->Update();
+	for (int i = 0; i < NUM_MODULES && ret == UPDATE_CONTINUE; ++i)
+		ret = modules[i]->IsEnabled() ? modules[i]->Update() : UPDATE_CONTINUE;
 
-	for(int i = 0; i < NUM_MODULES && ret == UPDATE_CONTINUE; ++i)
-		ret = modules[i]->PostUpdate();
+	for (int i = 0; i < NUM_MODULES && ret == UPDATE_CONTINUE; ++i)
+		ret = modules[i]->IsEnabled() ? modules[i]->PostUpdate() : UPDATE_CONTINUE;
 
 	return ret;
 }
@@ -61,7 +66,7 @@ bool Application::CleanUp()
 {
 	bool ret = true;
 
-	for(int i = NUM_MODULES - 1; i >= 0 && ret == true; --i)
+	for (int i = NUM_MODULES - 1; i >= 0 && ret == true; --i)
 		ret = modules[i]->CleanUp();
 
 	return ret;

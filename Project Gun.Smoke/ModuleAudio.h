@@ -17,8 +17,10 @@ public:
 	bool Init();
 	bool CleanUp();
 
+	bool musicLoad(const char* path, float time = Musictime);
 
-public:
+
+private:
 	Mix_Music* music = nullptr;
 };
 #endif 

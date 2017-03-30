@@ -5,7 +5,9 @@
 #include "Animation.h"
 #include "Globals.h"
 
+
 struct SDL_Texture;
+
 
 class ModuleStage1 : public Module
 {
@@ -16,10 +18,12 @@ public:
 
 	bool Start();
 	update_status Update();
+	bool CleanUp();
 	
 public:
 	SDL_Texture* texture = nullptr;
 	SDL_Rect background;
+	
 
 
 };

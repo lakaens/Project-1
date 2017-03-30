@@ -32,7 +32,28 @@ bool ModuleAudio::Init()
 		res = false;
 	}
 
-	music = Mix_LoadMUS("stage.ogg");
+	return res;
+}
+
+bool ModuleAudio::CleanUp() {
+	if (music != NULL)
+	{
+		Mix_FreeMusic(music);
+	}
+
+	Mix_CloseAudio();
+	Mix_Quit();
+	SDL_QuitSubSystem(SDL_INIT_AUDIO);
+	return true;
+}
+
+
+
+bool ModuleAudio::musicLoad(const char* path, float time) {
+	bool res = true;
+
+	music = Mix_LoadMUS(path);
+
 	if (music == NULL) {
 		LOG("Error sdl music: %s", SDL_GetError());
 		LOG("Error loading music: %s", Mix_GetError());
@@ -50,20 +71,8 @@ bool ModuleAudio::Init()
 				LOG("Unable to play music: %s", Mix_GetError());
 				res = false;
 			}
+			return res;
 		}
 	}
-
-	return res;
 }
-
-bool ModuleAudio::CleanUp() {
-	if (music != NULL)
-	{
-		Mix_FreeMusic(music);
-	}
-
-	Mix_CloseAudio();
-	Mix_Quit();
-	SDL_QuitSubSystem(SDL_INIT_AUDIO);
-	return true;
-}
+		

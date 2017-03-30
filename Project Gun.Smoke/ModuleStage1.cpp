@@ -5,6 +5,11 @@
 #include "ModuleAudio.h"
 #include "ModuleStage1.h"
 #include "ModuleStage2.h"
+#include "Module.h"
+#include "ModuleInput.h"
+#include "ModuleFadeToBlack.h"
+#include "ModulePlayer.h"
+
 
 ModuleStage1::ModuleStage1() {
 	background.x = 0;
@@ -18,13 +23,21 @@ ModuleStage1::~ModuleStage1() {
 
 bool ModuleStage1::Start() {
 
-	bool ret = true;
+	LOG("Loading stage1: ");
+	App->player->Enable();
 	texture = App->textures->Load("mapa1.png");
-	if (texture == nullptr) {
-		LOG("Texture error: %s", SDL_GetError());
-		ret = false;
-	}
-	return ret;
+	App->audio->musicLoad("stage1.ogg");
+	
+
+	return true;
+}
+bool ModuleStage1::CleanUp() {
+
+	App->player->Disable();
+	App->audio->Disable();
+
+	return true;
+
 }
 update_status ModuleStage1::Update() {
 	update_status ret = UPDATE_CONTINUE;
@@ -33,7 +46,11 @@ update_status ModuleStage1::Update() {
 		ret = UPDATE_ERROR;
 		LOG("Blit error: %s", SDL_GetError());
 	}
-	
-	return ret;
+	if (App->input->keyboard[SDL_SCANCODE_SPACE] == 1) {
+		App->fade->FadeToBlack(App->stage1, App->stage2, 1.0f);
+	}
+
+
+	return UPDATE_CONTINUE;
 	
 }
