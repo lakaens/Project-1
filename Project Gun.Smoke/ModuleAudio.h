@@ -19,6 +19,7 @@ public:
 
 	bool musicLoad(const char* path, float time = Musictime);
 
+	bool ModuleAudio::StopMusic();
 
 private:
 	Mix_Music* music = nullptr;

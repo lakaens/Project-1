@@ -9,56 +9,48 @@
 #include "ModuleInput.h"
 #include "ModuleFadeToBlack.h"
 #include "ModulePlayer.h"
+#include "ModuleWelcome.h"
 
 
-ModuleStage1::ModuleStage1() {
+ModuleWelcome::ModuleWelcome() {
 	background.x = 0;
 	background.y = 0;
-	background.w = 224;
-	background.h = 3200;
+	background.w = SCREEN_WIDTH;
+	background.h = SCREEN_HEIGHT;
 }
-ModuleStage1::~ModuleStage1() {
+ModuleWelcome::~ModuleWelcome() {
 
 }
 
-bool ModuleStage1::Start() {
+bool ModuleWelcome::Start() {
 
 	LOG("Loading stage1: ");
-	App->player->Enable();
-	texture = App->textures->Load("mapa1.png");
-	App->audio->musicLoad("stage1.ogg");
-	
+
+	texture = App->textures->Load("welcome.png");
+
 
 	return true;
 }
-bool ModuleStage1::CleanUp() {
-
+bool ModuleWelcome::CleanUp() {
 
 	App->textures->Unload(texture);
 
 	return true;
 
 }
-update_status ModuleStage1::Update() {
+update_status ModuleWelcome::Update() {
 	update_status ret = UPDATE_CONTINUE;
-	
-	App->render->Blit(texture, 0, -3000 + SCREEN_HEIGHT, &background, 0.75f);
+
+	App->render->Blit(texture, 0, 0, &background, 0.75f);
 
 
-	
-	if (App->render->camera.y != 7200) {
-		App->render->camera.y += SCREEN_SPEED;
-	}
-	
 	if (App->input->keyboard[SDL_SCANCODE_SPACE] == 1 && state) {
 		state = false;
-		App->fade->FadeToBlack(this, App->stage2, 1.0f);
+		App->fade->FadeToBlack(this, App->stage1, 1);
 		state = true;
 	}
 
 
 	return UPDATE_CONTINUE;
-	
+
 }
-
-

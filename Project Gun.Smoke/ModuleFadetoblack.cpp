@@ -5,6 +5,9 @@
 #include "ModuleRender.h"
 #include "ModuleStage1.h"
 #include "ModuleStage2.h"
+#include "ModuleWelcome.h"
+#include "ModuleGreetings.h"
+#include "ModulePlayer.h"
 #include "SDL/include/SDL_render.h"
 #include "SDL/include/SDL_timer.h"
 
@@ -44,6 +47,9 @@ update_status ModuleFadeToBlack::Update()
 
 			module_on->Enable();
 			module_off->Disable();
+			App->render->camera.y = 0;
+			App->player->position.x = SCREEN_WIDTH / 2 - 10;
+			App->player->position.y = 0 + SCREEN_HEIGHT;
 
 
 			// ---

@@ -1,32 +1,30 @@
-#ifndef __ModuleStage1_H__
-#define __ModuleStage1_H__
+#ifndef __ModuleWelcome_H__
+#define __ModuleWelcome_H__
 
 #include "Module.h"
 #include "Animation.h"
 #include "Globals.h"
-#include "ModuleAudio.h"
 
 
 struct SDL_Texture;
 
 
-class ModuleStage1 : public Module
+class ModuleWelcome : public Module
 {
 public:
 
-	ModuleStage1();
-	~ModuleStage1();
+	ModuleWelcome();
+	~ModuleWelcome();
 
 	bool Start();
 	update_status Update();
 	bool CleanUp();
 
-	
 public:
+	bool state = true;
 	SDL_Texture* texture = nullptr;
 	SDL_Rect background;
-	bool state = true;
-	
+
 
 
 };

@@ -21,7 +21,7 @@ public:
 public:
 	SDL_Texture* texture = nullptr;
 	SDL_Rect background;
-
+	bool state = true;
 
 };
 

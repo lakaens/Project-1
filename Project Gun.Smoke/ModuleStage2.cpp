@@ -9,6 +9,7 @@
 #include "ModuleInput.h"
 #include "ModuleFadeToBlack.h"
 #include "ModulePlayer.h"
+#include "ModuleGreetings.h"
 
 
 ModuleStage2::ModuleStage2() {
@@ -33,7 +34,8 @@ bool ModuleStage2::Start() {
 }
 bool ModuleStage2::CleanUp() {
 	App->player->Disable();
-	App->audio->Disable();
+	App->audio->StopMusic();
+	App->textures->Unload(texture);
 
 	return true;
 
@@ -42,17 +44,19 @@ bool ModuleStage2::CleanUp() {
 update_status ModuleStage2::Update() {
 	update_status ret = UPDATE_CONTINUE;
 
-	if (!App->render->Blit(texture, 0, -3000 + SCREEN_HEIGHT, &background, 0.75f)) {
-		ret = UPDATE_ERROR;
-		LOG("Blit error: %s", SDL_GetError());
+	App->render->Blit(texture, 0, -3000 + SCREEN_HEIGHT, &background, 0.75f);
+	
+	if (App->render->camera.y != 7200) {
+		App->render->camera.y += SCREEN_SPEED;
 	}
 
-	if (App->input->keyboard[SDL_SCANCODE_SPACE] == 1) {
+	if (App->input->keyboard[SDL_SCANCODE_SPACE] == 1 && state) {
 
-		App->fade->FadeToBlack(App->stage1, App->stage2, 1.0f);
-
+		state = false;
+		App->fade->FadeToBlack(this, App->greetings, 1.0f);
+		state = true;
 	}
-	return UPDATE_CONTINUE;
+
 
 	return ret;
 

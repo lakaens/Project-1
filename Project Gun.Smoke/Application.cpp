@@ -8,6 +8,9 @@
 #include "ModuleStage2.h"
 #include "ModuleFadeToBlack.h"
 #include "ModulePlayer.h"
+#include "ModuleWelcome.h"
+#include "ModuleGreetings.h"
+
 
 Application::Application()
 {
@@ -20,6 +23,8 @@ Application::Application()
 	modules[6] = stage2 = new ModuleStage2();
 	modules[7] = fade = new ModuleFadeToBlack();
 	modules[8] = player = new ModulePlayer();
+	modules[9] = welcome = new ModuleWelcome();
+	modules[10] = greetings = new ModuleGreetings();
 }	
 
 Application::~Application()
@@ -32,10 +37,15 @@ bool Application::Init()
 {
 	bool ret = true;
 
+
 	// Player will be enabled on the first update of a new scene
 	player->Disable();
 	// Disable the map that you do not start with
+	stage1->Disable();
+
 	stage2->Disable();
+
+	greetings->Disable();
 
 	for (int i = 0; i < NUM_MODULES && ret == true; ++i)
 		ret = modules[i]->Init();

@@ -13,8 +13,7 @@
 
 ModulePlayer::ModulePlayer()
 {
-	position.x = SCREEN_WIDTH / 2;
-	position.y = SCREEN_HEIGHT / 2;
+
 
 	// idle animation (arcade sprite sheet)
 	forward.PushBack({ 1, 1, 60, 80});
@@ -34,7 +33,8 @@ ModulePlayer::~ModulePlayer()
 // Load assets
 bool ModulePlayer::Start()
 {
-
+	position.x = SCREEN_WIDTH / 2;
+	position.y = SCREEN_HEIGHT / 2;
 	LOG("Loading player textures");
 	bool ret = true;
 	graphics = App->textures->Load("char.png"); // arcade version
@@ -47,6 +47,7 @@ update_status ModulePlayer::Update()
 	Animation* current_animation = &idle;
 
 	int speed = 3;
+	position.y -= 1;
 
 	if (App->input->keyboard[SDL_SCANCODE_UP] == 1 && position.y != 0)
 	{
@@ -54,7 +55,7 @@ update_status ModulePlayer::Update()
 		current_animation = &forward;
 
 		position.y -= speed;
-		//}
+		
 	}
 	if (App->input->keyboard[SDL_SCANCODE_DOWN] == 1 && position.y != 176)
 	{
@@ -67,48 +68,19 @@ update_status ModulePlayer::Update()
 	{
 			
 		current_animation = &forward;
-		position.x += speed;
-			
+		if (position.x < SCREEN_WIDTH - 50) {
+			position.x += speed;
+		}
 	}
 	if (App->input->keyboard[SDL_SCANCODE_LEFT] == 1 && position.x != 0)
 	{
 			
 		current_animation = &forward;
-		position.x -= speed;
-			
+		if (position.x > 0) {
+			position.x -= speed;
+		}
 	}
-	if (App->input->keyboard[SDL_SCANCODE_RIGHT] == 1 && App->input->keyboard[SDL_SCANCODE_UP] == 1) {
-
-		current_animation = &forward;
-		speed = 0.1;
-		position.x += speed;
-		position.y -= speed;
-
-	}
-	if (App->input->keyboard[SDL_SCANCODE_RIGHT] == 1 && App->input->keyboard[SDL_SCANCODE_DOWN] == 1) {
-
-		current_animation = &forward;
-		speed = 0.1;
-		position.x += speed;
-		position.y += speed;
-
-	}
-	if (App->input->keyboard[SDL_SCANCODE_LEFT] == 1 && App->input->keyboard[SDL_SCANCODE_UP] == 1) {
-
-		current_animation = &forward;
-		speed = 0.1;
-		position.x -= speed;
-		position.y -= speed;
-
-	}
-	if (App->input->keyboard[SDL_SCANCODE_LEFT] == 1 && App->input->keyboard[SDL_SCANCODE_DOWN] == 1) {
-
-		current_animation = &forward;
-		speed = 0.1;
-		position.x -= speed;
-		position.y += speed;
-
-	}
+	
 
 
 	// Draw everything --------------------------------------

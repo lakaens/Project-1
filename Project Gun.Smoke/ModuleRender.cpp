@@ -49,9 +49,7 @@ update_status ModuleRender::PreUpdate()
 }
 update_status ModuleRender::Update()
 {
-	if (camera.y != 7200) {
-		camera.y += SCREEN_SPEED;
-	}
+	
 	return update_status::UPDATE_CONTINUE;
 }
 
