@@ -23,7 +23,6 @@ ModulePlayer::ModulePlayer()
 	forward.PushBack({ 260, 1, 60, 80});
 	forward.speed = 0.09f;
 
-	idle.PushBack({ 130, 1, 60, 80 });
 
 }
 
@@ -44,41 +43,44 @@ bool ModulePlayer::Start()
 // Update: draw background
 update_status ModulePlayer::Update()
 {
-	Animation* current_animation = &idle;
+	Animation* current_animation = &forward;
 
-	int speed = 3;
-	position.y -= 1;
+	int speed = 2;
 
-	if (App->input->keyboard[SDL_SCANCODE_UP] == 1 && position.y != 0)
+
+	if (App->input->keyboard[SDL_SCANCODE_UP] == 1 && position.y > 0)
 	{
 
 		current_animation = &forward;
 
-		position.y -= speed;
+			position.y -= speed;
+		
 		
 	}
-	if (App->input->keyboard[SDL_SCANCODE_DOWN] == 1 && position.y != 176)
+	if (App->input->keyboard[SDL_SCANCODE_DOWN] == 1)
 	{
 	
 		current_animation = &forward;
-		position.y += speed;
+
+			position.y += speed;
+		
 			
 	}
 	if (App->input->keyboard[SDL_SCANCODE_RIGHT] == 1)
 	{
 			
 		current_animation = &forward;
-		if (position.x < SCREEN_WIDTH - 50) {
+
 			position.x += speed;
-		}
+		
 	}
-	if (App->input->keyboard[SDL_SCANCODE_LEFT] == 1 && position.x != 0)
+	if (App->input->keyboard[SDL_SCANCODE_LEFT] == 1)
 	{
 			
 		current_animation = &forward;
-		if (position.x > 0) {
+
 			position.x -= speed;
-		}
+		
 	}
 	
 

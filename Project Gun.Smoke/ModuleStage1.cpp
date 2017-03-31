@@ -13,7 +13,7 @@
 
 ModuleStage1::ModuleStage1() {
 	background.x = 0;
-	background.y = 0;
+	background_y = -3000;
 	background.w = 224;
 	background.h = 3200;
 }
@@ -42,12 +42,12 @@ bool ModuleStage1::CleanUp() {
 update_status ModuleStage1::Update() {
 	update_status ret = UPDATE_CONTINUE;
 	
-	App->render->Blit(texture, 0, -3000 + SCREEN_HEIGHT, &background, 0.75f);
+	App->render->Blit(texture, 0, background_y + SCREEN_HEIGHT, &background, 0.75f);
 
 
 	
-	if (App->render->camera.y != 7200) {
-		App->render->camera.y += SCREEN_SPEED;
+	if (background_y < -SCREEN_HEIGHT) {
+		background_y += 1;
 	}
 	
 	if (App->input->keyboard[SDL_SCANCODE_SPACE] == 1 && state) {

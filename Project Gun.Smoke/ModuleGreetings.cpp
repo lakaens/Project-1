@@ -16,8 +16,8 @@
 ModuleGreetings::ModuleGreetings() {
 	background.x = 0;
 	background.y = 0;
-	background.w = 320;
-	background.h = 266;
+	background.w = SCREEN_WIDTH;
+	background.h = SCREEN_HEIGHT;
 }
 ModuleGreetings::~ModuleGreetings() {
 
@@ -41,7 +41,7 @@ bool ModuleGreetings::CleanUp() {
 update_status ModuleGreetings::Update() {
 	update_status ret = UPDATE_CONTINUE;
 
-	App->render->Blit(texture, 0, -266 + SCREEN_HEIGHT, &background, 0.75f);
+	App->render->Blit(texture, 0, 0, &background, 0.75f);
 
 		
 	
