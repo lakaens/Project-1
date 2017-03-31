@@ -21,6 +21,7 @@ public:
 
 	SDL_Texture* graphics = nullptr;
 	Animation forward;
+	Animation forwardbullet;
 	Animation idle;
 	iPoint position;
 

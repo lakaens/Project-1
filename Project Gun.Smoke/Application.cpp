@@ -10,6 +10,7 @@
 #include "ModulePlayer.h"
 #include "ModuleWelcome.h"
 #include "ModuleGreetings.h"
+#include "ModuleParticles.h"
 
 
 Application::Application()
@@ -25,6 +26,7 @@ Application::Application()
 	modules[8] = player = new ModulePlayer();
 	modules[9] = welcome = new ModuleWelcome();
 	modules[10] = greetings = new ModuleGreetings();
+	modules[11] = particles = new ModuleParticles();
 }	
 
 Application::~Application()
