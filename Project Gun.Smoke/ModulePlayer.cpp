@@ -73,6 +73,8 @@ bool ModulePlayer::Start()
 	LOG("Loading player textures");
 	bool ret = true;
 	graphics = App->textures->Load("char.png"); // arcade version
+
+	bulletsound = App->audio->Loadeffect("laser.wav");
 	
 	return ret;
 }
@@ -161,8 +163,9 @@ update_status ModulePlayer::Update()
 
 		App->particles->AddParticle(App->particles->bulletdl, position.x + 8, position.y);
 		App->particles->AddParticle(App->particles->bulletdl, position.x + 18, position.y);
-		App->audio->effectLoad("laser.wav");
-		current_animation = &forward;
+		bullet++;
+		App->audio->Playeffect(bulletsound);
+		
 
 	}
 
@@ -170,16 +173,16 @@ update_status ModulePlayer::Update()
 		
 			App->particles->AddParticle(App->particles->bulletf, position.x + 8, position.y);
 			App->particles->AddParticle(App->particles->bulletf, position.x + 18, position.y);
-			App->audio->effectLoad("laser.wav");
-			current_animation = &forward;
+			bullet++;
+			App->audio->Playeffect(bulletsound);
 
 	}
 	if (App->input->keyboard[SDL_SCANCODE_B] == KEY_STATE::KEY_DOWN) {
 
 		App->particles->AddParticle(App->particles->bulletdr, position.x + 8, position.y);
 		App->particles->AddParticle(App->particles->bulletdr, position.x + 18, position.y);
-		App->audio->effectLoad("laser.wav");
-		current_animation = &forward;
+		bullet++;
+		App->audio->Playeffect(bulletsound);
 	}	
 	
 

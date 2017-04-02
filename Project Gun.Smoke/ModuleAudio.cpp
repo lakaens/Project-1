@@ -76,16 +76,36 @@ bool ModuleAudio::musicLoad(const char* path, float time) {
 		}
 	}
 }
-bool ModuleAudio::effectLoad(const char* path, float time) {
-	Mix_PlayChannel(-1, shoot, 1);
+
+uint ModuleAudio::Loadeffect(const char* path) {
+	uint res = 0;
+	Mix_Chunk* cshoot= Mix_LoadWAV(path);
+
+	shoot[lasteffect] = cshoot;
+	res = lasteffect++;
+
+	return res;
+}
+bool ModuleAudio::Playeffect(uint id, int repeat) {
+
+	Mix_PlayChannel(-1, shoot[id], 1);
 	return true;
 }
 bool ModuleAudio::StopMusic() {
 	//TODO look if we can control this
 	Mix_FreeMusic(music);
-	Mix_FreeChunk(shoot);
 	music = nullptr;
 	Mix_HaltMusic();
 	return true;
+}
+
+bool ModuleAudio::unloadeffect(uint id) {
+	bool res = false;
+
+	Mix_FreeChunk(shoot[id]);
+	shoot[id] = nullptr;
+	res = true;
+	lasteffect--;
+	return res;
 }
 		

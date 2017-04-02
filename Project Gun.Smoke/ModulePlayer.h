@@ -12,6 +12,9 @@ struct SDL_Texture;
 
 class ModulePlayer : public Module
 {
+private:
+	uint bulletsound;
+	unsigned short bullet;
 public:
 	ModulePlayer();
 	~ModulePlayer();
