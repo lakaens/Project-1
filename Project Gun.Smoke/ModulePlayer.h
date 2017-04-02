@@ -16,13 +16,17 @@ public:
 
 	bool Start();
 	update_status Update();
+	bool CleanUp();
 
 public:
 
 	SDL_Texture* graphics = nullptr;
 	Animation forward;
-	Animation forwardbullet;
-	Animation idle;
+	Animation shootf;
+	Animation diagonalr;
+	Animation diagonall;
+	Animation shootdr;
+	Animation shootdl;
 	iPoint position;
 
 };

@@ -23,12 +23,29 @@ bool ModuleParticles::Start()
 	graphics = App->textures->Load("bullet.png");
 
 	// Explosion particle
-	bullets.anim.PushBack({ 45, 21, 3, 8 });
-	bullets.anim.PushBack({ 45, 21, 3, 8 });
-	bullets.anim.loop = true;
-	bullets.anim.speed = 0.3f;
-	bullets.life = 2000;
-	bullets.speed.y = -5;
+	bulletf.anim.PushBack({ 45, 21, 3, 8 });
+	bulletf.anim.PushBack({ 45, 21, 3, 8 });
+	bulletf.anim.loop = true;
+	bulletf.anim.speed = 0.3f;
+	bulletf.life = 2000;
+	bulletf.speed.y = -5;
+
+	bulletdr.anim.PushBack({109,21,9,9});
+	bulletdr.anim.PushBack({ 109,21,9,9 });
+	bulletdr.anim.loop = true;
+	bulletdr.anim.speed = 0.3f;
+	bulletdr.life = 2000;
+	bulletdr.speed.y = -5;
+	bulletdr.speed.x = +5;
+
+	bulletdl.anim.PushBack({161,23,7,6});
+	bulletdl.anim.PushBack({ 161,23,7,6 });
+	bulletdl.anim.loop = true;
+	bulletdl.anim.speed = 0.3f;
+	bulletdl.life = 2000;
+	bulletdl.speed.y = -5;
+	bulletdl.speed.x = -5;
+
 
 	// TODO 2: Create the template for a new particle "laser"
 

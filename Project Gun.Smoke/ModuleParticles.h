@@ -45,7 +45,9 @@ private:
 
 public:
 
-	Particle bullets;
+	Particle bulletf;
+	Particle bulletdl;
+	Particle bulletdr;
 };
 
 #endif // __MODULEPARTICLES_H__
