@@ -21,6 +21,7 @@ bool ModuleAudio::Init()
 	float time= Musictime;
 	
 
+
 	SDL_Init(SDL_INIT_AUDIO);
 	if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) < 0) {
 	LOG("SDL_AUDIO could not initialize! SDL_Error: %s", Mix_GetError());
@@ -75,10 +76,14 @@ bool ModuleAudio::musicLoad(const char* path, float time) {
 		}
 	}
 }
-
+bool ModuleAudio::effectLoad(const char* path, float time) {
+	Mix_PlayChannel(-1, shoot, 1);
+	return true;
+}
 bool ModuleAudio::StopMusic() {
 	//TODO look if we can control this
 	Mix_FreeMusic(music);
+	Mix_FreeChunk(shoot);
 	music = nullptr;
 	Mix_HaltMusic();
 	return true;

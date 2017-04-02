@@ -9,6 +9,8 @@
 #include "Module.h"
 #include "ModuleStage2.h"
 #include "ModuleParticles.h"
+#include "ModuleAudio.h"
+
 
 // Reference at https://www.youtube.com/watch?v=OEhmUuehGOA
 
@@ -71,6 +73,7 @@ bool ModulePlayer::Start()
 	LOG("Loading player textures");
 	bool ret = true;
 	graphics = App->textures->Load("char.png"); // arcade version
+	
 	return ret;
 }
 
@@ -154,13 +157,20 @@ update_status ModulePlayer::Update()
 		current_animation = &diagonall;
 
 	}
+	if (App->input->keyboard[SDL_SCANCODE_C] == KEY_STATE::KEY_DOWN) {
 
+		App->particles->AddParticle(App->particles->bulletdl, position.x + 8, position.y);
+		App->particles->AddParticle(App->particles->bulletdl, position.x + 18, position.y);
+		App->audio->effectLoad("laser.wav");
+		current_animation = &forward;
+
+	}
 
 	if (App->input->keyboard[SDL_SCANCODE_V] == KEY_STATE::KEY_DOWN) {
 		
-			App->particles->AddParticle(App->particles->bulletdl, position.x + 8, position.y);
-			App->particles->AddParticle(App->particles->bulletdl, position.x + 18, position.y);
-		
+			App->particles->AddParticle(App->particles->bulletf, position.x + 8, position.y);
+			App->particles->AddParticle(App->particles->bulletf, position.x + 18, position.y);
+			App->audio->effectLoad("laser.wav");
 			current_animation = &forward;
 
 	}
@@ -168,10 +178,8 @@ update_status ModulePlayer::Update()
 
 		App->particles->AddParticle(App->particles->bulletdr, position.x + 8, position.y);
 		App->particles->AddParticle(App->particles->bulletdr, position.x + 18, position.y);
-		if (current_animation != &shootdr) {
-			shootdr.Reset();
-			current_animation = &shootdr;
-		}
+		App->audio->effectLoad("laser.wav");
+		current_animation = &forward;
 	}	
 	
 

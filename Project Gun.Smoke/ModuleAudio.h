@@ -18,11 +18,12 @@ public:
 	bool CleanUp();
 
 	bool musicLoad(const char* path, float time = Musictime);
-
+	bool effectLoad(const char* path, float time = Musictime);
 	bool ModuleAudio::StopMusic();
+	
 
 private:
 	Mix_Music* music = nullptr;
-	Mix_Chunk* fx_shoot = nullptr;
+	Mix_Chunk* shoot = nullptr;
 };
 #endif 

@@ -6,7 +6,9 @@
 #include "Globals.h"
 #include "p2Point.h"
 
+
 struct SDL_Texture;
+
 
 class ModulePlayer : public Module
 {
@@ -28,6 +30,7 @@ public:
 	Animation shootdr;
 	Animation shootdl;
 	iPoint position;
+	
 
 };
 
