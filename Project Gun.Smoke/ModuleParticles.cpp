@@ -4,6 +4,7 @@
 #include "ModuleTextures.h"
 #include "ModuleRender.h"
 #include "ModuleParticles.h"
+#include "ModuleCollision.h"
 
 #include "SDL/include/SDL_timer.h"
 
@@ -20,31 +21,31 @@ ModuleParticles::~ModuleParticles()
 bool ModuleParticles::Start()
 {
 	LOG("Loading particles");
-	graphics = App->textures->Load("bullet.png");
+	graphics = App->textures->Load("particles1.png");
 
 	// Explosion particle
-	bulletf.anim.PushBack({ 45, 21, 3, 8 });
-	bulletf.anim.PushBack({ 45, 21, 3, 8 });
+	bulletf.anim.PushBack({ 205, 130, 2, 5 });
+	bulletf.anim.PushBack({ 205, 130, 2, 5 });
 	bulletf.anim.loop = true;
 	bulletf.anim.speed = 0.3f;
 	bulletf.life = 2000;
 	bulletf.speed.y = -5;
 
-	bulletdr.anim.PushBack({109,21,9,9});
-	bulletdr.anim.PushBack({ 109,21,9,9 });
+	bulletdr.anim.PushBack({ 252, 131, 4, 4 });
+	bulletdr.anim.PushBack({ 275, 131, 5, 4 });
 	bulletdr.anim.loop = true;
 	bulletdr.anim.speed = 0.3f;
 	bulletdr.life = 2000;
-	bulletdr.speed.y = -5;
-	bulletdr.speed.x = +5;
+	bulletdr.speed.y = -3;
+	bulletdr.speed.x = +3;
 
-	bulletdl.anim.PushBack({161,23,7,6});
-	bulletdl.anim.PushBack({ 161,23,7,6 });
+	bulletdl.anim.PushBack({233, 139, 5, 4});
+	bulletdl.anim.PushBack({ 242, 139, 4, 4});
 	bulletdl.anim.loop = true;
 	bulletdl.anim.speed = 0.3f;
 	bulletdl.life = 2000;
-	bulletdl.speed.y = -5;
-	bulletdl.speed.x = -5;
+	bulletdl.speed.y = -3;
+	bulletdl.speed.x = -3;
 
 
 	// TODO 2: Create the template for a new particle "laser"
@@ -99,18 +100,38 @@ update_status ModuleParticles::Update()
 	return UPDATE_CONTINUE;
 }
 
-void ModuleParticles::AddParticle(const Particle& particle, int x, int y, Uint32 delay)
+void ModuleParticles::AddParticle(const Particle& particle, int x, int y, COLLIDER_TYPE collider_type, Uint32 delay)
 {
-	Particle* p = new Particle(particle);
-	p->born = SDL_GetTicks() + delay;
-	p->position.x = x;
-	p->position.y = y;
-
-	active[last_particle++] = p;
+	for (uint i = 0; i < MAX_ACTIVE_PARTICLES; ++i)
+	{
+		if (active[i] == nullptr)
+		{
+			Particle* p = new Particle(particle);
+			p->born = SDL_GetTicks() + delay;
+			p->position.x = x;
+			p->position.y = y;
+			if (collider_type != COLLIDER_NONE)
+				p->collider = App->collision->AddCollider(p->anim.GetCurrentFrame(), collider_type, this);
+			active[i] = p;
+			break;
+		}
+	}
 }
-
 // -------------------------------------------------------------
 // -------------------------------------------------------------
+void ModuleParticles::OnCollision(Collider* c1, Collider* c2)
+{
+	for (uint i = 0; i < MAX_ACTIVE_PARTICLES; ++i)
+	{
+		// Always destroy particles that collide
+		if (active[i] != nullptr && active[i]->collider == c1)
+		{
+			delete active[i];
+			active[i] = nullptr;
+			break;
+		}
+	}
+}
 
 Particle::Particle()
 {
@@ -122,6 +143,12 @@ Particle::Particle(const Particle& p) :
 	anim(p.anim), position(p.position), speed(p.speed),
 	fx(p.fx), born(p.born), life(p.life)
 {}
+
+Particle::~Particle()
+{
+	if (collider != nullptr)
+		App->collision->EraseCollider(collider);
+}
 
 bool Particle::Update()
 {
@@ -138,6 +165,9 @@ bool Particle::Update()
 
 	position.x += speed.x;
 	position.y += speed.y;
+
+	if (collider != nullptr)
+		collider->SetPos(position.x, position.y);
 
 	return ret;
 }

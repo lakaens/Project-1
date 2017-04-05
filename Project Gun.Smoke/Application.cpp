@@ -11,6 +11,7 @@
 #include "ModuleWelcome.h"
 #include "ModuleGreetings.h"
 #include "ModuleParticles.h"
+#include "ModuleCollision.h"
 
 
 Application::Application()
@@ -27,6 +28,7 @@ Application::Application()
 	modules[9] = welcome = new ModuleWelcome();
 	modules[10] = greetings = new ModuleGreetings();
 	modules[11] = particles = new ModuleParticles();
+	modules[12] = collision = new ModuleCollision();
 }	
 
 Application::~Application()

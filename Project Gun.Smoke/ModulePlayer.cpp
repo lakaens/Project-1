@@ -20,45 +20,47 @@ ModulePlayer::ModulePlayer()
 	position.y = SCREEN_WIDTH/2;
 
 	// idle animation (arcade sprite sheet)
-	forward.PushBack({ 15, 20, 30, 46});
-	forward.PushBack({ 80, 23, 33, 43});
-	forward.PushBack({ 145, 23, 32, 43});
-	forward.PushBack({ 210, 23, 31, 43});
-	forward.PushBack({ 277, 21, 31, 46});
+	forward.PushBack({ 15, 0, 18, 27});
+	forward.PushBack({ 55, 1, 19, 26});
+	forward.PushBack({ 95, 1, 18, 26});
+	forward.PushBack({ 134, 1, 19, 26});
+	forward.PushBack({ 175, 0, 18, 28});
 	forward.speed = 0.05f;
 
-	shootf.PushBack({277,21,30,46});
-	shootf.PushBack({409,23,29,43});
-	shootf.PushBack({475,23,28,44});
-	shootf.PushBack({541,23,30,43});
-	shootf.PushBack({608,22,29,46});
+	shootf.PushBack({215, 0, 18, 27});
+	shootf.PushBack({255, 1, 18, 26});
+	shootf.PushBack({295, 1, 18, 26});
+	shootf.PushBack({335, 1, 18, 26});
+	shootf.PushBack({375, 0, 18, 27});
 	shootf.speed = 0.05f;
 
-	diagonalr.PushBack({676,22,27,41});
-	diagonalr.PushBack({741,24,26,41});
-	diagonalr.PushBack({19,90,24,41});
-	diagonalr.PushBack({83,88,25,41});
-	diagonalr.PushBack({146,86,32,42});
+	diagonalr.PushBack({417,0,16,25});
+	diagonalr.PushBack({457,1,15,25});
+	diagonalr.PushBack({17,41,15,26});
+	diagonalr.PushBack({56,41,16,25});
+	diagonalr.PushBack({94,40,20,25});
 	diagonalr.speed = 0.05f;
 
-	diagonall.PushBack({142,213,28,42});
-	diagonall.PushBack({210,214,23,40});
-	diagonall.PushBack({273,215,25,42});
-	diagonall.PushBack({340,215,27,41});
-	diagonall.PushBack({411,217,32,41});
+	diagonall.PushBack({82,119,16,25});
+	diagonall.PushBack({106,119,15,25});
+	diagonall.PushBack({126,119,15,26});
+	diagonall.PushBack({145,119,16,25});
+	diagonall.PushBack({164,119,20,25});
 	diagonall.speed = 0.05f;
 
-	shootdr.PushBack({ 215,87,27,41});
-	shootdr.PushBack({ 280,88,27,41});
-	shootdr.PushBack({ 347,89,26,42});
-	shootdr.PushBack({ 412,88,26,42});
-	shootdr.PushBack({ 478,86,26,42});
-	shootdr.PushBack({ 545,87,25,42});
-	shootdr.PushBack({ 612,89,24,43});
-	shootdr.PushBack({ 678,88,23,44});
-	shootdr.PushBack({ 19,151,25,43});
+	shootdr.PushBack({ 137,40,17,25});
+	shootdr.PushBack({ 177,41,17,25});
+	shootdr.PushBack({ 217,41,17,26});
+	shootdr.PushBack({ 257,41,17,25});
+	shootdr.PushBack({ 297,40,17,25});
 	shootdr.speed = 0.05f;
 
+	shootdl.PushBack({193,120,17,25});
+	shootdl.PushBack({214,120,17,25});
+	shootdl.PushBack({235,120,17,26});
+	shootdl.PushBack({255,121,17,25});
+	shootdl.PushBack({276,121,17,25});
+	shootdl.speed = 0.05f;
 
 
 }
@@ -98,7 +100,7 @@ update_status ModulePlayer::Update()
 	}
 	if (App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT)
 	{
-		if (position.y < SCREEN_WIDTH - 10) {
+		if (position.y < SCREEN_WIDTH + 90) {
 			current_animation = &forward;
 
 			position.y += speed;
@@ -107,8 +109,8 @@ update_status ModulePlayer::Update()
 	}
 	if (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT)
 	{
-		if (position.x < SCREEN_HEIGHT - 63) {
-			current_animation = &forward;
+		if (position.x < SCREEN_HEIGHT - 133) {
+			current_animation = &diagonalr;
 
 			position.x += speed;
 		}
@@ -116,7 +118,7 @@ update_status ModulePlayer::Update()
 	if (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT)
 	{
 		if (position.x > 0) {
-			current_animation = &forward;
+			current_animation = &diagonall;
 
 			position.x -= speed;
 		}
@@ -161,8 +163,8 @@ update_status ModulePlayer::Update()
 	}
 	if (App->input->keyboard[SDL_SCANCODE_C] == KEY_STATE::KEY_DOWN) {
 
-		App->particles->AddParticle(App->particles->bulletdl, position.x + 8, position.y);
-		App->particles->AddParticle(App->particles->bulletdl, position.x + 18, position.y);
+		App->particles->AddParticle(App->particles->bulletdl, position.x + 5, position.y);
+		App->particles->AddParticle(App->particles->bulletdl, position.x + 15, position.y);
 		bullet++;
 		App->audio->Playeffect(bulletsound);
 		
@@ -171,8 +173,8 @@ update_status ModulePlayer::Update()
 
 	if (App->input->keyboard[SDL_SCANCODE_V] == KEY_STATE::KEY_DOWN) {
 		
-			App->particles->AddParticle(App->particles->bulletf, position.x + 8, position.y);
-			App->particles->AddParticle(App->particles->bulletf, position.x + 18, position.y);
+			App->particles->AddParticle(App->particles->bulletf, position.x + 5, position.y);
+			App->particles->AddParticle(App->particles->bulletf, position.x + 15, position.y);
 			bullet++;
 			App->audio->Playeffect(bulletsound);
 
