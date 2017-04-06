@@ -23,6 +23,8 @@ public:
 	update_status Update();
 	bool CleanUp();
 
+	void CollisionCheck(Collider* c1, Collider* c2);
+
 public:
 
 	SDL_Texture* graphics = nullptr;
@@ -33,6 +35,7 @@ public:
 	Animation shootdr;
 	Animation shootdl;
 	iPoint position;
+	Collider* colider;
 	
 
 };

@@ -77,6 +77,8 @@ bool ModulePlayer::Start()
 	graphics = App->textures->Load("char.png"); // arcade version
 
 	bulletsound = App->audio->Loadeffect("laser.wav");
+
+	colider = App->collision->AddCollider({15,0,18,27}, COLLIDER_PLAYER);
 	
 	return ret;
 }
@@ -146,8 +148,8 @@ update_status ModulePlayer::Update()
 	if (App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT && App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT) {
 
 
-		position.x -= -0.2;
-		position.y += -0.2;
+		position.x -= -1;
+		position.y += -1;
 
 		current_animation = &diagonalr;
 
@@ -173,8 +175,8 @@ update_status ModulePlayer::Update()
 
 	if (App->input->keyboard[SDL_SCANCODE_V] == KEY_STATE::KEY_DOWN) {
 		
-			App->particles->AddParticle(App->particles->bulletf, position.x + 5, position.y);
-			App->particles->AddParticle(App->particles->bulletf, position.x + 15, position.y);
+			App->particles->AddParticle(App->particles->bulletf, position.x + 3, position.y);
+			App->particles->AddParticle(App->particles->bulletf, position.x + 13, position.y);
 			bullet++;
 			App->audio->Playeffect(bulletsound);
 
@@ -187,7 +189,7 @@ update_status ModulePlayer::Update()
 		App->audio->Playeffect(bulletsound);
 	}	
 	
-
+	colider->SetPos(position.x, position.y);
 
 	// Draw everything --------------------------------------
 	SDL_Rect r = current_animation->GetCurrentFrame();
@@ -205,3 +207,11 @@ bool ModulePlayer::CleanUp() {
 	return true;
 	
 }
+
+//void ModulePlayer::CollisionCheck(Collider* c1,Collider* c2) {
+//
+//	if (colider->CheckCollision == true) {
+//
+//	}
+//	
+//}

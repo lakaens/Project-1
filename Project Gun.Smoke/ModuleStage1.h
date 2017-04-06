@@ -25,6 +25,7 @@ public:
 public:
 	SDL_Texture* texture = nullptr;
 	SDL_Rect background;
+	Collider* colider;
 	bool state = true;
 
 	int background_y;

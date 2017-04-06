@@ -9,6 +9,7 @@
 #include "ModuleInput.h"
 #include "ModuleFadeToBlack.h"
 #include "ModulePlayer.h"
+#include "ModuleCollision.h"
 
 
 ModuleStage1::ModuleStage1() {
@@ -27,7 +28,10 @@ bool ModuleStage1::Start() {
 	App->player->Enable();
 	texture = App->textures->Load("mapa1.png");
 	App->audio->musicLoad("stage1.ogg");
-	
+
+	App->collision->Enable();
+
+	App->collision->AddCollider({,2219,23,21}, COLLIDER_WALL);
 
 	return true;
 }
@@ -35,6 +39,7 @@ bool ModuleStage1::CleanUp() {
 
 
 	App->textures->Unload(texture);
+	App->collision->Disable();
 
 	return true;
 
@@ -55,6 +60,8 @@ update_status ModuleStage1::Update() {
 		App->fade->FadeToBlack(this, App->stage2, 1.0f);
 		state = true;
 	}
+
+	
 
 
 	return UPDATE_CONTINUE;
