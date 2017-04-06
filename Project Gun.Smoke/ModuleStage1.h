@@ -8,6 +8,7 @@
 
 
 struct SDL_Texture;
+struct Collider;
 
 
 class ModuleStage1 : public Module

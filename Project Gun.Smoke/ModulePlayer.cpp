@@ -208,10 +208,18 @@ bool ModulePlayer::CleanUp() {
 	
 }
 
-//void ModulePlayer::CollisionCheck(Collider* c1,Collider* c2) {
-//
-//	if (colider->CheckCollision == true) {
-//
-//	}
-//	
-//}
+void ModulePlayer::CollisionCheck(Collider* c1,Collider* c2) {
+
+	if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT)
+		position.x++;
+
+	if (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT)
+		position.x--;
+
+	if (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT)
+		position.y--;
+
+	if (App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT)
+		position.y++;
+}
+	

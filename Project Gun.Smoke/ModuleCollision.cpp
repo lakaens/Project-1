@@ -195,7 +195,4 @@ bool Collider::CheckCollision(const SDL_Rect& r) const
 	else {
 		return true;
 	}
-
-
-	return false;
 }

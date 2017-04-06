@@ -31,7 +31,8 @@ bool ModuleStage1::Start() {
 
 	App->collision->Enable();
 
-	App->collision->AddCollider({,2219,23,21}, COLLIDER_WALL);
+	App->collision->AddCollider({ 0,-80,66,348 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 158,-623,66,630 }, COLLIDER_WALL);
 
 	return true;
 }
