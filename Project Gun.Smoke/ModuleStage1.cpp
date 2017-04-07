@@ -23,8 +23,6 @@ ModuleStage1::~ModuleStage1() {
 }
 
 bool ModuleStage1::Start() {
-	numColliders = 0;
-	down_speed = 0;
 	LOG("Loading stage1: ");
 	App->player->Enable();
 	texture = App->textures->Load("mapa1.png");
@@ -32,8 +30,8 @@ bool ModuleStage1::Start() {
 
 	App->collision->Enable();
 
-	coliders[numColliders++] = App->collision->AddCollider({ 98,-1400,28,29 }, COLLIDER_WALL);
-	coliders[numColliders++] = App->collision->AddCollider({ 0,0,80,140 }, COLLIDER_WALL);
+	/*App->collision->AddCollider({ 98,-3000,28,29 }, COLLIDER_WALL);*/
+	colider[0]=App->collision->AddCollider({ 224,2777,65,83 }, COLLIDER_WALL);
 
 	return true;
 }
@@ -54,8 +52,8 @@ update_status ModuleStage1::Update() {
 
 	
 	if (background_y < -SCREEN_HEIGHT) {
-		background_y += 1;
-		down_speed += 1;
+		background_y += 0.5;
+		
 	}
 	
 	if (App->input->keyboard[SDL_SCANCODE_SPACE] == 1 && state) {
@@ -64,12 +62,10 @@ update_status ModuleStage1::Update() {
 		state = true;
 	}
 
-	for (int i = 0; i < numColliders; i++)
-	{
-		coliders[i]->SetPos(coliders[i]->rect.x, 60 + down_speed);
-		coliders[i]->SetPos(coliders[i]->rect.x, 1400 + down_speed);
-	}
+	
 
+	
+	colider[0]->SetPos(224, 2777+ background_y);
 	
 
 
