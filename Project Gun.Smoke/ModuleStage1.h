@@ -6,6 +6,7 @@
 #include "Globals.h"
 #include "ModuleAudio.h"
 
+#define MAX_COLLIDERS 10
 
 struct SDL_Texture;
 struct Collider;
@@ -13,6 +14,8 @@ struct Collider;
 
 class ModuleStage1 : public Module
 {
+private:
+	uint numColliders;
 public:
 
 	ModuleStage1();
@@ -26,10 +29,11 @@ public:
 public:
 	SDL_Texture* texture = nullptr;
 	SDL_Rect background;
-	Collider* colider;
+	Collider* coliders[MAX_COLLIDERS];
 	bool state = true;
 
 	int background_y;
+	int down_speed;
 	
 
 
