@@ -31,7 +31,7 @@ public:
 	SDL_Rect background;
 	Collider* colider[MAX_COLIDERS];
 	bool state = true;
-
+	
 	int background_y;
 	
 	

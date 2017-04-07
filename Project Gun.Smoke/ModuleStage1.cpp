@@ -24,14 +24,15 @@ ModuleStage1::~ModuleStage1() {
 
 bool ModuleStage1::Start() {
 	LOG("Loading stage1: ");
+	
 	App->player->Enable();
 	texture = App->textures->Load("mapa1.png");
 	App->audio->musicLoad("stage1.ogg");
 
 	App->collision->Enable();
 
-	/*App->collision->AddCollider({ 98,-3000,28,29 }, COLLIDER_WALL);*/
-	colider[0]=App->collision->AddCollider({ 224,2777,65,83 }, COLLIDER_WALL);
+	
+	colider[0]=App->collision->AddCollider({ 159,2695,65,83 }, COLLIDER_WALL);
 
 	return true;
 }
@@ -65,7 +66,7 @@ update_status ModuleStage1::Update() {
 	
 
 	
-	colider[0]->SetPos(224, 2777+ background_y);
+	colider[0]->SetPos(159, 2695);
 	
 
 
