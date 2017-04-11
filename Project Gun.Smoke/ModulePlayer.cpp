@@ -16,8 +16,8 @@
 
 ModulePlayer::ModulePlayer()
 {
-	position.x = SCREEN_HEIGHT/2;
-	position.y = SCREEN_WIDTH/2;
+	position.x = 200;
+	position.y = 400;
 
 	// idle animation (arcade sprite sheet)
 	forward.PushBack({ 15, 0, 18, 27});
@@ -25,6 +25,7 @@ ModulePlayer::ModulePlayer()
 	forward.PushBack({ 95, 1, 18, 26});
 	forward.PushBack({ 134, 1, 19, 26});
 	forward.PushBack({ 175, 0, 18, 28});
+	forward.loop = true;
 	forward.speed = 0.05f;
 
 	shootf.PushBack({215, 0, 18, 27});
@@ -32,6 +33,7 @@ ModulePlayer::ModulePlayer()
 	shootf.PushBack({295, 1, 18, 26});
 	shootf.PushBack({335, 1, 18, 26});
 	shootf.PushBack({375, 0, 18, 27});
+	shootf.loop = true;
 	shootf.speed = 0.05f;
 
 	diagonalr.PushBack({417,0,16,25});
@@ -39,6 +41,7 @@ ModulePlayer::ModulePlayer()
 	diagonalr.PushBack({17,41,15,26});
 	diagonalr.PushBack({56,41,16,25});
 	diagonalr.PushBack({94,40,20,25});
+	diagonalr.loop = true;
 	diagonalr.speed = 0.05f;
 
 	diagonall.PushBack({82,119,16,25});
@@ -46,6 +49,7 @@ ModulePlayer::ModulePlayer()
 	diagonall.PushBack({126,119,15,26});
 	diagonall.PushBack({145,119,16,25});
 	diagonall.PushBack({164,119,20,25});
+	diagonall.loop = true;
 	diagonall.speed = 0.05f;
 
 	shootdr.PushBack({ 137,40,17,25});
@@ -53,6 +57,7 @@ ModulePlayer::ModulePlayer()
 	shootdr.PushBack({ 217,41,17,26});
 	shootdr.PushBack({ 257,41,17,25});
 	shootdr.PushBack({ 297,40,17,25});
+	shootdr.loop = true;
 	shootdr.speed = 0.05f;
 
 	shootdl.PushBack({193,120,17,25});
@@ -60,6 +65,7 @@ ModulePlayer::ModulePlayer()
 	shootdl.PushBack({235,120,17,26});
 	shootdl.PushBack({255,121,17,25});
 	shootdl.PushBack({276,121,17,25});
+	shootdl.loop = true;
 	shootdl.speed = 0.05f;
 
 
@@ -76,9 +82,12 @@ bool ModulePlayer::Start()
 	bool ret = true;
 	graphics = App->textures->Load("char.png"); // arcade version
 
+	position.x = 100;
+	position.y = 400 ;
+
 	bulletsound = App->audio->Loadeffect("laser.wav");
 
-	colider = App->collision->AddCollider({15,0,18,27}, COLLIDER_PLAYER);
+	colider = App->collision->AddCollider({position.x,position.y,18,27}, COLLIDER_PLAYER, this);
 	
 	return ret;
 }
@@ -87,80 +96,93 @@ bool ModulePlayer::Start()
 update_status ModulePlayer::Update()
 {
 	Animation* current_animation = &forward;
+	position.y -= 1;
+	int speed = 1;
 
-	int speed = 2;
 
 
 	if (App->input->keyboard[SDL_SCANCODE_UP] == KEY_STATE::KEY_REPEAT)
 	{
-		if (position.y > 0) {
-			current_animation = &forward;
-
-			position.y -= speed;
-		}
+		position.y -= speed;
 		
+	
+			current_animation = &forward;
+		
+		
+
 	}
 	if (App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT)
 	{
-		if (position.y < SCREEN_WIDTH + 90) {
+		position.y += 1.5;
+		
 			current_animation = &forward;
+		
 
-			position.y += speed;
-		}
-			
+		
+
+
 	}
 	if (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT)
 	{
-		if (position.x < SCREEN_HEIGHT - 133) {
+		position.x += speed;
+		
 			current_animation = &diagonalr;
-
-			position.x += speed;
-		}
-	}
+		
+	
+}
 	if (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT)
 	{
-		if (position.x > 0) {
-			current_animation = &diagonall;
-
 			position.x -= speed;
-		}
+			
+				current_animation = &diagonall;
+			
+		
 	}
 
 	if (App->input->keyboard[SDL_SCANCODE_UP] == KEY_STATE::KEY_REPEAT && App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT) {
 
-		
-		position.x += -0.2;
-		position.y -= -0.2;
-		
 		current_animation = &diagonalr;
+
+		position.x += 0.2;
+		position.y -= 0.2;
+		
+		
+			
+		
 
 	}
 
 	if (App->input->keyboard[SDL_SCANCODE_UP] == KEY_STATE::KEY_REPEAT && App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT) {
 
 
-		position.x -= -1;
-		position.y -= -0.2;
+		position.x -= 0.2;
+		position.y -= 0.2;
 
-		current_animation = &diagonall;
+		
+			current_animation = &diagonall;
+		
 
 	}
 	if (App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT && App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT) {
 
 
-		position.x -= -1;
-		position.y += -1;
+		position.x -= -0.2;
+		position.y += -0.2;
 
-		current_animation = &diagonalr;
+		
+			current_animation = &diagonalr;
+		
 
 	}
 	if (App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT && App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT) {
 
 
-		position.x += -0.2;
+		position.x += 0.2;
 		position.y += -0.2;
 
-		current_animation = &diagonall;
+		
+			current_animation = &diagonall;
+		
 
 	}
 	if (App->input->keyboard[SDL_SCANCODE_C] == KEY_STATE::KEY_DOWN) {
@@ -189,7 +211,9 @@ update_status ModulePlayer::Update()
 		App->audio->Playeffect(bulletsound);
 	}	
 	
-	colider->SetPos(position.x, position.y);
+	colider->SetPos(position.x , position.y );
+	
+
 
 	// Draw everything --------------------------------------
 	SDL_Rect r = current_animation->GetCurrentFrame();
@@ -210,16 +234,7 @@ bool ModulePlayer::CleanUp() {
 
 void ModulePlayer::CollisionCheck(Collider* c1,Collider* c2) {
 
-	if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT)
-		position.x++;
-
-	if (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT)
-		position.x--;
-
-	if (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT)
-		position.y--;
-
-	if (App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT)
-		position.y++;
+	
+	
 }
 	
