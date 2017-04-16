@@ -18,6 +18,7 @@ ModulePlayer::ModulePlayer()
 {
 	position.x = 200;
 	position.y = 400;
+	cameralim.y = 0;
 
 	// idle animation (arcade sprite sheet)
 	forward.PushBack({ 15, 0, 18, 27});
@@ -68,6 +69,8 @@ ModulePlayer::ModulePlayer()
 	shootdl.loop = true;
 	shootdl.speed = 0.05f;
 
+	
+
 
 }
 
@@ -87,7 +90,7 @@ bool ModulePlayer::Start()
 
 	bulletsound = App->audio->Loadeffect("laser.wav");
 
-	colider = App->collision->AddCollider({position.x,position.y,18,27}, COLLIDER_PLAYER, this);
+	colider = App->collision->AddCollider({position.x,position.y,17,27}, COLLIDER_PLAYER, this);
 	
 	return ret;
 }
@@ -105,8 +108,9 @@ update_status ModulePlayer::Update()
 	{
 		position.y -= speed;
 		
-	
+		if (position.y > 0) {
 			current_animation = &forward;
+		}
 		
 		
 
@@ -114,8 +118,9 @@ update_status ModulePlayer::Update()
 	if (App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT)
 	{
 		position.y += 1.5;
-		
+		if (position.y < SCREEN_HEIGHT-2) {
 			current_animation = &forward;
+		}
 		
 
 		
@@ -124,17 +129,22 @@ update_status ModulePlayer::Update()
 	}
 	if (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT)
 	{
-		position.x += speed;
+		current_animation = &diagonalr;
+		if (position.x < SCREEN_WIDTH - 18) {
+			position.x += speed;
+		}
 		
-			current_animation = &diagonalr;
+			
 		
 	
 }
 	if (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT)
 	{
-			position.x -= speed;
+		current_animation = &diagonall;
 			
-				current_animation = &diagonall;
+			if (position.x > 0) {
+				position.x -= speed;
+			}
 			
 		
 	}
@@ -191,6 +201,10 @@ update_status ModulePlayer::Update()
 		App->particles->AddParticle(App->particles->bulletdl, position.x + 15, position.y);
 		bullet++;
 		App->audio->Playeffect(bulletsound);
+		if (App->particles->bulletdl.life == 0) {
+			App->particles->AddParticle(App->particles->deadbullet, position.x + 5, position.y);
+			App->particles->AddParticle(App->particles->deadbullet, position.x + 15, position.y);
+		}
 		
 
 	}
@@ -201,14 +215,22 @@ update_status ModulePlayer::Update()
 			App->particles->AddParticle(App->particles->bulletf, position.x + 13, position.y);
 			bullet++;
 			App->audio->Playeffect(bulletsound);
+			if (App->particles->bulletdl.life == 0) {
+				App->particles->AddParticle(App->particles->deadbullet, position.x + 3, position.y);
+				App->particles->AddParticle(App->particles->deadbullet, position.x + 13, position.y);
+			}
 
 	}
 	if (App->input->keyboard[SDL_SCANCODE_B] == KEY_STATE::KEY_DOWN) {
 
-		App->particles->AddParticle(App->particles->bulletdr, position.x + 8, position.y);
-		App->particles->AddParticle(App->particles->bulletdr, position.x + 18, position.y);
+		App->particles->AddParticle(App->particles->bulletdr, position.x + 5, position.y);
+		App->particles->AddParticle(App->particles->bulletdr, position.x + 15, position.y);
 		bullet++;
 		App->audio->Playeffect(bulletsound);
+		if (App->particles->bulletdl.life == 0) {
+			App->particles->AddParticle(App->particles->deadbullet, position.x + 5, position.y);
+			App->particles->AddParticle(App->particles->deadbullet, position.x + 15, position.y);
+		}
 	}	
 	
 	colider->SetPos(position.x , position.y );

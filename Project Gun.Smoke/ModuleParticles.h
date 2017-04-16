@@ -54,6 +54,7 @@ public:
 	Particle bulletf;
 	Particle bulletdl;
 	Particle bulletdr;
+	Particle deadbullet;
 };
 
 #endif // __MODULEPARTICLES_H__

@@ -26,26 +26,32 @@ bool ModuleParticles::Start()
 	// Explosion particle
 	bulletf.anim.PushBack({ 205, 130, 2, 5 });
 	bulletf.anim.PushBack({ 205, 130, 2, 5 });
-	bulletf.anim.loop = true;
+	bulletf.anim.loop = false;
 	bulletf.anim.speed = 0.3f;
-	bulletf.life = 2000;
-	bulletf.speed.y = -5;
+	bulletf.life = 400;
+	bulletf.speed.y = -4;
 
 	bulletdr.anim.PushBack({ 252, 131, 4, 4 });
 	bulletdr.anim.PushBack({ 275, 131, 5, 4 });
-	bulletdr.anim.loop = true;
+	bulletdr.anim.loop = false;
 	bulletdr.anim.speed = 0.3f;
-	bulletdr.life = 2000;
+	bulletdr.life = 400;
 	bulletdr.speed.y = -3;
-	bulletdr.speed.x = +3;
+	bulletdr.speed.x = +2;
 
 	bulletdl.anim.PushBack({233, 139, 5, 4});
 	bulletdl.anim.PushBack({ 242, 139, 4, 4});
-	bulletdl.anim.loop = true;
+	bulletdl.anim.loop = false;
 	bulletdl.anim.speed = 0.3f;
-	bulletdl.life = 2000;
+	bulletdl.life = 400;
 	bulletdl.speed.y = -3;
-	bulletdl.speed.x = -3;
+	bulletdl.speed.x = -2;
+
+	deadbullet.anim.PushBack({ 177,23,4,4 });
+	deadbullet.anim.PushBack({ 208,21,8,9 });
+	deadbullet.anim.PushBack({ 238,18,17,16 });
+	deadbullet.anim.loop = true;
+	deadbullet.anim.speed = 0.3f;
 
 
 	// TODO 2: Create the template for a new particle "laser"

@@ -35,6 +35,7 @@ public:
 	Animation shootdr;
 	Animation shootdl;
 	iPoint position;
+	iPoint cameralim;
 	Collider* colider;
 	
 
