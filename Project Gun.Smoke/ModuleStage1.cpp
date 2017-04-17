@@ -116,7 +116,7 @@ update_status ModuleStage1::Update() {
 
 	
 	
-	App->render->Blit(texture, 0, -3200 + SCREEN_HEIGHT +130, &background, 1.0f);
+	App->render->Blit(texture, 0, -3200 + SCREEN_HEIGHT + 130, &background, 1.0f);
 
 		
 	if (App->input->keyboard[SDL_SCANCODE_SPACE] == 1 && state) {
@@ -126,7 +126,7 @@ update_status ModuleStage1::Update() {
 	}
 
 	
-		App->render->camera.y -= 1 * SCREEN_SIZE;
+		App->render->camera.y -= 1 * SCREEN_SIZE ;
 
 	return UPDATE_CONTINUE;
 	

@@ -90,7 +90,7 @@ bool ModulePlayer::Start()
 
 	bulletsound = App->audio->Loadeffect("laser.wav");
 
-	colider = App->collision->AddCollider({position.x,position.y,17,27}, COLLIDER_PLAYER, this);
+	colider = App->collision->AddCollider({position.x,position.y,17,27}, COLLIDER_PLAYER);
 	
 	return ret;
 }
@@ -202,9 +202,9 @@ update_status ModulePlayer::Update()
 		bullet++;
 		App->audio->Playeffect(bulletsound);
 		if (App->particles->bulletdl.life == 0) {
-			App->particles->AddParticle(App->particles->deadbullet, position.x + 5, position.y);
-			App->particles->AddParticle(App->particles->deadbullet, position.x + 15, position.y);
+			App->particles->AddParticle(App->particles->deadbullet, position.x,position.y);
 		}
+		
 		
 
 	}
@@ -215,10 +215,7 @@ update_status ModulePlayer::Update()
 			App->particles->AddParticle(App->particles->bulletf, position.x + 13, position.y);
 			bullet++;
 			App->audio->Playeffect(bulletsound);
-			if (App->particles->bulletdl.life == 0) {
-				App->particles->AddParticle(App->particles->deadbullet, position.x + 3, position.y);
-				App->particles->AddParticle(App->particles->deadbullet, position.x + 13, position.y);
-			}
+			
 
 	}
 	if (App->input->keyboard[SDL_SCANCODE_B] == KEY_STATE::KEY_DOWN) {
@@ -227,20 +224,21 @@ update_status ModulePlayer::Update()
 		App->particles->AddParticle(App->particles->bulletdr, position.x + 15, position.y);
 		bullet++;
 		App->audio->Playeffect(bulletsound);
-		if (App->particles->bulletdl.life == 0) {
-			App->particles->AddParticle(App->particles->deadbullet, position.x + 5, position.y);
-			App->particles->AddParticle(App->particles->deadbullet, position.x + 15, position.y);
-		}
+		
 	}	
+
+	if (App->particles->bulletf.life == 0) {
+		
+	}
 	
-	colider->SetPos(position.x , position.y );
+	colider->SetPos(position.x, position.y - 30);
 	
 
 
 	// Draw everything --------------------------------------
 	SDL_Rect r = current_animation->GetCurrentFrame();
 
-	App->render->Blit(graphics, position.x, position.y, &(current_animation->GetCurrentFrame()));
+	App->render->Blit(graphics, position.x, position.y - 30, &(current_animation->GetCurrentFrame()));
 
 	return UPDATE_CONTINUE;
 }
@@ -254,9 +252,19 @@ bool ModulePlayer::CleanUp() {
 	
 }
 
-void ModulePlayer::CollisionCheck(Collider* c1,Collider* c2) {
+void ModulePlayer::CollisionWall(Collider* c1,Collider* c2) {
 
-	
+	if (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT)
+		position.x++;
+
+	if (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT)
+		position.x--;
+
+	if (App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT)
+		position.y--;
+
+	if (App->input->keyboard[SDL_SCANCODE_UP] == KEY_STATE::KEY_REPEAT)
+		position.y++;
 	
 }
 	
