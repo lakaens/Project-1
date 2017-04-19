@@ -10,6 +10,7 @@
 #include "ModuleFadeToBlack.h"
 #include "ModulePlayer.h"
 #include "ModuleCollision.h"
+#include "ModuleEnemies.h"
 
 
 ModuleStage1::ModuleStage1() {
@@ -96,6 +97,68 @@ bool ModuleStage1::Start() {
 	App->collision->AddCollider({ 117,150,22,20 }, COLLIDER_WALL); //primera caja
 	App->collision->AddCollider({ 98,-882,28,28 }, COLLIDER_WALL); //pozo
 	App->collision->AddCollider({ 117,-1962,21,19 }, COLLIDER_WALL); //segunda caja
+
+	App->enemies->AddEnemy(ENEMY_TYPES::GUNMEN, 81, -2752);
+	App->enemies->AddEnemy(ENEMY_TYPES::GUNMEN, 111, -2660);
+	App->enemies->AddEnemy(ENEMY_TYPES::GUNMEN, 0, -2576);
+	App->enemies->AddEnemy(ENEMY_TYPES::GUNMEN, 60, -2568);
+	App->enemies->AddEnemy(ENEMY_TYPES::GUNMEN, 27, -2492);
+	App->enemies->AddEnemy(ENEMY_TYPES::GUNMEN, 0, -2464);
+	App->enemies->AddEnemy(ENEMY_TYPES::GUNMEN, 110, -2436);
+	App->enemies->AddEnemy(ENEMY_TYPES::GUNMEN, 0, -2355);
+	App->enemies->AddEnemy(ENEMY_TYPES::GUNMEN, 74, -2300);
+	App->enemies->AddEnemy(ENEMY_TYPES::GUNMEN, 120, -2274);
+	App->enemies->AddEnemy(ENEMY_TYPES::GUNMEN, 0, -2215);
+	App->enemies->AddEnemy(ENEMY_TYPES::GUNMEN, 69, -2174);
+	App->enemies->AddEnemy(ENEMY_TYPES::GUNMEN, 102, -2176);
+	App->enemies->AddEnemy(ENEMY_TYPES::GUNMEN, 91, -2080);
+	App->enemies->AddEnemy(ENEMY_TYPES::GUNMEN, 209, -2029);
+	App->enemies->AddEnemy(ENEMY_TYPES::GUNMEN, 71, -2001);
+	App->enemies->AddEnemy(ENEMY_TYPES::GUNMEN, 0, -2003);
+	App->enemies->AddEnemy(ENEMY_TYPES::GUNMEN, 212, -1967);
+	App->enemies->AddEnemy(ENEMY_TYPES::GUNMEN, 61, -1914);
+	App->enemies->AddEnemy(ENEMY_TYPES::GUNMEN, 0, -1879);
+	App->enemies->AddEnemy(ENEMY_TYPES::GUNMEN, 104, -1835);
+	App->enemies->AddEnemy(ENEMY_TYPES::GUNMEN, 104, -1742);
+	App->enemies->AddEnemy(ENEMY_TYPES::GUNMEN, 72, -1661);
+	App->enemies->AddEnemy(ENEMY_TYPES::GUNMEN, 108, -1560);
+	App->enemies->AddEnemy(ENEMY_TYPES::GUNMEN, 108, -1466);
+	App->enemies->AddEnemy(ENEMY_TYPES::GUNMEN, 80, -1340);
+	App->enemies->AddEnemy(ENEMY_TYPES::GUNMEN, 165, -1231);
+	App->enemies->AddEnemy(ENEMY_TYPES::GUNMEN, 143, -1100);
+	App->enemies->AddEnemy(ENEMY_TYPES::GUNMEN, 2013, -1107);
+	App->enemies->AddEnemy(ENEMY_TYPES::GUNMEN, 124, -926);
+	App->enemies->AddEnemy(ENEMY_TYPES::GUNMEN, 211, -861);
+	App->enemies->AddEnemy(ENEMY_TYPES::GUNMEN, 52, -803);
+	App->enemies->AddEnemy(ENEMY_TYPES::GUNMEN, 6, -705);
+	App->enemies->AddEnemy(ENEMY_TYPES::GUNMEN, 72, -681);
+	App->enemies->AddEnemy(ENEMY_TYPES::GUNMEN, 118, 658);
+	App->enemies->AddEnemy(ENEMY_TYPES::GUNMEN, 0, 640);
+	App->enemies->AddEnemy(ENEMY_TYPES::GUNMEN, 61, 392);
+	App->enemies->AddEnemy(ENEMY_TYPES::GUNMEN, 93, 230);
+	App->enemies->AddEnemy(ENEMY_TYPES::GUNMEN, 187, 490);
+
+	App->enemies->AddEnemy(ENEMY_TYPES::RIFFLEMEN, 149, 1038);
+	App->enemies->AddEnemy(ENEMY_TYPES::RIFFLEMEN, 190, 1037);
+	App->enemies->AddEnemy(ENEMY_TYPES::RIFFLEMEN, 35, 686);
+
+	App->enemies->AddEnemy(ENEMY_TYPES::WINDOWSNIPER, 6, 2681);
+	App->enemies->AddEnemy(ENEMY_TYPES::WINDOWSNIPER, 212, 2395);
+	App->enemies->AddEnemy(ENEMY_TYPES::WINDOWSNIPER, 210, 2238);
+	App->enemies->AddEnemy(ENEMY_TYPES::WINDOWSNIPER, 211, 1726);
+	App->enemies->AddEnemy(ENEMY_TYPES::WINDOWSNIPER, 5, 1558);
+	App->enemies->AddEnemy(ENEMY_TYPES::WINDOWSNIPER, 4, 1365);
+	App->enemies->AddEnemy(ENEMY_TYPES::WINDOWSNIPER, 4, 1109);
+	App->enemies->AddEnemy(ENEMY_TYPES::WINDOWSNIPER, 212, 637);
+	App->enemies->AddEnemy(ENEMY_TYPES::WINDOWSNIPER, 204, 452);
+	App->enemies->AddEnemy(ENEMY_TYPES::WINDOWSNIPER, 203, 261);
+
+	App->enemies->AddEnemy(ENEMY_TYPES::BOMBER, 41, 2100);
+	App->enemies->AddEnemy(ENEMY_TYPES::BOMBER, 139, 2081);
+	App->enemies->AddEnemy(ENEMY_TYPES::BOMBER, 82, 550);
+	App->enemies->AddEnemy(ENEMY_TYPES::BOMBER, 50, 298);
+
+	App->enemies->AddEnemy(ENEMY_TYPES::BACKSTABBER, 212, 212);
 	
 	
 
