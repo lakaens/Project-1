@@ -23,7 +23,7 @@ public:
 	update_status Update();
 	bool CleanUp();
 
-	void CollisionWall(Collider* c1, Collider* c2);
+	void OnCollision(Collider* c1, Collider* c2);
 
 public:
 

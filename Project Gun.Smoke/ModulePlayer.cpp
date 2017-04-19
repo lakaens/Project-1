@@ -18,7 +18,7 @@ ModulePlayer::ModulePlayer()
 {
 	position.x = 200;
 	position.y = 400;
-	cameralim.y = 0;
+	
 
 	// idle animation (arcade sprite sheet)
 	forward.PushBack({ 15, 0, 18, 27});
@@ -100,16 +100,18 @@ update_status ModulePlayer::Update()
 {
 	Animation* current_animation = &forward;
 	position.y -= 1;
-	int speed = 1;
+	
+	cameralim.y -= 2;
 
 
 
 	if (App->input->keyboard[SDL_SCANCODE_UP] == KEY_STATE::KEY_REPEAT)
 	{
-		position.y -= speed;
+		current_animation = &forward;
+
 		
-		if (position.y > 0) {
-			current_animation = &forward;
+		if (position.y > cameralim.y + 25) {
+			position.y -= 1;
 		}
 		
 		
@@ -117,12 +119,11 @@ update_status ModulePlayer::Update()
 	}
 	if (App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT)
 	{
-		position.y += 1.5;
-		if (position.y < SCREEN_HEIGHT-2) {
-			current_animation = &forward;
-		}
+		current_animation = &forward;
 		
-
+			position.y += 1.5;
+			
+		
 		
 
 
@@ -131,7 +132,7 @@ update_status ModulePlayer::Update()
 	{
 		current_animation = &diagonalr;
 		if (position.x < SCREEN_WIDTH - 18) {
-			position.x += speed;
+			position.x += 1;
 		}
 		
 			
@@ -143,7 +144,7 @@ update_status ModulePlayer::Update()
 		current_animation = &diagonall;
 			
 			if (position.x > 0) {
-				position.x -= speed;
+				position.x -= 1;
 			}
 			
 		
@@ -252,19 +253,15 @@ bool ModulePlayer::CleanUp() {
 	
 }
 
-void ModulePlayer::CollisionWall(Collider* c1,Collider* c2) {
+void ModulePlayer::OnCollision(Collider* c1,Collider* c2) {
 
-	if (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT)
-		position.x++;
+	if (c2->type == COLLIDER_WALL) {
 
-	if (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT)
-		position.x--;
+	}
+	
 
-	if (App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT)
-		position.y--;
 
-	if (App->input->keyboard[SDL_SCANCODE_UP] == KEY_STATE::KEY_REPEAT)
-		position.y++;
+	
 	
 }
 	
