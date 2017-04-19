@@ -11,7 +11,11 @@
 enum ENEMY_TYPES
 {
 	NO_TYPE,
-	DEFAULT_ENEMY
+	GUNMEN,
+	WINDOWSNIPER,
+	BOMBER,
+	RIFFLEMEN,
+	BACKSTABBER,
 	
 };
 
@@ -47,7 +51,11 @@ private:
 
 	EnemyInfo queue[MAX_ENEMIES];
 	Enemy* enemies[MAX_ENEMIES];
-	SDL_Texture* sprites;
+	SDL_Texture* BackStabberSprites;
+	SDL_Texture* BomberSprites;
+	SDL_Texture* GunMenSprites;
+	SDL_Texture* RiffleMenSprites;
+	SDL_Texture* WindowSniperSprites;
 };
 
 #endif // __ModuleEnemies_H__

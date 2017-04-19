@@ -5,6 +5,11 @@
 #include "ModuleParticles.h"
 #include "ModuleTextures.h"
 #include "Enemy.h"
+#include "Enemy_GunMen.h"
+#include "Enemy_WindowSniper.h"
+#include "Enemy_Bomber.h"
+#include "Enemy_RiffleMen.h"
+#include "Enemy_BackStabber.h"
 
 
 #define SPAWN_MARGIN 50
@@ -23,7 +28,7 @@ ModuleEnemies::~ModuleEnemies()
 bool ModuleEnemies::Start()
 {
 	// Create a prototype for each enemy available so we can copy them around
-	sprites = App->textures->Load("rtype/enemies.png");
+	GunMenSprites = App->textures->Load("GunMenSprites.png");
 
 	return true;
 }
@@ -53,8 +58,14 @@ update_status ModuleEnemies::Update()
 	for (uint i = 0; i < MAX_ENEMIES; ++i)
 		if (enemies[i] != nullptr) enemies[i]->Move();
 
-	for (uint i = 0; i < MAX_ENEMIES; ++i)
-		if (enemies[i] != nullptr) enemies[i]->Draw(sprites);
+	for (uint i = 0; i < MAX_ENEMIES; ++i) {
+		if (enemies[i] != nullptr) {
+			enemies[i]->Draw(BackStabberSprites);
+			enemies[i]->Draw(BomberSprites);
+			enemies[i]->Draw(GunMenSprites);
+			enemies[i]->Draw(WindowSniperSprites);
+		}
+	}
 
 	return UPDATE_CONTINUE;
 }
@@ -83,7 +94,10 @@ bool ModuleEnemies::CleanUp()
 {
 	LOG("Freeing all enemies");
 
-	App->textures->Unload(sprites);
+	App->textures->Unload(BackStabberSprites);
+	App->textures->Unload(BomberSprites);
+	App->textures->Unload(GunMenSprites);
+	App->textures->Unload(WindowSniperSprites);
 
 	for (uint i = 0; i < MAX_ENEMIES; ++i)
 	{
@@ -126,7 +140,22 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 	{
 		switch (info.type)
 		{
-
+		case ENEMY_TYPES::GUNMEN:
+			enemies[i] = new Enemy_GunMen(info.x, info.y);
+			break;
+		case ENEMY_TYPES::WINDOWSNIPER:
+			enemies[i] = new Enemy_WindowSniper(info.x, info.y);
+			break;
+		case ENEMY_TYPES::BOMBER:
+			enemies[i] = new Enemy_Bomber(info.x, info.y);
+			break;
+		case ENEMY_TYPES::RIFFLEMEN:
+			enemies[i] = new Enemy_RiffleMen(info.x, info.y);
+			break;
+		case ENEMY_TYPES::BACKSTABBER:
+			enemies[i] = new Enemy_BackStabber(info.x, info.y);
+			break;
+		
 		}
 	}
 }
