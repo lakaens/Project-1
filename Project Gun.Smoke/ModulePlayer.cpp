@@ -121,7 +121,7 @@ update_status ModulePlayer::Update()
 	{
 		current_animation = &forward;
 		
-			position.y += 1.5;
+		position.y += 1.5;
 			
 		
 		
@@ -154,46 +154,20 @@ update_status ModulePlayer::Update()
 
 		current_animation = &diagonalr;
 
-		position.x += 0.2;
-		position.y -= 0.2;
-		
-		
-			
-		
-
 	}
 
 	if (App->input->keyboard[SDL_SCANCODE_UP] == KEY_STATE::KEY_REPEAT && App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT) {
 
-
-		position.x -= 0.2;
-		position.y -= 0.2;
-
-		
-			current_animation = &diagonall;
-		
-
+		current_animation = &diagonall;
 	}
 	if (App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT && App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT) {
 
-
-		position.x -= -0.2;
-		position.y += -0.2;
-
-		
-			current_animation = &diagonalr;
-		
+		current_animation = &diagonalr;
 
 	}
 	if (App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT && App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT) {
 
-
-		position.x += 0.2;
-		position.y += -0.2;
-
-		
-			current_animation = &diagonall;
-		
+		current_animation = &diagonall;
 
 	}
 	if (App->input->keyboard[SDL_SCANCODE_C] == KEY_STATE::KEY_DOWN) {
@@ -247,7 +221,6 @@ update_status ModulePlayer::Update()
 
 bool ModulePlayer::CleanUp() {
 
-
 	App->textures->Unload(graphics);
 	return true;
 	
@@ -255,13 +228,8 @@ bool ModulePlayer::CleanUp() {
 
 void ModulePlayer::OnCollision(Collider* c1,Collider* c2) {
 
-	if (c2->type == COLLIDER_WALL) {
+	if (c1->type == COLLIDER_PLAYER && c2->type == COLLIDER_WALL) {
 
 	}
 	
-
-
-	
-	
 }
-	
