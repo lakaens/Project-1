@@ -95,7 +95,10 @@
     <ClInclude Include="Enemy_RiffleMen.h">
       <Filter>Modules\Enemies</Filter>
     </ClInclude>
-    <ClInclude Include="Enemy_WindowSniper.h">
+    <ClInclude Include="Enemy_WindowSniperRight.h">
+      <Filter>Modules\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy_WindowSniperLeft.h">
       <Filter>Modules\Enemies</Filter>
     </ClInclude>
   </ItemGroup>
@@ -166,7 +169,10 @@
     <ClCompile Include="Enemy_RiffleMen.cpp">
       <Filter>Modules\Enemies</Filter>
     </ClCompile>
-    <ClCompile Include="Enemy_WindowSniper.cpp">
+    <ClCompile Include="Enemy_WindowSniperRight.cpp">
+      <Filter>Modules\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy_WindowSniperLeft.cpp">
       <Filter>Modules\Enemies</Filter>
     </ClCompile>
   </ItemGroup>

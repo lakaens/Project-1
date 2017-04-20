@@ -6,7 +6,8 @@
 #include "ModuleTextures.h"
 #include "Enemy.h"
 #include "Enemy_GunMen.h"
-#include "Enemy_WindowSniper.h"
+#include "Enemy_WindowSniperRight.h"
+#include "Enemy_WindowSniperLeft.h"
 #include "Enemy_Bomber.h"
 #include "Enemy_RiffleMen.h"
 #include "Enemy_BackStabber.h"
@@ -28,7 +29,7 @@ ModuleEnemies::~ModuleEnemies()
 bool ModuleEnemies::Start()
 {
 	// Create a prototype for each enemy available so we can copy them around
-	GunMenSprites = App->textures->Load("GunMenSprites.png");
+	EnemySprites = App->textures->Load("EnemySprites.png");
 
 	return true;
 }
@@ -60,10 +61,8 @@ update_status ModuleEnemies::Update()
 
 	for (uint i = 0; i < MAX_ENEMIES; ++i) {
 		if (enemies[i] != nullptr) {
-			enemies[i]->Draw(BackStabberSprites);
-			enemies[i]->Draw(BomberSprites);
-			enemies[i]->Draw(GunMenSprites);
-			enemies[i]->Draw(WindowSniperSprites);
+			enemies[i]->Draw(EnemySprites);
+		
 		}
 	}
 
@@ -94,10 +93,8 @@ bool ModuleEnemies::CleanUp()
 {
 	LOG("Freeing all enemies");
 
-	App->textures->Unload(BackStabberSprites);
-	App->textures->Unload(BomberSprites);
-	App->textures->Unload(GunMenSprites);
-	App->textures->Unload(WindowSniperSprites);
+	App->textures->Unload(EnemySprites);
+
 
 	for (uint i = 0; i < MAX_ENEMIES; ++i)
 	{
@@ -143,8 +140,11 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 		case ENEMY_TYPES::GUNMEN:
 			enemies[i] = new Enemy_GunMen(info.x, info.y);
 			break;
-		case ENEMY_TYPES::WINDOWSNIPER:
-			enemies[i] = new Enemy_WindowSniper(info.x, info.y);
+		case ENEMY_TYPES::WINDOWSNIPERLEFT:
+			enemies[i] = new Enemy_WindowSniperLeft(info.x, info.y);
+			break;
+		case ENEMY_TYPES::WINDOWSNIPERRIGHT:
+			enemies[i] = new Enemy_WindowSniperRight(info.x, info.y);
 			break;
 		case ENEMY_TYPES::BOMBER:
 			enemies[i] = new Enemy_Bomber(info.x, info.y);

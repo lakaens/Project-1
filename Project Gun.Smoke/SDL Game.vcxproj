@@ -76,7 +76,8 @@
     <ClInclude Include="Enemy_Bomber.h" />
     <ClInclude Include="Enemy_GunMen.h" />
     <ClInclude Include="Enemy_RiffleMen.h" />
-    <ClInclude Include="Enemy_WindowSniper.h" />
+    <ClInclude Include="Enemy_WindowSniperLeft.h" />
+    <ClInclude Include="Enemy_WindowSniperRight.h" />
     <ClInclude Include="Globals.h" />
     <ClInclude Include="MemLeaks.h" />
     <ClInclude Include="Module.h" />
@@ -104,7 +105,8 @@
     <ClCompile Include="Enemy_Bomber.cpp" />
     <ClCompile Include="Enemy_GunMen.cpp" />
     <ClCompile Include="Enemy_RiffleMen.cpp" />
-    <ClCompile Include="Enemy_WindowSniper.cpp" />
+    <ClCompile Include="Enemy_WindowSniperLeft.cpp" />
+    <ClCompile Include="Enemy_WindowSniperRight.cpp" />
     <ClCompile Include="Globals.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="ModuleAudio.cpp" />

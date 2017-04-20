@@ -98,6 +98,9 @@ bool ModuleStage1::Start() {
 	App->collision->AddCollider({ 98,-882,28,28 }, COLLIDER_WALL); //pozo
 	App->collision->AddCollider({ 117,-1962,21,19 }, COLLIDER_WALL); //segunda caja
 
+	
+	App->enemies->AddEnemy(ENEMY_TYPES::WINDOWSNIPERRIGHT,SCREEN_WIDTH/2,50);
+
 	/*App->enemies->AddEnemy(ENEMY_TYPES::GUNMEN, 81, -2752);
 	App->enemies->AddEnemy(ENEMY_TYPES::GUNMEN, 111, -2660);
 	App->enemies->AddEnemy(ENEMY_TYPES::GUNMEN, 0, -2576);
@@ -152,6 +155,8 @@ bool ModuleStage1::Start() {
 	App->enemies->AddEnemy(ENEMY_TYPES::WINDOWSNIPER, 212, 637);
 	App->enemies->AddEnemy(ENEMY_TYPES::WINDOWSNIPER, 204, 452);
 	App->enemies->AddEnemy(ENEMY_TYPES::WINDOWSNIPER, 203, 261);
+
+	
 
 	App->enemies->AddEnemy(ENEMY_TYPES::BOMBER, 41, 2100);
 	App->enemies->AddEnemy(ENEMY_TYPES::BOMBER, 139, 2081);
