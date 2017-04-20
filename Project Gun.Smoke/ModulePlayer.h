@@ -15,6 +15,10 @@ class ModulePlayer : public Module
 private:
 	uint bulletsound;
 	unsigned short bullet;
+	bool canGoLeft;
+	bool canGoRight;
+	bool canGoUp;
+	bool canGoDown;
 public:
 	ModulePlayer();
 	~ModulePlayer();

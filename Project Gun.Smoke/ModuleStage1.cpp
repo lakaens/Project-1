@@ -33,7 +33,7 @@ bool ModuleStage1::Start() {
 	App->collision->Enable();
 
 	//colliders primera casa izquierda
-	App->collision->AddCollider({ 0,-80,60,348 }, COLLIDER_WALL); //primera casa izquierda
+	App->collision->AddCollider({ 0,-80,60,348 }, COLLIDER_WALL); //first house 
 	App->collision->AddCollider({ 0,268,36,15 }, COLLIDER_WALL); //borde principio
 	App->collision->AddCollider({ 0,-108,43,28 }, COLLIDER_WALL); //borde final
 	App->collision->AddCollider({ 60,202,18,19 }, COLLIDER_WALL); //primera escalera

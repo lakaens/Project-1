@@ -90,7 +90,12 @@ bool ModulePlayer::Start()
 
 	bulletsound = App->audio->Loadeffect("laser.wav");
 
-	colider = App->collision->AddCollider({position.x,position.y,17,27}, COLLIDER_PLAYER);
+	colider = App->collision->AddCollider({position.x,position.y,17,27}, COLLIDER_PLAYER, this);
+
+	canGoLeft = true;
+	canGoRight = true;
+	canGoUp = true;
+	canGoDown = true;
 	
 	return ret;
 }
@@ -105,7 +110,7 @@ update_status ModulePlayer::Update()
 
 
 
-	if (App->input->keyboard[SDL_SCANCODE_UP] == KEY_STATE::KEY_REPEAT)
+	if (App->input->keyboard[SDL_SCANCODE_UP] == KEY_STATE::KEY_REPEAT && canGoUp)
 	{
 		current_animation = &forward;
 
@@ -117,7 +122,7 @@ update_status ModulePlayer::Update()
 		
 
 	}
-	if (App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT)
+	if (App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT && canGoDown)
 	{
 		current_animation = &forward;
 		
@@ -128,7 +133,7 @@ update_status ModulePlayer::Update()
 
 
 	}
-	if (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT)
+	if (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT && canGoRight)
 	{
 		current_animation = &diagonalr;
 		if (position.x < SCREEN_WIDTH - 18) {
@@ -139,7 +144,7 @@ update_status ModulePlayer::Update()
 		
 	
 }
-	if (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT)
+	if (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT && canGoLeft)
 	{
 		current_animation = &diagonall;
 			
@@ -154,57 +159,31 @@ update_status ModulePlayer::Update()
 
 		current_animation = &diagonalr;
 
-		position.x += 0.2;
-		position.y -= 0.2;
-		
-		
-			
-		
-
 	}
 
 	if (App->input->keyboard[SDL_SCANCODE_UP] == KEY_STATE::KEY_REPEAT && App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT) {
 
-
-		position.x -= 0.2;
-		position.y -= 0.2;
-
-		
 			current_animation = &diagonall;
-		
 
 	}
 	if (App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT && App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT) {
 
-
-		position.x -= -0.2;
-		position.y += -0.2;
-
-		
 			current_animation = &diagonalr;
-		
-
+	
 	}
 	if (App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT && App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT) {
 
-
-		position.x += 0.2;
-		position.y += -0.2;
-
-		
 			current_animation = &diagonall;
 		
 
 	}
 	if (App->input->keyboard[SDL_SCANCODE_C] == KEY_STATE::KEY_DOWN) {
 
-		App->particles->AddParticle(App->particles->bulletdl, position.x + 5, position.y);
-		App->particles->AddParticle(App->particles->bulletdl, position.x + 15, position.y);
+		App->particles->AddParticle(App->particles->bulletdl, position.x + 5, position.y - 18);
+		App->particles->AddParticle(App->particles->bulletdl, position.x + 15, position.y - 18);
 		bullet++;
 		App->audio->Playeffect(bulletsound);
-		if (App->particles->bulletdl.life == 0) {
-			App->particles->AddParticle(App->particles->deadbullet, position.x,position.y);
-		}
+		
 		
 		
 
@@ -212,8 +191,8 @@ update_status ModulePlayer::Update()
 
 	if (App->input->keyboard[SDL_SCANCODE_V] == KEY_STATE::KEY_DOWN) {
 		
-			App->particles->AddParticle(App->particles->bulletf, position.x + 3, position.y);
-			App->particles->AddParticle(App->particles->bulletf, position.x + 13, position.y);
+			App->particles->AddParticle(App->particles->bulletf, position.x + 3, position.y - 18);
+			App->particles->AddParticle(App->particles->bulletf, position.x + 13, position.y - 18);
 			bullet++;
 			App->audio->Playeffect(bulletsound);
 			
@@ -221,16 +200,13 @@ update_status ModulePlayer::Update()
 	}
 	if (App->input->keyboard[SDL_SCANCODE_B] == KEY_STATE::KEY_DOWN) {
 
-		App->particles->AddParticle(App->particles->bulletdr, position.x + 5, position.y);
-		App->particles->AddParticle(App->particles->bulletdr, position.x + 15, position.y);
+		App->particles->AddParticle(App->particles->bulletdr, position.x + 5, position.y - 18);
+		App->particles->AddParticle(App->particles->bulletdr, position.x + 15, position.y - 18);
 		bullet++;
 		App->audio->Playeffect(bulletsound);
 		
 	}	
 
-	if (App->particles->bulletf.life == 0) {
-		
-	}
 	
 	colider->SetPos(position.x, position.y - 30);
 	
@@ -256,12 +232,28 @@ bool ModulePlayer::CleanUp() {
 void ModulePlayer::OnCollision(Collider* c1,Collider* c2) {
 
 	if (c2->type == COLLIDER_WALL) {
-
+		if (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT) {
+			canGoLeft = false;
+		}
+		else if (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT) {
+			canGoRight = false;
+		}
+		else if (App->input->keyboard[SDL_SCANCODE_UP] == KEY_STATE::KEY_REPEAT) {
+			canGoUp = false;
+		}
+		else if (App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_DOWN) {
+			canGoDown = false;
+		}
+		else{
+			canGoLeft = true;
+			canGoRight = true;
+			canGoUp = true;
+			canGoDown = true;
+		}
+		
+		
 	}
-	
-
-
-	
+		
 	
 }
 	
