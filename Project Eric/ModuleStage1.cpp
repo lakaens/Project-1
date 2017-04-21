@@ -12,6 +12,7 @@
 #include "ModuleCollision.h"
 #include "ModuleEnemies.h"
 #include "ModuleBarrel.h"
+#include "ModuleGreetings.h"
 
 ModuleStage1::ModuleStage1() {
 	background.x = 0;
@@ -100,7 +101,7 @@ bool ModuleStage1::Start() {
 	App->collision->AddCollider({ 117,-1962,21,19 }, COLLIDER_WALL); //segunda caja
 
 	
-	App->enemies->AddEnemy(ENEMY_TYPES::WINDOWSNIPERRIGHT,SCREEN_WIDTH/2,50);
+	App->enemies->AddEnemy(ENEMY_TYPES::GUNMEN, 80, -16);
 
 	/*App->enemies->AddEnemy(ENEMY_TYPES::GUNMEN, 81, -2752);
 	App->enemies->AddEnemy(ENEMY_TYPES::GUNMEN, 111, -2660);
@@ -144,9 +145,9 @@ bool ModuleStage1::Start() {
 
 	App->enemies->AddEnemy(ENEMY_TYPES::RIFFLEMEN, 149, 1038);
 	App->enemies->AddEnemy(ENEMY_TYPES::RIFFLEMEN, 190, 1037);
-	App->enemies->AddEnemy(ENEMY_TYPES::RIFFLEMEN, 35, 686);
+	App->enemies->AddEnemy(ENEMY_TYPES::RIFFLEMEN, 35, 686);*/
 
-	App->enemies->AddEnemy(ENEMY_TYPES::WINDOWSNIPER, 6, 2681);
+	/*App->enemies->AddEnemy(ENEMY_TYPES::WINDOWSNIPER, 6, 2681);
 	App->enemies->AddEnemy(ENEMY_TYPES::WINDOWSNIPER, 212, 2395);
 	App->enemies->AddEnemy(ENEMY_TYPES::WINDOWSNIPER, 210, 2238);
 	App->enemies->AddEnemy(ENEMY_TYPES::WINDOWSNIPER, 211, 1726);
@@ -155,16 +156,16 @@ bool ModuleStage1::Start() {
 	App->enemies->AddEnemy(ENEMY_TYPES::WINDOWSNIPER, 4, 1109);
 	App->enemies->AddEnemy(ENEMY_TYPES::WINDOWSNIPER, 212, 637);
 	App->enemies->AddEnemy(ENEMY_TYPES::WINDOWSNIPER, 204, 452);
-	App->enemies->AddEnemy(ENEMY_TYPES::WINDOWSNIPER, 203, 261);
+	App->enemies->AddEnemy(ENEMY_TYPES::WINDOWSNIPER, 203, 261);*/
 
 	
 
-	App->enemies->AddEnemy(ENEMY_TYPES::BOMBER, 41, 2100);
-	App->enemies->AddEnemy(ENEMY_TYPES::BOMBER, 139, 2081);
-	App->enemies->AddEnemy(ENEMY_TYPES::BOMBER, 82, 550);
-	App->enemies->AddEnemy(ENEMY_TYPES::BOMBER, 50, 298);
+	//App->enemies->AddEnemy(ENEMY_TYPES::BOMBER, 41, 2100);
+	//App->enemies->AddEnemy(ENEMY_TYPES::BOMBER, 139, 2081);
+	//App->enemies->AddEnemy(ENEMY_TYPES::BOMBER, 82, 550);
+	//App->enemies->AddEnemy(ENEMY_TYPES::BOMBER, 50, 298);
 
-	App->enemies->AddEnemy(ENEMY_TYPES::BACKSTABBER, 212, 212);*/
+	//App->enemies->AddEnemy(ENEMY_TYPES::BACKSTABBER, 212, 212);
 	
 	
 
@@ -175,6 +176,7 @@ bool ModuleStage1::CleanUp() {
 
 	App->textures->Unload(texture);
 	App->collision->Disable();
+	
 
 	return true;
 
@@ -190,7 +192,7 @@ update_status ModuleStage1::Update() {
 		
 	if (App->input->keyboard[SDL_SCANCODE_SPACE] == 1 && state) {
 		state = false;
-		App->fade->FadeToBlack(this, App->stage2, 1.0f);
+		App->fade->FadeToBlack(this, App->greetings, 1.0f);
 		state = true;
 	}
 

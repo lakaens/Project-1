@@ -12,7 +12,7 @@ Enemy_WindowSniperLeft::Enemy_WindowSniperLeft(int x, int y) :Enemy(x, y) {
 	move.PushBack({ 714,973,16,12 });
 	move.PushBack({ 714,984,16,13 });
 	move.PushBack({ 745,985,15,14 });
-	
+
 
 	move.speed = 0.2f;
 
@@ -20,26 +20,10 @@ Enemy_WindowSniperLeft::Enemy_WindowSniperLeft(int x, int y) :Enemy(x, y) {
 
 	collider = App->collision->AddCollider({ 0,0,24,24 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
 
-	//original_y = y;
+	
 }
 
 void Enemy_WindowSniperLeft::Move()
 {
-	/*if (going_up)
-	{
-	if (wave > 1.0f)
-	going_up = false;
-	else
-	wave += 0.05f;
-	}
-	else
-	{
-	if (wave < -1.0f)
-	going_up = true;
-	else
-	wave -= 0.05f;
-	}
 
-	position.y = original_y + (0.25f * sinf(wave));
-	position.x -= 1;*/
 }

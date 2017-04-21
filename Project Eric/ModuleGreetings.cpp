@@ -11,6 +11,7 @@
 #include "ModulePlayer.h"
 #include "ModuleGreetings.h"
 #include "ModuleWelcome.h"
+#include "ModuleEnemies.h"
 
 
 ModuleGreetings::ModuleGreetings() {
@@ -35,6 +36,7 @@ bool ModuleGreetings::Start() {
 bool ModuleGreetings::CleanUp() {
 	App->textures->Unload(texture);
 	App->audio->StopMusic();
+	
 	return true;
 
 }
