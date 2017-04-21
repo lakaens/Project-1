@@ -30,9 +30,10 @@ Application::Application()
 	modules[9] = welcome = new ModuleWelcome();
 	modules[10] = greetings = new ModuleGreetings();
 	modules[11] = particles = new ModuleParticles();
-	modules[12] = collision = new ModuleCollision();
+	modules[12] = barrel = new ModuleBarrel();
 	modules[13] = enemies = new ModuleEnemies();
-	modules[14] = barrel = new ModuleBarrel();
+	modules[14] = collision = new ModuleCollision();
+	
 }	
 
 Application::~Application()
@@ -50,7 +51,7 @@ bool Application::Init()
 	player->Disable();
 	// Disable the map that you do not start with
 	stage1->Disable();
-
+	barrel->Disable();
 	stage2->Disable();
 
 	greetings->Disable();

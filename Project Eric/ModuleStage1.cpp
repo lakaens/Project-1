@@ -11,7 +11,7 @@
 #include "ModulePlayer.h"
 #include "ModuleCollision.h"
 #include "ModuleEnemies.h"
-
+#include "ModuleBarrel.h"
 
 ModuleStage1::ModuleStage1() {
 	background.x = 0;
@@ -29,6 +29,7 @@ bool ModuleStage1::Start() {
 	App->player->Enable();
 	texture = App->textures->Load("mapa1.png");
 	App->audio->musicLoad("stage1.ogg");
+	App->barrel->Enable();
 
 	App->collision->Enable();
 

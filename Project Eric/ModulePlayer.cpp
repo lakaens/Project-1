@@ -260,7 +260,7 @@ bool ModulePlayer::CleanUp() {
 void ModulePlayer::OnCollision(Collider* c1,Collider* c2) {
 
 	if (c2->type == COLLIDER_WALL) {
-	/*	if (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT) {
+		/*if (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT) {
 			canGoLeft = false;
 		}
 		if (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT) {
