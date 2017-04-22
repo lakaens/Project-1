@@ -28,14 +28,14 @@ bool ModuleParticles::Start()
 	bulletf.anim.PushBack({ 205, 130, 2, 5 });
 	bulletf.anim.loop = false;
 	bulletf.anim.speed = 0.3f;
-	bulletf.life = 600;
+	bulletf.life = 400;
 	bulletf.speed.y = -4;
 
 	bulletdr.anim.PushBack({ 252, 131, 4, 4 });
 	bulletdr.anim.PushBack({ 275, 131, 5, 4 });
 	bulletdr.anim.loop = false;
 	bulletdr.anim.speed = 0.3f;
-	bulletdr.life = 600;
+	bulletdr.life = 400;
 	bulletdr.speed.y = -3;
 	bulletdr.speed.x = +2;
 
@@ -43,7 +43,7 @@ bool ModuleParticles::Start()
 	bulletdl.anim.PushBack({ 242, 139, 4, 4});
 	bulletdl.anim.loop = false;
 	bulletdl.anim.speed = 0.3f;
-	bulletdl.life = 600;
+	bulletdl.life = 400;
 	bulletdl.speed.y = -3;
 	bulletdl.speed.x = -2;
 

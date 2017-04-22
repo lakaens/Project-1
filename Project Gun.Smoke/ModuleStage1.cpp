@@ -99,7 +99,7 @@ bool ModuleStage1::Start() {
 	App->collision->AddCollider({ 117,-1962,21,19 }, COLLIDER_WALL); //segunda caja
 
 	
-	App->enemies->AddEnemy(ENEMY_TYPES::WINDOWSNIPERRIGHT,SCREEN_WIDTH/2,50);
+	App->enemies->AddEnemy(ENEMY_TYPES::WINDOWSNIPERRIGHT,40,-80);
 
 	/*App->enemies->AddEnemy(ENEMY_TYPES::GUNMEN, 81, -2752);
 	App->enemies->AddEnemy(ENEMY_TYPES::GUNMEN, 111, -2660);

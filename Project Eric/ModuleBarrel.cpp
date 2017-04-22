@@ -34,11 +34,10 @@ bool ModuleBarrel::Start()
 	barrel.PushBack({126,55,16,14});
 	barrel.PushBack({152,58,14,11});
 	barrel.loop = false;
-	barrel.speed = 0.04;
+	barrel.speed = 0.02;
 
 
 	barrelcollider = App->collision->AddCollider({ position.x,position.y,16,15 }, COLLIDER_BARREL, this);
-	
 
 	current_animation = &idle;
 
@@ -49,7 +48,7 @@ update_status ModuleBarrel::Update() {
 
 	
 
-	
+	barrelcollider->SetPos(position.x, position.y );
 
 	SDL_Rect r = current_animation->GetCurrentFrame();
 
@@ -74,11 +73,8 @@ void ModuleBarrel::OnCollision(Collider* c1, Collider* c2)
 		
 		if (life == 0) {
 			current_animation = &barrel;
-			if (barrelcollider != nullptr) {
+			if (barrelcollider != nullptr)
 				barrelcollider->to_delete = true;
-				
-			}
-
 			
 		}
 

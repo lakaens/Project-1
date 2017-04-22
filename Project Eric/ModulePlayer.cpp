@@ -190,15 +190,15 @@ update_status ModulePlayer::Update()
 
 
 	}
-	if (App->input->keyboard[SDL_SCANCODE_C] == KEY_STATE::KEY_REPEAT && cont<=20) {
+	if (App->input->keyboard[SDL_SCANCODE_C] == KEY_STATE::KEY_REPEAT && cont<=10) {
 		current_animation = &shootdl;
 		cont++;
-		if (cont == 20) {
+		if (cont == 10) {
 			
 			App->particles->AddParticle(App->particles->bulletdl, position.x + 5, position.y - 18, COLLIDER_PLAYER_SHOT);
 			App->particles->AddParticle(App->particles->bulletdl, position.x + 15, position.y - 18, COLLIDER_PLAYER_SHOT);
-			App->particles->AddParticle(App->particles->bulletdl, position.x + 5, position.y - 18, COLLIDER_PLAYER_SHOT);
-			App->particles->AddParticle(App->particles->bulletdl, position.x + 15, position.y - 18, COLLIDER_PLAYER_SHOT);
+			App->particles->AddParticle(App->particles->bulletdl, position.x + 5, position.y - 18, COLLIDER_PLAYER_SHOT, 650);
+			App->particles->AddParticle(App->particles->bulletdl, position.x + 15, position.y - 18, COLLIDER_PLAYER_SHOT, 650);
 			bullet++;
 			App->audio->Playeffect(bulletsound);
 			cont = 0;
@@ -206,14 +206,14 @@ update_status ModulePlayer::Update()
 
 	}
 
-	if (App->input->keyboard[SDL_SCANCODE_V] == KEY_STATE::KEY_REPEAT && cont<=20) {
+	if (App->input->keyboard[SDL_SCANCODE_V] == KEY_STATE::KEY_REPEAT && cont<=10) {
 		current_animation = &shootf;
 		cont++;
-		if (cont == 20) {
+		if (cont == 10) {
 			App->particles->AddParticle(App->particles->bulletf, position.x + 3, position.y - 18, COLLIDER_PLAYER_SHOT);
 			App->particles->AddParticle(App->particles->bulletf, position.x + 13, position.y - 18, COLLIDER_PLAYER_SHOT);
-			App->particles->AddParticle(App->particles->bulletf, position.x + 3, position.y - 18, COLLIDER_PLAYER_SHOT);
-			App->particles->AddParticle(App->particles->bulletf, position.x + 13, position.y - 18, COLLIDER_PLAYER_SHOT);
+			App->particles->AddParticle(App->particles->bulletf, position.x + 3, position.y - 18, COLLIDER_PLAYER_SHOT,650);
+			App->particles->AddParticle(App->particles->bulletf, position.x + 13, position.y - 18, COLLIDER_PLAYER_SHOT,650);
 			bullet++;
 			App->audio->Playeffect(bulletsound);
 			cont = 0;
@@ -221,14 +221,14 @@ update_status ModulePlayer::Update()
 			
 
 	}
-	if (App->input->keyboard[SDL_SCANCODE_B] == KEY_STATE::KEY_REPEAT && cont<=20) {
+	if (App->input->keyboard[SDL_SCANCODE_B] == KEY_STATE::KEY_REPEAT && cont<=10) {
 		current_animation = &shootdr;
 		cont++;
-		if (cont == 20) {
+		if (cont == 10) {
 			App->particles->AddParticle(App->particles->bulletdr, position.x + 5, position.y - 18, COLLIDER_PLAYER_SHOT);
 			App->particles->AddParticle(App->particles->bulletdr, position.x + 15, position.y - 18, COLLIDER_PLAYER_SHOT);
-			App->particles->AddParticle(App->particles->bulletdr, position.x + 5, position.y - 18, COLLIDER_PLAYER_SHOT);
-			App->particles->AddParticle(App->particles->bulletdr, position.x + 15, position.y - 18, COLLIDER_PLAYER_SHOT);
+			App->particles->AddParticle(App->particles->bulletdr, position.x + 5, position.y - 18, COLLIDER_PLAYER_SHOT, 650);
+			App->particles->AddParticle(App->particles->bulletdr, position.x + 15, position.y - 18, COLLIDER_PLAYER_SHOT, 650);
 			bullet++;
 			App->audio->Playeffect(bulletsound);
 			cont = 0;

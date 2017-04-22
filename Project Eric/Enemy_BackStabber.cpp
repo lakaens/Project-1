@@ -18,10 +18,26 @@ Enemy_BackStabber::Enemy_BackStabber(int x, int y) :Enemy(x, y) {
 
 	collider = App->collision->AddCollider({ 0,0,24,24 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
 
-
+	original_y = y;
 }
 
 void Enemy_BackStabber::Move()
 {
-	
+	if (going_up)
+	{
+		if (wave > 1.0f)
+			going_up = false;
+		else
+			wave += 0.05f;
+	}
+	else
+	{
+		if (wave < -1.0f)
+			going_up = true;
+		else
+			wave -= 0.05f;
+	}
+
+	position.y = original_y + (0.25f * sinf(wave));
+	position.x -= 1;
 }

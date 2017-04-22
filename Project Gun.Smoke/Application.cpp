@@ -29,8 +29,9 @@ Application::Application()
 	modules[9] = welcome = new ModuleWelcome();
 	modules[10] = greetings = new ModuleGreetings();
 	modules[11] = particles = new ModuleParticles();
-	modules[12] = collision = new ModuleCollision();
 	modules[13] = enemies = new ModuleEnemies();
+	modules[12] = collision = new ModuleCollision();
+	
 }	
 
 Application::~Application()
