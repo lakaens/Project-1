@@ -88,6 +88,7 @@
     <ClInclude Include="ModuleGreetings.h" />
     <ClInclude Include="ModuleParticles.h" />
     <ClInclude Include="ModulePlayer.h" />
+    <ClInclude Include="ModulePowerUps.h" />
     <ClInclude Include="ModuleStage1.h" />
     <ClInclude Include="ModuleFadetoblack.h" />
     <ClInclude Include="ModuleInput.h" />
@@ -98,6 +99,11 @@
     <ClInclude Include="ModuleWindow.h" />
     <ClInclude Include="p2Point.h" />
     <ClInclude Include="Path.h" />
+    <ClInclude Include="PowerUp.h" />
+    <ClInclude Include="PowerUp_Boots.h" />
+    <ClInclude Include="PowerUp_Horse.h" />
+    <ClInclude Include="PowerUp_Pow.h" />
+    <ClInclude Include="PowerUp_Shotgun.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Application.cpp" />
@@ -118,6 +124,7 @@
     <ClCompile Include="ModuleGreetings.cpp" />
     <ClCompile Include="ModuleParticles.cpp" />
     <ClCompile Include="ModulePlayer.cpp" />
+    <ClCompile Include="ModulePowerUps.cpp" />
     <ClCompile Include="ModuleStage1.cpp" />
     <ClCompile Include="ModuleInput.cpp" />
     <ClCompile Include="ModuleRender.cpp" />
@@ -125,6 +132,11 @@
     <ClCompile Include="ModuleTextures.cpp" />
     <ClCompile Include="ModuleWelcome.cpp" />
     <ClCompile Include="ModuleWindow.cpp" />
+    <ClCompile Include="PowerUp.cpp" />
+    <ClCompile Include="PowerUp_Boots.cpp" />
+    <ClCompile Include="PowerUp_Horse.cpp" />
+    <ClCompile Include="PowerUp_Pow.cpp" />
+    <ClCompile Include="PowerUp_Shotgun.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

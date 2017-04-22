@@ -14,6 +14,7 @@
 #include "ModuleCollision.h"
 #include "ModuleEnemies.h"
 #include "ModuleBarrel.h"
+#include "ModulePowerUps.h"
 
 
 Application::Application()
@@ -29,10 +30,11 @@ Application::Application()
 	modules[8] = player = new ModulePlayer();
 	modules[9] = welcome = new ModuleWelcome();
 	modules[10] = greetings = new ModuleGreetings();
-	modules[11] = particles = new ModuleParticles();
-	modules[12] = barrel = new ModuleBarrel();
-	modules[13] = enemies = new ModuleEnemies();
-	modules[14] = collision = new ModuleCollision();
+	modules[11] = powerup = new ModulePowerUps();
+	modules[12] = particles = new ModuleParticles();
+	modules[13] = barrel = new ModuleBarrel();
+	modules[14] = enemies = new ModuleEnemies();
+	modules[15] = collision = new ModuleCollision();
 }
 
 Application::~Application()

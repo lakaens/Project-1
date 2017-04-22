@@ -11,7 +11,7 @@
 
 struct Barrel {
 	iPoint pos;
-	Collider* barrelcoll;
+	Collider* barrelcol;
 	int life = 5;
 };
 
