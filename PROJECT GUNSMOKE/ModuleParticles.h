@@ -55,6 +55,9 @@ public:
 	Particle bulletr;
 	Particle explosion;
 	Particle deadGunMen;
+	Particle enemysimplebullet;
+	Particle enemysimplebulletdead;
+	Particle deadWindowSniperRight;
 	
 };
 

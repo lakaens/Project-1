@@ -19,22 +19,22 @@ ModuleBarrel::~ModuleBarrel()
 bool ModuleBarrel::Start()
 {
 	LOG("Loading particles");
-	graphics = App->textures->Load("Gunsmoke/particles1.png");
+	graphics = App->textures->Load("Gunsmoke/particles.png");
 
 	position.x = SCREEN_WIDTH / 2;
 	position.y = 2700;
 
 
 
-	idle.PushBack({ 6, 53, 16, 16 });
+	idle.PushBack({ 56, 58, 16, 16 });
 
 
-	barrel.PushBack({ 31,54,15,15 });
-	barrel.PushBack({ 54,54,15,15 });
-	barrel.PushBack({ 78,55,16,14 });
-	barrel.PushBack({ 102,56,16,13 });
-	barrel.PushBack({ 126,55,16,14 });
-	barrel.PushBack({ 152,58,14,11 });
+	barrel.PushBack({ 81,59,15,15 });
+	barrel.PushBack({ 104,59,15,15 });
+	barrel.PushBack({ 128,60,16,14 });
+	barrel.PushBack({ 152,61,16,13 });
+	barrel.PushBack({ 176,60,16,14 });
+	barrel.PushBack({ 202,63,14,11 });
 	barrel.loop = false;
 	barrel.speed = 0.02;
 

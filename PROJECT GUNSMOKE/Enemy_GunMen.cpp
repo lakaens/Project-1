@@ -1,6 +1,7 @@
 #include "Application.h"
 #include "Enemy_GunMen.h"
 #include "ModuleCollision.h"
+#include "ModuleParticles.h"
 
 Enemy_GunMen::Enemy_GunMen(int x, int y) :Enemy(x, y) {
 
@@ -25,3 +26,8 @@ void Enemy_GunMen::Move()
 	position = original_pos + path.GetCurrentSpeed();
 }
 
+void Enemy_GunMen::Shoot() {
+
+	App->particles->AddParticle(App->particles->enemysimplebullet, position.x, position.y, COLLIDER_ENEMY_SHOT);
+
+}

@@ -4,25 +4,23 @@
 
 Enemy_WindowSniperRight::Enemy_WindowSniperRight(int x, int y) :Enemy(x, y) {
 
-	move.PushBack({ 536,931,10,13 });
-	move.PushBack({ 568,942,11,13 });
-	move.PushBack({ 585,941,11,14 });
-	move.PushBack({ 612,940,13,14 });
-	move.PushBack({ 639,940,16,13 });
-	move.PushBack({ 667,929,18,11 });
-	move.PushBack({ 702,941,15,12 });
-	move.PushBack({ 733,941,15,14 });
-
-	move.speed = 0.2f;
+	move.PushBack({ 176,553,14,11 });
+	move.PushBack({ 216,556,16,9 });
+	move.PushBack({ 256,556,14,10 });
+	move.speed = 0.05f;
 
 	animation = &move;
 
 	collider = App->collision->AddCollider({ 0,0,24,24 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
 
 
+	original_pos.x = x;
+	original_pos.y = y;
+
+
 }
 
 void Enemy_WindowSniperRight::Move()
 {
-	
+	position = original_pos + path.GetCurrentSpeed();
 }

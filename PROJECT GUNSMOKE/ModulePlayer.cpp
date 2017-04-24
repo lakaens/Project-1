@@ -225,11 +225,13 @@ update_status ModulePlayer::Update()
 	{
 		cont++;
 		current_animation = &shootr;
-		App->particles->AddParticle(App->particles->bulletr, position.x + 5, position.y + 5, COLLIDER_PLAYER_SHOT);
-		App->particles->AddParticle(App->particles->bulletr, position.x + 15, position.y + 5, COLLIDER_PLAYER_SHOT);
-		bullet++;
-		App->audio->Playeffect(bulletsound);
-		cont = 0;
+		if (cont == 35) {
+			App->particles->AddParticle(App->particles->bulletr, position.x + 5, position.y + 5, COLLIDER_PLAYER_SHOT);
+			App->particles->AddParticle(App->particles->bulletr, position.x + 15, position.y + 5, COLLIDER_PLAYER_SHOT);
+			bullet++;
+			App->audio->Playeffect(bulletsound);
+			cont = 0;
+		}
 		
 	}
 

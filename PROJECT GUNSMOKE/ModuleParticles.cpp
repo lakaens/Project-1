@@ -13,23 +13,23 @@ ModuleParticles::ModuleParticles()
 	for(uint i = 0; i < MAX_ACTIVE_PARTICLES; ++i)
 		active[i] = nullptr;
 
-	bulletu.anim.PushBack({ 205, 130, 2, 5 });
-	bulletu.anim.PushBack({ 205, 130, 2, 5 });
+	bulletu.anim.PushBack({ 255, 135, 2, 5 });
+	bulletu.anim.PushBack({ 255, 135, 2, 5 });
 	bulletu.anim.loop = false;
 	bulletu.anim.speed = 0.3f;
 	bulletu.life = 400;
 	bulletu.speed.y = -4;
 
-	bulletr.anim.PushBack({ 252, 131, 4, 4 });
-	bulletr.anim.PushBack({ 275, 131, 5, 4 });
+	bulletr.anim.PushBack({ 302, 136, 4, 4 });
+	bulletr.anim.PushBack({ 325, 136, 5, 4 });
 	bulletr.anim.loop = false;
 	bulletr.anim.speed = 0.3f;
 	bulletr.life = 400;
 	bulletr.speed.y = -3;
 	bulletr.speed.x = +2;
 
-	bulletl.anim.PushBack({ 233, 139, 5, 4 });
-	bulletl.anim.PushBack({ 242, 139, 4, 4 });
+	bulletl.anim.PushBack({ 283, 144, 5, 4 });
+	bulletl.anim.PushBack({ 292, 144, 4, 4 });
 	bulletl.anim.loop = false;
 	bulletl.anim.speed = 0.3f;
 	bulletl.life = 400;
@@ -42,11 +42,38 @@ ModuleParticles::ModuleParticles()
 	explosion.anim.loop = true;
 	explosion.anim.speed = 0.3f;
 
-	deadGunMen.anim.PushBack({ 330,94,26,25 });
-	deadGunMen.anim.PushBack({ 369,93,28,28 });
-	deadGunMen.anim.PushBack({ 409,99,30,20 });
-	deadGunMen.anim.PushBack({ 448,99,30,22 });
+	deadGunMen.anim.PushBack({ 511,11,26,25 });
+	deadGunMen.anim.PushBack({ 480,27,28,27 });
+	deadGunMen.anim.PushBack({ 509,40,30,20 });
+	deadGunMen.anim.PushBack({ 507,62,30,22 });
+	deadGunMen.anim.PushBack({ 553,26,5,5 });
+	deadGunMen.anim.PushBack({ 507,62,30,22 });
+	deadGunMen.anim.PushBack({ 553,26,5,5 });
+	deadGunMen.anim.PushBack({ 507,62,30,22 });
+	deadGunMen.anim.PushBack({ 553,26,5,5 });
+	deadGunMen.anim.loop = false;
 	deadGunMen.anim.speed = 0.1f;
+
+	deadWindowSniperRight.anim.PushBack({ 295,552,15,14 });
+	deadWindowSniperRight.anim.PushBack({ 335,552,18,14 });
+	deadWindowSniperRight.anim.PushBack({ 375,552,17,15 });
+	deadWindowSniperRight.anim.PushBack({ 415,554,14,15 });
+	deadWindowSniperRight.anim.PushBack({ 455,555,18,14 });
+	deadWindowSniperRight.anim.PushBack({ 553,26,5,5 });
+	deadWindowSniperRight.anim.PushBack({ 455,555,18,14 });
+	deadWindowSniperRight.anim.PushBack({ 553,26,5,5 });
+	deadWindowSniperRight.anim.PushBack({ 455,555,18,14 });
+	deadWindowSniperRight.anim.PushBack({ 553,26,5,5 });
+	deadWindowSniperRight.anim.loop = false;
+	deadWindowSniperRight.anim.speed = 0.1f;
+	
+	enemysimplebullet.anim.PushBack({ 350,16,10,10});
+	enemysimplebullet.speed.y -= 1;
+
+	enemysimplebulletdead.anim.PushBack({372,15,6,6});
+	enemysimplebulletdead.anim.PushBack({395,14,9,8});
+	enemysimplebulletdead.anim.PushBack({418,13,12,10});
+	enemysimplebulletdead.anim.speed = 0.1f;
 }
 
 ModuleParticles::~ModuleParticles()
@@ -56,7 +83,7 @@ ModuleParticles::~ModuleParticles()
 bool ModuleParticles::Start()
 {
 	LOG("Loading particles");
-	graphics = App->textures->Load("Gunsmoke/particles1.png");
+	graphics = App->textures->Load("Gunsmoke/particles.png");
 
 	return true;
 }

@@ -17,6 +17,7 @@ public:
 
 	Enemy_GunMen(int x, int y);
 	void Move();
+	void Shoot();
 };
 
 

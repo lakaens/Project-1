@@ -25,9 +25,9 @@ Application::Application()
 	modules[i++] = scene_intro = new ModuleSceneIntro();
 	modules[i++] = map = new ModuleMap1();
 	modules[i++] = enemies = new ModuleEnemies();
+	modules[i++] = barrel = new ModuleBarrel();
 	modules[i++] = player = new ModulePlayer();
 	modules[i++] = particles = new ModuleParticles();
-	modules[i++] = barrel = new ModuleBarrel();
 	modules[i++] = collision = new ModuleCollision();
 	modules[i++] = fade = new ModuleFadeToBlack();
 	modules[i++] = audio = new ModuleAudio();
