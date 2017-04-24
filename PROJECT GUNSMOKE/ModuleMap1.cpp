@@ -167,6 +167,21 @@ bool ModuleMap1::Start()
 	App->enemies->AddEnemy(ENEMY_TYPES::GUNMEN, 65, 390);
 	App->enemies->AddEnemy(ENEMY_TYPES::GUNMEN, 94, 228);
 	App->enemies->AddEnemy(ENEMY_TYPES::GUNMEN, 5, 191);
+
+	App->enemies->AddEnemy(ENEMY_TYPES::BOMBER, 41, 2099);
+	App->enemies->AddEnemy(ENEMY_TYPES::BOMBER, 138, 2082);
+	App->enemies->AddEnemy(ENEMY_TYPES::BOMBER, 87, 548);
+	App->enemies->AddEnemy(ENEMY_TYPES::BOMBER, 51, 298);
+	App->enemies->AddEnemy(ENEMY_TYPES::BOMBER, 110, 20);
+
+	App->enemies->AddEnemy(ENEMY_TYPES::RIFFLEMEN, 149, 1038);
+	App->enemies->AddEnemy(ENEMY_TYPES::RIFFLEMEN, 191, 1038);
+	App->enemies->AddEnemy(ENEMY_TYPES::RIFFLEMEN, 37, 683);
+	App->enemies->AddEnemy(ENEMY_TYPES::RIFFLEMEN, 78, 23);
+
+	App->enemies->AddEnemy(ENEMY_TYPES::BACKSTABBER, 212, 212);
+	App->enemies->AddEnemy(ENEMY_TYPES::BACKSTABBER, 212, 100);
+
 	
 	return true;
 }

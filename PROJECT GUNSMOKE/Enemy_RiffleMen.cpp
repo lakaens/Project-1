@@ -4,24 +4,31 @@
 
 Enemy_RiffleMen::Enemy_RiffleMen(int x, int y) :Enemy(x, y) {
 
-	move.PushBack({ 5,6,24,24 });
-	move.PushBack({ 38, 6, 24, 24 });
-	move.PushBack({ 71, 6, 24, 24 });
-	move.PushBack({ 104, 6, 24, 24 });
-	move.PushBack({ 137, 6, 24, 24 });
-	move.PushBack({ 170, 6, 24, 24 });
-	move.PushBack({ 203, 6, 24, 24 });
-	move.PushBack({ 236, 6, 24, 24 });
+	move.PushBack({ 175,212,16,27 });
+	move.PushBack({ 215, 213, 16, 27 });
+	move.PushBack({ 255, 212, 17, 27 });
+	move.loop = true;
 	move.speed = 0.2f;
+
+	sides.PushBack({ 294, 213, 17, 27 });
+	sides.PushBack({ 215, 213, 16, 27 });
+	sides.PushBack({ 334, 213, 18, 27 });
+	sides.loop = true;
+	sides.speed = 0.2f;
+
+	path.PushBack({ 0.f,0.5f }, 100, &move);
+	path.PushBack({ 0.f,0.f }, 100, &sides);
 
 	animation = &move;
 
 	collider = App->collision->AddCollider({ 0,0,24,24 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
 
+	original_pos.x = x;
+	original_pos.y = y;
 	
 }
 
 void Enemy_RiffleMen::Move()
 {
-
+	position = original_pos + path.GetCurrentSpeed(&animation);
 }

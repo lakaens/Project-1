@@ -4,24 +4,23 @@
 
 Enemy_Bomber::Enemy_Bomber(int x, int y) :Enemy(x, y) {
 
-	move.PushBack({ 5,6,24,24 });
-	move.PushBack({ 38, 6, 24, 24 });
-	move.PushBack({ 71, 6, 24, 24 });
-	move.PushBack({ 104, 6, 24, 24 });
-	move.PushBack({ 137, 6, 24, 24 });
-	move.PushBack({ 170, 6, 24, 24 });
-	move.PushBack({ 203, 6, 24, 24 });
-	move.PushBack({ 236, 6, 24, 24 });
+	move.PushBack({ 333,130,23,28 });
+	move.PushBack({ 374, 129, 20, 30 });
+	move.PushBack({ 412, 130, 22, 28 });
 	move.speed = 0.2f;
+
+	path.PushBack({ 0.f,0.5f }, 100);
 
 	animation = &move;
 
 	collider = App->collision->AddCollider({ 0,0,24,24 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
 
-	
+	original_pos.x = x;
+	original_pos.y = y;
+
 }
 
 void Enemy_Bomber::Move()
 {
-	
+	position = original_pos + path.GetCurrentSpeed();
 }

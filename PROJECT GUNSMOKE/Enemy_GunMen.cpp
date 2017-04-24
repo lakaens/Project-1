@@ -9,8 +9,6 @@ Enemy_GunMen::Enemy_GunMen(int x, int y) :Enemy(x, y) {
 	move.PushBack({ 294, 51, 20, 28 });
 	move.speed = 0.2f;
 
-	
-
 	path.PushBack({ 0.f,0.5f },100);
 	animation = &move;
 

@@ -2,11 +2,14 @@
 #define __ENEMY_BOMBER_H__
 
 #include "Enemy.h"
+#include "Path.h"
 
 class Enemy_Bomber : public Enemy
 {
 private:
 
+	Path path;
+	iPoint original_pos;
 	Animation move;
 
 public:

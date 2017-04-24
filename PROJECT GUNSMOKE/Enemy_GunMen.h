@@ -8,11 +8,10 @@
 class Enemy_GunMen : public Enemy
 {
 private:
+
 	Path path;
 	iPoint original_pos;
 	Animation move;
-	Animation dead;
-	
 
 public:
 
