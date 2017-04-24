@@ -147,17 +147,3 @@ void ModulePowerUps::SpawnPowerUp(const PowerUpInfo& info)
 		}
 	}
 }
-
-void ModulePowerUps::OnCollision(Collider* c1, Collider* c2)
-{
-	for (uint i = 0; i < MAX_POWERUPS; ++i)
-	{
-		if (powerups[i] != nullptr && powerups[i]->GetCollider() == c1)
-		{
-			powerups[i]->OnCollision(c1, c2);
-			delete powerups[i];
-			powerups[i] = nullptr;
-			break;
-		}
-	}
-}
