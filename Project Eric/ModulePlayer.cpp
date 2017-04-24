@@ -16,8 +16,8 @@
 
 ModulePlayer::ModulePlayer()
 {
-	position.x = 200;
-	position.y = 400;
+	position.x = SCREEN_WIDTH/2;
+	position.y = SCREEN_WIDTH-100;
 	
 
 	// idle animation (arcade sprite sheet)
