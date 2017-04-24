@@ -91,7 +91,7 @@ bool ModulePlayer::Start()
 	position.y = 3000;
 	score = 0;
 
-	col = App->collision->AddCollider({position.x, position.y, 32, 16}, COLLIDER_PLAYER, this);
+	col = App->collision->AddCollider({position.x, position.y, 19, 27}, COLLIDER_PLAYER, this);
 
 	bulletsound = App->audio->Loadeffect("laser.wav");
 	

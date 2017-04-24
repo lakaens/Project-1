@@ -12,7 +12,7 @@
 #include "Enemy_WindowSniperLeft.h"
 #include "Enemy_RiffleMen.h"
 
-#define SPAWN_MARGIN 50
+#define SPAWN_MARGIN 70
 
 ModuleEnemies::ModuleEnemies()
 {
@@ -40,7 +40,7 @@ update_status ModuleEnemies::PreUpdate()
 	{
 		if(queue[i].type != ENEMY_TYPES::NO_TYPE)
 		{
-			if(queue[i].x * SCREEN_SIZE < App->render->camera.x + (App->render->camera.w * SCREEN_SIZE) + SPAWN_MARGIN)
+			if (queue[i].y > (abs(App->render->camera.y) / SCREEN_SIZE) - SPAWN_MARGIN);
 			{
 				SpawnEnemy(queue[i]);
 				queue[i].type = ENEMY_TYPES::NO_TYPE;
@@ -70,7 +70,7 @@ update_status ModuleEnemies::PostUpdate()
 	{
 		if(enemies[i] != nullptr)
 		{
-			if(enemies[i]->position.x * SCREEN_SIZE < (App->render->camera.x) - SPAWN_MARGIN)
+			if (enemies[i]->position.y > ((abs(App->render->camera.y) + SCREEN_WIDTH) / SCREEN_SIZE) + 240);
 			{
 				delete enemies[i];
 				enemies[i] = nullptr;

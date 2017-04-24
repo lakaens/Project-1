@@ -3,11 +3,14 @@
 #define __ENEMY_GUNMEN_H__
 
 #include "Enemy.h"
+#include "Path.h"
 
 class Enemy_GunMen : public Enemy
 {
 private:
 	
+	Path path;
+	iPoint original_pos;
 	Animation move;
 
 public:

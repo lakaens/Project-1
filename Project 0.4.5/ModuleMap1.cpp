@@ -36,73 +36,138 @@ bool ModuleMap1::Start()
 	App->enemies->Enable();
 	
 	// Colliders ---
-	//colliders primera casa izquierda
-	App->collision->AddCollider({ 0,-80,60,348 }, COLLIDER_WALL); //first house 
-	App->collision->AddCollider({ 0,268,36,15 }, COLLIDER_WALL); //borde principio
-	App->collision->AddCollider({ 0,-108,43,28 }, COLLIDER_WALL); //borde final
-	App->collision->AddCollider({ 60,202,18,19 }, COLLIDER_WALL); //primera escalera
-	App->collision->AddCollider({ 60,106,18,19 }, COLLIDER_WALL); //segunda escalera
-	App->collision->AddCollider({ 60,44,15,18 }, COLLIDER_WALL); //tercera escalera
-	App->collision->AddCollider({ 60,-54,20,19 }, COLLIDER_WALL); //cuarta escalera
 
-																  //colliders primera casa derecha	
-	App->collision->AddCollider({ 164,-623,60,630 }, COLLIDER_WALL); //primera casa derecha
-	App->collision->AddCollider({ 180,-660,43,37 }, COLLIDER_WALL); //borde final
-	App->collision->AddCollider({ 147,-196,17,26 }, COLLIDER_WALL); //barra caballos
-	App->collision->AddCollider({ 145,-150,19,19 }, COLLIDER_WALL); //primera escalera
-	App->collision->AddCollider({ 145,-246,19,19 }, COLLIDER_WALL); //segunda escalera
-	App->collision->AddCollider({ 145,-342,19,19 }, COLLIDER_WALL); //tercera escalera
-	App->collision->AddCollider({ 148,-404,16,19 }, COLLIDER_WALL); //cuarta escalera
-	App->collision->AddCollider({ 145,-502,19,19 }, COLLIDER_WALL); //quinta escalera
-	App->collision->AddCollider({ 145,-598,19,19 }, COLLIDER_WALL); //sexta escalera
+	//left buildings
+	App->collision->AddCollider({ 0,3037,37,16 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 0,2689,55,348 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 0,1661,55,192 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 0,1377,55,284 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 0,1309,55,40 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 0,1349,49,28 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 0,1121,55,188 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 0,1021,55,100 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 0,832,55,189 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 0,124,37,18 }, COLLIDER_WALL);;
+	App->collision->AddCollider({ 0,0,55,124 }, COLLIDER_WALL);
 
-																	//colliders casa medio izquierda
-	App->collision->AddCollider({ 0,-1935,60,1019 }, COLLIDER_WALL); //casa medio izquierda
-	App->collision->AddCollider({ 0,-1972,43,37 }, COLLIDER_WALL); //borde final
-	App->collision->AddCollider({ 60,-1316,17,26 }, COLLIDER_WALL); //barra caballos
-	App->collision->AddCollider({ 60,-982,18,19 }, COLLIDER_WALL); //primera escalera
-	App->collision->AddCollider({ 60,-1174,18,19 }, COLLIDER_WALL); //segunda escalera
-	App->collision->AddCollider({ 60,-1270,18,18 }, COLLIDER_WALL); //tercera escalera
-	App->collision->AddCollider({ 60,-1366,20,19 }, COLLIDER_WALL); //cuarta escalera
-	App->collision->AddCollider({ 60,-1428,15,18 }, COLLIDER_WALL); //quinta escalera
-	App->collision->AddCollider({ 60,-1526,18,19 }, COLLIDER_WALL); //sexta escalera
-	App->collision->AddCollider({ 60,-1622,18,19 }, COLLIDER_WALL); //septima escalera
-	App->collision->AddCollider({ 60,-1814,17,19 }, COLLIDER_WALL); //octava escalera
-	App->collision->AddCollider({ 60,-1910,18,19 }, COLLIDER_WALL); //novena escalera
+	//right buildings
+	App->collision->AddCollider({ 169,2685,65,70 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 176,2755,48,20 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 169,2401,68,284 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 171,2333,63,68 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 169,2144,66,189 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 169,1729,55,92 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 187,1821,37,17 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 171,1661,53,68 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 169,1473,55,188 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 169,0,55,732 }, COLLIDER_WALL);
 
 
-																	//colliders casa medio derecha	
-	App->collision->AddCollider({ 164,-1295,60,345 }, COLLIDER_WALL); //casa medio derecha
-	App->collision->AddCollider({ 187,-950,36,17 }, COLLIDER_WALL); //borde principio
-	App->collision->AddCollider({ 180,-1332,43,37 }, COLLIDER_WALL); //borde final
-	App->collision->AddCollider({ 145,-1014,19,19 }, COLLIDER_WALL); //primera escalera
-	App->collision->AddCollider({ 148,-1076,16,18 }, COLLIDER_WALL); //segunda escalera
-	App->collision->AddCollider({ 145,-1174,19,19 }, COLLIDER_WALL); //tercera escalera
-	App->collision->AddCollider({ 145,-1270,19,19 }, COLLIDER_WALL); //cuarta escalera
+	//left stairs
+	App->collision->AddCollider({ 55,2972,24,3 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 55,2876,24,3 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 55,2814,24,3 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 55,2716,24,3 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 55,1788,24,3 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 55,1596,24,3 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 55,1500,24,3 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 55,1404,24,3 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 55,1342,24,3 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 55,1244,24,3 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 55,1148,24,3 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 55,956,24,3 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 55,860,24,3 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 55,60,24,3 }, COLLIDER_WALL);
 
-																	 //colliders ultima casa izquierda
-	App->collision->AddCollider({ 0,-2770,60,125 }, COLLIDER_WALL); //ultima casa izquierda
-	App->collision->AddCollider({ 0,-2645,36,16 }, COLLIDER_WALL); //borde principio
-	App->collision->AddCollider({ 60,-2756,17,26 }, COLLIDER_WALL); //barra caballos
-	App->collision->AddCollider({ 60,-2710,18,19 }, COLLIDER_WALL); //primera escalera
+	//right stairs
+	App->collision->AddCollider({ 145,2620,24,3 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 145,2522,24,3 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 145,2427,24,3 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 147,2366,24,3 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 145,2268,24,3 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 145,2172,24,3 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 145,1756,24,3 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 147,1694,24,3 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 145,1596,24,3 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 145,1500,24,3 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 145,668,24,3 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 145,476,24,3 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 145,380,24,3 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 145,284,24,3 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 145,188,24,3 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 145,92,24,3 }, COLLIDER_WALL);
 
-																	//colliders ultima casa derecha	
-	App->collision->AddCollider({ 164,-2770,60,733 }, COLLIDER_WALL); //ultima casa derecha
-	App->collision->AddCollider({ 147,-2436,17,26 }, COLLIDER_WALL); //barra caballos
-	App->collision->AddCollider({ 145,-2102,19,19 }, COLLIDER_WALL); //primera escalera
-	App->collision->AddCollider({ 145,-2294,19,19 }, COLLIDER_WALL); //segunda escalera
-	App->collision->AddCollider({ 145,-2390,19,19 }, COLLIDER_WALL); //tercera escalera
-	App->collision->AddCollider({ 145,-2486,19,19 }, COLLIDER_WALL); //cuarta escalera
-	App->collision->AddCollider({ 145,-2582,19,19 }, COLLIDER_WALL); //quinta escalera
-	App->collision->AddCollider({ 145,-2678,19,19 }, COLLIDER_WALL); //sexta escalera
-	App->collision->AddCollider({ 145,-2770,19,15 }, COLLIDER_WALL); //septima escalera
+	//lake
+	App->collision->AddCollider({ 0,352,8,177 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 8,356,10,173 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 18,359,18,170 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 36,367,11,162 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 47,373,14,157 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 61,389,12,136 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 73,398,10,120 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 83,407,8,97 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 91,425,7,63 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 98,435,7,43 }, COLLIDER_WALL);
 
-																	 //colliders objetos
-	App->collision->AddCollider({ 117,150,22,20 }, COLLIDER_WALL); //primera caja
-	App->collision->AddCollider({ 98,-882,28,28 }, COLLIDER_WALL); //pozo
-	App->collision->AddCollider({ 117,-1962,21,19 }, COLLIDER_WALL); //segunda caja
+	//horse fences
+	App->collision->AddCollider({ 150,2573,19,19 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 55,1453,19,19 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 150,333,19,19 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 55,13,19,19 }, COLLIDER_WALL);
+
+																
+	//well && boxes
+	App->collision->AddCollider({ 117,2915,22,12 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 98,1883,28,18 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 117,803,22,12 }, COLLIDER_WALL);
 
 	// Enemies ---
+
+	App->enemies->AddEnemy(ENEMY_TYPES::GUNMEN, 82, 2754);
+	App->enemies->AddEnemy(ENEMY_TYPES::GUNMEN, 113, 2661);
+	App->enemies->AddEnemy(ENEMY_TYPES::GUNMEN, 0, 2574);
+	App->enemies->AddEnemy(ENEMY_TYPES::GUNMEN, 48, 2565);
+	App->enemies->AddEnemy(ENEMY_TYPES::GUNMEN, 28, 2492);
+	App->enemies->AddEnemy(ENEMY_TYPES::GUNMEN, 0, 2465);
+	App->enemies->AddEnemy(ENEMY_TYPES::GUNMEN, 111, 2436);
+	App->enemies->AddEnemy(ENEMY_TYPES::GUNMEN, 0, 2357);
+	App->enemies->AddEnemy(ENEMY_TYPES::GUNMEN, 75, 2300);
+	App->enemies->AddEnemy(ENEMY_TYPES::GUNMEN, 119, 2275);
+	App->enemies->AddEnemy(ENEMY_TYPES::GUNMEN, 0, 2215);
+	App->enemies->AddEnemy(ENEMY_TYPES::GUNMEN, 69, 2174);
+	App->enemies->AddEnemy(ENEMY_TYPES::GUNMEN, 103, 2176);
+	App->enemies->AddEnemy(ENEMY_TYPES::GUNMEN, 91, 2081);
+	App->enemies->AddEnemy(ENEMY_TYPES::GUNMEN, 212, 2030);
+	App->enemies->AddEnemy(ENEMY_TYPES::GUNMEN, 3, 2003);
+	App->enemies->AddEnemy(ENEMY_TYPES::GUNMEN, 73, 2000);
+	App->enemies->AddEnemy(ENEMY_TYPES::GUNMEN, 212, 1967);
+	App->enemies->AddEnemy(ENEMY_TYPES::GUNMEN, 61, 1913);
+	App->enemies->AddEnemy(ENEMY_TYPES::GUNMEN, 0, 1878);
+	App->enemies->AddEnemy(ENEMY_TYPES::GUNMEN, 107, 1835);
+	App->enemies->AddEnemy(ENEMY_TYPES::GUNMEN, 107, 1741);
+	App->enemies->AddEnemy(ENEMY_TYPES::GUNMEN, 73, 1662);
+	App->enemies->AddEnemy(ENEMY_TYPES::GUNMEN, 108, 1560);
+	App->enemies->AddEnemy(ENEMY_TYPES::GUNMEN, 0, 1489); //gunmen sortint de la teulada
+	App->enemies->AddEnemy(ENEMY_TYPES::GUNMEN, 110, 1464);
+	App->enemies->AddEnemy(ENEMY_TYPES::GUNMEN, 0, 1450); //gunmen sortint de la teulada
+	App->enemies->AddEnemy(ENEMY_TYPES::GUNMEN, 80, 1340);
+	App->enemies->AddEnemy(ENEMY_TYPES::GUNMEN, 166, 1230);
+	App->enemies->AddEnemy(ENEMY_TYPES::GUNMEN, 212, 1108);
+	App->enemies->AddEnemy(ENEMY_TYPES::GUNMEN, 147, 1099);
+	App->enemies->AddEnemy(ENEMY_TYPES::GUNMEN, 125, 925);
+	App->enemies->AddEnemy(ENEMY_TYPES::GUNMEN, 212, 859);
+	App->enemies->AddEnemy(ENEMY_TYPES::GUNMEN, 52, 804);
+	App->enemies->AddEnemy(ENEMY_TYPES::GUNMEN, 10, 704);
+	App->enemies->AddEnemy(ENEMY_TYPES::GUNMEN, 70, 677);
+	App->enemies->AddEnemy(ENEMY_TYPES::GUNMEN, 120, 656);
+	App->enemies->AddEnemy(ENEMY_TYPES::GUNMEN, 3, 640);
+	App->enemies->AddEnemy(ENEMY_TYPES::GUNMEN, 65, 390);
+	App->enemies->AddEnemy(ENEMY_TYPES::GUNMEN, 94, 228);
+	App->enemies->AddEnemy(ENEMY_TYPES::GUNMEN, 5, 191);
+	/*App->enemies->AddEnemy(ENEMY_TYPES::GUNMEN, 107, 120);
+	App->enemies->AddEnemy(ENEMY_TYPES::GUNMEN, 72, 120);
+	App->enemies->AddEnemy(ENEMY_TYPES::GUNMEN, 0, 0);*/
+
 	
 	
 	return true;
