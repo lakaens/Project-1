@@ -9,11 +9,8 @@
 
 #define MAX_BARRELS 20
 
-struct Barrel {
-	iPoint pos;
-	Collider* barrelcol;
-	int life = 5;
-};
+
+class Barrel;
 
 class ModuleBarrel : public Module
 {
@@ -31,14 +28,11 @@ public:
 
 private:
 
-	SDL_Texture* graphics = nullptr;
+	SDL_Texture* barrelsprites = nullptr;
 	Animation* current_animation;
-	Animation idle;
-	Animation barrel;
-	iPoint position;
 	Collider* barrelcollider;
 	int life = 5;
-	Barrel barrels[MAX_BARRELS];
+	Barrel* barrels[MAX_BARRELS];
 
 };
 

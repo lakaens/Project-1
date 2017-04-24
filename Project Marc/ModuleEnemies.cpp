@@ -17,8 +17,6 @@
 
 ModuleEnemies::ModuleEnemies()
 {
-	for (uint i = 0; i < MAX_ENEMIES; ++i)
-		enemies[i] = nullptr;
 }
 
 // Destructor

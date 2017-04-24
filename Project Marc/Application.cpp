@@ -32,7 +32,7 @@ Application::Application()
 	modules[10] = greetings = new ModuleGreetings();
 	modules[11] = powerup = new ModulePowerUps();
 	modules[12] = particles = new ModuleParticles();
-	modules[13] = barrel = new ModuleBarrel();
+	modules[13] = barrels = new ModuleBarrel();
 	modules[14] = enemies = new ModuleEnemies();
 	modules[15] = collision = new ModuleCollision();
 }

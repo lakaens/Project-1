@@ -125,6 +125,9 @@
     <ClInclude Include="PowerUp_Shotgun.h">
       <Filter>Modules\PowerUps</Filter>
     </ClInclude>
+    <ClInclude Include="Barrel.h">
+      <Filter>Modules</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -219,6 +222,9 @@
     </ClCompile>
     <ClCompile Include="PowerUp_Shotgun.cpp">
       <Filter>Modules\PowerUps</Filter>
+    </ClCompile>
+    <ClCompile Include="Barrel.cpp">
+      <Filter>Modules</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

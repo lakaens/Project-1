@@ -42,7 +42,7 @@ public:
 	ModuleParticles* particles;
 	ModuleCollision* collision;
 	ModuleEnemies* enemies;
-	ModuleBarrel* barrel;
+	ModuleBarrel* barrels;
 	ModulePowerUps* powerup;
 
 public:
