@@ -32,9 +32,10 @@ public:
 	Animation shootu;
 	Animation shootr;
 	Animation shootl;
+	Animation dead;
 	fPoint position;
 	fPoint previouspos;
-	iPoint cameralim;
+	int cameralim;
 	Collider* col;
 	int cont = 0;
 	bool destroyed = false;

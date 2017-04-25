@@ -14,7 +14,7 @@ Enemy_BackStabber::Enemy_BackStabber(int x, int y) :Enemy(x, y) {
 
 	animation = &move;
 
-	collider = App->collision->AddCollider({ 0,0,24,24 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
+	collider = App->collision->AddCollider({ 0,0,24,24 }, COLLIDER_TYPE::COLLIDER_ENEMYBUILDING, (Module*)App->enemies);
 
 	original_pos.x = x;
 	original_pos.y = y;

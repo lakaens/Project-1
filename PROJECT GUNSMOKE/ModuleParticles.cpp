@@ -54,11 +54,10 @@ ModuleParticles::ModuleParticles()
 	deadGunMen.anim.loop = false;
 	deadGunMen.anim.speed = 0.1f;
 
-	deadWindowSniperRight.anim.PushBack({ 295,552,15,14 });
-	deadWindowSniperRight.anim.PushBack({ 335,552,18,14 });
-	deadWindowSniperRight.anim.PushBack({ 375,552,17,15 });
-	deadWindowSniperRight.anim.PushBack({ 415,554,14,15 });
-	deadWindowSniperRight.anim.PushBack({ 455,555,18,14 });
+	deadWindowSniperRight.anim.PushBack({ 58,176,18,14 });
+	deadWindowSniperRight.anim.PushBack({ 98,176,17,15 });
+	deadWindowSniperRight.anim.PushBack({ 138,178,14,15 });
+	deadWindowSniperRight.anim.PushBack({ 178,179,18,14 });
 	deadWindowSniperRight.anim.PushBack({ 553,26,5,5 });
 	deadWindowSniperRight.anim.PushBack({ 455,555,18,14 });
 	deadWindowSniperRight.anim.PushBack({ 553,26,5,5 });
@@ -104,12 +103,28 @@ ModuleParticles::ModuleParticles()
 	deadBackStabber.anim.speed = 0.1f;
 	
 	enemysimplebullet.anim.PushBack({ 350,16,10,10});
-	enemysimplebullet.speed.y -= 1;
+	enemysimplebullet.anim.loop = false;
 
 	enemysimplebulletdead.anim.PushBack({372,15,6,6});
 	enemysimplebulletdead.anim.PushBack({395,14,9,8});
 	enemysimplebulletdead.anim.PushBack({418,13,12,10});
 	enemysimplebulletdead.anim.speed = 0.1f;
+	enemysimplebulletdead.anim.loop = false;
+
+	deadBarrel.anim.PushBack({ 81,59,15,15 });
+	deadBarrel.anim.PushBack({ 104,59,15,15 });
+	deadBarrel.anim.PushBack({ 128,60,16,14 });
+	deadBarrel.anim.PushBack({ 152,61,16,13 });
+	deadBarrel.anim.PushBack({ 176,60,16,14 });
+	deadBarrel.anim.PushBack({ 202,63,14,11 });
+	deadBarrel.anim.PushBack({ 81,59,15,15 });
+	deadBarrel.anim.PushBack({ 104,59,15,15 });
+	deadBarrel.anim.PushBack({ 128,60,16,14 });
+	deadBarrel.anim.PushBack({ 152,61,16,13 });
+	deadBarrel.anim.PushBack({ 176,60,16,14 });
+	deadBarrel.anim.PushBack({ 202,63,14,11 });
+	deadBarrel.anim.loop = false;
+	deadBarrel.anim.speed = 0.1f;
 }
 
 ModuleParticles::~ModuleParticles()

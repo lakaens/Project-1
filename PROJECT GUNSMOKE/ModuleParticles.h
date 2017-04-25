@@ -7,7 +7,7 @@
 #include "p2Point.h"
 #include "ModuleCollision.h"
 
-#define MAX_ACTIVE_PARTICLES 100
+#define MAX_ACTIVE_PARTICLES 200
 
 struct SDL_Texture;
 struct Collider;
@@ -61,6 +61,7 @@ public:
 	Particle deadBomber;
 	Particle deadWindowSniperLeft;
 	Particle deadBackStabber;
+	Particle deadBarrel;
 	
 };
 

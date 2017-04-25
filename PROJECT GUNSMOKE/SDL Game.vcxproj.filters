@@ -98,8 +98,11 @@
     <ClInclude Include="ModuleMap1.h">
       <Filter>Modules</Filter>
     </ClInclude>
-    <ClInclude Include="ModuleBarrel.h">
-      <Filter>Modules</Filter>
+    <ClInclude Include="Enemy_Barrel.h">
+      <Filter>Modules\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy_PowerUp_Boots.h">
+      <Filter>Modules\Enemies</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -172,8 +175,11 @@
     <ClCompile Include="ModuleMap1.cpp">
       <Filter>Modules</Filter>
     </ClCompile>
-    <ClCompile Include="ModuleBarrel.cpp">
-      <Filter>Modules</Filter>
+    <ClCompile Include="Enemy_Barrel.cpp">
+      <Filter>Modules\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy_PowerUp_Boots.cpp">
+      <Filter>Modules\Enemies</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

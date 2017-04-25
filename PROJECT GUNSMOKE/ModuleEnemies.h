@@ -15,6 +15,8 @@ enum ENEMY_TYPES
 	BOMBER,
 	RIFFLEMEN,
 	BACKSTABBER,
+	POWERUP,
+	BARREL,
 };
 
 class Enemy;

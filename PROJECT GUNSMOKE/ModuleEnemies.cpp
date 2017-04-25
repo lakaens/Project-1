@@ -11,6 +11,8 @@
 #include "Enemy_WindowSniperRight.h"
 #include "Enemy_WindowSniperLeft.h"
 #include "Enemy_RiffleMen.h"
+#include "PowerUp_Boots.h"
+#include "Enemy_Barrel.h"
 
 #define SPAWN_MARGIN 70
 
@@ -152,6 +154,14 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 			case ENEMY_TYPES::RIFFLEMEN:
 			enemies[i] = new Enemy_RiffleMen(info.x, info.y);
 			enemies[i]->type = ENEMY_TYPES::RIFFLEMEN;
+			break;
+			case ENEMY_TYPES::BARREL:
+			enemies[i] = new Enemy_Barrel(info.x, info.y);
+			enemies[i]->type = ENEMY_TYPES::BARREL;
+			break;
+			case ENEMY_TYPES::POWERUP:
+			enemies[i] = new Enemy_PowerUp_Boots(info.x, info.y);
+			enemies[i]->type = ENEMY_TYPES::POWERUP;
 			break;
 		}
 	}

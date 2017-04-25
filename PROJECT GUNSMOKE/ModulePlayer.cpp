@@ -75,6 +75,17 @@ ModulePlayer::ModulePlayer()
 	shootl.loop = true;
 	shootl.speed = 0.1f;
 
+	// Player dead
+	dead.PushBack({56,81,14,26});
+	dead.PushBack({95,78,16,29});
+	dead.PushBack({132,80,21,27});
+	dead.PushBack({172,80,23,27});
+	dead.PushBack({209,83,27,24});
+	dead.PushBack({ 249,84,31,22 });
+	dead.PushBack({ 289,87,31,19 });
+	dead.loop = false;
+	dead.speed = 0.1f;
+
 
 }
 
@@ -92,7 +103,7 @@ bool ModulePlayer::Start()
 	position.x = SCREEN_WIDTH/2;
 	position.y = 3000;
 	score = 0;
-
+	cameralim = 2770;
 	col = App->collision->AddCollider({(int)position.x, (int)position.y, 19, 27}, COLLIDER_PLAYER, this);
 
 	bulletsound = App->audio->Loadeffect("Gunsmoke/laser.wav");
@@ -116,7 +127,10 @@ bool ModulePlayer::CleanUp()
 update_status ModulePlayer::Update()
 {
 	previouspos = position;
-
+	if (cameralim > 0) {
+		cameralim -= 1;
+	}
+	
 	current_animation = &up;
 	position.y -= 1; // Automatic movement
 
@@ -151,23 +165,28 @@ update_status ModulePlayer::Update()
 
 	if(App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT) // MOVEMENT DOWN
 	{
-		position.y += speed + 1;
+		
 		if(current_animation != &up)
 		{
 			up.Reset();
 			current_animation = &up;
 		}
-		
+		if (position.y < cameralim + SCREEN_HEIGHT - 27) {
+			position.y += speed + 1;
+		}
 	}
 
 	if(App->input->keyboard[SDL_SCANCODE_UP] == KEY_STATE::KEY_REPEAT) // MOVEMENT UP
 	{
-		position.y -= speed;
+		
 		if(current_animation != &up)
 		{
 			up.Reset();
 			current_animation = &up;
 		}
+		if (position.y > cameralim) {
+			position.y -= speed;
+	}
 	}
 
 	if (App->input->keyboard[SDL_SCANCODE_UP] == KEY_STATE::KEY_REPEAT && App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT) {
@@ -195,11 +214,11 @@ update_status ModulePlayer::Update()
 			current_animation = &right;
 		
 	}
-	if(App->input->keyboard[SDL_SCANCODE_C] == KEY_STATE::KEY_REPEAT&& cont<=35)
+	if(App->input->keyboard[SDL_SCANCODE_C] == KEY_STATE::KEY_REPEAT || App->input->keyboard[SDL_SCANCODE_C] == KEY_STATE::KEY_DOWN && cont<=20)
 	{
 		cont++;
 		current_animation = &shootl;
-		if (cont == 35) {
+		if (cont == 20|| App->input->keyboard[SDL_SCANCODE_C] == KEY_STATE::KEY_DOWN) {
 			App->particles->AddParticle(App->particles->bulletl, position.x - 1, position.y + 5, COLLIDER_PLAYER_SHOT);
 			App->particles->AddParticle(App->particles->bulletl, position.x + 10, position.y + 5, COLLIDER_PLAYER_SHOT);
 			bullet++;
@@ -208,11 +227,11 @@ update_status ModulePlayer::Update()
 		}
 		
 	}
-	if (App->input->keyboard[SDL_SCANCODE_V] == KEY_STATE::KEY_REPEAT && cont<=35)
+	if (App->input->keyboard[SDL_SCANCODE_V] == KEY_STATE::KEY_REPEAT || App->input->keyboard[SDL_SCANCODE_V] == KEY_STATE::KEY_DOWN&& cont<=20)
 	{
 		cont++;
 		current_animation = &shootu;
-		if (cont == 35) {
+		if (cont == 20|| App->input->keyboard[SDL_SCANCODE_V] == KEY_STATE::KEY_DOWN) {
 			App->particles->AddParticle(App->particles->bulletu, position.x + 3, position.y + 5, COLLIDER_PLAYER_SHOT);
 			App->particles->AddParticle(App->particles->bulletu, position.x + 13, position.y + 5, COLLIDER_PLAYER_SHOT);
 			bullet++;
@@ -221,11 +240,11 @@ update_status ModulePlayer::Update()
 		}
 		
 	}
-	if (App->input->keyboard[SDL_SCANCODE_B] == KEY_STATE::KEY_REPEAT && cont<=35)
+	if (App->input->keyboard[SDL_SCANCODE_B] == KEY_STATE::KEY_REPEAT || App->input->keyboard[SDL_SCANCODE_B] == KEY_STATE::KEY_REPEAT && cont<=20)
 	{
 		cont++;
 		current_animation = &shootr;
-		if (cont == 35) {
+		if (cont == 20|| App->input->keyboard[SDL_SCANCODE_B] == KEY_STATE::KEY_DOWN) {
 			App->particles->AddParticle(App->particles->bulletr, position.x + 5, position.y + 5, COLLIDER_PLAYER_SHOT);
 			App->particles->AddParticle(App->particles->bulletr, position.x + 15, position.y + 5, COLLIDER_PLAYER_SHOT);
 			bullet++;
@@ -258,6 +277,10 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 	if (c2->type == COLLIDER_WALL)
 	{
 		position = previouspos;
+	}
+	if (c2->type == COLLIDER_ENEMY_SHOT) {
+		destroyed = true;
+		current_animation = &dead;
 	}
 			
 }

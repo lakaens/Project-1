@@ -28,6 +28,5 @@ void Enemy_GunMen::Move()
 
 void Enemy_GunMen::Shoot() {
 
-	App->particles->AddParticle(App->particles->enemysimplebullet, position.x, position.y, COLLIDER_ENEMY_SHOT);
 
 }

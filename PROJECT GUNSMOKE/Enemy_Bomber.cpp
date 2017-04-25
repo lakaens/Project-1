@@ -7,10 +7,10 @@ Enemy_Bomber::Enemy_Bomber(int x, int y) :Enemy(x, y) {
 	move.PushBack({ 333,130,23,28 });
 	move.PushBack({ 374, 129, 20, 30 });
 	move.PushBack({ 412, 130, 22, 28 });
-	move.speed = 0.2f;
+	move.speed = 0.05f;
 
-	path.PushBack({ 0.f,0.5f }, 100);
-
+	path.PushBack({ 0.f,0.5f }, 10);
+	
 	animation = &move;
 
 	collider = App->collision->AddCollider({ 0,0,24,24 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);

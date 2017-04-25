@@ -8,6 +8,7 @@
 #include "ModuleEnemies.h"
 #include "ModuleMap1.h"
 #include "ModuleAudio.h"
+#include "ModuleFadeToBlack.h"
 
 
 
@@ -39,7 +40,7 @@ bool ModuleMap1::Start()
 
 	App->enemies->Enable();
 	App->audio->Enable();
-	
+	App->particles->AddParticle(App->particles->enemysimplebullet, SCREEN_WIDTH / 2, 2700, COLLIDER_ENEMY_SHOT);
 	// Colliders ---
 	//left buildings
 	App->collision->AddCollider({ 0,3037,37,16 }, COLLIDER_WALL);
@@ -174,7 +175,7 @@ bool ModuleMap1::Start()
 	App->enemies->AddEnemy(ENEMY_TYPES::BOMBER, 87, 548);
 	App->enemies->AddEnemy(ENEMY_TYPES::BOMBER, 51, 298);
 	App->enemies->AddEnemy(ENEMY_TYPES::BOMBER, 110, 20);
-
+	
 	//App->enemies->AddEnemy(ENEMY_TYPES::RIFFLEMEN, 149, 1038);
 	//App->enemies->AddEnemy(ENEMY_TYPES::RIFFLEMEN, 191, 1038);
 	//App->enemies->AddEnemy(ENEMY_TYPES::RIFFLEMEN, 37, 683);
@@ -182,7 +183,16 @@ bool ModuleMap1::Start()
 
 	//App->enemies->AddEnemy(ENEMY_TYPES::BACKSTABBER, 212, 212);
 	//App->enemies->AddEnemy(ENEMY_TYPES::BACKSTABBER, 212, 100);
+	/*App->enemies->AddEnemy(ENEMY_TYPES::WINDOWSNIPERRIGHT, 7, 2681);
+	App->enemies->AddEnemy(ENEMY_TYPES::WINDOWSNIPERRIGHT, 7, 1561);
+	App->enemies->AddEnemy(ENEMY_TYPES::WINDOWSNIPERRIGHT, 7, 1369);
+	App->enemies->AddEnemy(ENEMY_TYPES::WINDOWSNIPERRIGHT, 7, 1113);
 
+	App->enemies->AddEnemy(ENEMY_TYPES::WINDOWSNIPERLEFT, 203, 2393);
+ App->enemies->AddEnemy(ENEMY_TYPES::WINDOWSNIPERLEFT, 203, 2234);
+ App->enemies->AddEnemy(ENEMY_TYPES::WINDOWSNIPERLEFT, 203, 1721);
+ App->enemies->AddEnemy(ENEMY_TYPES::WINDOWSNIPERLEFT, 203, 633);
+ App->enemies->AddEnemy(ENEMY_TYPES::WINDOWSNIPERLEFT, 194, 259);*/
 	
 	return true;
 }
@@ -206,11 +216,17 @@ bool ModuleMap1::CleanUp()
 update_status ModuleMap1::Update()
 {
 	// Move camera forward -----------------------------
-	App->render->camera.y -= 1*SCREEN_SIZE;
+	if (App->player->cameralim > 0) {
+		App->render->camera.y -= 1 * SCREEN_SIZE;
+	}
+
 
 	// Draw everything --------------------------------------
 	App->render->Blit(background, 0, 0, NULL);
 	
+	if (App->player->destroyed==true) {
+		App->fade->FadeToBlack(this, this);
+	}
 	
 	return UPDATE_CONTINUE;
 }
