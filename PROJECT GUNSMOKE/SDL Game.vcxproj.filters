@@ -101,7 +101,7 @@
     <ClInclude Include="Enemy_Barrel.h">
       <Filter>Modules\Enemies</Filter>
     </ClInclude>
-    <ClInclude Include="Enemy_PowerUp_Boots.h">
+    <ClInclude Include="Enemy_PowerUp.h">
       <Filter>Modules\Enemies</Filter>
     </ClInclude>
   </ItemGroup>
@@ -178,7 +178,7 @@
     <ClCompile Include="Enemy_Barrel.cpp">
       <Filter>Modules\Enemies</Filter>
     </ClCompile>
-    <ClCompile Include="Enemy_PowerUp_Boots.cpp">
+    <ClCompile Include="Enemy_PowerUp.cpp">
       <Filter>Modules\Enemies</Filter>
     </ClCompile>
   </ItemGroup>

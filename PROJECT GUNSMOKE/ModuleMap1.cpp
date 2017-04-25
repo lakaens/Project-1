@@ -40,7 +40,7 @@ bool ModuleMap1::Start()
 
 	App->enemies->Enable();
 	App->audio->Enable();
-	App->particles->AddParticle(App->particles->enemysimplebullet, SCREEN_WIDTH / 2, 2700, COLLIDER_ENEMY_SHOT);
+	App->enemies->AddEnemy(ENEMY_TYPES::POWERUP, SCREEN_WIDTH / 2, 2700);
 	// Colliders ---
 	//left buildings
 	App->collision->AddCollider({ 0,3037,37,16 }, COLLIDER_WALL);

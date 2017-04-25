@@ -15,7 +15,6 @@ private:
 public:
 
 	Enemy_Barrel(int x, int y);
-	void Move();
 	void OnCollision(Collider* c1, Collider* c2);
 	int life;
 };

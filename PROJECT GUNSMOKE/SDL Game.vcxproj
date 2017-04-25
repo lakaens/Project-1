@@ -76,7 +76,7 @@
     <ClInclude Include="Enemy_Barrel.h" />
     <ClInclude Include="Enemy_Bomber.h" />
     <ClInclude Include="Enemy_GunMen.h" />
-    <ClInclude Include="Enemy_PowerUp_Boots.h" />
+    <ClInclude Include="Enemy_PowerUp.h" />
     <ClInclude Include="Enemy_RiffleMen.h" />
     <ClInclude Include="Enemy_WindowSniperLeft.h" />
     <ClInclude Include="Enemy_WindowSniperRight.h" />
@@ -106,7 +106,7 @@
     <ClCompile Include="Enemy_Barrel.cpp" />
     <ClCompile Include="Enemy_Bomber.cpp" />
     <ClCompile Include="Enemy_GunMen.cpp" />
-    <ClCompile Include="Enemy_PowerUp_Boots.cpp" />
+    <ClCompile Include="Enemy_PowerUp.cpp" />
     <ClCompile Include="Enemy_RiffleMen.cpp" />
     <ClCompile Include="Enemy_WindowSniperLeft.cpp" />
     <ClCompile Include="Enemy_WindowSniperRight.cpp" />
