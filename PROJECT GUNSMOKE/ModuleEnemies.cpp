@@ -187,6 +187,13 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 				enemies[i] = nullptr;
 				break;
 			}
+			if (ENEMY_TYPES::BACKSTABBER) 
+			{
+				App->particles->AddParticle(App->particles->deadBackStabber, c1->rect.x, c1->rect.y, COLLIDER_NONE);
+				delete enemies[i];
+				enemies[i] = nullptr;
+				break;
+			}
 
 		}
 	}

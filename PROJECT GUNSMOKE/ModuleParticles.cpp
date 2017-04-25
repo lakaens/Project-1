@@ -91,6 +91,17 @@ ModuleParticles::ModuleParticles()
 	deadWindowSniperLeft.anim.loop = false;
 	deadWindowSniperLeft.anim.speed = 0.1f;
 
+	deadBackStabber.anim.PushBack({417,161,23,26});
+	deadBackStabber.anim.PushBack({458,161,22,25});
+	deadBackStabber.anim.PushBack({491,167,25,24});
+	deadBackStabber.anim.PushBack({530,173,34,16});
+	deadBackStabber.anim.PushBack({ 553,26,5,5 });
+	deadBackStabber.anim.PushBack({ 530,173,34,16 });
+	deadBackStabber.anim.PushBack({ 553,26,5,5 });
+	deadBackStabber.anim.PushBack({ 530,173,34,16 });
+	deadBackStabber.anim.PushBack({ 553,26,5,5 });
+	deadBackStabber.anim.loop = false;
+	deadBackStabber.anim.speed = 0.1f;
 	
 	enemysimplebullet.anim.PushBack({ 350,16,10,10});
 	enemysimplebullet.speed.y -= 1;

@@ -60,6 +60,7 @@ public:
 	Particle deadWindowSniperRight;
 	Particle deadBomber;
 	Particle deadWindowSniperLeft;
+	Particle deadBackStabber;
 	
 };
 
