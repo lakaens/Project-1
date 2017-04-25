@@ -158,22 +158,36 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 		if (enemies[i] != nullptr && enemies[i]->GetCollider() == c1)
 		{
 			enemies[i]->OnCollision(c2);
-			if (ENEMY_TYPES::GUNMEN) {
+			if (ENEMY_TYPES::GUNMEN)
+			{
 				App->particles->AddParticle(App->particles->deadGunMen, c1->rect.x, c1->rect.y, COLLIDER_NONE);
 
 				delete enemies[i];
 				enemies[i] = nullptr;
 				break;
 			}
-			if (ENEMY_TYPES::WINDOWSNIPERRIGHT) {
-				{
+			if (ENEMY_TYPES::WINDOWSNIPERRIGHT) 
+			{
 					App->particles->AddParticle(App->particles->deadWindowSniperRight, c1->rect.x, c1->rect.y, COLLIDER_NONE);
-
 					delete enemies[i];
 					enemies[i] = nullptr;
 					break;
-				}
 			}
+			if(ENEMY_TYPES::BOMBER)
+			{
+				App->particles->AddParticle(App->particles->deadBomber, c1->rect.x, c1->rect.y, COLLIDER_NONE);
+				delete enemies[i];
+				enemies[i] = nullptr;
+				break;
+			}
+			if (ENEMY_TYPES::WINDOWSNIPERLEFT) 
+			{
+				App->particles->AddParticle(App->particles->deadWindowSniperLeft, c1->rect.x, c1->rect.y, COLLIDER_NONE);
+				delete enemies[i];
+				enemies[i] = nullptr;
+				break;
+			}
+
 		}
 	}
 }

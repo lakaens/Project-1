@@ -58,6 +58,8 @@ public:
 	Particle enemysimplebullet;
 	Particle enemysimplebulletdead;
 	Particle deadWindowSniperRight;
+	Particle deadBomber;
+	Particle deadWindowSniperLeft;
 	
 };
 

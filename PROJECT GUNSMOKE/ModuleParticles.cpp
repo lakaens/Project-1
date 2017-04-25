@@ -66,6 +66,31 @@ ModuleParticles::ModuleParticles()
 	deadWindowSniperRight.anim.PushBack({ 553,26,5,5 });
 	deadWindowSniperRight.anim.loop = false;
 	deadWindowSniperRight.anim.speed = 0.1f;
+
+	deadBomber.anim.PushBack({ 215,160,32,32,});
+	deadBomber.anim.PushBack({ 255,160,31,30 });
+	deadBomber.anim.PushBack({ 295,160,31,29 });
+	deadBomber.anim.PushBack({ 334,172,34,21 });
+	deadBomber.anim.PushBack({ 553,26,5,5 });
+	deadBomber.anim.PushBack({ 334,172,34,21 });
+	deadBomber.anim.PushBack({ 553,26,5,5 });
+	deadBomber.anim.PushBack({ 334,172,34,21 });
+	deadBomber.anim.PushBack({ 553,26,5,5 });
+	deadBomber.anim.loop = false;
+	deadBomber.anim.speed = 0.1f;
+
+	deadWindowSniperLeft.anim.PushBack({58,225,18,14});
+	deadWindowSniperLeft.anim.PushBack({ 102,224,14,15 });
+	deadWindowSniperLeft.anim.PushBack({ 139,222,17,15 });
+	deadWindowSniperLeft.anim.PushBack({ 178,222,18,14 });	
+	deadWindowSniperLeft.anim.PushBack({ 553,26,5,5 });
+	deadWindowSniperLeft.anim.PushBack({ 178,222,18,14 });
+	deadWindowSniperLeft.anim.PushBack({ 553,26,5,5 });
+	deadWindowSniperLeft.anim.PushBack({ 178,222,18,14 });
+	deadWindowSniperLeft.anim.PushBack({ 553,26,5,5 });
+	deadWindowSniperLeft.anim.loop = false;
+	deadWindowSniperLeft.anim.speed = 0.1f;
+
 	
 	enemysimplebullet.anim.PushBack({ 350,16,10,10});
 	enemysimplebullet.speed.y -= 1;
