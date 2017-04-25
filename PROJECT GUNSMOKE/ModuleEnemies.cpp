@@ -131,21 +131,27 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 		{
 			case ENEMY_TYPES::GUNMEN:
 			enemies[i] = new Enemy_GunMen(info.x,info.y);
+			enemies[i]->type = ENEMY_TYPES::GUNMEN;
 			break;
 			case ENEMY_TYPES::BACKSTABBER:
 			enemies[i] = new Enemy_BackStabber(info.x, info.y);
+			enemies[i]->type = ENEMY_TYPES::BACKSTABBER;
 			break;
 			case ENEMY_TYPES::WINDOWSNIPERLEFT:
 			enemies[i] = new Enemy_WindowSniperLeft(info.x, info.y);
+			enemies[i]->type = ENEMY_TYPES::WINDOWSNIPERLEFT;
 			break;
 			case ENEMY_TYPES::WINDOWSNIPERRIGHT:
 			enemies[i] = new Enemy_WindowSniperRight(info.x, info.y);
+			enemies[i]->type = ENEMY_TYPES::WINDOWSNIPERRIGHT;
 			break;
 			case ENEMY_TYPES::BOMBER:
 			enemies[i] = new Enemy_Bomber(info.x, info.y);
+			enemies[i]->type = ENEMY_TYPES::BOMBER;
 			break;
 			case ENEMY_TYPES::RIFFLEMEN:
 			enemies[i] = new Enemy_RiffleMen(info.x, info.y);
+			enemies[i]->type = ENEMY_TYPES::RIFFLEMEN;
 			break;
 		}
 	}
@@ -158,7 +164,7 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 		if (enemies[i] != nullptr && enemies[i]->GetCollider() == c1)
 		{
 			enemies[i]->OnCollision(c2);
-			if (ENEMY_TYPES::GUNMEN)
+			if (enemies[i]->type==ENEMY_TYPES::GUNMEN)
 			{
 				App->particles->AddParticle(App->particles->deadGunMen, c1->rect.x, c1->rect.y, COLLIDER_NONE);
 
@@ -166,28 +172,28 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 				enemies[i] = nullptr;
 				break;
 			}
-			if (ENEMY_TYPES::WINDOWSNIPERRIGHT) 
+			if (enemies[i]->type==ENEMY_TYPES::WINDOWSNIPERRIGHT) 
 			{
 					App->particles->AddParticle(App->particles->deadWindowSniperRight, c1->rect.x, c1->rect.y, COLLIDER_NONE);
 					delete enemies[i];
 					enemies[i] = nullptr;
 					break;
 			}
-			if(ENEMY_TYPES::BOMBER)
+			if(enemies[i]->type == ENEMY_TYPES::BOMBER)
 			{
 				App->particles->AddParticle(App->particles->deadBomber, c1->rect.x, c1->rect.y, COLLIDER_NONE);
 				delete enemies[i];
 				enemies[i] = nullptr;
 				break;
 			}
-			if (ENEMY_TYPES::WINDOWSNIPERLEFT) 
+			if (enemies[i]->type == ENEMY_TYPES::WINDOWSNIPERLEFT)
 			{
 				App->particles->AddParticle(App->particles->deadWindowSniperLeft, c1->rect.x, c1->rect.y, COLLIDER_NONE);
 				delete enemies[i];
 				enemies[i] = nullptr;
 				break;
 			}
-			if (ENEMY_TYPES::BACKSTABBER) 
+			if (enemies[i]->type == ENEMY_TYPES::BACKSTABBER)
 			{
 				App->particles->AddParticle(App->particles->deadBackStabber, c1->rect.x, c1->rect.y, COLLIDER_NONE);
 				delete enemies[i];
