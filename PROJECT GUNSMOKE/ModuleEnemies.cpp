@@ -223,10 +223,14 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 {
 	for (uint i = 0; i < MAX_ENEMIES; ++i)
 	{
-		if (enemies[i] != nullptr && enemies[i]->GetCollider() == c1)
+		if (enemies[i] != nullptr && enemies[i]->GetCollider() == c1 && c2->type==COLLIDER_PLAYER_SHOT||c2->type==COLLIDER_PLAYER)
 		{
 			enemies[i]->OnCollision(c2);
-			if (enemies[i]->type==ENEMY_TYPES::GUNMEN)
+			if ((enemies[i]->type == ENEMY_TYPES::GUNMEN)
+				|| (enemies[i]->type == ENEMY_TYPES::GUNMENJUMPER)
+				|| (enemies[i]->type == ENEMY_TYPES::GUNMENLEFT)
+				|| (enemies[i]->type == ENEMY_TYPES::GUNMENRIGHT)
+				|| (enemies[i]->type == ENEMY_TYPES::GUNMENBALCONY))
 			{
 				App->particles->AddParticle(App->particles->deadGunMen, c1->rect.x, c1->rect.y, COLLIDER_NONE);
 

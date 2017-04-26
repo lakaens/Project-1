@@ -92,14 +92,23 @@ void ModuleFonts::BlitText(int x, int y, int font_id, const char* text) const
 	rect.w = font->char_w;
 	rect.h = font->char_h;
 
+	int inTable;
 	for(uint i = 0; i < len; ++i)
 	{
-		for (uint j = 0; j < strlen(font->table); ++j) {
-			if (text[i]==font->table[j]) {
-				App->render->Blit(fonts->graphic,x,y,&rect,false);
-
+		for (int j = 0; j < strlen(font->table); j++)
+		{
+			if (text[i] == fonts->table[j]) {
+				inTable = j;
+				break;
 			}
 		}
+		SDL_Rect charRec;
+		charRec.x = inTable * font->char_w;
+		charRec.y = 0;//to change if have more rows lol
+		charRec.w = font->char_w;
+		charRec.h = font->char_h;
+		App->render->Blit(font->graphic, x, y, &charRec, 1.0f, false);
+		x += font->char_w;
 		// TODO 2: Find the character in the table and its position in the texture, then Blit
 	}
 }

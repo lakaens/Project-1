@@ -5,6 +5,8 @@
 #include "ModuleRender.h"
 #include "ModuleCollision.h"
 #include "ModuleParticles.h"
+#include "ModulePlayer.h"
+#include "ModuleEnemies.h"
 
 #include "SDL/include/SDL_timer.h"
 
@@ -112,6 +114,7 @@ ModuleParticles::ModuleParticles()
 	enemysimplebulletdead.anim.PushBack({418,13,12,10});
 	enemysimplebulletdead.anim.speed = 0.1f;
 	enemysimplebulletdead.anim.loop = false;
+	enemysimplebullet.life = 800;
 
 	deadBarrel.anim.PushBack({ 81,59,15,15 });
 	deadBarrel.anim.PushBack({ 104,59,15,15 });
@@ -127,6 +130,21 @@ ModuleParticles::ModuleParticles()
 	deadBarrel.anim.PushBack({ 202,63,14,11 });
 	deadBarrel.anim.loop = false;
 	deadBarrel.anim.speed = 0.1f;
+
+	playerdead.anim.PushBack({ 227,203,16,28 });
+	playerdead.anim.PushBack({ 266,200,18,31 });
+	playerdead.anim.PushBack({ 303,202,23,29 });
+	playerdead.anim.PushBack({ 343,202,25,29 });
+	playerdead.anim.PushBack({ 380,205,29,25 });
+	playerdead.anim.PushBack({ 420,206,33,24 });
+	playerdead.anim.PushBack({ 460,209,33,21 });
+	playerdead.anim.PushBack({ 454,206,6,7 });
+	playerdead.anim.PushBack({ 460,209,33,21 });
+	playerdead.anim.PushBack({ 454,206,6,7 });
+	playerdead.anim.PushBack({ 460,209,33,21 });
+	playerdead.anim.PushBack({ 454,206,6,7 });
+	playerdead.anim.loop = false;
+	playerdead.anim.speed = 0.1f;
 }
 
 ModuleParticles::~ModuleParticles()
@@ -219,6 +237,26 @@ void ModuleParticles::OnCollision(Collider* c1, Collider* c2)
 			delete active[i];
 			active[i] = nullptr;
 			break;
+		}
+		if (c2->type == COLLIDER_ENEMY) {
+			if (c2->type == ENEMY_TYPES::GUNMEN) {
+				App->player->score += 200;
+			}
+			if (c2->type == ENEMY_TYPES::BACKSTABBER) {
+				App->player->score += 200;
+			}
+			if (c2->type == ENEMY_TYPES::BOMBER) {
+				App->player->score += 200;
+			}
+			if (c2->type == ENEMY_TYPES::WINDOWSNIPERLEFT) {
+				App->player->score += 200;
+			}
+			if (c2->type == ENEMY_TYPES::WINDOWSNIPERRIGHT) {
+				App->player->score += 200;
+			}
+			if (c2->type == ENEMY_TYPES::RIFFLEMEN) {
+				App->player->score += 200;
+			}
 		}
 	}
 }

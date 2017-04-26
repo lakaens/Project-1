@@ -32,16 +32,15 @@ public:
 	Animation shootu;
 	Animation shootr;
 	Animation shootl;
-	Animation dead;
+	Animation empty;
 	fPoint position;
-	bool colup = false;
-	bool coldown = false;
-	bool colleft = false;
-	bool colright = false;
 	float cameralim;
 	Collider* col;
 	int cont = 0;
 	bool destroyed = false;
+	int life = 3;
+	int cont1 = 0;
+	int original_camera;
 private:
 	uint bulletsound;
 	unsigned short bullet;

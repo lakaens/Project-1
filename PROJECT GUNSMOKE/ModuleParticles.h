@@ -62,6 +62,7 @@ public:
 	Particle deadWindowSniperLeft;
 	Particle deadBackStabber;
 	Particle deadBarrel;
+	Particle playerdead;
 	
 };
 

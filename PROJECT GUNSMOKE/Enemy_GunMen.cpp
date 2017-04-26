@@ -15,38 +15,38 @@ Enemy_GunMen::Enemy_GunMen(int x, int y) :Enemy(x, y) {
 	down.PushBack({ 214, 51, 20, 28 });
 	down.PushBack({ 254, 53, 20, 28 });
 	down.PushBack({ 294, 51, 20, 28 });
-	down.speed = 0.2f;
+	down.speed = 0.07f;
 
 	right.PushBack({ 337, 12, 15, 26 });
 	right.PushBack({ 18, 53, 15, 25 });
 	right.PushBack({ 57, 52, 17, 25 });
-	right.speed = 0.2f;
+	right.speed = 0.07f;
 
 	left.PushBack({ 93, 92, 18, 25 });
 	left.PushBack({ 132, 93, 19, 26 });
 	left.PushBack({ 171, 92, 22, 25 });
-	left.speed = 0.2f;
+	left.speed = 0.07f;
 
 	upright.PushBack({ 97, 13, 18, 25 });
 	upright.PushBack({ 136, 12, 20, 27 });
 	upright.PushBack({ 258, 13, 17, 27 });
 	upright.PushBack({ 297, 12, 19, 27 });
-	upright.speed = 0.2f;
+	upright.speed = 0.07f;
 
 	upleft.PushBack({ 215, 92, 17, 27 });
 	upleft.PushBack({ 258, 93, 14, 27 });
 	upleft.PushBack({ 298, 92, 14, 27 });
-	upleft.speed = 0.2f;
+	upleft.speed = 0.07f;
 
 	downright.PushBack({ 94, 52, 19, 27 });
 	downright.PushBack({ 135, 53, 17, 26 });
 	downright.PushBack({ 176, 52, 16, 26 });
-	downright.speed = 0.2f;
+	downright.speed = 0.07f;
 
 	downleft.PushBack({ 331, 52, 21, 26 });
 	downleft.PushBack({ 11, 93, 22, 27 });
 	downleft.PushBack({ 51, 92, 24, 27 });
-	downleft.speed = 0.2f;
+	downleft.speed = 0.07f;
 
 	animation = &down;
 
@@ -186,7 +186,7 @@ void Enemy_GunMen::Shoot()
 		App->particles->enemysimplebullet.speed.y = (speed.y / h)*ENEMY_SHOT_SPEED;
 
 
-		App->particles->AddParticle(App->particles->enemysimplebullet, position.x, position.y, COLLIDER_ENEMY_SHOT);
+		App->particles->AddParticle(App->particles->enemysimplebullet, position.x+3, position.y+3, COLLIDER_ENEMY_SHOT);
 
 
 		lastTime = currentTime;
