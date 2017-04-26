@@ -10,6 +10,7 @@
 #include "ModulePlayer.h"
 #include "ModuleAudio.h"
 #include "ModuleGameOver.h"
+#include "ModuleMap1.h"
 
 #include<stdio.h>
 
@@ -100,7 +101,7 @@ bool ModulePlayer::Start()
 	cameralim = 2770;
 	col = App->collision->AddCollider({(int)position.x, (int)position.y, 19, 27}, COLLIDER_PLAYER, this);
 	font_score = App->fonts->Load("fonts/characters.png", " 0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ !¡?¿$^.:%*#()<>ªº+-=|&", 1);
-	bulletsound = App->audio->Loadeffect("Gunsmoke/laser.wav");
+	bulletsound = App->audio->Loadeffect("Gunsmoke/shotfx.wav");
 
 	original_camera = 2770 * SCREEN_SIZE;
 	return true;
@@ -129,7 +130,7 @@ update_status ModulePlayer::Update()
 	char str[10];
 	sprintf_s(str, "%i", score);
 	App->fonts->BlitText(10, 0, font_score, str);
-	App->fonts->BlitText(81, 0, font_score, "120000");
+	App->fonts->BlitText(81, 0, font_score, "100069");
 
 	cont1++;
 	current_animation = &up;
@@ -231,8 +232,8 @@ update_status ModulePlayer::Update()
 				cont++;
 				current_animation = &shootl;
 				if (cont == 15 || App->input->keyboard[SDL_SCANCODE_C] == KEY_STATE::KEY_DOWN) {
-					App->particles->AddParticle(App->particles->bulletl, position.x - 1, position.y + 5, COLLIDER_PLAYER_SHOT);
-					App->particles->AddParticle(App->particles->bulletl, position.x + 10, position.y + 5, COLLIDER_PLAYER_SHOT);
+					App->particles->AddParticle(App->particles->bulletl, position.x - 1, position.y + 5, COLLIDER_PLAYER_SHOT,PARTICLE_PLAYER_SHOT);
+					App->particles->AddParticle(App->particles->bulletl, position.x + 10, position.y + 5, COLLIDER_PLAYER_SHOT, PARTICLE_PLAYER_SHOT);
 					bullet++;
 					App->audio->Playeffect(bulletsound);
 					cont = 0;
@@ -244,8 +245,8 @@ update_status ModulePlayer::Update()
 				cont++;
 				current_animation = &shootu;
 				if (cont == 15 || App->input->keyboard[SDL_SCANCODE_V] == KEY_STATE::KEY_DOWN) {
-					App->particles->AddParticle(App->particles->bulletu, position.x + 3, position.y + 5, COLLIDER_PLAYER_SHOT);
-					App->particles->AddParticle(App->particles->bulletu, position.x + 13, position.y + 5, COLLIDER_PLAYER_SHOT);
+					App->particles->AddParticle(App->particles->bulletu, position.x + 3, position.y + 5, COLLIDER_PLAYER_SHOT, PARTICLE_PLAYER_SHOT);
+					App->particles->AddParticle(App->particles->bulletu, position.x + 13, position.y + 5, COLLIDER_PLAYER_SHOT, PARTICLE_PLAYER_SHOT);
 					bullet++;
 					App->audio->Playeffect(bulletsound);
 					cont = 0;
@@ -257,13 +258,16 @@ update_status ModulePlayer::Update()
 				cont++;
 				current_animation = &shootr;
 				if (cont == 15 || App->input->keyboard[SDL_SCANCODE_B] == KEY_STATE::KEY_DOWN) {
-					App->particles->AddParticle(App->particles->bulletr, position.x + 5, position.y + 5, COLLIDER_PLAYER_SHOT);
-					App->particles->AddParticle(App->particles->bulletr, position.x + 15, position.y + 5, COLLIDER_PLAYER_SHOT);
+					App->particles->AddParticle(App->particles->bulletr, position.x + 5, position.y + 5, COLLIDER_PLAYER_SHOT, PARTICLE_PLAYER_SHOT);
+					App->particles->AddParticle(App->particles->bulletr, position.x + 15, position.y + 5, COLLIDER_PLAYER_SHOT, PARTICLE_PLAYER_SHOT);
 					bullet++;
 					App->audio->Playeffect(bulletsound);
 					cont = 0;
 				}
 
+			}
+			if (App->input->keyboard[SDL_SCANCODE_F2] == KEY_DOWN) {
+				App->player->col->to_delete = true;
 			}
 		}
 		
@@ -314,35 +318,24 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 		}
 
 	}
-		if (c2->type == COLLIDER_ENEMY_SHOT||c2->type==COLLIDER_ENEMY && cont1<=10000) {
-			
+	if (c2->type == COLLIDER_ENEMY_SHOT || c2->type == COLLIDER_ENEMY && destroyed == false) {
 
-				++cont1;
-				destroyed = true;
-				App->particles->AddParticle(App->particles->playerdead, position.x, position.y, COLLIDER_NONE);
+		if (col != nullptr) {
+			col->to_delete = true;
+		}
+		destroyed = true;
+		App->particles->AddParticle(App->particles->playerdead, position.x, position.y, COLLIDER_NONE);
 
-				if (col != nullptr) {
-					cont1 = 0;
-					col->to_delete = true;
-				}
-				life--;
-				if (life > 0) {
-					App->fade->FadeToBlack(this, this, 0.1f);
-					cont1 = 0;
-					cameralim = 2770;
-					position.x = SCREEN_WIDTH / 2;
-					position.y = 3000;
-				}
-				else if (life == 0) {
-					
-					App->fade->FadeToBlack(this, App->gameover, 1.0f);
-					
-					
+		cameralim = 0;
 
-				}
-				App->render->camera.y = original_camera;
-			}
-			
+
+		if (destroyed == true) {
+
+			App->fade->FadeToBlack(App->map, App->gameover);
+
+		}
+
+	}		
 		
 }
 

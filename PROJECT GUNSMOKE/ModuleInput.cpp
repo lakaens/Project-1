@@ -1,6 +1,7 @@
 #include "Globals.h"
 #include "Application.h"
 #include "ModuleInput.h"
+#include "ModuleAudio.h"
 #include "SDL/include/SDL.h"
 
 ModuleInput::ModuleInput() : Module()
@@ -64,6 +65,7 @@ update_status ModuleInput::PreUpdate()
 // Called before quitting
 bool ModuleInput::CleanUp()
 {
+	
 	LOG("Quitting SDL input event subsystem");
 	SDL_QuitSubSystem(SDL_INIT_EVENTS);
 	return true;

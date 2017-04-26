@@ -13,6 +13,17 @@ struct SDL_Texture;
 struct Collider;
 enum COLLIDER_TYPE;
 
+enum PARTICLE_TYPE
+{
+	PARTICLE_NONE = 0,
+	PARTICLE_PLAYER_SHOT,
+	PARTICLE_ENEMY_SHOT,
+	PARTICLE_BOMB,
+	PARTICLE_BOMBEXP,
+
+};
+
+
 struct Particle
 {
 	Collider* collider = nullptr;

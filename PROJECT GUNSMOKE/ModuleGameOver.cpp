@@ -16,8 +16,8 @@ ModuleGameOver::ModuleGameOver()
 {
 	stage.x = 0;
 	stage.y = 0;
-	stage.w = 224;
-	stage.h = 313;
+	stage.w = SCREEN_WIDTH;
+	stage.h = SCREEN_HEIGHT;
 }
 
 ModuleGameOver::~ModuleGameOver()
@@ -52,7 +52,7 @@ bool ModuleGameOver::CleanUp()
 // Update: draw background
 update_status ModuleGameOver::Update()
 {
-	App->render->Blit(background, 0, 0, NULL);
+	App->render->Blit(background, 0, 0, &stage);
 
 	return UPDATE_CONTINUE;
 }

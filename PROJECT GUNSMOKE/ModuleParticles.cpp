@@ -19,14 +19,14 @@ ModuleParticles::ModuleParticles()
 	bulletu.anim.PushBack({ 255, 135, 2, 5 });
 	bulletu.anim.loop = false;
 	bulletu.anim.speed = 0.3f;
-	bulletu.life = 400;
+	bulletu.life = 600;
 	bulletu.speed.y = -4;
 
 	bulletr.anim.PushBack({ 302, 136, 4, 4 });
 	bulletr.anim.PushBack({ 325, 136, 5, 4 });
 	bulletr.anim.loop = false;
 	bulletr.anim.speed = 0.3f;
-	bulletr.life = 400;
+	bulletr.life = 600;
 	bulletr.speed.y = -3;
 	bulletr.speed.x = +2;
 
@@ -34,13 +34,13 @@ ModuleParticles::ModuleParticles()
 	bulletl.anim.PushBack({ 292, 144, 4, 4 });
 	bulletl.anim.loop = false;
 	bulletl.anim.speed = 0.3f;
-	bulletl.life = 400;
+	bulletl.life = 600;
 	bulletl.speed.y = -3;
 	bulletl.speed.x = -2;
 
-	explosion.anim.PushBack({ 177,23,4,4 });
-	explosion.anim.PushBack({ 208,21,8,9 });
-	explosion.anim.PushBack({ 238,18,17,16 });
+	explosion.anim.PushBack({ 351,157,2,2 });
+	explosion.anim.PushBack({ 372,134,7,8 });
+	explosion.anim.PushBack({ 394,132,13,12 });
 	explosion.anim.loop = true;
 	explosion.anim.speed = 0.3f;
 
@@ -109,7 +109,7 @@ ModuleParticles::ModuleParticles()
 	enemysimplebullet.anim.speed -= 1;
 	enemysimplebullet.speed.y = 1;
 
-	enemysimplebulletdead.anim.PushBack({372,15,6,6});
+	enemysimplebulletdead.anim.PushBack({371,14,6,6});
 	enemysimplebulletdead.anim.PushBack({395,14,9,8});
 	enemysimplebulletdead.anim.PushBack({418,13,12,10});
 	enemysimplebulletdead.anim.speed = 0.1f;
@@ -239,24 +239,7 @@ void ModuleParticles::OnCollision(Collider* c1, Collider* c2)
 			break;
 		}
 		if (c2->type == COLLIDER_ENEMY) {
-			if (c2->type == ENEMY_TYPES::GUNMEN) {
-				App->player->score += 200;
-			}
-			if (c2->type == ENEMY_TYPES::BACKSTABBER) {
-				App->player->score += 200;
-			}
-			if (c2->type == ENEMY_TYPES::BOMBER) {
-				App->player->score += 200;
-			}
-			if (c2->type == ENEMY_TYPES::WINDOWSNIPERLEFT) {
-				App->player->score += 200;
-			}
-			if (c2->type == ENEMY_TYPES::WINDOWSNIPERRIGHT) {
-				App->player->score += 200;
-			}
-			if (c2->type == ENEMY_TYPES::RIFFLEMEN) {
-				App->player->score += 200;
-			}
+			App->player->score += 200;
 		}
 	}
 }
@@ -287,8 +270,13 @@ bool Particle::Update()
 
 	if(life > 0)
 	{
-		if((SDL_GetTicks() - born) > life)
+		if ((SDL_GetTicks() - born) > life) {
+			if(collider->type == COLLIDER_PLAYER_SHOT)
+				App->particles->AddParticle(App->particles->explosion, position.x, position.y, COLLIDER_NONE, PARTICLE_PLAYER_SHOT);
+		else if (collider->type == COLLIDER_ENEMY_SHOT)
+			App->particles->AddParticle(App->particles->enemysimplebulletdead, position.x - 5, position.y - 5, COLLIDER_NONE, PARTICLE_NONE);
 			ret = false;
+		}
 	}
 	else
 		if(anim.Finished())

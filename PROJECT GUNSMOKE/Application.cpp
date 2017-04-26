@@ -22,13 +22,15 @@ Application::Application()
 	modules[i++] = render = new ModuleRender();
 	modules[i++] = input = new ModuleInput();
 	modules[i++] = textures = new ModuleTextures();
-	modules[i++] = fonts = new ModuleFonts();
+	
 	modules[i++] = scene_intro = new ModuleSceneIntro();
 	modules[i++] = map = new ModuleMap1();
 	modules[i++] = gameover = new ModuleGameOver();
 	modules[i++] = enemies = new ModuleEnemies();
-	modules[i++] = player = new ModulePlayer();
+	
 	modules[i++] = particles = new ModuleParticles();
+	modules[i++] = fonts = new ModuleFonts();
+	modules[i++] = player = new ModulePlayer();
 	modules[i++] = collision = new ModuleCollision();
 	modules[i++] = fade = new ModuleFadeToBlack();
 	modules[i++] = audio = new ModuleAudio();
