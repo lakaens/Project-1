@@ -40,6 +40,7 @@ bool ModuleMap1::Start()
 
 	App->enemies->Enable();
 	App->audio->Enable();
+	App->enemies->AddEnemy(ENEMY_TYPES::POWERUP, SCREEN_WIDTH / 2, 2700);
 	// Colliders ---
 	//left buildings
 	App->collision->AddCollider({ 0,3037,37,16 }, COLLIDER_WALL);
@@ -179,7 +180,7 @@ bool ModuleMap1::Start()
 	//App->enemies->AddEnemy(ENEMY_TYPES::RIFFLEMEN, 191, 1038);
 	//App->enemies->AddEnemy(ENEMY_TYPES::RIFFLEMEN, 37, 683);
 	//App->enemies->AddEnemy(ENEMY_TYPES::RIFFLEMEN, 78, 23);
-	App->particles->AddParticle(App->particles->enemysimplebullet, SCREEN_WIDTH / 2, 2700, COLLIDER_ENEMY_SHOT);
+
 	//App->enemies->AddEnemy(ENEMY_TYPES::BACKSTABBER, 212, 212);
 	//App->enemies->AddEnemy(ENEMY_TYPES::BACKSTABBER, 212, 100);
 	/*App->enemies->AddEnemy(ENEMY_TYPES::WINDOWSNIPERRIGHT, 7, 2681);

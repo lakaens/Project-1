@@ -159,10 +159,10 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 			enemies[i] = new Enemy_Barrel(info.x, info.y);
 			enemies[i]->type = ENEMY_TYPES::BARREL;
 			break;
-			/*case ENEMY_TYPES::POWERUP:
+			case ENEMY_TYPES::POWERUP:
 				enemies[i] = new Enemy_PowerUp(info.x, info.y);
 			enemies[i]->type = ENEMY_TYPES::POWERUP;
-			break;*/
+			break;
 		}
 	}
 }

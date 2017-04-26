@@ -104,8 +104,6 @@ ModuleParticles::ModuleParticles()
 	
 	enemysimplebullet.anim.PushBack({ 350,16,10,10});
 	enemysimplebullet.anim.loop = false;
-	enemysimplebullet.anim.speed -= 1;
-	enemysimplebullet.speed.y = 1;
 
 	enemysimplebulletdead.anim.PushBack({372,15,6,6});
 	enemysimplebulletdead.anim.PushBack({395,14,9,8});

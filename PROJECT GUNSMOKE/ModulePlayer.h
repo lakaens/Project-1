@@ -34,10 +34,7 @@ public:
 	Animation shootl;
 	Animation dead;
 	fPoint position;
-	bool colup = false;
-	bool coldown = false;
-	bool colleft = false;
-	bool colright = false;
+	fPoint previouspos;
 	int cameralim;
 	Collider* col;
 	int cont = 0;

@@ -18,6 +18,7 @@ class ModuleCollision;
 class ModuleEnemies;
 class ModuleFonts;
 class ModuleAudio;
+
 class Module;
 
 class Application
