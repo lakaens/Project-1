@@ -39,8 +39,11 @@ public:
 	int cont = 0;
 	bool destroyed = false;
 	int life = 3;
-	int cont1 = 0;
 	int original_camera;
+	bool colup = false;
+	bool coldown = false;
+	bool colleft = false;
+	bool colright = false;
 private:
 	uint bulletsound;
 	unsigned short bullet;

@@ -1,15 +1,15 @@
-#ifndef __MODULEMAP1_H__
-#define __MODULEMAP1_H__
+#ifndef __MODULEWIN_H__
+#define __MODULEWIN_H__
 
 #include "Module.h"
 
 struct SDL_Texture;
 
-class ModuleMap1 : public Module
+class ModuleWin : public Module
 {
 public:
-	ModuleMap1();
-	~ModuleMap1();
+	ModuleWin();
+	~ModuleWin();
 
 	bool Start();
 	update_status Update();
@@ -23,4 +23,4 @@ public:
 	SDL_Texture* stars = nullptr;
 };
 
-#endif // __MODULEMAP1_H__
+#endif // __MODULEWIN_H__

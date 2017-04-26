@@ -33,7 +33,7 @@ bool ModuleGameOver::Start()
 
 	background = App->textures->Load("Gunsmoke/gameover.png");
 	
-
+	App->render->camera.x = App->render->camera.y = 0;
 	
 
 	return true;
