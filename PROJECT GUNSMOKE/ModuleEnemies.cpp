@@ -267,6 +267,13 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 				enemies[i] = nullptr;
 				break;
 			}
+			if (enemies[i]->type == ENEMY_TYPES::RIFFLEMEN) {
+				
+					App->particles->AddParticle(App->particles->deadRiffleMen, c1->rect.x, c1->rect.y, COLLIDER_NONE);
+					delete enemies[i];
+					enemies[i] = nullptr;
+					break;
+			}
 		}
 		if (c2->type == COLLIDER_WALL && enemies[i] != nullptr && c1->CheckCollision(c2->rect) == true && enemies[i]->GetCollider() == c1)
 		{

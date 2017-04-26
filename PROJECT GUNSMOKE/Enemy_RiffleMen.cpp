@@ -14,10 +14,10 @@ Enemy_RiffleMen::Enemy_RiffleMen(int x, int y) :Enemy(x, y) {
 	sides.PushBack({ 215, 213, 16, 27 });
 	sides.PushBack({ 334, 213, 18, 27 });
 	sides.loop = true;
-	sides.speed = 0.2f;
+	sides.speed = 0.07f;
 
-	path.PushBack({ 0.f,0.5f }, 100, &move);
-	path.PushBack({ 0.f,0.f }, 100, &sides);
+	path.PushBack({ 0.f,0.5f }, 75, &move);
+	path.PushBack({ 0.f,0.f }, 500, &sides);
 
 	animation = &move;
 

@@ -24,3 +24,4 @@ public:
 };
 
 #endif // __MODULEWIN_H__
+

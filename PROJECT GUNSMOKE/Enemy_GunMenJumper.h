@@ -15,6 +15,10 @@ private:
 	Animation stay;
 	Animation diagonaldown;
 	Animation move;
+	iPoint speed;
+	uint lastTime = 0;
+	uint TimeUp = 0;
+	float h;
 public:
 
 	Enemy_GunMenJumper(int x, int y);

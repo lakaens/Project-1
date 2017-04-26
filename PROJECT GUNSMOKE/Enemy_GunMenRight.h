@@ -11,7 +11,10 @@ private:
 	Path path;
 	iPoint original_pos;
 	Animation horizontal;
-
+	iPoint speed;
+	uint lastTime = 0;
+	uint TimeUp = 0;
+	float h;
 public:
 
 	Enemy_GunMenRight(int x, int y);

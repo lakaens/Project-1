@@ -74,6 +74,8 @@ public:
 	Particle deadBackStabber;
 	Particle deadBarrel;
 	Particle playerdead;
+	Particle deadRiffleMen;
+	Particle playerhit;
 	
 };
 

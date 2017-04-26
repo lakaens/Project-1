@@ -13,7 +13,6 @@ ModuleCollision::ModuleCollision()
 	matrix[COLLIDER_WALL][COLLIDER_ENEMY] = true;
 	matrix[COLLIDER_WALL][COLLIDER_PLAYER_SHOT] = false;
 	matrix[COLLIDER_WALL][COLLIDER_ENEMY_SHOT] = false;
-	matrix[COLLIDER_WALL][COLLIDER_ENEMY_SHOT] = true;
 
 	matrix[COLLIDER_PLAYER][COLLIDER_WALL] = true;
 	matrix[COLLIDER_PLAYER][COLLIDER_PLAYER] = false;

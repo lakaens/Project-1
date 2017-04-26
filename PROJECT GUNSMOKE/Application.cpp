@@ -12,7 +12,8 @@
 #include "ModuleEnemies.h"
 #include "ModuleFonts.h"
 #include "ModuleAudio.h"
-#include"ModuleGameOver.h"
+#include "ModuleGameOver.h"
+#include "ModuleWin.h"
 
 
 Application::Application()
@@ -22,12 +23,11 @@ Application::Application()
 	modules[i++] = render = new ModuleRender();
 	modules[i++] = input = new ModuleInput();
 	modules[i++] = textures = new ModuleTextures();
-	
 	modules[i++] = scene_intro = new ModuleSceneIntro();
 	modules[i++] = map = new ModuleMap1();
 	modules[i++] = gameover = new ModuleGameOver();
+	modules[i++] = win = new ModuleWin();
 	modules[i++] = enemies = new ModuleEnemies();
-	
 	modules[i++] = particles = new ModuleParticles();
 	modules[i++] = fonts = new ModuleFonts();
 	modules[i++] = player = new ModulePlayer();
@@ -56,6 +56,7 @@ bool Application::Init()
 	audio->Disable();
 	particles->Disable();
 	gameover->Disable();
+	win->Disable();
 	// ----------------------------
 
 	for(int i = 0; i < NUM_MODULES && ret == true; ++i)

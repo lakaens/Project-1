@@ -9,6 +9,8 @@
 #include "ModuleGameOver.h"
 #include "ModuleAudio.h"
 #include "ModuleFadeToBlack.h"
+#include "ModuleInput.h"
+#include "ModuleSceneIntro.h"
 
 
 
@@ -27,13 +29,13 @@ ModuleGameOver::~ModuleGameOver()
 bool ModuleGameOver::Start()
 {
 	
-
+	App->render->camera.x = App->render->camera.y = 0;
 
 	LOG("Loading space scene");
 
 	background = App->textures->Load("Gunsmoke/gameover.png");
 	
-	App->render->camera.x = App->render->camera.y = 0;
+
 	
 
 	return true;
@@ -43,7 +45,7 @@ bool ModuleGameOver::Start()
 bool ModuleGameOver::CleanUp()
 {
 	LOG("Unloading space scene");
-
+	
 	App->textures->Unload(background);
 
 	return true;
@@ -53,6 +55,10 @@ bool ModuleGameOver::CleanUp()
 update_status ModuleGameOver::Update()
 {
 	App->render->Blit(background, 0, 0, &stage);
+
+	if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN) {
+		App->fade->FadeToBlack(this, App->scene_intro);
+	}
 
 	return UPDATE_CONTINUE;
 }

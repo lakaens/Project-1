@@ -145,6 +145,22 @@ ModuleParticles::ModuleParticles()
 	playerdead.anim.PushBack({ 454,206,6,7 });
 	playerdead.anim.loop = false;
 	playerdead.anim.speed = 0.1f;
+
+	deadRiffleMen.anim.PushBack({ 55,248,18,29 });
+	deadRiffleMen.anim.PushBack({ 88,260,18,29 });
+	deadRiffleMen.anim.PushBack({ 55,248,18,29 });
+	deadRiffleMen.anim.PushBack({ 88,260,18,29 });
+	deadRiffleMen.anim.PushBack({ 55,248,18,29 });
+	deadRiffleMen.anim.PushBack({ 88,260,18,29 });
+	deadRiffleMen.anim.loop = false;
+	deadRiffleMen.anim.speed = 0.1f;
+
+	playerhit.anim.PushBack({ 422,40,4,4 });
+	playerhit.anim.PushBack({ 444,38,8,8 });
+	playerhit.anim.PushBack({ 467,37,10,10});
+	playerhit.anim.loop = false;
+	playerhit.anim.speed = 0.1f;
+
 }
 
 ModuleParticles::~ModuleParticles()
@@ -233,7 +249,7 @@ void ModuleParticles::OnCollision(Collider* c1, Collider* c2)
 		// Always destroy particles that collide
 		if(active[i] != nullptr && active[i]->collider == c1)
 		{
-			
+			AddParticle(playerhit, active[i]->position.x, active[i]->position.y, COLLIDER_NONE, PARTICLE_NONE);
 			delete active[i];
 			active[i] = nullptr;
 			break;

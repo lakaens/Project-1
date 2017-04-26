@@ -27,13 +27,13 @@ ModuleWin::~ModuleWin()
 bool ModuleWin::Start()
 {
 
-
+	App->render->camera.x = App->render->camera.y = 0;
 
 	LOG("Loading space scene");
 
-	background = App->textures->Load("Gunsmoke/finalscene.png");
+	background = App->textures->Load("Gunsmoke/win.png");
 
-	App->render->camera.x = App->render->camera.y = 0;
+
 
 
 	return true;
