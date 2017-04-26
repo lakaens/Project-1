@@ -38,7 +38,7 @@ public:
 	bool coldown = false;
 	bool colleft = false;
 	bool colright = false;
-	int cameralim;
+	float cameralim;
 	Collider* col;
 	int cont = 0;
 	bool destroyed = false;

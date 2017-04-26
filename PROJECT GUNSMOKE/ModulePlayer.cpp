@@ -127,16 +127,11 @@ bool ModulePlayer::CleanUp()
 // Update: draw background
 update_status ModulePlayer::Update()
 {
-	
-	//if (cameralim > 0) {
-	//	position.y -= 1;// Automatic movement
-	//	if (colup == false)
-	//		position.y -= 1;// Automatic movement
-
-	cameralim -= 1;
 
 	current_animation = &up;
+
 	if (cameralim > 0) {
+		cameralim -= 0.5;
 		position.y -= 0.5;// Automatic movement
 	}
 		float speed = 1.5;
