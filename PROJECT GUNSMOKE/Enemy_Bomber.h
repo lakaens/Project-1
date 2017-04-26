@@ -11,7 +11,7 @@ private:
 	Path path;
 	iPoint original_pos;
 	Animation move;
-
+	Animation stay;
 public:
 
 	Enemy_Bomber(int x, int y);
@@ -20,4 +20,5 @@ public:
 
 
 #endif
+
 

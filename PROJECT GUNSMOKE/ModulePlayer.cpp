@@ -126,67 +126,76 @@ bool ModulePlayer::CleanUp()
 // Update: draw background
 update_status ModulePlayer::Update()
 {
-	previouspos = position;
+	
 	if (cameralim > 0) {
-		cameralim -= 1;
-	}
+		position.y -= 1;// Automatic movement
+		if (colup == false)
+			position.y -= 1;// Automatic movement
 	
 	current_animation = &up;
-	position.y -= 1; // Automatic movement
-
+	if (cameralim > 0) {
+		position.y -= 1;// Automatic movement
+	}
 	int speed = 1;
 
-	if(App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT) // MOVEMENT LEFT
+	if (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT) // MOVEMENT LEFT
 	{
-		
+		if (colleft == false) {
+			if (position.x > 0) {
+				position.x -= speed;
+			}
+		}
 		if (current_animation != &up)
 		{
 			up.Reset();
 			current_animation = &up;
 		}
-		if (position.x > 0) {
-			position.x -= speed;
-		}
-		
+
 	}
 
-	if(App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT) //MOVEMENT RIGHT
+	if (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT) //MOVEMENT RIGHT
 	{
-		
+		if (colright == false) {
+			if (position.x < SCREEN_WIDTH - 19) {
+				position.x += speed;
+			}
+		}
 		if (current_animation != &up)
 		{
 			up.Reset();
 			current_animation = &up;
 		}
-		if (position.x < SCREEN_WIDTH - 19) {
-			position.x += speed;
-		}
+
 	}
 
-	if(App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT) // MOVEMENT DOWN
+	if (App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT) // MOVEMENT DOWN
 	{
-		
-		if(current_animation != &up)
+		if (coldown == false) {
+			if (position.y < cameralim + SCREEN_HEIGHT - 27) {
+				position.y += speed + 1;
+			}
+		}
+		if (current_animation != &up)
 		{
 			up.Reset();
 			current_animation = &up;
 		}
-		if (position.y < cameralim + SCREEN_HEIGHT - 27) {
-			position.y += speed + 1;
-		}
+
 	}
 
-	if(App->input->keyboard[SDL_SCANCODE_UP] == KEY_STATE::KEY_REPEAT) // MOVEMENT UP
+	if (App->input->keyboard[SDL_SCANCODE_UP] == KEY_STATE::KEY_REPEAT) // MOVEMENT UP
 	{
-		
-		if(current_animation != &up)
+		if (colup == false) {
+			if (position.y > cameralim) {
+				position.y -= speed;
+			}
+		}
+		if (current_animation != &up)
 		{
 			up.Reset();
 			current_animation = &up;
 		}
-		if (position.y > cameralim) {
-			position.y -= speed;
-	}
+
 	}
 
 	if (App->input->keyboard[SDL_SCANCODE_UP] == KEY_STATE::KEY_REPEAT && App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT) {
@@ -214,11 +223,11 @@ update_status ModulePlayer::Update()
 			current_animation = &right;
 		
 	}
-	if(App->input->keyboard[SDL_SCANCODE_C] == KEY_STATE::KEY_REPEAT || App->input->keyboard[SDL_SCANCODE_C] == KEY_STATE::KEY_DOWN && cont<=20)
+	if(App->input->keyboard[SDL_SCANCODE_C] == KEY_STATE::KEY_REPEAT || App->input->keyboard[SDL_SCANCODE_C] == KEY_STATE::KEY_DOWN && cont<=15)
 	{
 		cont++;
 		current_animation = &shootl;
-		if (cont == 20|| App->input->keyboard[SDL_SCANCODE_C] == KEY_STATE::KEY_DOWN) {
+		if (cont == 15|| App->input->keyboard[SDL_SCANCODE_C] == KEY_STATE::KEY_DOWN) {
 			App->particles->AddParticle(App->particles->bulletl, position.x - 1, position.y + 5, COLLIDER_PLAYER_SHOT);
 			App->particles->AddParticle(App->particles->bulletl, position.x + 10, position.y + 5, COLLIDER_PLAYER_SHOT);
 			bullet++;
@@ -227,11 +236,11 @@ update_status ModulePlayer::Update()
 		}
 		
 	}
-	if (App->input->keyboard[SDL_SCANCODE_V] == KEY_STATE::KEY_REPEAT || App->input->keyboard[SDL_SCANCODE_V] == KEY_STATE::KEY_DOWN&& cont<=20)
+	if (App->input->keyboard[SDL_SCANCODE_V] == KEY_STATE::KEY_REPEAT || App->input->keyboard[SDL_SCANCODE_V] == KEY_STATE::KEY_DOWN&& cont<=15)
 	{
 		cont++;
 		current_animation = &shootu;
-		if (cont == 20|| App->input->keyboard[SDL_SCANCODE_V] == KEY_STATE::KEY_DOWN) {
+		if (cont == 15|| App->input->keyboard[SDL_SCANCODE_V] == KEY_STATE::KEY_DOWN) {
 			App->particles->AddParticle(App->particles->bulletu, position.x + 3, position.y + 5, COLLIDER_PLAYER_SHOT);
 			App->particles->AddParticle(App->particles->bulletu, position.x + 13, position.y + 5, COLLIDER_PLAYER_SHOT);
 			bullet++;
@@ -240,11 +249,11 @@ update_status ModulePlayer::Update()
 		}
 		
 	}
-	if (App->input->keyboard[SDL_SCANCODE_B] == KEY_STATE::KEY_REPEAT || App->input->keyboard[SDL_SCANCODE_B] == KEY_STATE::KEY_REPEAT && cont<=20)
+	if (App->input->keyboard[SDL_SCANCODE_B] == KEY_STATE::KEY_REPEAT || App->input->keyboard[SDL_SCANCODE_B] == KEY_STATE::KEY_REPEAT && cont<=15)
 	{
 		cont++;
 		current_animation = &shootr;
-		if (cont == 20|| App->input->keyboard[SDL_SCANCODE_B] == KEY_STATE::KEY_DOWN) {
+		if (cont == 15|| App->input->keyboard[SDL_SCANCODE_B] == KEY_STATE::KEY_DOWN) {
 			App->particles->AddParticle(App->particles->bulletr, position.x + 5, position.y + 5, COLLIDER_PLAYER_SHOT);
 			App->particles->AddParticle(App->particles->bulletr, position.x + 15, position.y + 5, COLLIDER_PLAYER_SHOT);
 			bullet++;
@@ -253,7 +262,10 @@ update_status ModulePlayer::Update()
 		}
 		
 	}
-
+	colup=false;
+	coldown = false;
+	colright = false;
+	colleft = false;
 	
 
 	col->SetPos(position.x, position.y);
@@ -275,12 +287,52 @@ update_status ModulePlayer::Update()
 void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 {
 	if (c2->type == COLLIDER_WALL)
-	{
-		position = previouspos;
+		{
+			//Check collision right
+			if ((c1->rect.x + c1->rect.w) - c2->rect.x == 1
+				&& (c2->rect.x + c2->rect.w) - c1->rect.x != 1
+				&& (c2->rect.y + c2->rect.h) - c1->rect.y != 1
+				&& (c1->rect.y + c1->rect.h) - c2->rect.y != 1)
+			{
+				colright = true;
+			}
+
+			//Check collision Left
+			if ((c1->rect.x + c1->rect.w) - c2->rect.x != 1
+				&& (c2->rect.x + c2->rect.w) - c1->rect.x == 1
+				&& (c2->rect.y + c2->rect.h) - c1->rect.y != 1
+				&& (c1->rect.y + c1->rect.h) - c2->rect.y != 1)
+			{
+				colleft = true;
+			}
+
+			//Check collision Up
+			if ((c1->rect.x + c1->rect.w) - c2->rect.x != 1
+				&& (c2->rect.x + c2->rect.w) - c1->rect.x != 1
+				&& (c2->rect.y + c2->rect.h) - c1->rect.y == 1
+				&& (c1->rect.y + c1->rect.h) - c2->rect.y != 1)
+			{
+				colup = true;
+			}
+
+			//Check collision Down
+			if ((c1->rect.x + c1->rect.w) - c2->rect.x != 1
+				&& (c2->rect.x + c2->rect.w) - c1->rect.x != 1
+				&& (c2->rect.y + c2->rect.h) - c1->rect.y != 1
+				&& (c1->rect.y + c1->rect.h) - c2->rect.y == 1)
+			{
+				coldown = true;
+			}
+
+		}
+		if (c2->type == COLLIDER_ENEMY_SHOT) {
+			destroyed = true;
+			current_animation = &dead;
+		}
+		if (c2->type == COLLIDER_ENEMY) {
+			destroyed = true;
+			current_animation = &dead;
+		}
+
 	}
-	if (c2->type == COLLIDER_ENEMY_SHOT) {
-		destroyed = true;
-		current_animation = &dead;
-	}
-			
-}
+

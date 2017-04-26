@@ -76,6 +76,10 @@
     <ClInclude Include="Enemy_Barrel.h" />
     <ClInclude Include="Enemy_Bomber.h" />
     <ClInclude Include="Enemy_GunMen.h" />
+    <ClInclude Include="Enemy_GunMenBalcony.h" />
+    <ClInclude Include="Enemy_GunMenJumper.h" />
+    <ClInclude Include="Enemy_GunMenLeft.h" />
+    <ClInclude Include="Enemy_GunMenRight.h" />
     <ClInclude Include="Enemy_PowerUp.h" />
     <ClInclude Include="Enemy_RiffleMen.h" />
     <ClInclude Include="Enemy_WindowSniperLeft.h" />
@@ -106,6 +110,10 @@
     <ClCompile Include="Enemy_Barrel.cpp" />
     <ClCompile Include="Enemy_Bomber.cpp" />
     <ClCompile Include="Enemy_GunMen.cpp" />
+    <ClCompile Include="Enemy_GunMenBalcony.cpp" />
+    <ClCompile Include="Enemy_GunMenJumper.cpp" />
+    <ClCompile Include="Enemy_GunMenLeft.cpp" />
+    <ClCompile Include="Enemy_GunMenRight.cpp" />
     <ClCompile Include="Enemy_PowerUp.cpp" />
     <ClCompile Include="Enemy_RiffleMen.cpp" />
     <ClCompile Include="Enemy_WindowSniperLeft.cpp" />

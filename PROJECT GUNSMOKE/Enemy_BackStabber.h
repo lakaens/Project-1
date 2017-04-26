@@ -11,6 +11,10 @@ private:
 	Path path;
 	iPoint original_pos;
 	Animation move;
+	Animation stay;
+	Animation horizontal;
+	Animation diagonaldown;
+	Animation up;
 
 public:
 
@@ -20,3 +24,4 @@ public:
 
 
 #endif
+

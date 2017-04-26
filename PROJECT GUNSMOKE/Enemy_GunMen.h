@@ -11,7 +11,15 @@ private:
 
 	Path path;
 	iPoint original_pos;
-	Animation move;
+	iPoint speed;
+	Animation right;
+	Animation downright;
+	Animation downleft;
+	Animation upright;
+	Animation upleft;
+	Animation left;
+	Animation down;
+	bool gate[4];
 
 public:
 
