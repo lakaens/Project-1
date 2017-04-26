@@ -19,7 +19,16 @@ private:
 	Animation upleft;
 	Animation left;
 	Animation down;
-	bool gate[4];
+	uint lastTime = 0;
+	uint TimeUp = 0;
+	int pathdelay = 0;
+	bool gate[4] = { false,false,false,false };
+	bool gateright = false;
+	bool gateleft = false;
+	int repetitions = 0;
+	float h;
+	uint reseTime;
+	uint lastTime2 = 0;
 
 public:
 

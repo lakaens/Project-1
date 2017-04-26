@@ -3,6 +3,8 @@
 #include "ModuleCollision.h"
 #include "ModuleRender.h"
 
+#define PI 3.14
+
 Enemy::Enemy(int x, int y) : position(x, y), collider(nullptr)
 {}
 
@@ -27,4 +29,12 @@ void Enemy::Draw(SDL_Texture* sprites)
 
 void Enemy::OnCollision(Collider* collider) {
 
+}
+void Enemy::Shoot() {
+
+}
+
+float Enemy::to_degrees(float num) {
+	num = num*180.0f / PI;
+	return num;
 }

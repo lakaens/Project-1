@@ -92,7 +92,11 @@ update_status ModuleEnemies::Update()
 		if(enemies[i] != nullptr) enemies[i]->Move();
 
 	for(uint i = 0; i < MAX_ENEMIES; ++i)
-		if(enemies[i] != nullptr) enemies[i]->Draw(sprites);
+		if (enemies[i] != nullptr) {
+			enemies[i]->Draw(sprites);
+			enemies[i]->Shoot(); 
+		
+		}
 
 	return UPDATE_CONTINUE;
 }

@@ -8,8 +8,8 @@ Enemy_GunMenBalcony::Enemy_GunMenBalcony(int x, int y) :Enemy(x, y) {
 	move.PushBack({ 214, 51, 20, 28 });
 	move.PushBack({ 254, 53, 20, 28 });
 	move.PushBack({ 294, 51, 20, 28 });
-	stay.PushBack({})
-		move.speed = 0.2f;
+	/*stay.PushBack({})*/
+	move.speed = 0.2f;
 
 	path.PushBack({ 0.f,0.5f }, 100);
 	animation = &move;

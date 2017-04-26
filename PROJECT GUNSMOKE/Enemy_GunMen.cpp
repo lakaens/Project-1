@@ -7,7 +7,8 @@
 #include "SDL/include/SDL_timer.h"
 
 #define PI 3.14159265
-#define to_degrees (180.0 / PI)
+#define ENEMY_SHOOTING_SPEED 3000
+#define ENEMY_SHOT_SPEED 3.0f
 
 Enemy_GunMen::Enemy_GunMen(int x, int y) :Enemy(x, y) {
 
@@ -64,85 +65,131 @@ void Enemy_GunMen::Move()
 	speed.x = App->player->position.x - position.x;
 	speed.y = App->player->position.y - position.y;
 
-	angle *= to_degrees;
 
-	if (speed.x != 0) {
-		angle = atan2(speed.y, speed.x);
-	}
-	else {
-		angle = atan2(speed.y, speed.x + 1);
-	}
-	if (angle <= 25 && angle < -25) {
-		animation = &right;
-	}
-	else if (angle <= 75 && angle > 25) {
-		animation = &downright;
-	}
-	else if (angle <= 105 && angle > 75) {
-		animation = &down;
-	}
-	else if (angle <= 155 && angle > 105) {
-		animation = &downleft;
-	}
-	else if (angle <= -155 && angle > 155) {
-		animation = &left;
-	}
-	else if (angle <= -90 && angle > -155) {
-		animation = &upleft;
-	}
-	else if (angle <= -25 && angle > -90) {
-		animation = &upright;
-	}
+	//position = original_pos + path.GetCurrentSpeed();
 
-	uint Time = SDL_GetTicks();
+		if (speed.x != 0) {
+			angle = atan2(speed.y, speed.x);
 
-	if (abs(App->player->position.y - position.y) < 300) {
-		gate[0] = true;
-	}
-	if (gate[3] == true) {
-		position.x--;
-		position.y--;
-		if (Time - (reseTime*repetitions) > (TimeUp + pathdelay)) {
-			reseTime = 13000;
-			repetitions++;
-			for (int i = 0; i < 4; i++) {
-				gate[i]=false;
+			//LOG("%f", to_degrees(angle));
+		}
+		else {
+			angle = atan2(speed.y, speed.x + 1);
+			//LOG("%f", to_degrees(angle));
+		}
+
+		if (to_degrees(angle) <= 25 && to_degrees(angle) > -25) {
+			animation = &right;
+		}
+
+		else if (to_degrees(angle) <= 75 && to_degrees(angle) > 25) {
+			animation = &downright;
+		}
+
+		else if (to_degrees(angle) <= 105 && to_degrees(angle) > 75) {
+			animation = &down;
+		}
+		else if (to_degrees(angle) <= 155 && to_degrees(angle) > 105) {
+			animation = &downleft;
+		}
+		else if ((to_degrees(angle) <= -155) || (to_degrees(angle) > 155)) {
+			animation = &left;
+		}
+		else if (to_degrees(angle) <= -90 && to_degrees(angle) > -155) {
+			animation = &upleft;
+		}
+		else if (to_degrees(angle) <= -25 && to_degrees(angle) > -90) {
+			animation = &upright;
+		}
+
+
+
+
+
+
+		//*************************************** Movement
+
+		uint Time = SDL_GetTicks();
+
+		if (abs(App->player->position.y - position.y < 300))
+			gate[0] = true;
+
+		if (gate[3] == true ) {
+			position.x--;
+			position.y--;
+			if (Time - (reseTime*repetitions) >(TimeUp + pathdelay))
+			{
+				//pathdelay = 0;
+				//TimeUp = Time;
+				reseTime = 13000;
+				repetitions++;
+				for (int i = 0; i < 4; i++) {
+					gate[i] = false;
+				}
+			}
+
+
+		}
+		else if (gate[2] == true ) {//down
+			position.y++; //y++
+			if (Time - (reseTime*repetitions) >(TimeUp + pathdelay))
+			{
+				pathdelay += 3000;
+				gate[3] = true;
 			}
 		}
-	}
-	else if (gate[2] == true) {
-		position.y++;
-		if (Time - (reseTime*repetitions) > (TimeUp + pathdelay)) {
-			pathdelay += 3000;
-			gate[3] = true;
+		else if (gate[1] == true) {//upleft
+			position.x++;
+			position.y--;
+			if (Time - (reseTime*repetitions) > (TimeUp + pathdelay)) {
+				pathdelay += 3000;
+				gate[2] = true;
+			}
+
 		}
-	}
-	else if (gate[1] == true) {
-		position.x++;
-		position.y--;
-		if (Time - (reseTime*repetitions) > (TimeUp + pathdelay)) {
-			pathdelay += 3000;
-			gate[2] = true;
+		else if (gate[0] == true ) {//down
+
+			position.y++; //y++
+			pathdelay = 4000;
+			if (Time - (reseTime*repetitions) > (TimeUp + pathdelay))
+			{
+				pathdelay += 3000;
+				gate[1] = true;
+			}
 		}
-	}
-	else if (gate[0] == true) {
-		position.y++;
-		pathdelay = 4000;
-		if (Time - (reseTime*repetitions) > (TimeUp + pathdelay)) {
-			pathdelay += 3000;
-			gate[1] = true;
+
+
+		if (position.x >= 200 ) {
+
+			position.x--;
 		}
-	}
-	if (position.x >= 200) {
-		position.x--;
-	}
-	if (position.x <= 5) {
-		position.x++;
-	}
+		if (position.x <= 5 )
+			position.x++;
+
+		
+	
 }
 
-void Enemy_GunMen::Shoot() {
+void Enemy_GunMen::Shoot()
+{
+	uint currentTime = SDL_GetTicks();
+	float angle;
+	speed.x = (App->player->position.x) - position.x;
+	speed.y = (App->player->position.y) - (position.y);
+	h = sqrt((pow(speed.x, 2) + pow(speed.y, 2)));
 
-	App->particles->AddParticle(App->particles->enemysimplebullet, SCREEN_WIDTH / 2, 2700, COLLIDER_ENEMY_SHOT);
+
+
+	if ((currentTime > (lastTime + ENEMY_SHOOTING_SPEED)) && speed.y<125 ) {
+
+		App->particles->enemysimplebullet.speed.x = (speed.x / h)*ENEMY_SHOT_SPEED;
+		App->particles->enemysimplebullet.speed.y = (speed.y / h)*ENEMY_SHOT_SPEED;
+
+
+		App->particles->AddParticle(App->particles->enemysimplebullet, position.x, position.y, COLLIDER_ENEMY_SHOT);
+
+
+		lastTime = currentTime;
+	}
 
 }

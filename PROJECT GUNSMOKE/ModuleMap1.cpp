@@ -220,7 +220,7 @@ update_status ModuleMap1::Update()
 {
 	// Move camera forward -----------------------------
 	if (App->player->cameralim > 0) {
-		App->render->camera.y -= 1 * SCREEN_SIZE;
+		App->render->camera.y -= 1 ;
 	}
 
 
