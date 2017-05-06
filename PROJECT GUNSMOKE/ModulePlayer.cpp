@@ -12,6 +12,7 @@
 #include "ModuleGameOver.h"
 #include "ModuleMap1.h"
 #include "ModuleWin.h"
+#include "SDL/include/SDL.h"
 
 #include<stdio.h>
 
@@ -142,6 +143,44 @@ update_status ModulePlayer::Update()
 		position.y -= 0.5;// Automatic movement
 	}
 		float speed = 1.5;
+
+		SDL_Event event;
+		/* Other initializtion code goes here */
+
+		/* Start main game loop here */
+
+		while (SDL_PollEvent(&event))
+		{
+			switch (event.type)
+			{
+			case SDL_JOYAXISMOTION:  /* Handle Joystick Motion */
+				if ((event.jaxis.value < -3200) || (event.jaxis.value > 3200))
+				{
+					if (event.jaxis.axis == 0)
+					{
+						/* Left-right movement code goes here */
+					}
+
+					if (event.jaxis.axis == 1)
+					{
+						/* Up-Down movement code goes here */
+					}
+				}
+				break;
+			case SDL_JOYBUTTONDOWN:  /* Handle Joystick Button Presses */
+				if (event.jbutton.button == 0)
+				{
+					/* code goes here */
+				}
+				break;
+			case SDL_JOYBALLMOTION:  /* Handle Joyball Motion */
+				if (event.jball.ball == 0)
+				{
+					/* ball handling */
+				}
+				break;
+			}
+		}
 
 		if (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT) // MOVEMENT LEFT
 		{

@@ -22,7 +22,7 @@ bool ModuleInput::Init()
 	bool ret = true;
 	SDL_Init(0);
 
-	if(SDL_InitSubSystem(SDL_INIT_EVENTS) < 0)
+	if(SDL_InitSubSystem(SDL_INIT_EVENTS|SDL_INIT_JOYSTICK) < 0)
 	{
 		LOG("SDL_EVENTS could not initialize! SDL_Error: %s\n", SDL_GetError());
 		ret = false;
@@ -37,6 +37,13 @@ update_status ModuleInput::PreUpdate()
 	SDL_PumpEvents();
 
 	const Uint8* keys = SDL_GetKeyboardState(NULL);
+
+	int number_of_buttons;
+	SDL_Joystick *joystick;
+
+	joystick = SDL_JoystickOpen(0);
+	number_of_buttons = SDL_JoystickNumButtons(joystick);
+
 
 	for(int i = 0; i < MAX_KEYS; ++i)
 	{

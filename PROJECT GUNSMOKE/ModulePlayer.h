@@ -6,6 +6,7 @@
 #include "p2Point.h"
 
 struct SDL_Texture;
+struct SDL_Joystick;
 struct Collider;
 
 class ModulePlayer : public Module
@@ -22,6 +23,7 @@ public:
 public:
 
 	SDL_Texture* graphics = nullptr;
+	SDL_Joystick* joystick = nullptr;
 	int font_score = -1;
 	char score_text[10];
 	uint score = 0;
