@@ -26,8 +26,15 @@ bool ModuleInput::Init()
 	{
 		LOG("SDL_EVENTS could not initialize! SDL_Error: %s\n", SDL_GetError());
 		ret = false;
+		
 	}
-
+	
+		//Load joystick
+		joystick = SDL_JoystickOpen(0);
+		if (joystick == NULL)
+		{
+			LOG("Warning: Unable to open game controller! SDL Error: %s\n", SDL_GetError());
+		}
 	return ret;
 }
 
@@ -39,9 +46,9 @@ update_status ModuleInput::PreUpdate()
 	const Uint8* keys = SDL_GetKeyboardState(NULL);
 
 	int number_of_buttons;
-	SDL_Joystick *joystick;
+	
 
-	joystick = SDL_JoystickOpen(0);
+	
 	number_of_buttons = SDL_JoystickNumButtons(joystick);
 
 
