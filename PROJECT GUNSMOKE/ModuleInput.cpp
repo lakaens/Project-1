@@ -30,11 +30,11 @@ bool ModuleInput::Init()
 	}
 	
 		//Load joystick
-		joystick = SDL_JoystickOpen(0);
+		/*joystick = SDL_JoystickOpen(0);
 		if (joystick == NULL)
 		{
 			LOG("Warning: Unable to open game controller! SDL Error: %s\n", SDL_GetError());
-		}
+		}*/
 	return ret;
 }
 
@@ -44,13 +44,6 @@ update_status ModuleInput::PreUpdate()
 	SDL_PumpEvents();
 
 	const Uint8* keys = SDL_GetKeyboardState(NULL);
-
-	int number_of_buttons;
-	
-
-	
-	number_of_buttons = SDL_JoystickNumButtons(joystick);
-
 
 	for(int i = 0; i < MAX_KEYS; ++i)
 	{

@@ -29,7 +29,7 @@ public:
 
 public:
 	KEY_STATE keyboard[MAX_KEYS];
-	SDL_Joystick* joystick;
+	SDL_GameController* gcontroller;
 };
 
 #endif // __ModuleInput_H__

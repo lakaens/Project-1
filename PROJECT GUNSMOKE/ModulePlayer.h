@@ -44,6 +44,11 @@ public:
 	int life = 3;
 	int cont1 = 0;
 	int original_camera;
+	bool collUp = false;
+	bool collLeft = false;
+	bool collDown = false;
+	bool collRight = false;
+
 private:
 	uint bulletsound;
 	unsigned short bullet;

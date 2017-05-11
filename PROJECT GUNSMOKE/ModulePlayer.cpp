@@ -227,7 +227,7 @@ update_status ModulePlayer::Update()
 
 		}
 
-		if (App->input->keyboard[SDL_SCANCODE_UP] == KEY_STATE::KEY_REPEAT) // MOVEMENT UP
+		if (App->input->keyboard[SDL_SCANCODE_UP] == KEY_STATE::KEY_REPEAT ) // MOVEMENT UP
 		{
 			
 				if (position.y > cameralim) {
@@ -326,6 +326,7 @@ update_status ModulePlayer::Update()
 		// Draw UI (score) --------------------------------------
 
 
+		
 
 		sprintf_s(score_text, 10, "%7d", score);
 
@@ -337,30 +338,7 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 	if (c2->type == COLLIDER_WALL && destroyed == false) {
 
 		position=prevpos;
-	/*	if (c1->rect.y < c2->rect.y + c2->rect.h && c1->rect.y + 3 > c2->rect.y + c2->rect.h)
-
-		{
-			position.y = position.y + 1;
-
-		}
-		else if (c1->rect.y + c1->rect.h > c2->rect.y && c1->rect.y + c1->rect.h - 3< c2->rect.y)
-
-		{
-			position.y = position.y - 1;
-
-		}
-
-
-		else if (c1->rect.x + c1->rect.w > c2->rect.x && c1->rect.x + c1->rect.w - 3 < c2->rect.x)
-		{
-			position.x = position.x - 1;
-
-		}
-		else if (c1->rect.x < c2->rect.x + c2->rect.w && c1->rect.x + 3 > c2->rect.x + c2->rect.w)
-		{
-			position.x = position.x + 1;
-
-		}*/
+		
 
 	}
 	if (c2->type == COLLIDER_ENEMY_SHOT || c2->type == COLLIDER_ENEMY && destroyed == false && App->fade->IsFading() == false) {

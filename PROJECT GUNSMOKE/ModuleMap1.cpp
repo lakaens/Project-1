@@ -32,6 +32,7 @@ bool ModuleMap1::Start()
 	LOG("Loading space scene");
 	
 	background = App->textures->Load("Gunsmoke/map1.png");
+	App->audio->Enable();
 	App->audio->musicLoad("Gunsmoke/stage1.ogg");
 
 	App->collision->Enable();
@@ -39,9 +40,9 @@ bool ModuleMap1::Start()
 	App->particles->Enable();
 
 	App->enemies->Enable();
-	App->audio->Enable();
-	// Colliders ---
-	//left buildings
+	
+	//// Colliders ---
+	////left buildings
 	App->collision->AddCollider({ 0,3037,37,16 }, COLLIDER_WALL);
 	App->collision->AddCollider({ 0,2689,55,348 }, COLLIDER_WALL);
 	App->collision->AddCollider({ 0,2662,44,27 }, COLLIDER_WALL);
@@ -223,8 +224,10 @@ bool ModuleMap1::CleanUp()
 
 	App->enemies->Disable();
 	App->collision->Disable();
+
 	App->particles->Disable();
 	App->player->Disable();
+	//App->audio->StopMusic();
 
 	return true;
 }
