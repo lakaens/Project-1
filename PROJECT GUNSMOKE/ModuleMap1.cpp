@@ -31,7 +31,7 @@ bool ModuleMap1::Start()
 
 	LOG("Loading space scene");
 	
-	background = App->textures->Load("Gunsmoke/map1.png");
+	background = App->textures->Load("Gunsmoke/map2.png");
 	App->audio->Enable();
 	App->audio->musicLoad("Gunsmoke/stage1.ogg");
 
