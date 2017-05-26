@@ -278,10 +278,11 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 			{
 				if (c2->type == COLLIDER_PLAYER_SHOT) {
 					--enemies[i]->life;
-					if (enemies[i]->life == 0)
+					if (enemies[i]->life == 0) {
 						App->particles->AddParticle(App->particles->deadBarrel, c1->rect.x, c1->rect.y, COLLIDER_NONE);
-					delete enemies[i];
-					enemies[i] = nullptr;
+						delete enemies[i];
+						enemies[i] = nullptr;
+					}
 					break;
 				}
 			}

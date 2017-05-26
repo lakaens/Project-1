@@ -44,10 +44,14 @@ public:
 	int life = 3;
 	int cont1 = 0;
 	int original_camera;
-	bool collUp = false;
-	bool collLeft = false;
-	bool collDown = false;
-	bool collRight = false;
+	bool colup = false;
+	bool colleft = false;
+	bool coldown = false;
+	bool colright = false;
+	bool blockUL = false;
+	bool blockUR = false;
+	bool blockDL = false;
+	bool blockDR = false;
 
 private:
 	uint bulletsound;
