@@ -28,7 +28,8 @@ ModuleGameOver::~ModuleGameOver()
 // Load assets
 bool ModuleGameOver::Start()
 {
-	
+	App->audio->musicLoad("Gunsmoke/gameover.ogg");
+
 	App->render->camera.x = App->render->camera.y = 0;
 
 	LOG("Loading space scene");

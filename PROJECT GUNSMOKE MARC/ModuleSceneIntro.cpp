@@ -5,6 +5,7 @@
 #include "ModuleRender.h"
 #include "ModuleFadeToBlack.h"
 #include "ModuleSceneIntro.h"
+#include "ModuleAudio.h"
 
 // Reference at https://www.youtube.com/watch?v=OEhmUuehGOA
 
@@ -19,6 +20,8 @@ bool ModuleSceneIntro::Start()
 {
 	LOG("Loading space intro");
 	
+	App->audio->musicLoad("Gunsmoke/mainmusic.ogg");
+
 	background = App->textures->Load("Gunsmoke/welcome.png");
 
 	App->render->camera.x = App->render->camera.y = 0;

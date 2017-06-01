@@ -115,7 +115,7 @@ bool ModulePlayer::CleanUp()
 
 	App->textures->Unload(graphics);
 	App->player->Disable();
-
+	
 	App->audio->unloadeffect(bulletsound);
 	if (col != nullptr)
 		col->to_delete = true;
@@ -133,8 +133,15 @@ update_status ModulePlayer::Update()
 	char str[10];
 	sprintf_s(str, "%i", score);
 	App->fonts->BlitText(10, 0, font_score, str);
-	App->fonts->BlitText(81, 0, font_score, "100069");
+	sprintf_s(hscore, "%i", Hscore);
+	App->fonts->BlitText(81, 0, font_score, hscore);
 
+
+
+
+	if (Hscore < score){
+		Hscore = score;
+	}
 	cont1++;
 	current_animation = &up;
 

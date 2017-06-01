@@ -52,6 +52,8 @@ public:
 	bool blockUR = false;
 	bool blockDL = false;
 	bool blockDR = false;
+	char hscore[10] = { 0,0,0,0,0,0,0,0,0,0 };
+	uint Hscore = 0;
 
 private:
 	uint bulletsound;

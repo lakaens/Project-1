@@ -17,6 +17,7 @@
 #include "Enemy_GunMenBalcony.h"
 #include "Enemy_GunMenLeft.h"
 #include "Enemy_GunMenRight.h"
+#include "ModulePlayer.h"
 
 #define SPAWN_MARGIN 70
 
@@ -225,7 +226,7 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 	{
 		if (enemies[i] != nullptr && enemies[i]->GetCollider() == c1 && c2->type==COLLIDER_PLAYER_SHOT||c2->type==COLLIDER_PLAYER)
 		{
-
+			
 			enemies[i]->OnCollision(c2);
 			if ((enemies[i]->type == ENEMY_TYPES::GUNMEN)
 				|| (enemies[i]->type == ENEMY_TYPES::GUNMENJUMPER)
@@ -233,6 +234,7 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 				|| (enemies[i]->type == ENEMY_TYPES::GUNMENRIGHT)
 				|| (enemies[i]->type == ENEMY_TYPES::GUNMENBALCONY))
 			{
+				App->player->score += 200;
 				App->particles->AddParticle(App->particles->deadGunMen, c1->rect.x, c1->rect.y, COLLIDER_NONE);
 
 				delete enemies[i];
@@ -241,6 +243,7 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 			}
 			if (enemies[i]->type==ENEMY_TYPES::WINDOWSNIPERRIGHT) 
 			{
+				App->player->score += 500;
 					App->particles->AddParticle(App->particles->deadWindowSniperRight, c1->rect.x, c1->rect.y, COLLIDER_NONE);
 					delete enemies[i];
 					enemies[i] = nullptr;
@@ -248,6 +251,7 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 			}
 			if(enemies[i]->type == ENEMY_TYPES::BOMBER)
 			{
+				App->player->score += 300;
 				App->particles->AddParticle(App->particles->deadBomber, c1->rect.x, c1->rect.y, COLLIDER_NONE);
 				delete enemies[i];
 				enemies[i] = nullptr;
@@ -255,6 +259,7 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 			}
 			if (enemies[i]->type == ENEMY_TYPES::WINDOWSNIPERLEFT)
 			{
+				App->player->score += 500;
 				App->particles->AddParticle(App->particles->deadWindowSniperLeft, c1->rect.x, c1->rect.y, COLLIDER_NONE);
 				delete enemies[i];
 				enemies[i] = nullptr;
@@ -262,6 +267,7 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 			}
 			if (enemies[i]->type == ENEMY_TYPES::BACKSTABBER)
 			{
+				App->player->score += 800;
 				App->particles->AddParticle(App->particles->deadBackStabber, c1->rect.x, c1->rect.y, COLLIDER_NONE);
 				delete enemies[i];
 				enemies[i] = nullptr;
@@ -269,6 +275,7 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 			}
 			if (enemies[i]->type == ENEMY_TYPES::RIFFLEMEN) 
 			{
+				App->player->score += 400;
 				App->particles->AddParticle(App->particles->deadRiffleMen, c1->rect.x, c1->rect.y, COLLIDER_NONE);
 				delete enemies[i];
 				enemies[i] = nullptr;
@@ -276,7 +283,9 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 			}
 			if (enemies[i]->type == ENEMY_TYPES::BARREL) 
 			{
+
 				if (c2->type == COLLIDER_PLAYER_SHOT) {
+					App->player->score += 50;
 					--enemies[i]->life;
 					if (enemies[i]->life == 0) {
 						App->particles->AddParticle(App->particles->deadBarrel, c1->rect.x, c1->rect.y, COLLIDER_NONE);

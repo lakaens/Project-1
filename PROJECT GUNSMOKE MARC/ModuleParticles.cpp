@@ -248,9 +248,7 @@ void ModuleParticles::OnCollision(Collider* c1, Collider* c2)
 			active[i] = nullptr;
 			break;
 		}
-		if (c2->type == COLLIDER_ENEMY) {
-			App->player->score += 200;
-		}
+
 	}
 }
 

@@ -32,7 +32,7 @@ bool ModuleMap1::Start()
 	LOG("Loading space scene");
 	
 	background = App->textures->Load("Gunsmoke/map2.png");
-	App->audio->Enable();
+	
 	App->audio->musicLoad("Gunsmoke/stage1.ogg");
 
 	App->collision->Enable();
@@ -85,8 +85,8 @@ bool ModuleMap1::Start()
 
 
 	// Enemies ---
-	/*App->enemies->AddEnemy(ENEMY_TYPES::GUNMEN, 82, 2754);
-	App->enemies->AddEnemy(ENEMY_TYPES::GUNMEN, 0, 0);
+	App->enemies->AddEnemy(ENEMY_TYPES::GUNMEN, 82, 2754);
+	/*App->enemies->AddEnemy(ENEMY_TYPES::GUNMEN, 0, 0);
 	App->enemies->AddEnemy(ENEMY_TYPES::GUNMEN, 113, 2661);
 	App->enemies->AddEnemy(ENEMY_TYPES::GUNMEN, 0, 2574);
 	App->enemies->AddEnemy(ENEMY_TYPES::GUNMEN, 48, 2565);
@@ -268,10 +268,10 @@ bool ModuleMap1::CleanUp()
 
 	App->enemies->Disable();
 	App->collision->Disable();
-
+	
 	App->particles->Disable();
 	App->player->Disable();
-	//App->audio->StopMusic();
+	
 
 	return true;
 }
