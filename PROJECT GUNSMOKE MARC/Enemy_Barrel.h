@@ -2,7 +2,6 @@
 #define _ENEMY_BARREL_H_
 
 #include "Enemy.h"
-#include "Path.h"
 
 class Enemy_Barrel : public Enemy
 {

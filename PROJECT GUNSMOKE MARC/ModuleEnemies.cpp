@@ -11,7 +11,7 @@
 #include "Enemy_WindowSniperRight.h"
 #include "Enemy_WindowSniperLeft.h"
 #include "Enemy_RiffleMen.h"
-#include "Enemy_PowerUp.h"
+#include "PowerUp_Boots.h"
 #include "Enemy_Barrel.h"
 #include "Enemy_GunMenJumper.h"
 #include "Enemy_GunMenBalcony.h"
