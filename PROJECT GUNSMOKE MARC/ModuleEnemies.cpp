@@ -299,7 +299,8 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 				|| (enemies[i]->type == ENEMY_TYPES::RIFLE)
 				|| (enemies[i]->type == ENEMY_TYPES::BULLET)
 				|| (enemies[i]->type == ENEMY_TYPES::HORSE)
-				|| (enemies[i]->type == ENEMY_TYPES::BOTTLE))
+				|| (enemies[i]->type == ENEMY_TYPES::LITTLEBOTTLE)
+				|| (enemies[i]->type == ENEMY_TYPES::BIGBOTTLE))
 			{
 				if (c2->type == COLLIDER_PLAYER) {
 					delete enemies[i];

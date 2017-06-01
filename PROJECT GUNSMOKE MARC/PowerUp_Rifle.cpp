@@ -5,11 +5,6 @@
 
 PowerUp_Rifle::PowerUp_Rifle(int x, int y) :Enemy(x, y) {
 
-	//taking the boots = +200 points
-	//taking the bullets = +50 points
-	//taking a bottle = +1000 points
-	//taking the horse = no points
-	//taking the rifle = no points
 
 	move.PushBack({ 457, 26, 16, 14 });
 	move.PushBack({ 457, 50, 16, 14 });
