@@ -1,9 +1,9 @@
-#ifndef _POWERUP_BOOTS_H_
-#define _POWERUP_BOOTS_H_
+#ifndef _POWERUP_BULLET_H_
+#define _POWERUP_BULLET_H_
 
 #include "Enemy.h"
 
-class PowerUp_Boots : public Enemy
+class PowerUp_Bullet : public Enemy
 {
 private:
 
@@ -13,7 +13,7 @@ private:
 
 public:
 
-	PowerUp_Boots(int x, int y);
+	PowerUp_Bullet(int x, int y);
 	void OnCollision(Collider* c1, Collider* c2);
 };
 

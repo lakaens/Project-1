@@ -1,14 +1,10 @@
 #include "Application.h"
 #include "PowerUp_Boots.h"
 #include "ModuleCollision.h"
+#include "ModulePlayer.h"
 
 PowerUp_Boots::PowerUp_Boots(int x, int y) :Enemy(x, y) {
 
-	//taking the boots = +200 points
-	//taking the bullets = +50 points
-	//taking a bottle = +1000 points
-	//taking the horse = no points
-	//taking the rifle = no points
 
 	move.PushBack({ 377, 25, 16, 16 });
 	move.PushBack({ 377, 49, 16, 16 });
@@ -22,4 +18,13 @@ PowerUp_Boots::PowerUp_Boots(int x, int y) :Enemy(x, y) {
 	original_pos.x = x;
 	original_pos.y = y;
 
+}
+
+
+void PowerUp_Boots::OnCollision(Collider* c1, Collider* c2) {
+
+	if (c1->type == COLLIDER_POWERUPS && c2->type == COLLIDER_PLAYER) {
+		App->player->speed += 1;
+		App->player->score += 200;
+	}
 }

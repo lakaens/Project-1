@@ -295,6 +295,18 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 					break;
 				}
 			}
+			if ((enemies[i]->type == ENEMY_TYPES::BOOTS)
+				|| (enemies[i]->type == ENEMY_TYPES::RIFLE)
+				|| (enemies[i]->type == ENEMY_TYPES::BULLET)
+				|| (enemies[i]->type == ENEMY_TYPES::HORSE)
+				|| (enemies[i]->type == ENEMY_TYPES::BOTTLE))
+			{
+				if (c2->type == COLLIDER_PLAYER) {
+					delete enemies[i];
+					enemies[i] = nullptr;
+				}
+
+			}
 		}
 		if (c2->type == COLLIDER_WALL && enemies[i] != nullptr && c1->CheckCollision(c2->rect) == true && enemies[i]->GetCollider() == c1)
 		{

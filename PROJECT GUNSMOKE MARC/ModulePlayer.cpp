@@ -14,6 +14,7 @@
 #include "ModuleWin.h"
 #include "SDL/include/SDL.h"
 
+
 #include<stdio.h>
 
 // Reference at https://www.youtube.com/watch?v=OEhmUuehGOA
@@ -149,7 +150,6 @@ update_status ModulePlayer::Update()
 		cameralim -= 0.5;
 		position.y -= 0.5;// Automatic movement
 	}
-		float speed = 1.5;
 
 		SDL_Event event;
 		/* Other initializtion code goes here */

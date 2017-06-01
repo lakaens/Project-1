@@ -1,9 +1,9 @@
-#ifndef _POWERUP_BOOTS_H_
-#define _POWERUP_BOOTS_H_
+#ifndef _POWERUP_HORSE_H_
+#define _POWERUP_HORSE_H_
 
 #include "Enemy.h"
 
-class PowerUp_Boots : public Enemy
+class PowerUp_Horse : public Enemy
 {
 private:
 
@@ -13,7 +13,7 @@ private:
 
 public:
 
-	PowerUp_Boots(int x, int y);
+	PowerUp_Horse(int x, int y);
 	void OnCollision(Collider* c1, Collider* c2);
 };
 

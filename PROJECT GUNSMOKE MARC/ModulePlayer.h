@@ -54,6 +54,7 @@ public:
 	bool blockDR = false;
 	char hscore[10] = { 0,0,0,0,0,0,0,0,0,0 };
 	uint Hscore = 0;
+	float speed = 1.5;
 
 private:
 	uint bulletsound;
