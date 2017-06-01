@@ -442,20 +442,29 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 	}
 	if (c2->type == COLLIDER_ENEMY_SHOT || c2->type == COLLIDER_ENEMY && destroyed == false && App->fade->IsFading() == false) {
 
-		
 		if (col != nullptr) {
+			col->to_delete = true;
+		}
+		if (life > 1) {
+			--life;
+			App->particles->AddParticle(App->particles->playerdead, position.x, position.y, COLLIDER_NONE);
+			App->fade->FadeToBlack(App->map, App->map);
+		}
+		else if (life = 1) {
+			destroyed = true;
+			App->particles->AddParticle(App->particles->playerdead, position.x, position.y, COLLIDER_NONE);
+			cameralim = 0;
+			life = 3;
+			App->fade->FadeToBlack(App->map, App->gameover);
+		}
+		/*if (col != nullptr) {
 			col->to_delete = true;
 		}
 		destroyed = true;
 		App->particles->AddParticle(App->particles->playerdead, position.x, position.y, COLLIDER_NONE);
-
-		cameralim = 0;
-		
 		if (destroyed=true) {
 			App->fade->FadeToBlack(App->map, App->gameover);
-
-		}
-		
+		}*/
 
 	}		
 		
