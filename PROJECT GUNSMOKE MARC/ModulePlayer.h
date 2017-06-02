@@ -55,6 +55,7 @@ public:
 	char hscore[10] = { 0,0,0,0,0,0,0,0,0,0 };
 	uint Hscore = 0;
 	float speed = 1.5;
+	bool GodMode = false;
 
 private:
 	uint bulletsound;

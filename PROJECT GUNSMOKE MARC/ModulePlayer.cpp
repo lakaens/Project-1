@@ -156,40 +156,9 @@ update_status ModulePlayer::Update()
 
 		/* Start main game loop here */
 
-		while (SDL_PollEvent(&event))
-		{
-			switch (event.type)
-			{
-			case SDL_JOYAXISMOTION:  /* Handle Joystick Motion */
-				if ((event.jaxis.value < -3200) || (event.jaxis.value > 3200))
-				{
-					if (event.jaxis.axis == 0)
-					{
-						/* Left-right movement code goes here */
-					}
+		
 
-					if (event.jaxis.axis == 1)
-					{
-						/* Up-Down movement code goes here */
-					}
-				}
-				break;
-			case SDL_JOYBUTTONDOWN:  /* Handle Joystick Button Presses */
-				if (event.jbutton.button == 0)
-				{
-					/* code goes here */
-				}
-				break;
-			case SDL_JOYBALLMOTION:  /* Handle Joyball Motion */
-				if (event.jball.ball == 0)
-				{
-					/* ball handling */
-				}
-				break;
-			}
-		}
-
-		if (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT) // MOVEMENT LEFT
+		if (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT|| App->input->gamepad.joystickLeft) // MOVEMENT LEFT
 		{
 			if (!colleft) {
 				if (position.x > 0)
@@ -204,7 +173,7 @@ update_status ModulePlayer::Update()
 
 		}
 
-		if (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT) //MOVEMENT RIGHT
+		if (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT|| App->input->gamepad.joystickRight) //MOVEMENT RIGHT
 		{
 			if (!colright) {
 				if (position.x < SCREEN_WIDTH - 19)
@@ -219,7 +188,7 @@ update_status ModulePlayer::Update()
 
 		}
 
-		if (App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT) // MOVEMENT DOWN
+		if (App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT|| App->input->gamepad.joystickDown) // MOVEMENT DOWN
 		{
 			
 				if (position.y < cameralim + SCREEN_HEIGHT - 27) {
@@ -234,7 +203,7 @@ update_status ModulePlayer::Update()
 
 		}
 
-		if (App->input->keyboard[SDL_SCANCODE_UP] == KEY_STATE::KEY_REPEAT ) // MOVEMENT UP
+		if (App->input->keyboard[SDL_SCANCODE_UP] == KEY_STATE::KEY_REPEAT || App->input->gamepad.joystickUp) // MOVEMENT UP
 		{
 			
 				if (position.y > cameralim) {
@@ -315,9 +284,9 @@ update_status ModulePlayer::Update()
 
 			}
 		}
-		if (App->input->keyboard[SDL_SCANCODE_G] == KEY_STATE::KEY_DOWN) {
+		if (App->input->keyboard[SDL_SCANCODE_F2] == KEY_STATE::KEY_DOWN) {
 
-			col->to_delete = true;
+			
 
 		}
 		if (destroyed == false && position.y == 0) {
@@ -440,15 +409,17 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 		}
 
 	}
-	if (c2->type == COLLIDER_ENEMY_SHOT || c2->type == COLLIDER_ENEMY && destroyed == false && App->fade->IsFading() == false) {
+	if (c2->type == COLLIDER_ENEMY_SHOT || c2->type == COLLIDER_ENEMY && destroyed == false && App->fade->IsFading() == false ) {
 
 		if (col != nullptr) {
 			col->to_delete = true;
 		}
 		if (life > 1) {
 			--life;
+			App->player->Disable();
+			cameralim = 0;
 			App->particles->AddParticle(App->particles->playerdead, position.x, position.y, COLLIDER_NONE);
-			App->fade->FadeToBlack(App->map, App->map);
+			App->fade->FadeToBlack(App->map, App->map, 2.0f);
 		}
 		else if (life = 1) {
 			destroyed = true;
