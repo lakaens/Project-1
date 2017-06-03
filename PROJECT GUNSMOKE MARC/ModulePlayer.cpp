@@ -451,24 +451,26 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 		if (col != nullptr) {
 			col->to_delete = true;
 		}
-		if (life > 1) {
-			--life;
-			App->player->Disable();
-			cameralim = 0;
-			App->particles->AddParticle(App->particles->playerdead, position.x, position.y, COLLIDER_NONE);
-			App->fade->FadeToBlack(App->map, App->map, 2.0f);
-		}
-		else if (life = 1) {
-			destroyed = true;
-			App->particles->AddParticle(App->particles->playerdead, position.x, position.y, COLLIDER_NONE);
-			cameralim = 0;
-			life = 3;
-			App->fade->FadeToBlack(App->map, App->gameover);
-		}
-		
 		if (App->enemies->horse == true) {
 			App->enemies->horse = false;
 		}
+		else {
+			if (life > 1) {
+				--life;
+				App->player->Disable();
+				cameralim = 0;
+				App->particles->AddParticle(App->particles->playerdead, position.x, position.y, COLLIDER_NONE);
+				App->fade->FadeToBlack(App->map, App->map, 2.0f);
+			}
+			else if (life = 1) {
+				destroyed = true;
+				App->particles->AddParticle(App->particles->playerdead, position.x, position.y, COLLIDER_NONE);
+				cameralim = 0;
+				life = 3;
+				App->fade->FadeToBlack(App->map, App->gameover);
+			}
+		}
+		
 		
 	}		
 		

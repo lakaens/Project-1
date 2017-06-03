@@ -13,7 +13,15 @@
 #include "Enemy_RiffleMen.h"
 #include "PowerUp_Boots.h"
 #include "PowerUp_Horse.h"
+#include "PowerUp_LittleBottle.h"
+#include "PowerUp_BigBottle.h"
+#include "PowerUp_Rifle.h"
 #include "Enemy_Barrel.h"
+#include "Boots_Barrel.h"
+#include "BigBottle_Barrel.h"
+#include "LittleBottle_Barrel.h"
+#include "Horse_Barrel.h"
+#include "Rifle_Barrel.h"
 #include "Enemy_GunMenJumper.h"
 #include "Enemy_GunMenBalcony.h"
 #include "Enemy_GunMenLeft.h"
@@ -56,7 +64,15 @@ update_status ModuleEnemies::PreUpdate()
 				|| (queue[i].type == ENEMY_TYPES::GUNMEN)
 				|| (queue[i].type == ENEMY_TYPES::GUNMENBALCONY)
 				|| (queue[i].type == ENEMY_TYPES::BOOTS)
-				|| (queue[i].type == ENEMY_TYPES::HORSE))
+				|| (queue[i].type == ENEMY_TYPES::HORSE)
+				|| (queue[i].type == ENEMY_TYPES::BIGBOTTLE)
+				|| (queue[i].type == ENEMY_TYPES::LITTLEBOTTLE)
+				|| (queue[i].type == ENEMY_TYPES::RIFLE)
+				|| (queue[i].type == ENEMY_TYPES::BOOTSBARREL)
+				|| (queue[i].type == ENEMY_TYPES::BIGBOTTLEBARREL)
+				|| (queue[i].type == ENEMY_TYPES::LITTLEBOTTLEBARREL)
+				|| (queue[i].type == ENEMY_TYPES::HORSEBARREL)
+				|| (queue[i].type == ENEMY_TYPES::RIFLEBARREL))
 			{
 				if (queue[i].y > (abs(App->render->camera.y) / SCREEN_SIZE) - SPAWN_MARGIN)
 				{
@@ -64,6 +80,41 @@ update_status ModuleEnemies::PreUpdate()
 					queue[i].type = ENEMY_TYPES::NO_TYPE;
 				}
 			}
+			/*if (queue[i].type == ENEMY_TYPES::BOOTS) {
+				if (boots)
+				{
+					SpawnEnemy(queue[i]);
+					queue[i].type = ENEMY_TYPES::NO_TYPE;
+				}
+			}
+			if (queue[i].type == ENEMY_TYPES::RIFLE) {
+				if (rifle)
+				{
+					SpawnEnemy(queue[i]);
+					queue[i].type = ENEMY_TYPES::NO_TYPE;
+				}
+			}
+			if (queue[i].type == ENEMY_TYPES::BIGBOTTLE) {
+				if (bigbottle)
+				{
+					SpawnEnemy(queue[i]);
+					queue[i].type = ENEMY_TYPES::NO_TYPE;
+				}
+			}
+			if (queue[i].type == ENEMY_TYPES::LITTLEBOTTLE) {
+				if (littlebottle)
+				{
+					SpawnEnemy(queue[i]);
+					queue[i].type = ENEMY_TYPES::NO_TYPE;
+				}
+			}
+			if (queue[i].type == ENEMY_TYPES::HORSE) {
+				if (bhorse)
+				{
+					SpawnEnemy(queue[i]);
+					queue[i].type = ENEMY_TYPES::NO_TYPE;
+				}
+			}*/
 			if ((queue[i].type == ENEMY_TYPES::BACKSTABBER)
 				|| (queue[i].type == ENEMY_TYPES::GUNMENJUMPER)
 				|| (queue[i].type == ENEMY_TYPES::GUNMENLEFT)
@@ -151,11 +202,22 @@ bool ModuleEnemies::AddEnemy(ENEMY_TYPES type, int x, int y)
 	{
 		if(queue[i].type == ENEMY_TYPES::NO_TYPE)
 		{
-			queue[i].type = type;
-			queue[i].x = x;
-			queue[i].y = y;
-			ret = true;
-			break;
+			/*if (type == ENEMY_TYPES::BOOTS) {
+				if (boots) {
+					queue[i].type = type;
+					queue[i].x = x;
+					queue[i].y = y;
+					ret = true;
+					break;
+				}
+			}
+			else {*/
+				queue[i].type = type;
+				queue[i].x = x;
+				queue[i].y = y;
+				ret = true;
+				break;
+			/*}*/
 		}
 	}
 
@@ -165,7 +227,7 @@ bool ModuleEnemies::AddEnemy(ENEMY_TYPES type, int x, int y)
 void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 {
 	// find room for the new enemy
-	//littlebottle, boots, empty, rifle, bigbottle, horse, bigbottle (right), boots (left), little bottle, empty, rifle, big bottle, big bottle, little bottle, boots, rifle, big bottle
+	
 
 	uint i = 0;
 	for(; enemies[i] != nullptr && i < MAX_ENEMIES; ++i);
@@ -202,6 +264,26 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 				enemies[i] = new Enemy_Barrel(info.x, info.y);
 				enemies[i]->type = ENEMY_TYPES::BARREL;
 				break;
+			case ENEMY_TYPES::BOOTSBARREL:
+				enemies[i] = new Enemy_Barrel(info.x, info.y);
+				enemies[i]->type = ENEMY_TYPES::BOOTSBARREL;
+				break;
+			case ENEMY_TYPES::BIGBOTTLEBARREL:
+				enemies[i] = new Enemy_Barrel(info.x, info.y);
+				enemies[i]->type = ENEMY_TYPES::BIGBOTTLEBARREL;
+				break;
+			case ENEMY_TYPES::LITTLEBOTTLEBARREL:
+				enemies[i] = new Enemy_Barrel(info.x, info.y);
+				enemies[i]->type = ENEMY_TYPES::LITTLEBOTTLEBARREL;
+				break;
+			case ENEMY_TYPES::HORSEBARREL:
+				enemies[i] = new Enemy_Barrel(info.x, info.y);
+				enemies[i]->type = ENEMY_TYPES::HORSEBARREL;
+				break;
+			case ENEMY_TYPES::RIFLEBARREL:
+				enemies[i] = new Enemy_Barrel(info.x, info.y);
+				enemies[i]->type = ENEMY_TYPES::RIFLEBARREL;
+				break;
 			case ENEMY_TYPES::GUNMENJUMPER:
 				enemies[i] = new Enemy_GunMenJumper(info.x, info.y);
 				enemies[i]->type = ENEMY_TYPES::GUNMENJUMPER;
@@ -218,14 +300,69 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 				enemies[i] = new Enemy_GunMenBalcony(info.x, info.y);
 				enemies[i]->type = ENEMY_TYPES::GUNMENRIGHT;
 				break;
+			/*
 			case ENEMY_TYPES::BOOTS:
-				enemies[i] = new PowerUp_Boots(info.x, info.y);
-				enemies[i]->type = ENEMY_TYPES::BOOTS;
+			if (boots) {
+			enemies[i] = new PowerUp_Boots(info.x, info.y);
+			enemies[i]->type = ENEMY_TYPES::BOOTS;
+			}
+			break;
+			case ENEMY_TYPES::HORSE:
+			if (bhorse) {
+			enemies[i] = new PowerUp_Horse(info.x, info.y);
+			enemies[i]->type = ENEMY_TYPES::HORSE;
+			}
+			break;
+			case ENEMY_TYPES::BIGBOTTLE:
+			if (bigbottle) {
+			enemies[i] = new BigBottle(info.x, info.y);
+			enemies[i]->type = ENEMY_TYPES::BIGBOTTLE;
+			}
+			break;
+			case ENEMY_TYPES::LITTLEBOTTLE:
+			if (littlebottle) {
+			enemies[i] = new LittleBottle(info.x, info.y);
+			enemies[i]->type = ENEMY_TYPES::LITTLEBOTTLE;
+			}
+			break;
+			case ENEMY_TYPES::RIFLE:
+			if (rifle) {
+			enemies[i] = new PowerUp_Rifle(info.x, info.y);
+			enemies[i]->type = ENEMY_TYPES::RIFLE;
+			}
+			break;
+			*/
+			case ENEMY_TYPES::BOOTS:
+				
+					enemies[i] = new PowerUp_Boots(info.x, info.y);
+					enemies[i]->type = ENEMY_TYPES::BOOTS;
+				
 				break;
 			case ENEMY_TYPES::HORSE:
-				enemies[i] = new PowerUp_Horse(info.x, info.y);
-			enemies[i]->type = ENEMY_TYPES::HORSE;
-			break;
+				
+					enemies[i] = new PowerUp_Horse(info.x, info.y);
+					enemies[i]->type = ENEMY_TYPES::HORSE;
+				
+				break;
+			case ENEMY_TYPES::BIGBOTTLE:
+				
+					enemies[i] = new BigBottle(info.x, info.y);
+					enemies[i]->type = ENEMY_TYPES::BIGBOTTLE;
+				
+				break;
+			case ENEMY_TYPES::LITTLEBOTTLE:
+				
+					enemies[i] = new LittleBottle(info.x, info.y);
+					enemies[i]->type = ENEMY_TYPES::LITTLEBOTTLE;
+				
+				break;
+			case ENEMY_TYPES::RIFLE:
+				
+					enemies[i] = new PowerUp_Rifle(info.x, info.y);
+					enemies[i]->type = ENEMY_TYPES::RIFLE;
+				
+				break;
+
 		}
 	}
 }
@@ -303,27 +440,52 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 					break;
 				}
 			}
-			if (enemies[i]->type == ENEMY_TYPES::BARREL) 
+			if (enemies[i]->type == ENEMY_TYPES::BARREL
+				|| enemies[i]->type == ENEMY_TYPES::BOOTSBARREL
+				|| enemies[i]->type == ENEMY_TYPES::BIGBOTTLEBARREL
+				|| enemies[i]->type == ENEMY_TYPES::LITTLEBOTTLEBARREL
+				|| enemies[i]->type == ENEMY_TYPES::RIFLEBARREL
+				|| enemies[i]->type == ENEMY_TYPES::HORSEBARREL)
 			{
 				if (c2->type == COLLIDER_PLAYER_SHOT) {
 					App->player->score += 50;
 					--enemies[i]->life;
 					if (enemies[i]->life == 0) {
 						App->particles->AddParticle(App->particles->deadBarrel, c1->rect.x, c1->rect.y, COLLIDER_NONE);
+						switch (enemies[i]->type)
+						{
+						case ENEMY_TYPES::BARREL:
+							break;
+						case ENEMY_TYPES::BOOTSBARREL:
+							boots = true;
+							break;
+						case ENEMY_TYPES::BIGBOTTLEBARREL:
+							bigbottle = true;
+							break;
+						case ENEMY_TYPES::LITTLEBOTTLEBARREL:
+							littlebottle = true;
+							break;
+						case ENEMY_TYPES::RIFLEBARREL:
+							rifle = true;
+							break;
+						case ENEMY_TYPES::HORSEBARREL:
+							horse = true;
+							break;
+						}
 						delete enemies[i];
 						enemies[i] = nullptr;
+						
 					}
-					break;
 				}
 			}
 			//bottle=1000 points
-			//bullet=50, life
-			//riffle=velocity
+			//riffle=reach
+			
 			if (enemies[i]->type == ENEMY_TYPES::BOOTS){
 				if (c2->type == COLLIDER_PLAYER) {
-					App->player->speed += 1;
-					
+					App->player->speed += 0.3;
 				}
+				break;
 
 			}
 			if (enemies[i]->type == ENEMY_TYPES::HORSE) {
@@ -331,9 +493,33 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 					horse = true;
 					delete enemies[i];
 					enemies[i] = nullptr;
-					break;
-					
 				}
+				break;
+			}
+			if (enemies[i]->type == ENEMY_TYPES::RIFLE) {
+				if (c2->type == COLLIDER_PLAYER) {
+					App->particles->bulletl.life += 75;
+					App->particles->bulletr.life += 75;
+					App->particles->bulletu.life += 75;
+				}
+				break;
+
+			}
+			if (enemies[i]->type == ENEMY_TYPES::BIGBOTTLE) {
+				if (c2->type == COLLIDER_PLAYER) {
+					App->player->score += 1000;
+
+				}
+				break;
+
+			}
+			if (enemies[i]->type == ENEMY_TYPES::LITTLEBOTTLE) {
+				if (c2->type == COLLIDER_PLAYER) {
+					App->player->score += 1000;
+
+				}
+				break;
+
 			}
 		}
 		if (c2->type == COLLIDER_WALL && enemies[i] != nullptr && c1->CheckCollision(c2->rect) == true && enemies[i]->GetCollider() == c1)
