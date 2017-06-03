@@ -253,6 +253,8 @@ bool ModuleMap1::Start()
 	App->enemies->AddEnemy(ENEMY_TYPES::BARREL, 44, 625);
 	App->enemies->AddEnemy(ENEMY_TYPES::BARREL, 44, 465);
 
+
+	App->enemies->AddEnemy(ENEMY_TYPES::BOOTS, 130, 2753);
 	//BOSS COORDS = 111, 133, 18, 29
 	
 	

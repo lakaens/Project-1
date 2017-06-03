@@ -25,6 +25,5 @@ void PowerUp_Boots::OnCollision(Collider* c1, Collider* c2) {
 
 	if (c1->type == COLLIDER_POWERUPS && c2->type == COLLIDER_PLAYER) {
 		App->player->speed += 1;
-		App->player->score += 200;
 	}
 }
