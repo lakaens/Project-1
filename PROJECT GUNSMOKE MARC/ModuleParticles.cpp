@@ -155,6 +155,14 @@ ModuleParticles::ModuleParticles()
 	playerhit.anim.loop = false;
 	playerhit.anim.speed = 0.1f;
 
+	bomb.anim.PushBack({440,82,13,13});
+	bomb.anim.PushBack({466,85,10,9});
+	bomb.anim.PushBack({492,87,7,6});
+	bomb.anim.PushBack({517,91,7,3});
+	bomb.anim.loop = false;
+	bomb.anim.speed = 0.1f;
+	bomb.life = 1000;
+
 	
 
 }

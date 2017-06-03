@@ -71,12 +71,11 @@
   <ItemGroup>
     <ClInclude Include="Animation.h" />
     <ClInclude Include="Application.h" />
-    <ClInclude Include="BigBottle_Barrel.h" />
-    <ClInclude Include="Boots_Barrel.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="Enemy_BackStabber.h" />
     <ClInclude Include="Enemy_Barrel.h" />
     <ClInclude Include="Enemy_Bomber.h" />
+    <ClInclude Include="Enemy_Boss.h" />
     <ClInclude Include="Enemy_GunMen.h" />
     <ClInclude Include="Enemy_GunMenBalcony.h" />
     <ClInclude Include="Enemy_GunMenJumper.h" />
@@ -86,8 +85,6 @@
     <ClInclude Include="Enemy_WindowSniperLeft.h" />
     <ClInclude Include="Enemy_WindowSniperRight.h" />
     <ClInclude Include="Globals.h" />
-    <ClInclude Include="Horse_Barrel.h" />
-    <ClInclude Include="LittleBottle_Barrel.h" />
     <ClInclude Include="MemLeaks.h" />
     <ClInclude Include="Module.h" />
     <ClInclude Include="ModuleAudio.h" />
@@ -113,16 +110,14 @@
     <ClInclude Include="PowerUp_Horse.h" />
     <ClInclude Include="PowerUp_LittleBottle.h" />
     <ClInclude Include="PowerUp_Rifle.h" />
-    <ClInclude Include="Rifle_Barrel.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Application.cpp" />
-    <ClCompile Include="BigBottle_Barrel.cpp" />
-    <ClCompile Include="Boots_Barrel.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="Enemy_BackStabber.cpp" />
     <ClCompile Include="Enemy_Barrel.cpp" />
     <ClCompile Include="Enemy_Bomber.cpp" />
+    <ClCompile Include="Enemy_Boss.cpp" />
     <ClCompile Include="Enemy_GunMen.cpp" />
     <ClCompile Include="Enemy_GunMenBalcony.cpp" />
     <ClCompile Include="Enemy_GunMenJumper.cpp" />
@@ -132,8 +127,6 @@
     <ClCompile Include="Enemy_WindowSniperLeft.cpp" />
     <ClCompile Include="Enemy_WindowSniperRight.cpp" />
     <ClCompile Include="Globals.cpp" />
-    <ClCompile Include="Horse_Barrel.cpp" />
-    <ClCompile Include="LittleBottle_Barrel.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="ModuleAudio.cpp" />
     <ClCompile Include="ModuleCollision.cpp" />
@@ -156,7 +149,6 @@
     <ClCompile Include="PowerUp_Horse.cpp" />
     <ClCompile Include="PowerUp_LittleBottle.cpp" />
     <ClCompile Include="PowerUp_Rifle.cpp" />
-    <ClCompile Include="Rifle_Barrel.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

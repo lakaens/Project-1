@@ -322,7 +322,8 @@ update_status ModulePlayer::Update()
 		}
 		if (App->input->keyboard[SDL_SCANCODE_F2] == KEY_STATE::KEY_DOWN) {
 
-			
+			GodMode = !GodMode;
+
 
 		}
 		if (destroyed == false && position.y == 0) {
@@ -354,107 +355,12 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 
 	}
 	
+	if (GodMode != false) {
+		if (c2->type == COLLIDER_ENEMY_SHOT || c2->type == COLLIDER_ENEMY && destroyed == false && App->fade->IsFading() == false) {
 
-	if ((c1->type == COLLIDER_PLAYER && c2->type == COLLIDER_WALL))
-	{
-		//Check collision Right
-		if ((c1->rect.x + c1->rect.w) - c2->rect.x == 1
-			&& (c2->rect.x + c2->rect.w) - c1->rect.x != 1
-			&& (c2->rect.y + c2->rect.h) - c1->rect.y != 1
-			&& (c1->rect.y + c1->rect.h) - c2->rect.y != 1)
-		{
-			colright = true;
-		}
-
-		//Check collision Left
-		if ((c1->rect.x + c1->rect.w) - c2->rect.x != 1
-			&& (c2->rect.x + c2->rect.w) - c1->rect.x == 1
-			&& (c2->rect.y + c2->rect.h) - c1->rect.y != 1
-			&& (c1->rect.y + c1->rect.h) - c2->rect.y != 1)
-		{
-			colleft = true;
-		}
-
-		//Check collision Up
-		if ((c1->rect.x + c1->rect.w) - c2->rect.x != 1
-			&& (c2->rect.x + c2->rect.w) - c1->rect.x != 1
-			&& (c2->rect.y + c2->rect.h) - c1->rect.y == 1
-			&& (c1->rect.y + c1->rect.h) - c2->rect.y != 1)
-		{
-			colup = true;
-		}
-
-		//Check collision Down
-		if ((c1->rect.x + c1->rect.w) - c2->rect.x != 1
-			&& (c2->rect.x + c2->rect.w) - c1->rect.x != 1
-			&& (c2->rect.y + c2->rect.h) - c1->rect.y != 1
-			&& (c1->rect.y + c1->rect.h) - c2->rect.y == 1)
-		{
-			coldown = true;
-		}
-
-		//Block Up-Right Diagonal
-		if ((c1->rect.x + c1->rect.w) - c2->rect.x == 1
-			&& (c2->rect.x + c2->rect.w) - c1->rect.x != 1
-			&& (c2->rect.y + c2->rect.h) - c1->rect.y == 1
-			&& (c1->rect.y + c1->rect.h) - c2->rect.y != 1
-			&& colup == false
-			&& coldown == false
-			&& colleft == false
-			&& colright == false)
-		{
-			blockUR = true;
-		}
-
-		//Block Up-Left Diagonal
-		if ((c1->rect.x + c1->rect.w) - c2->rect.x != 1
-			&& (c2->rect.x + c2->rect.w) - c1->rect.x == 1
-			&& (c2->rect.y + c2->rect.h) - c1->rect.y == 1
-			&& (c1->rect.y + c1->rect.h) - c2->rect.y != 1
-			&& colup == false
-			&& coldown == false
-			&& colleft == false
-			&& colright == false)
-		{
-			blockUL = true;
-		}
-
-		//Block Down-Left Diagonal
-		if ((c1->rect.x + c1->rect.w) - c2->rect.x != 1
-			&& (c2->rect.x + c2->rect.w) - c1->rect.x == 1
-			&& (c2->rect.y + c2->rect.h) - c1->rect.y != 1
-			&& (c1->rect.y + c1->rect.h) - c2->rect.y == 1
-			&& colup == false
-			&& coldown == false
-			&& colleft == false
-			&& colright == false)
-		{
-			blockDL = true;
-		}
-
-		//Block Down-Right Diagonal
-		if ((c1->rect.x + c1->rect.w) - c2->rect.x == 1
-			&& (c2->rect.x + c2->rect.w) - c1->rect.x != 1
-			&& (c2->rect.y + c2->rect.h) - c1->rect.y != 1
-			&& (c1->rect.y + c1->rect.h) - c2->rect.y == 1
-			&& colup == false
-			&& coldown == false
-			&& colleft == false
-			&& colright == false)
-		{
-			blockDR = true;
-		}
-
-	}
-	if (c2->type == COLLIDER_ENEMY_SHOT || c2->type == COLLIDER_ENEMY && destroyed == false && App->fade->IsFading() == false) {
-
-		if (col != nullptr) {
-			col->to_delete = true;
-		}
-		if (App->enemies->horse == true) {
-			App->enemies->horse = false;
-		}
-		else {
+			if (col != nullptr) {
+				col->to_delete = true;
+			}
 			if (life > 1) {
 				--life;
 				App->player->Disable();
@@ -469,10 +375,13 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 				life = 3;
 				App->fade->FadeToBlack(App->map, App->gameover);
 			}
+
+			if (App->enemies->horse == true) {
+				App->enemies->horse = false;
+			}
+
 		}
-		
-		
-	}		
+	}
 		
 }
 

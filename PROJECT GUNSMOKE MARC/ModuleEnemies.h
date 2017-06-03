@@ -22,15 +22,11 @@ enum ENEMY_TYPES
 	LITTLEBOTTLE,
 	BIGBOTTLE,
 	BARREL,
-	BOOTSBARREL,
-	BIGBOTTLEBARREL,
-	LITTLEBOTTLEBARREL,
-	HORSEBARREL,
-	RIFLEBARREL,
 	GUNMENJUMPER,
 	GUNMENBALCONY,
 	GUNMENLEFT,
-	GUNMENRIGHT
+	GUNMENRIGHT,
+	BOSS
 };
 
 class Enemy;
@@ -57,10 +53,6 @@ public:
 	bool horse = false;
 	bool AddEnemy(ENEMY_TYPES type, int x, int y);
 	bool boots = false;
-	bool bhorse = false;
-	bool bigbottle = false;
-	bool littlebottle = false;
-	bool rifle = false;
 
 private:
 
@@ -71,6 +63,7 @@ private:
 	EnemyInfo queue[MAX_ENEMIES];
 	Enemy* enemies[MAX_ENEMIES];
 	SDL_Texture* sprites;
+	
 	
 };
 

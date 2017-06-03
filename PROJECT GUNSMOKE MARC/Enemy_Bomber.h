@@ -12,10 +12,14 @@ private:
 	iPoint original_pos;
 	Animation move;
 	Animation stay;
+	fPoint speed;
+	float h;
+	uint lastTime = 0;
 public:
 
 	Enemy_Bomber(int x, int y);
 	void Move();
+	void Shoot();
 };
 
 

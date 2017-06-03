@@ -3,7 +3,7 @@
 
 #include "Enemy.h"
 
-class LittleBottle : public Enemy
+class PowerUp_LittleBottle : public Enemy
 {
 private:
 	Animation bottle;
@@ -11,8 +11,8 @@ private:
 
 public:
 
-	LittleBottle(int x, int y);
-	void OnCollision(Collider* c1, Collider* c2);
+	PowerUp_LittleBottle(int x, int y);
+	
 
 };
 

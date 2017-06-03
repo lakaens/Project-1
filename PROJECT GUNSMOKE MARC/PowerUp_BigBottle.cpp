@@ -3,7 +3,7 @@
 #include "ModuleCollision.h"
 #include "ModulePlayer.h"
 
-BigBottle::BigBottle(int x, int y) : Enemy(x, y)
+PowerUp_BigBottle::PowerUp_BigBottle(int x, int y) : Enemy(x, y)
 {
 	bottle.PushBack({ 60,17,11,13 });
 
