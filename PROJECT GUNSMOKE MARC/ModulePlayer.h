@@ -28,6 +28,7 @@ public:
 	char score_text[10];
 	uint score = 0;
 	Animation* current_animation = nullptr;
+	Animation chorse;
 	Animation right;
 	Animation left;
 	Animation up;

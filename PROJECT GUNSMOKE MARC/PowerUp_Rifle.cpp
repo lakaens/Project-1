@@ -13,7 +13,7 @@ PowerUp_Rifle::PowerUp_Rifle(int x, int y) :Enemy(x, y) {
 
 	animation = &move;
 
-	collider = App->collision->AddCollider({ 0,0,16,14 }, COLLIDER_TYPE::COLLIDER_POWERUPS, (Module*)App->enemies);
+	collider = App->collision->AddCollider({ 0,0,16,14 }, COLLIDER_TYPE::COLLIDER_POWERUP, (Module*)App->enemies);
 
 	original_pos.x = x;
 	original_pos.y = y;
@@ -23,7 +23,7 @@ PowerUp_Rifle::PowerUp_Rifle(int x, int y) :Enemy(x, y) {
 
 void PowerUp_Rifle::OnCollision(Collider* c1, Collider* c2) {
 
-	if (c1->type == COLLIDER_POWERUPS && c2->type == COLLIDER_PLAYER) {
+	if (c1->type == COLLIDER_POWERUP && c2->type == COLLIDER_PLAYER) {
 		App->particles->bulletu.life += 100;
 		App->particles->bulletl.life += 100;
 		App->particles->bulletr.life += 100;

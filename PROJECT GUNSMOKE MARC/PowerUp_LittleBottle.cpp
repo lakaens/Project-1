@@ -12,7 +12,7 @@ LittleBottle::LittleBottle(int x, int y) : Enemy(x, y)
 	position.x = x;
 	position.y = y;
 
-	collider = App->collision->AddCollider({ 0, 0, 12, 13 }, COLLIDER_TYPE::COLLIDER_POWERUPS, (Module*)App->enemies);
+	collider = App->collision->AddCollider({ 0, 0, 12, 13 }, COLLIDER_TYPE::COLLIDER_POWERUP, (Module*)App->enemies);
 
 
 }

@@ -12,6 +12,7 @@
 #include "Enemy_WindowSniperLeft.h"
 #include "Enemy_RiffleMen.h"
 #include "PowerUp_Boots.h"
+#include "PowerUp_Horse.h"
 #include "Enemy_Barrel.h"
 #include "Enemy_GunMenJumper.h"
 #include "Enemy_GunMenBalcony.h"
@@ -54,7 +55,8 @@ update_status ModuleEnemies::PreUpdate()
 				|| (queue[i].type == ENEMY_TYPES::RIFFLEMEN)
 				|| (queue[i].type == ENEMY_TYPES::GUNMEN)
 				|| (queue[i].type == ENEMY_TYPES::GUNMENBALCONY)
-				|| (queue[i].type == ENEMY_TYPES::BOOTS))
+				|| (queue[i].type == ENEMY_TYPES::BOOTS)
+				|| (queue[i].type == ENEMY_TYPES::HORSE))
 			{
 				if (queue[i].y > (abs(App->render->camera.y) / SCREEN_SIZE) - SPAWN_MARGIN)
 				{
@@ -220,10 +222,10 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 				enemies[i] = new PowerUp_Boots(info.x, info.y);
 				enemies[i]->type = ENEMY_TYPES::BOOTS;
 				break;
-			/*case ENEMY_TYPES::POWERUP:
-				enemies[i] = new Enemy_PowerUp(info.x, info.y);
-			enemies[i]->type = ENEMY_TYPES::POWERUP;
-			break;*/
+			case ENEMY_TYPES::HORSE:
+				enemies[i] = new PowerUp_Horse(info.x, info.y);
+			enemies[i]->type = ENEMY_TYPES::HORSE;
+			break;
 		}
 	}
 }
@@ -232,7 +234,7 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 {
 	for (uint i = 0; i < MAX_ENEMIES; ++i)
 	{
-		if (enemies[i] != nullptr && enemies[i]->GetCollider() == c1 && c2->type==COLLIDER_PLAYER_SHOT||c2->type==COLLIDER_PLAYER)
+		if (enemies[i] != nullptr && enemies[i]->GetCollider() == c1)
 		{
 			
 			enemies[i]->OnCollision(c2);
@@ -242,77 +244,85 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 				|| (enemies[i]->type == ENEMY_TYPES::GUNMENRIGHT)
 				|| (enemies[i]->type == ENEMY_TYPES::GUNMENBALCONY))
 			{
-				App->player->score += 200;
-				App->particles->AddParticle(App->particles->deadGunMen, c1->rect.x, c1->rect.y, COLLIDER_NONE);
+				if (c2->type == COLLIDER_PLAYER_SHOT) {
+					App->player->score += 200;
+					App->particles->AddParticle(App->particles->deadGunMen, c1->rect.x, c1->rect.y, COLLIDER_NONE);
 
-				delete enemies[i];
-				enemies[i] = nullptr;
-				break;
+					delete enemies[i];
+					enemies[i] = nullptr;
+					break;
+				}
 			}
 			if (enemies[i]->type==ENEMY_TYPES::WINDOWSNIPERRIGHT) 
 			{
-				App->player->score += 500;
+				if (c2->type == COLLIDER_PLAYER_SHOT) {
+					App->player->score += 500;
 					App->particles->AddParticle(App->particles->deadWindowSniperRight, c1->rect.x, c1->rect.y, COLLIDER_NONE);
 					delete enemies[i];
 					enemies[i] = nullptr;
 					break;
+				}
 			}
 			if(enemies[i]->type == ENEMY_TYPES::BOMBER)
 			{
-				App->player->score += 300;
-				App->particles->AddParticle(App->particles->deadBomber, c1->rect.x, c1->rect.y, COLLIDER_NONE);
-				delete enemies[i];
-				enemies[i] = nullptr;
-				break;
+				if (c2->type == COLLIDER_PLAYER_SHOT) {
+					App->player->score += 300;
+					App->particles->AddParticle(App->particles->deadBomber, c1->rect.x, c1->rect.y, COLLIDER_NONE);
+					delete enemies[i];
+					enemies[i] = nullptr;
+					break;
+				}
 			}
 			if (enemies[i]->type == ENEMY_TYPES::WINDOWSNIPERLEFT)
 			{
-				App->player->score += 500;
-				App->particles->AddParticle(App->particles->deadWindowSniperLeft, c1->rect.x, c1->rect.y, COLLIDER_NONE);
-				delete enemies[i];
-				enemies[i] = nullptr;
-				break;
+				if (c2->type == COLLIDER_PLAYER_SHOT) {
+					App->player->score += 500;
+					App->particles->AddParticle(App->particles->deadWindowSniperLeft, c1->rect.x, c1->rect.y, COLLIDER_NONE);
+					delete enemies[i];
+					enemies[i] = nullptr;
+					break;
+				}
 			}
 			if (enemies[i]->type == ENEMY_TYPES::BACKSTABBER)
 			{
-				App->player->score += 800;
-				App->particles->AddParticle(App->particles->deadBackStabber, c1->rect.x, c1->rect.y, COLLIDER_NONE);
-				delete enemies[i];
-				enemies[i] = nullptr;
-				break;
+				if (c2->type == COLLIDER_PLAYER_SHOT) {
+					App->player->score += 800;
+					App->particles->AddParticle(App->particles->deadBackStabber, c1->rect.x, c1->rect.y, COLLIDER_NONE);
+					delete enemies[i];
+					enemies[i] = nullptr;
+					break;
+				}
 			}
 			if (enemies[i]->type == ENEMY_TYPES::RIFFLEMEN) 
 			{
-				App->player->score += 400;
-				App->particles->AddParticle(App->particles->deadRiffleMen, c1->rect.x, c1->rect.y, COLLIDER_NONE);
-				delete enemies[i];
-				enemies[i] = nullptr;
-				break;
+				if (c2->type == COLLIDER_PLAYER_SHOT) {
+					App->player->score += 400;
+					App->particles->AddParticle(App->particles->deadRiffleMen, c1->rect.x, c1->rect.y, COLLIDER_NONE);
+					delete enemies[i];
+					enemies[i] = nullptr;
+					break;
+				}
 			}
 			if (enemies[i]->type == ENEMY_TYPES::BARREL) 
 			{
 				if (c2->type == COLLIDER_PLAYER_SHOT) {
+					App->player->score += 50;
 					--enemies[i]->life;
 					if (enemies[i]->life == 0) {
 						App->particles->AddParticle(App->particles->deadBarrel, c1->rect.x, c1->rect.y, COLLIDER_NONE);
 						delete enemies[i];
 						enemies[i] = nullptr;
-						App->player->score += 50;
 					}
 					break;
 				}
 			}
-			if (enemies[i]->type == ENEMY_TYPES::BOOTS)
-				/*|| (enemies[i]->type == ENEMY_TYPES::RIFLE)
-				|| (enemies[i]->type == ENEMY_TYPES::BULLET)
-				|| (enemies[i]->type == ENEMY_TYPES::HORSE)
-				|| (enemies[i]->type == ENEMY_TYPES::LITTLEBOTTLE)
-				|| (enemies[i]->type == ENEMY_TYPES::BIGBOTTLE))*/
-			{
+			//bottle=1000 points
+			//bullet=50, life
+			//riffle=velocity
+			if (enemies[i]->type == ENEMY_TYPES::BOOTS){
 				if (c2->type == COLLIDER_PLAYER) {
 					App->player->speed += 1;
-					delete enemies[i];
-					enemies[i] = nullptr;
+					
 				}
 
 			}

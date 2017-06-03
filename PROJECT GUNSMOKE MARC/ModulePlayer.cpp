@@ -84,6 +84,12 @@ ModulePlayer::ModulePlayer()
 
 	empty.PushBack({ 454,206,6,7 });
 
+	chorse.PushBack({376,121,24,35});
+	chorse.PushBack({416,122,24,33});
+	chorse.PushBack({456,121,24,36});
+	chorse.loop = true;
+	chorse.speed = 1.0f;
+
 	
 }
 

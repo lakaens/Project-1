@@ -14,7 +14,7 @@ private:
 public:
 
 	PowerUp_Horse(int x, int y);
-	void OnCollision(Collider* c1, Collider* c2);
+	
 };
 
 

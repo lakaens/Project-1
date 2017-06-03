@@ -14,7 +14,7 @@ PowerUp_Bullet::PowerUp_Bullet(int x, int y) :Enemy(x, y) {
 
 	animation = &move;
 
-	collider = App->collision->AddCollider({ 0,0,16,15 }, COLLIDER_TYPE::COLLIDER_POWERUPS, (Module*)App->enemies);
+	collider = App->collision->AddCollider({ 0,0,16,15 }, COLLIDER_TYPE::COLLIDER_POWERUP, (Module*)App->enemies);
 
 	original_pos.x = x;
 	original_pos.y = y;
@@ -24,7 +24,7 @@ PowerUp_Bullet::PowerUp_Bullet(int x, int y) :Enemy(x, y) {
 
 void PowerUp_Bullet::OnCollision(Collider* c1, Collider* c2) {
 
-	if (c1->type == COLLIDER_POWERUPS && c2->type == COLLIDER_PLAYER) {
+	if (c1->type == COLLIDER_POWERUP && c2->type == COLLIDER_PLAYER) {
 		App->player->score += 50;
 		App->particles->bulletl.speed.y += 1;
 		App->particles->bulletl.speed.x += 1;
