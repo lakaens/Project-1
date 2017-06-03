@@ -235,23 +235,23 @@ bool ModuleMap1::Start()
 	//App->enemies->AddEnemy(ENEMY_TYPES::GUNMENRIGHT, 224,560);
 	////
 	////barrels
-	/*App->enemies->AddEnemy(ENEMY_TYPES::LITTLEBOTTLEBARREL, 164, 2753);*/
+	App->enemies->AddEnemy(ENEMY_TYPES::LITTLEBOTTLEBARREL, 164, 2753);
 	App->enemies->AddEnemy(ENEMY_TYPES::BOOTSBARREL, 164, 2737);
-	//App->enemies->AddEnemy(ENEMY_TYPES::BARREL, 164, 2641);
-	//App->enemies->AddEnemy(ENEMY_TYPES::RIFLEBARREL, 164, 2625);
-	//App->enemies->AddEnemy(ENEMY_TYPES::BIGBOTTLEBARREL, 160, 2001);
-	//App->enemies->AddEnemy(ENEMY_TYPES::HORSEBARREL, 160, 1985);
-	//App->enemies->AddEnemy(ENEMY_TYPES::BIGBOTTLEBARREL, 208, 1634);
-	//App->enemies->AddEnemy(ENEMY_TYPES::BOOTSBARREL, 48, 1634);
-	//App->enemies->AddEnemy(ENEMY_TYPES::LITTLEBOTTLEBARREL, 208, 1458);
-	//App->enemies->AddEnemy(ENEMY_TYPES::BARREL, 44, 1169);
-	//App->enemies->AddEnemy(ENEMY_TYPES::RIFLEBARREL, 44, 1153);
-	//App->enemies->AddEnemy(ENEMY_TYPES::BIGBOTTLEBARREL, 44, 946);
-	//App->enemies->AddEnemy(ENEMY_TYPES::BIGBOTTLEBARREL, 44, 849);
-	//App->enemies->AddEnemy(ENEMY_TYPES::LITTLEBOTTLEBARREL, 44, 833);
-	//App->enemies->AddEnemy(ENEMY_TYPES::BOOTSBARREL, 44, 641);
-	//App->enemies->AddEnemy(ENEMY_TYPES::RIFLEBARREL, 44, 625);
-	//App->enemies->AddEnemy(ENEMY_TYPES::BIGBOTTLEBARREL, 44, 465);
+	App->enemies->AddEnemy(ENEMY_TYPES::BARREL, 164, 2641);
+	App->enemies->AddEnemy(ENEMY_TYPES::RIFLEBARREL, 164, 2625);
+	App->enemies->AddEnemy(ENEMY_TYPES::BIGBOTTLEBARREL, 160, 2001);
+	App->enemies->AddEnemy(ENEMY_TYPES::HORSEBARREL, 160, 1985);
+	App->enemies->AddEnemy(ENEMY_TYPES::BIGBOTTLEBARREL, 208, 1634);
+	App->enemies->AddEnemy(ENEMY_TYPES::BOOTSBARREL, 48, 1634);
+	App->enemies->AddEnemy(ENEMY_TYPES::LITTLEBOTTLEBARREL, 208, 1458);
+	App->enemies->AddEnemy(ENEMY_TYPES::BARREL, 44, 1169);
+	App->enemies->AddEnemy(ENEMY_TYPES::RIFLEBARREL, 44, 1153);
+	App->enemies->AddEnemy(ENEMY_TYPES::BIGBOTTLEBARREL, 44, 946);
+	App->enemies->AddEnemy(ENEMY_TYPES::BIGBOTTLEBARREL, 44, 849);
+	App->enemies->AddEnemy(ENEMY_TYPES::LITTLEBOTTLEBARREL, 44, 833);
+	App->enemies->AddEnemy(ENEMY_TYPES::BOOTSBARREL, 44, 641);
+	App->enemies->AddEnemy(ENEMY_TYPES::RIFLEBARREL, 44, 625);
+	App->enemies->AddEnemy(ENEMY_TYPES::BIGBOTTLEBARREL, 44, 465);
 
 
 	//littlebottle, boots, empty, rifle, bigbottle, horse, bigbottle (right), boots (left), little bottle, empty, rifle, big bottle, big bottle, little bottle, boots, rifle, big bottle

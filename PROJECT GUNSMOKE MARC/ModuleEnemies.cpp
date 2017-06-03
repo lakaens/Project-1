@@ -63,11 +63,6 @@ update_status ModuleEnemies::PreUpdate()
 				|| (queue[i].type == ENEMY_TYPES::RIFFLEMEN)
 				|| (queue[i].type == ENEMY_TYPES::GUNMEN)
 				|| (queue[i].type == ENEMY_TYPES::GUNMENBALCONY)
-				|| (queue[i].type == ENEMY_TYPES::BOOTS)
-				|| (queue[i].type == ENEMY_TYPES::HORSE)
-				|| (queue[i].type == ENEMY_TYPES::BIGBOTTLE)
-				|| (queue[i].type == ENEMY_TYPES::LITTLEBOTTLE)
-				|| (queue[i].type == ENEMY_TYPES::RIFLE)
 				|| (queue[i].type == ENEMY_TYPES::BOOTSBARREL)
 				|| (queue[i].type == ENEMY_TYPES::BIGBOTTLEBARREL)
 				|| (queue[i].type == ENEMY_TYPES::LITTLEBOTTLEBARREL)
@@ -79,6 +74,15 @@ update_status ModuleEnemies::PreUpdate()
 					SpawnEnemy(queue[i]);
 					queue[i].type = ENEMY_TYPES::NO_TYPE;
 				}
+			}
+			if ((queue[i].type == ENEMY_TYPES::BOOTS)
+				|| (queue[i].type == ENEMY_TYPES::HORSE)
+				|| (queue[i].type == ENEMY_TYPES::BIGBOTTLE)
+				|| (queue[i].type == ENEMY_TYPES::LITTLEBOTTLE)
+				|| (queue[i].type == ENEMY_TYPES::RIFLE))
+			{
+				SpawnEnemy(queue[i]);
+				queue[i].type = ENEMY_TYPES::NO_TYPE;
 			}
 			/*if (queue[i].type == ENEMY_TYPES::BOOTS) {
 				if (boots)
@@ -452,7 +456,7 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 					if (enemies[i]->life == 0) {
 						App->player->score += 50;
 						App->particles->AddParticle(App->particles->deadBarrel, c1->rect.x, c1->rect.y, COLLIDER_NONE);
-						switch (enemies[i]->type)
+						/*switch (enemies[i]->type)
 						{
 						case ENEMY_TYPES::BARREL:
 							break;
@@ -472,6 +476,7 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 							this->AddEnemy(ENEMY_TYPES::HORSE, c1->rect.x, c1->rect.y);
 							break;
 						}
+						*/
 						delete enemies[i];
 						enemies[i] = nullptr;
 						
