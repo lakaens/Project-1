@@ -4,19 +4,17 @@
 
 Enemy_Barrel::Enemy_Barrel(int x, int y) :Enemy(x, y) {
 
-	move.PushBack({ 369,16,18,18 });
+	move.PushBack({ 738, 633, 16, 16 });
+	move.loop = false;
+	move.speed = 0.05f;
 
-	collider = App->collision->AddCollider({ 0,0,18,18 }, COLLIDER_TYPE::COLLIDER_BARREL, (Module*)App->enemies);
+	animation = &move;
+
+	collider = App->collision->AddCollider({ 0,0,16,16 }, COLLIDER_TYPE::COLLIDER_BARREL, (Module*)App->enemies);
 
 	original_pos.x = x;
 	original_pos.y = y;
 
 	life = 5;
 
-}
-
-void Enemy_Barrel::OnCollision(Collider* c1, Collider* c2)
-{
-	if (c2->type == COLLIDER_PLAYER_SHOT)
-		life--;
 }

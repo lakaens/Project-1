@@ -17,6 +17,7 @@ public:
 	iPoint position;
 	int type;
 	Collider* collider;
+	int life;
 
 public:
 	Enemy(int x, int y);

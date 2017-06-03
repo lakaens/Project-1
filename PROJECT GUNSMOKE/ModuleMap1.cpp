@@ -32,7 +32,7 @@ bool ModuleMap1::Start()
 	LOG("Loading space scene");
 	
 	background = App->textures->Load("Gunsmoke/map2.png");
-	App->audio->Enable();
+	
 	App->audio->musicLoad("Gunsmoke/stage1.ogg");
 
 	App->collision->Enable();
@@ -43,103 +43,50 @@ bool ModuleMap1::Start()
 	
 	//// Colliders ---
 	////left buildings
-	App->collision->AddCollider({ 0,3037,37,16 }, COLLIDER_WALL);
-	App->collision->AddCollider({ 0,2689,55,348 }, COLLIDER_WALL);
-	App->collision->AddCollider({ 0,2662,44,27 }, COLLIDER_WALL);
-	App->collision->AddCollider({ 44,2682,8,7 }, COLLIDER_WALL);
-	App->collision->AddCollider({ 0,2637,25,25 }, COLLIDER_WALL);
-	App->collision->AddCollider({ 0,1661,55,192 }, COLLIDER_WALL);
-	App->collision->AddCollider({ 0,1377,55,284 }, COLLIDER_WALL);
-	App->collision->AddCollider({ 0,1309,55,40 }, COLLIDER_WALL);
-	App->collision->AddCollider({ 0,1349,49,28 }, COLLIDER_WALL);
-	App->collision->AddCollider({ 0,1121,55,188 }, COLLIDER_WALL);
-	App->collision->AddCollider({ 0,1021,55,100 }, COLLIDER_WALL);
-	App->collision->AddCollider({ 0,832,55,189 }, COLLIDER_WALL);
-	App->collision->AddCollider({ 44,825,8,7 }, COLLIDER_WALL);
-	App->collision->AddCollider({ 0,805,44,27 }, COLLIDER_WALL);
-	App->collision->AddCollider({ 0,797,29,8 }, COLLIDER_WALL);
-	App->collision->AddCollider({ 0,124,37,18 }, COLLIDER_WALL);
-	App->collision->AddCollider({ 0,0,55,124 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 180, 2502, 44, 290 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 192, 2464, 32, 38 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 180, 2365, 44, 80 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 169, 2076, 59, 289 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 180, 2043, 44, 33 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 180, 1980, 44, 63 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 208, 1951, 16, 29 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 182, 1979, 1, 1 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 183, 1978, 1, 2 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 184, 1977, 1, 3 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 185, 1976, 1, 4 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 186, 1975, 1, 5 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 187, 1974, 1, 6 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 188, 1973, 1, 7 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 189, 1972, 1, 8 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 190, 1971, 1, 9 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 191, 1970, 1, 10 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 192, 1969, 1, 11 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 193, 1968, 1, 12 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 194, 1967, 1, 13 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 195, 1966, 1, 14 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 196, 1965, 1, 15 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 197, 1964, 1, 16 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 198, 1963, 1, 17 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 199, 1962, 1, 18 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 200, 1961, 1, 19 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 201, 1958, 1, 22 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 202, 1957, 1, 23 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 203, 1956, 1, 24 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 204, 1955, 1, 25 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 205, 1954, 1, 26 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 206, 1953, 1, 27 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 207, 1952, 1, 28 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 0, 327, 48, 940 }, COLLIDER_WALL);
 
-	//right buildings
-	App->collision->AddCollider({ 169,2685,65,70 }, COLLIDER_WALL);
-	App->collision->AddCollider({ 176,2755,48,20 }, COLLIDER_WALL);
-	App->collision->AddCollider({ 169,2401,68,284 }, COLLIDER_WALL);
-	App->collision->AddCollider({ 171,2333,63,68 }, COLLIDER_WALL);
-	App->collision->AddCollider({ 169,2144,66,189 }, COLLIDER_WALL);
-	App->collision->AddCollider({ 195,2109,29,8 }, COLLIDER_WALL);
-	App->collision->AddCollider({ 180,2117,44,27 }, COLLIDER_WALL);
-	App->collision->AddCollider({ 172,2137,8,7 }, COLLIDER_WALL);
-	App->collision->AddCollider({ 169,1729,55,92 }, COLLIDER_WALL);
-	App->collision->AddCollider({ 187,1821,37,17 }, COLLIDER_WALL);
-	App->collision->AddCollider({ 171,1661,53,68 }, COLLIDER_WALL);
-	App->collision->AddCollider({ 169,1473,55,188 }, COLLIDER_WALL);
-	App->collision->AddCollider({ 180,1446,44,27 }, COLLIDER_WALL);
-	App->collision->AddCollider({ 195,1438,29,8 }, COLLIDER_WALL);
-	App->collision->AddCollider({ 172,1466,8,7 }, COLLIDER_WALL);
-	App->collision->AddCollider({ 169,0,55,732 }, COLLIDER_WALL);
+	//stairs
+	App->collision->AddCollider({ 145,2302,24,3 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 145,2206,24,3 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 145,2110,24,3 }, COLLIDER_WALL);
 
-
-	//left stairs
-	App->collision->AddCollider({ 55,2972,24,3 }, COLLIDER_WALL);
-	App->collision->AddCollider({ 55,2876,24,3 }, COLLIDER_WALL);
-	App->collision->AddCollider({ 55,2814,24,3 }, COLLIDER_WALL);
-	App->collision->AddCollider({ 55,2716,24,3 }, COLLIDER_WALL);
-	App->collision->AddCollider({ 55,1788,24,3 }, COLLIDER_WALL);
-	App->collision->AddCollider({ 55,1596,24,3 }, COLLIDER_WALL);
-	App->collision->AddCollider({ 55,1500,24,3 }, COLLIDER_WALL);
-	App->collision->AddCollider({ 55,1404,24,3 }, COLLIDER_WALL);
-	App->collision->AddCollider({ 55,1342,24,3 }, COLLIDER_WALL);
-	App->collision->AddCollider({ 55,1244,24,3 }, COLLIDER_WALL);
-	App->collision->AddCollider({ 55,1148,24,3 }, COLLIDER_WALL);
-	App->collision->AddCollider({ 55,956,24,3 }, COLLIDER_WALL);
-	App->collision->AddCollider({ 55,860,24,3 }, COLLIDER_WALL);
-	App->collision->AddCollider({ 55,60,24,3 }, COLLIDER_WALL);
-
-	//right stairs
-	App->collision->AddCollider({ 145,2620,24,3 }, COLLIDER_WALL);
-	App->collision->AddCollider({ 145,2522,24,3 }, COLLIDER_WALL);
-	App->collision->AddCollider({ 145,2427,24,3 }, COLLIDER_WALL);
-	App->collision->AddCollider({ 147,2366,24,3 }, COLLIDER_WALL);
-	App->collision->AddCollider({ 145,2268,24,3 }, COLLIDER_WALL);
-	App->collision->AddCollider({ 145,2172,24,3 }, COLLIDER_WALL);
-	App->collision->AddCollider({ 145,1756,24,3 }, COLLIDER_WALL);
-	App->collision->AddCollider({ 147,1694,24,3 }, COLLIDER_WALL);
-	App->collision->AddCollider({ 145,1596,24,3 }, COLLIDER_WALL);
-	App->collision->AddCollider({ 145,1500,24,3 }, COLLIDER_WALL);
-	App->collision->AddCollider({ 145,668,24,3 }, COLLIDER_WALL);
-	App->collision->AddCollider({ 145,476,24,3 }, COLLIDER_WALL);
-	App->collision->AddCollider({ 145,380,24,3 }, COLLIDER_WALL);
-	App->collision->AddCollider({ 145,284,24,3 }, COLLIDER_WALL);
-	App->collision->AddCollider({ 145,188,24,3 }, COLLIDER_WALL);
-	App->collision->AddCollider({ 145,92,24,3 }, COLLIDER_WALL);
-
-	//well && boxes
-	App->collision->AddCollider({ 117,2915,22,12 }, COLLIDER_WALL);
-	App->collision->AddCollider({ 98,1883,28,18 }, COLLIDER_WALL);
-	App->collision->AddCollider({ 117,803,22,12 }, COLLIDER_WALL);
-
-	//lake
-	App->collision->AddCollider({ 0,352,8,177 }, COLLIDER_WALL);
-	App->collision->AddCollider({ 8,356,10,173 }, COLLIDER_WALL);
-	App->collision->AddCollider({ 18,359,18,170 }, COLLIDER_WALL);
-	App->collision->AddCollider({ 36,367,11,162 }, COLLIDER_WALL);
-	App->collision->AddCollider({ 47,373,14,157 }, COLLIDER_WALL);
-	App->collision->AddCollider({ 61,389,12,136 }, COLLIDER_WALL);
-	App->collision->AddCollider({ 73,398,10,120 }, COLLIDER_WALL);
-	App->collision->AddCollider({ 83,407,8,97 }, COLLIDER_WALL);
-	App->collision->AddCollider({ 91,425,7,63 }, COLLIDER_WALL);
-	App->collision->AddCollider({ 98,435,7,43 }, COLLIDER_WALL);
-
-	//horse fences
-	App->collision->AddCollider({ 150,2573,19,19 }, COLLIDER_WALL);
-	App->collision->AddCollider({ 55,1453,19,19 }, COLLIDER_WALL);
-	App->collision->AddCollider({ 150,333,19,19 }, COLLIDER_WALL);
-	App->collision->AddCollider({ 55,13,19,19 }, COLLIDER_WALL);
-
+	App->enemies->AddEnemy(ENEMY_TYPES::GUNMEN, 113, 2661);
 	// Enemies ---
 	App->enemies->AddEnemy(ENEMY_TYPES::GUNMEN, 82, 2754);
-	App->enemies->AddEnemy(ENEMY_TYPES::GUNMEN, 0, 0);
+	/*App->enemies->AddEnemy(ENEMY_TYPES::GUNMEN, 0, 0);
 	App->enemies->AddEnemy(ENEMY_TYPES::GUNMEN, 113, 2661);
 	App->enemies->AddEnemy(ENEMY_TYPES::GUNMEN, 0, 2574);
 	App->enemies->AddEnemy(ENEMY_TYPES::GUNMEN, 48, 2565);
@@ -209,7 +156,107 @@ bool ModuleMap1::Start()
 	App->enemies->AddEnemy(ENEMY_TYPES::WINDOWSNIPERLEFT, 203, 2234);
 	App->enemies->AddEnemy(ENEMY_TYPES::WINDOWSNIPERLEFT, 203, 1721);
 	App->enemies->AddEnemy(ENEMY_TYPES::WINDOWSNIPERLEFT, 203, 633);
-	App->enemies->AddEnemy(ENEMY_TYPES::WINDOWSNIPERLEFT, 194, 259);
+	App->enemies->AddEnemy(ENEMY_TYPES::WINDOWSNIPERLEFT, 194, 259);*/
+
+	//MAP 2 ENEMIES::::
+
+	//App->enemies->AddEnemy(ENEMY_TYPES::GUNMEN,62,2725);
+	//App->enemies->AddEnemy(ENEMY_TYPES::GUNMEN,123,2717);
+	//App->enemies->AddEnemy(ENEMY_TYPES::GUNMEN,80,2616);
+	//App->enemies->AddEnemy(ENEMY_TYPES::GUNMEN,139,2554);
+	//App->enemies->AddEnemy(ENEMY_TYPES::GUNMEN,18,2490);
+	//App->enemies->AddEnemy(ENEMY_TYPES::GUNMEN,70,2451);
+	//App->enemies->AddEnemy(ENEMY_TYPES::GUNMEN,73,2039);
+	//App->enemies->AddEnemy(ENEMY_TYPES::GUNMEN,41,1969);
+	//App->enemies->AddEnemy(ENEMY_TYPES::GUNMEN,48,1975);
+	//App->enemies->AddEnemy(ENEMY_TYPES::GUNMEN,143,1747);
+	//App->enemies->AddEnemy(ENEMY_TYPES::GUNMEN,9,1630);
+	//App->enemies->AddEnemy(ENEMY_TYPES::GUNMEN,173,1624);
+	//App->enemies->AddEnemy(ENEMY_TYPES::GUNMEN,56,1527);
+	//App->enemies->AddEnemy(ENEMY_TYPES::GUNMEN,110,1528);
+	//App->enemies->AddEnemy(ENEMY_TYPES::GUNMEN,160,1528);
+	//App->enemies->AddEnemy(ENEMY_TYPES::GUNMEN,81,1268);
+	//App->enemies->AddEnemy(ENEMY_TYPES::GUNMEN,110,1085);
+	//App->enemies->AddEnemy(ENEMY_TYPES::GUNMEN,107,817);
+	//App->enemies->AddEnemy(ENEMY_TYPES::GUNMEN,89,764);
+	//App->enemies->AddEnemy(ENEMY_TYPES::GUNMEN,155,580);
+	//App->enemies->AddEnemy(ENEMY_TYPES::GUNMEN,90,321);
+
+
+	//App->enemies->AddEnemy(ENEMY_TYPES::BACKSTABBER,224,2573);
+	//App->enemies->AddEnemy(ENEMY_TYPES::BACKSTABBER,224,2463);
+	//App->enemies->AddEnemy(ENEMY_TYPES::BACKSTABBER,224,2438);
+	//App->enemies->AddEnemy(ENEMY_TYPES::BACKSTABBER,223,1972);
+	//
+
+	//App->enemies->AddEnemy(ENEMY_TYPES::BOMBER,59,2294 );
+	//App->enemies->AddEnemy(ENEMY_TYPES::BOMBER,114,2189 );
+	//App->enemies->AddEnemy(ENEMY_TYPES::BOMBER, 106,1764);
+	//App->enemies->AddEnemy(ENEMY_TYPES::BOMBER, 118,1581);
+	//App->enemies->AddEnemy(ENEMY_TYPES::BOMBER, 48,1454);
+	//App->enemies->AddEnemy(ENEMY_TYPES::BOMBER, 165,1439);
+	//App->enemies->AddEnemy(ENEMY_TYPES::BOMBER, 185,1287);
+	//App->enemies->AddEnemy(ENEMY_TYPES::BOMBER, 53,1277); 
+	//App->enemies->AddEnemy(ENEMY_TYPES::BOMBER, 74,1158);
+	//App->enemies->AddEnemy(ENEMY_TYPES::BOMBER, 74,896);
+	//App->enemies->AddEnemy(ENEMY_TYPES::BOMBER, 68,787);
+	//App->enemies->AddEnemy(ENEMY_TYPES::BOMBER, 83,549);
+	//App->enemies->AddEnemy(ENEMY_TYPES::BOMBER, 83,471);
+	//App->enemies->AddEnemy(ENEMY_TYPES::BOMBER, 131,454);
+	//App->enemies->AddEnemy(ENEMY_TYPES::BOMBER, 169,444);
+	//App->enemies->AddEnemy(ENEMY_TYPES::BOMBER, 77,429);
+	//App->enemies->AddEnemy(ENEMY_TYPES::BOMBER, 156,326);
+
+
+	//App->enemies->AddEnemy(ENEMY_TYPES::RIFFLEMEN,83,2170 );
+	//App->enemies->AddEnemy(ENEMY_TYPES::RIFFLEMEN,66,1918 );
+	//App->enemies->AddEnemy(ENEMY_TYPES::RIFFLEMEN, 128,1369);
+	//App->enemies->AddEnemy(ENEMY_TYPES::RIFFLEMEN, 116,672);
+
+
+	//App->enemies->AddEnemy(ENEMY_TYPES::GUNMENLEFT,0,2561 );
+	//App->enemies->AddEnemy(ENEMY_TYPES::GUNMENLEFT, 0,2382);
+	//App->enemies->AddEnemy(ENEMY_TYPES::GUNMENLEFT, 0,2306);
+	//App->enemies->AddEnemy(ENEMY_TYPES::GUNMENLEFT, 0,2053);
+	//App->enemies->AddEnemy(ENEMY_TYPES::GUNMENLEFT, 0, 1881);
+	//App->enemies->AddEnemy(ENEMY_TYPES::GUNMENLEFT,0,1596 );
+	//App->enemies->AddEnemy(ENEMY_TYPES::GUNMENLEFT,0,1524 );
+	//App->enemies->AddEnemy(ENEMY_TYPES::GUNMENLEFT,0,1460);
+	//App->enemies->AddEnemy(ENEMY_TYPES::GUNMENLEFT,0,1358 );
+
+	//App->enemies->AddEnemy(ENEMY_TYPES::GUNMENRIGHT, 224,1870);
+	//App->enemies->AddEnemy(ENEMY_TYPES::GUNMENRIGHT, 223,1683);
+	//App->enemies->AddEnemy(ENEMY_TYPES::GUNMENRIGHT, 224,1661);
+	//App->enemies->AddEnemy(ENEMY_TYPES::GUNMENRIGHT, 224,1340);
+	//App->enemies->AddEnemy(ENEMY_TYPES::GUNMENRIGHT, 224,1269);
+	//App->enemies->AddEnemy(ENEMY_TYPES::GUNMENRIGHT, 222,1161);
+	//App->enemies->AddEnemy(ENEMY_TYPES::GUNMENRIGHT, 223,782);
+	//App->enemies->AddEnemy(ENEMY_TYPES::GUNMENRIGHT, 224,594);
+	//App->enemies->AddEnemy(ENEMY_TYPES::GUNMENRIGHT, 224,560);
+	////
+	//////barrels
+	//App->enemies->AddEnemy(ENEMY_TYPES::BARREL, 164, 2753);
+	//App->enemies->AddEnemy(ENEMY_TYPES::BARREL, 164, 2737);
+	//App->enemies->AddEnemy(ENEMY_TYPES::BARREL, 164, 2641);
+	//App->enemies->AddEnemy(ENEMY_TYPES::BARREL, 164, 2625);
+	//App->enemies->AddEnemy(ENEMY_TYPES::BARREL, 160, 2001);
+	//App->enemies->AddEnemy(ENEMY_TYPES::BARREL, 160, 1985);
+	//App->enemies->AddEnemy(ENEMY_TYPES::BARREL, 208, 1634);
+	//App->enemies->AddEnemy(ENEMY_TYPES::BARREL, 48, 1634);
+	//App->enemies->AddEnemy(ENEMY_TYPES::BARREL, 208, 1458);
+	//App->enemies->AddEnemy(ENEMY_TYPES::BARREL, 44, 1169);
+	//App->enemies->AddEnemy(ENEMY_TYPES::BARREL, 44, 1153);
+	//App->enemies->AddEnemy(ENEMY_TYPES::BARREL, 44, 946);
+	//App->enemies->AddEnemy(ENEMY_TYPES::BARREL, 44, 849);
+	//App->enemies->AddEnemy(ENEMY_TYPES::BARREL, 44, 833);
+	//App->enemies->AddEnemy(ENEMY_TYPES::BARREL, 44, 641);
+	//App->enemies->AddEnemy(ENEMY_TYPES::BARREL, 44, 625);
+	//App->enemies->AddEnemy(ENEMY_TYPES::BARREL, 44, 465);
+
+
+	App->enemies->AddEnemy(ENEMY_TYPES::BOOTS, 130, 2753);
+	App->enemies->AddEnemy(ENEMY_TYPES::HORSE, 100, 2753);
+	//BOSS COORDS = 111, 133, 18, 29
 	
 	
 	return true;
@@ -224,10 +271,10 @@ bool ModuleMap1::CleanUp()
 
 	App->enemies->Disable();
 	App->collision->Disable();
-
+	
 	App->particles->Disable();
 	App->player->Disable();
-	//App->audio->StopMusic();
+	
 
 	return true;
 }

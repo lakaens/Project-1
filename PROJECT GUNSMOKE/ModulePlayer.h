@@ -28,6 +28,7 @@ public:
 	char score_text[10];
 	uint score = 0;
 	Animation* current_animation = nullptr;
+	Animation chorse;
 	Animation right;
 	Animation left;
 	Animation up;
@@ -44,10 +45,19 @@ public:
 	int life = 3;
 	int cont1 = 0;
 	int original_camera;
-	bool collUp = false;
-	bool collLeft = false;
-	bool collDown = false;
-	bool collRight = false;
+	bool colup = false;
+	bool colleft = false;
+	bool coldown = false;
+	bool colright = false;
+	bool blockUL = false;
+	bool blockUR = false;
+	bool blockDL = false;
+	bool blockDR = false;
+	char str[10];
+	char hscore[10] = { 0,0,0,0,0,0,0,0,0,0 };
+	uint Hscore = 0;
+	float speed = 1.5;
+	bool GodMode = false;
 
 private:
 	uint bulletsound;

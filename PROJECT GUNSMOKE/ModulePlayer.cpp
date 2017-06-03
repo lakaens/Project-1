@@ -13,6 +13,8 @@
 #include "ModuleMap1.h"
 #include "ModuleWin.h"
 #include "SDL/include/SDL.h"
+#include "ModuleEnemies.h"
+
 
 #include<stdio.h>
 
@@ -83,6 +85,12 @@ ModulePlayer::ModulePlayer()
 
 	empty.PushBack({ 454,206,6,7 });
 
+	chorse.PushBack({ 376,121,24,35 });
+	chorse.PushBack({ 416,122,24,33 });
+	chorse.PushBack({ 456,121,24,36 });
+	chorse.loop = true;
+	chorse.speed = 0.08f;
+
 	
 }
 
@@ -115,7 +123,7 @@ bool ModulePlayer::CleanUp()
 
 	App->textures->Unload(graphics);
 	App->player->Disable();
-
+	
 	App->audio->unloadeffect(bulletsound);
 	if (col != nullptr)
 		col->to_delete = true;
@@ -133,59 +141,37 @@ update_status ModulePlayer::Update()
 	char str[10];
 	sprintf_s(str, "%i", score);
 	App->fonts->BlitText(10, 0, font_score, str);
-	App->fonts->BlitText(81, 0, font_score, "100069");
+	sprintf_s(hscore, "%i", Hscore);
+	App->fonts->BlitText(81, 0, font_score, hscore);
 
+
+
+
+	if (Hscore < score){
+		Hscore = score;
+	}
 	cont1++;
 	current_animation = &up;
+	if (App->enemies->horse == true) {
+		current_animation = &chorse;
+	}
 
 	if (cameralim > 0) {
 		cameralim -= 0.5;
 		position.y -= 0.5;// Automatic movement
 	}
-		float speed = 1.5;
 
 		SDL_Event event;
 		/* Other initializtion code goes here */
 
 		/* Start main game loop here */
 
-		while (SDL_PollEvent(&event))
-		{
-			switch (event.type)
-			{
-			case SDL_JOYAXISMOTION:  /* Handle Joystick Motion */
-				if ((event.jaxis.value < -3200) || (event.jaxis.value > 3200))
-				{
-					if (event.jaxis.axis == 0)
-					{
-						/* Left-right movement code goes here */
-					}
+		
 
-					if (event.jaxis.axis == 1)
-					{
-						/* Up-Down movement code goes here */
-					}
-				}
-				break;
-			case SDL_JOYBUTTONDOWN:  /* Handle Joystick Button Presses */
-				if (event.jbutton.button == 0)
-				{
-					/* code goes here */
-				}
-				break;
-			case SDL_JOYBALLMOTION:  /* Handle Joyball Motion */
-				if (event.jball.ball == 0)
-				{
-					/* ball handling */
-				}
-				break;
-			}
-		}
-
-		if (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT) // MOVEMENT LEFT
+		if (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT|| App->input->gamepad.joystickLeft) // MOVEMENT LEFT
 		{
-			
-				if (position.x > 0) {
+			if (!colleft) {
+				if (position.x > 0)
 					position.x -= speed;
 				
 			}
@@ -194,13 +180,16 @@ update_status ModulePlayer::Update()
 				up.Reset();
 				current_animation = &up;
 			}
+			if (App->enemies->horse == true) {
+				current_animation = &chorse;
+			}
 
 		}
 
-		if (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT) //MOVEMENT RIGHT
+		if (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT|| App->input->gamepad.joystickRight) //MOVEMENT RIGHT
 		{
-			
-				if (position.x < SCREEN_WIDTH - 19) {
+			if (!colright) {
+				if (position.x < SCREEN_WIDTH - 19)
 					position.x += speed;
 				
 			}
@@ -209,10 +198,12 @@ update_status ModulePlayer::Update()
 				up.Reset();
 				current_animation = &up;
 			}
-
+			if (App->enemies->horse == true) {
+				current_animation = &chorse;
+			}
 		}
 
-		if (App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT) // MOVEMENT DOWN
+		if (App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT|| App->input->gamepad.joystickDown) // MOVEMENT DOWN
 		{
 			
 				if (position.y < cameralim + SCREEN_HEIGHT - 27) {
@@ -224,10 +215,12 @@ update_status ModulePlayer::Update()
 				up.Reset();
 				current_animation = &up;
 			}
-
+			if (App->enemies->horse == true) {
+				current_animation = &chorse;
+			}
 		}
 
-		if (App->input->keyboard[SDL_SCANCODE_UP] == KEY_STATE::KEY_REPEAT ) // MOVEMENT UP
+		if (App->input->keyboard[SDL_SCANCODE_UP] == KEY_STATE::KEY_REPEAT || App->input->gamepad.joystickUp) // MOVEMENT UP
 		{
 			
 				if (position.y > cameralim) {
@@ -239,39 +232,52 @@ update_status ModulePlayer::Update()
 				up.Reset();
 				current_animation = &up;
 			}
-
+			if (App->enemies->horse == true) {
+				current_animation = &chorse;
+			}
 		}
 
 		if (App->input->keyboard[SDL_SCANCODE_UP] == KEY_STATE::KEY_REPEAT && App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT) {
 
 
 			current_animation = &right;
-
+			if (App->enemies->horse == true) {
+				current_animation = &chorse;
+			}
 		}
 
 		if (App->input->keyboard[SDL_SCANCODE_UP] == KEY_STATE::KEY_REPEAT && App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT) {
 
 
 			current_animation = &left;
-
+			if (App->enemies->horse == true) {
+				current_animation = &chorse;
+			}
 		}
 		if (App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT && App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT) {
 
 
 			current_animation = &left;
-
+			if (App->enemies->horse == true) {
+				current_animation = &chorse;
+			}
 		}
 		if (App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT && App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT) {
 
 
 			current_animation = &right;
-
+			if (App->enemies->horse == true) {
+				current_animation = &chorse;
+			}
 		}
 		if (App->input->keyboard[SDL_SCANCODE_C] == KEY_STATE::KEY_REPEAT || App->input->keyboard[SDL_SCANCODE_V] == KEY_STATE::KEY_REPEAT || App->input->keyboard[SDL_SCANCODE_B] == KEY_STATE::KEY_REPEAT) {
 			if (App->input->keyboard[SDL_SCANCODE_C] == KEY_STATE::KEY_REPEAT || App->input->keyboard[SDL_SCANCODE_C] == KEY_STATE::KEY_DOWN && cont <= 15)
 			{
 				cont++;
 				current_animation = &shootl;
+				if (App->enemies->horse == true) {
+					current_animation = &chorse;
+				}
 				if (cont == 15 || App->input->keyboard[SDL_SCANCODE_C] == KEY_STATE::KEY_DOWN) {
 					App->particles->AddParticle(App->particles->bulletl, position.x - 1, position.y + 5, COLLIDER_PLAYER_SHOT,PARTICLE_PLAYER_SHOT);
 					App->particles->AddParticle(App->particles->bulletl, position.x + 10, position.y + 5, COLLIDER_PLAYER_SHOT, PARTICLE_PLAYER_SHOT);
@@ -285,6 +291,9 @@ update_status ModulePlayer::Update()
 			{
 				cont++;
 				current_animation = &shootu;
+				if (App->enemies->horse == true) {
+					current_animation = &chorse;
+				}
 				if (cont == 15 || App->input->keyboard[SDL_SCANCODE_V] == KEY_STATE::KEY_DOWN) {
 					App->particles->AddParticle(App->particles->bulletu, position.x + 3, position.y + 5, COLLIDER_PLAYER_SHOT, PARTICLE_PLAYER_SHOT);
 					App->particles->AddParticle(App->particles->bulletu, position.x + 13, position.y + 5, COLLIDER_PLAYER_SHOT, PARTICLE_PLAYER_SHOT);
@@ -298,6 +307,9 @@ update_status ModulePlayer::Update()
 			{
 				cont++;
 				current_animation = &shootr;
+				if (App->enemies->horse == true) {
+					current_animation = &chorse;
+				}
 				if (cont == 15 || App->input->keyboard[SDL_SCANCODE_B] == KEY_STATE::KEY_DOWN) {
 					App->particles->AddParticle(App->particles->bulletr, position.x + 5, position.y + 5, COLLIDER_PLAYER_SHOT, PARTICLE_PLAYER_SHOT);
 					App->particles->AddParticle(App->particles->bulletr, position.x + 15, position.y + 5, COLLIDER_PLAYER_SHOT, PARTICLE_PLAYER_SHOT);
@@ -308,9 +320,9 @@ update_status ModulePlayer::Update()
 
 			}
 		}
-		if (App->input->keyboard[SDL_SCANCODE_G] == KEY_STATE::KEY_DOWN) {
+		if (App->input->keyboard[SDL_SCANCODE_F2] == KEY_STATE::KEY_DOWN) {
 
-			col->to_delete = true;
+			
 
 		}
 		if (destroyed == false && position.y == 0) {
@@ -341,23 +353,123 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 		
 
 	}
+	
+
+	if ((c1->type == COLLIDER_PLAYER && c2->type == COLLIDER_WALL))
+	{
+		//Check collision Right
+		if ((c1->rect.x + c1->rect.w) - c2->rect.x == 1
+			&& (c2->rect.x + c2->rect.w) - c1->rect.x != 1
+			&& (c2->rect.y + c2->rect.h) - c1->rect.y != 1
+			&& (c1->rect.y + c1->rect.h) - c2->rect.y != 1)
+		{
+			colright = true;
+		}
+
+		//Check collision Left
+		if ((c1->rect.x + c1->rect.w) - c2->rect.x != 1
+			&& (c2->rect.x + c2->rect.w) - c1->rect.x == 1
+			&& (c2->rect.y + c2->rect.h) - c1->rect.y != 1
+			&& (c1->rect.y + c1->rect.h) - c2->rect.y != 1)
+		{
+			colleft = true;
+		}
+
+		//Check collision Up
+		if ((c1->rect.x + c1->rect.w) - c2->rect.x != 1
+			&& (c2->rect.x + c2->rect.w) - c1->rect.x != 1
+			&& (c2->rect.y + c2->rect.h) - c1->rect.y == 1
+			&& (c1->rect.y + c1->rect.h) - c2->rect.y != 1)
+		{
+			colup = true;
+		}
+
+		//Check collision Down
+		if ((c1->rect.x + c1->rect.w) - c2->rect.x != 1
+			&& (c2->rect.x + c2->rect.w) - c1->rect.x != 1
+			&& (c2->rect.y + c2->rect.h) - c1->rect.y != 1
+			&& (c1->rect.y + c1->rect.h) - c2->rect.y == 1)
+		{
+			coldown = true;
+		}
+
+		//Block Up-Right Diagonal
+		if ((c1->rect.x + c1->rect.w) - c2->rect.x == 1
+			&& (c2->rect.x + c2->rect.w) - c1->rect.x != 1
+			&& (c2->rect.y + c2->rect.h) - c1->rect.y == 1
+			&& (c1->rect.y + c1->rect.h) - c2->rect.y != 1
+			&& colup == false
+			&& coldown == false
+			&& colleft == false
+			&& colright == false)
+		{
+			blockUR = true;
+		}
+
+		//Block Up-Left Diagonal
+		if ((c1->rect.x + c1->rect.w) - c2->rect.x != 1
+			&& (c2->rect.x + c2->rect.w) - c1->rect.x == 1
+			&& (c2->rect.y + c2->rect.h) - c1->rect.y == 1
+			&& (c1->rect.y + c1->rect.h) - c2->rect.y != 1
+			&& colup == false
+			&& coldown == false
+			&& colleft == false
+			&& colright == false)
+		{
+			blockUL = true;
+		}
+
+		//Block Down-Left Diagonal
+		if ((c1->rect.x + c1->rect.w) - c2->rect.x != 1
+			&& (c2->rect.x + c2->rect.w) - c1->rect.x == 1
+			&& (c2->rect.y + c2->rect.h) - c1->rect.y != 1
+			&& (c1->rect.y + c1->rect.h) - c2->rect.y == 1
+			&& colup == false
+			&& coldown == false
+			&& colleft == false
+			&& colright == false)
+		{
+			blockDL = true;
+		}
+
+		//Block Down-Right Diagonal
+		if ((c1->rect.x + c1->rect.w) - c2->rect.x == 1
+			&& (c2->rect.x + c2->rect.w) - c1->rect.x != 1
+			&& (c2->rect.y + c2->rect.h) - c1->rect.y != 1
+			&& (c1->rect.y + c1->rect.h) - c2->rect.y == 1
+			&& colup == false
+			&& coldown == false
+			&& colleft == false
+			&& colright == false)
+		{
+			blockDR = true;
+		}
+
+	}
 	if (c2->type == COLLIDER_ENEMY_SHOT || c2->type == COLLIDER_ENEMY && destroyed == false && App->fade->IsFading() == false) {
 
-		
 		if (col != nullptr) {
 			col->to_delete = true;
 		}
-		destroyed = true;
-		App->particles->AddParticle(App->particles->playerdead, position.x, position.y, COLLIDER_NONE);
-
-		cameralim = 0;
-		
-		if (destroyed=true) {
+		if (life > 1) {
+			--life;
+			App->player->Disable();
+			cameralim = 0;
+			App->particles->AddParticle(App->particles->playerdead, position.x, position.y, COLLIDER_NONE);
+			App->fade->FadeToBlack(App->map, App->map, 2.0f);
+		}
+		else if (life = 1) {
+			destroyed = true;
+			App->particles->AddParticle(App->particles->playerdead, position.x, position.y, COLLIDER_NONE);
+			cameralim = 0;
+			life = 3;
 			App->fade->FadeToBlack(App->map, App->gameover);
-
 		}
 		
-
+		if (App->enemies->horse == true) {
+			App->enemies->horse = false;
+		}
+		
 	}		
 		
 }

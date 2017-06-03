@@ -1,15 +1,13 @@
 #include "Application.h"
-#include "PowerUp_Boots.h"
+#include "PowerUp_Horse.h"
 #include "ModuleCollision.h"
 #include "ModulePlayer.h"
 
-PowerUp_Boots::PowerUp_Boots(int x, int y) :Enemy(x, y) {
+PowerUp_Horse::PowerUp_Horse(int x, int y) :Enemy(x, y) {
 
 
-	move.PushBack({ 377, 25, 16, 16 });
-	move.PushBack({ 377, 49, 16, 16 });
-	move.loop = true;
-	move.speed = 0.3f;
+	move.PushBack({ 20, 17, 16, 16 });
+
 
 	animation = &move;
 
@@ -19,5 +17,4 @@ PowerUp_Boots::PowerUp_Boots(int x, int y) :Enemy(x, y) {
 	original_pos.y = y;
 
 }
-
 

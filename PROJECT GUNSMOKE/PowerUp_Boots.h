@@ -1,20 +1,21 @@
-#ifndef __Power_Up_H__
-#define __Power_Up_H__
+#ifndef _POWERUP_BOOTS_H_
+#define _POWERUP_BOOTS_H_
 
 #include "Enemy.h"
 
-class Power_Up : public Enemy
+class PowerUp_Boots : public Enemy
 {
 private:
-	Animation powerUp_animation;
-	bool up;
-	bool right;
+
+	Animation move;
+	iPoint original_pos;
+
 
 public:
 
-	Power_Up(int x, int y);
-	void Move();
-
+	PowerUp_Boots(int x, int y);
+	
 };
+
 
 #endif

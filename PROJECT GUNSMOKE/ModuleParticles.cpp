@@ -116,18 +116,12 @@ ModuleParticles::ModuleParticles()
 	enemysimplebulletdead.anim.loop = false;
 	enemysimplebullet.life = 800;
 
-	deadBarrel.anim.PushBack({ 81,59,15,15 });
-	deadBarrel.anim.PushBack({ 104,59,15,15 });
-	deadBarrel.anim.PushBack({ 128,60,16,14 });
-	deadBarrel.anim.PushBack({ 152,61,16,13 });
-	deadBarrel.anim.PushBack({ 176,60,16,14 });
-	deadBarrel.anim.PushBack({ 202,63,14,11 });
-	deadBarrel.anim.PushBack({ 81,59,15,15 });
-	deadBarrel.anim.PushBack({ 104,59,15,15 });
-	deadBarrel.anim.PushBack({ 128,60,16,14 });
-	deadBarrel.anim.PushBack({ 152,61,16,13 });
-	deadBarrel.anim.PushBack({ 176,60,16,14 });
-	deadBarrel.anim.PushBack({ 202,63,14,11 });
+	deadBarrel.anim.PushBack({ 81, 59, 15, 15 });
+	deadBarrel.anim.PushBack({ 104, 59, 15, 15 });
+	deadBarrel.anim.PushBack({ 128, 60, 16, 14 });
+	deadBarrel.anim.PushBack({ 152, 61, 16, 13 });
+	deadBarrel.anim.PushBack({ 176, 60, 16, 14 });
+	deadBarrel.anim.PushBack({ 202, 63, 14, 11 });
 	deadBarrel.anim.loop = false;
 	deadBarrel.anim.speed = 0.1f;
 
@@ -160,6 +154,8 @@ ModuleParticles::ModuleParticles()
 	playerhit.anim.PushBack({ 467,37,10,10});
 	playerhit.anim.loop = false;
 	playerhit.anim.speed = 0.1f;
+
+	
 
 }
 
@@ -254,9 +250,7 @@ void ModuleParticles::OnCollision(Collider* c1, Collider* c2)
 			active[i] = nullptr;
 			break;
 		}
-		if (c2->type == COLLIDER_ENEMY) {
-			App->player->score += 200;
-		}
+
 	}
 }
 

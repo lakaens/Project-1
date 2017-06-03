@@ -20,6 +20,7 @@ ModuleCollision::ModuleCollision()
 	matrix[COLLIDER_PLAYER][COLLIDER_PLAYER_SHOT] = false;
 	matrix[COLLIDER_PLAYER][COLLIDER_ENEMY_SHOT] = true;
 	matrix[COLLIDER_PLAYER][COLLIDER_BARREL] = true;
+	matrix[COLLIDER_PLAYER][COLLIDER_POWERUP] = true;
 
 	matrix[COLLIDER_ENEMY][COLLIDER_WALL] = true;
 	matrix[COLLIDER_ENEMY][COLLIDER_PLAYER] = false;
@@ -50,13 +51,13 @@ ModuleCollision::ModuleCollision()
 	matrix[COLLIDER_BARREL][COLLIDER_BARREL] = false;
 	matrix[COLLIDER_BARREL][COLLIDER_ENEMYBUILDING] = false;
 
-	matrix[COLLIDER_POWERUPS][COLLIDER_WALL] = false;
-	matrix[COLLIDER_POWERUPS][COLLIDER_PLAYER] = true;
-	matrix[COLLIDER_POWERUPS][COLLIDER_ENEMY] = false;
-	matrix[COLLIDER_POWERUPS][COLLIDER_PLAYER_SHOT] = false;
-	matrix[COLLIDER_POWERUPS][COLLIDER_ENEMY_SHOT] = false;
-	matrix[COLLIDER_POWERUPS][COLLIDER_BARREL] = false;
-	matrix[COLLIDER_POWERUPS][COLLIDER_ENEMYBUILDING] = false;
+	matrix[COLLIDER_POWERUP][COLLIDER_WALL] = false;
+	matrix[COLLIDER_POWERUP][COLLIDER_PLAYER] = true;
+	matrix[COLLIDER_POWERUP][COLLIDER_ENEMY] = false;
+	matrix[COLLIDER_POWERUP][COLLIDER_PLAYER_SHOT] = false;
+	matrix[COLLIDER_POWERUP][COLLIDER_ENEMY_SHOT] = false;
+	matrix[COLLIDER_POWERUP][COLLIDER_BARREL] = false;
+	matrix[COLLIDER_POWERUP][COLLIDER_ENEMYBUILDING] = false;
 }
 
 // Destructor
@@ -134,29 +135,32 @@ void ModuleCollision::DebugDraw()
 		switch(colliders[i]->type)
 		{
 			case COLLIDER_NONE: // white
-			App->render->DrawQuad(colliders[i]->rect, 255, 255, 255, alpha);
-			break;
+				App->render->DrawQuad(colliders[i]->rect, 255, 255, 255, alpha);
+				break;
 			case COLLIDER_WALL: // blue
-			App->render->DrawQuad(colliders[i]->rect, 0, 0, 255, alpha);
-			break;
+				App->render->DrawQuad(colliders[i]->rect, 0, 0, 255, alpha);
+				break;
 			case COLLIDER_PLAYER: // green
-			App->render->DrawQuad(colliders[i]->rect, 0, 255, 0, alpha);
-			break;
+				App->render->DrawQuad(colliders[i]->rect, 0, 255, 0, alpha);
+				break;
 			case COLLIDER_ENEMY: // red
-			App->render->DrawQuad(colliders[i]->rect, 255, 0, 0, alpha);
-			break;
+				App->render->DrawQuad(colliders[i]->rect, 255, 0, 0, alpha);
+				break;
 			case COLLIDER_PLAYER_SHOT: // yellow
-			App->render->DrawQuad(colliders[i]->rect, 255, 255, 0, alpha);
-			break;
+				App->render->DrawQuad(colliders[i]->rect, 255, 255, 0, alpha);
+				break;
 			case COLLIDER_ENEMY_SHOT: // magenta
-			App->render->DrawQuad(colliders[i]->rect, 0, 255, 255, alpha);
-			break;
+				App->render->DrawQuad(colliders[i]->rect, 0, 255, 255, alpha);
+				break;
 			case COLLIDER_BARREL: // rosa
-			App->render->DrawQuad(colliders[i]->rect, 255, 0, 255, alpha);
-			break;
+				App->render->DrawQuad(colliders[i]->rect, 255, 0, 255, alpha);
+				break;
 			case COLLIDER_ENEMYBUILDING:
-			App->render->DrawQuad(colliders[i]->rect, 255, 0, 0, alpha);
-			break;
+				App->render->DrawQuad(colliders[i]->rect, 255, 0, 0, alpha);
+				break;
+			case COLLIDER_POWERUP:
+				App->render->DrawQuad(colliders[i]->rect, 0, 255, 255, alpha);
+				break;
 		}
 	}
 }

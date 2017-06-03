@@ -4,7 +4,7 @@
 #include "Module.h"
 
 
-#define MAX_ENEMIES 100
+#define MAX_ENEMIES 300
 
 enum ENEMY_TYPES
 {
@@ -15,7 +15,12 @@ enum ENEMY_TYPES
 	BOMBER,
 	RIFFLEMEN,
 	BACKSTABBER,
-	POWERUP,
+	BOOTS,
+	RIFLE,
+	BULLET,
+	HORSE,
+	LITTLEBOTTLE,
+	BIGBOTTLE,
 	BARREL,
 	GUNMENJUMPER,
 	GUNMENBALCONY,
@@ -44,7 +49,7 @@ public:
 	update_status PostUpdate();
 	bool CleanUp();
 	void OnCollision(Collider* c1, Collider* c2);
-
+	bool horse = false;
 	bool AddEnemy(ENEMY_TYPES type, int x, int y);
 
 private:
@@ -56,6 +61,7 @@ private:
 	EnemyInfo queue[MAX_ENEMIES];
 	Enemy* enemies[MAX_ENEMIES];
 	SDL_Texture* sprites;
+	
 };
 
 #endif // __ModuleEnemies_H__
