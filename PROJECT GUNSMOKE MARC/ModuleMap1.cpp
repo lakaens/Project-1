@@ -83,9 +83,9 @@ bool ModuleMap1::Start()
 	App->collision->AddCollider({ 145,2206,24,3 }, COLLIDER_WALL);
 	App->collision->AddCollider({ 145,2110,24,3 }, COLLIDER_WALL);
 
-	App->enemies->AddEnemy(ENEMY_TYPES::GUNMEN, 113, 2661);
+	
 	// Enemies ---
-	App->enemies->AddEnemy(ENEMY_TYPES::GUNMEN, 82, 2754);
+	/*App->enemies->AddEnemy(ENEMY_TYPES::GUNMEN, 82, 2754);*/
 	/*App->enemies->AddEnemy(ENEMY_TYPES::GUNMEN, 0, 0);
 	App->enemies->AddEnemy(ENEMY_TYPES::GUNMEN, 113, 2661);
 	App->enemies->AddEnemy(ENEMY_TYPES::GUNMEN, 0, 2574);
@@ -255,9 +255,9 @@ bool ModuleMap1::Start()
 
 
 	//littlebottle, boots, empty, rifle, bigbottle, horse, bigbottle (right), boots (left), little bottle, empty, rifle, big bottle, big bottle, little bottle, boots, rifle, big bottle
-	//App->enemies->AddEnemy(ENEMY_TYPES::LITTLEBOTTLE, 164, 2753);
+	/*App->enemies->AddEnemy(ENEMY_TYPES::LITTLEBOTTLE, 164, 2753);
 	App->enemies->AddEnemy(ENEMY_TYPES::BOOTS, 164, 2737);
-	/*App->enemies->AddEnemy(ENEMY_TYPES::RIFLE, 164, 2625);
+	App->enemies->AddEnemy(ENEMY_TYPES::RIFLE, 164, 2625);
 	App->enemies->AddEnemy(ENEMY_TYPES::BIGBOTTLE, 160, 2001);
 	App->enemies->AddEnemy(ENEMY_TYPES::HORSE, 160, 1985);
 	App->enemies->AddEnemy(ENEMY_TYPES::BIGBOTTLE, 208, 1634);

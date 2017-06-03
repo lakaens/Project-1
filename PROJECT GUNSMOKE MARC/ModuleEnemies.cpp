@@ -448,28 +448,28 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 				|| enemies[i]->type == ENEMY_TYPES::HORSEBARREL)
 			{
 				if (c2->type == COLLIDER_PLAYER_SHOT) {
-					App->player->score += 50;
 					--enemies[i]->life;
 					if (enemies[i]->life == 0) {
+						App->player->score += 50;
 						App->particles->AddParticle(App->particles->deadBarrel, c1->rect.x, c1->rect.y, COLLIDER_NONE);
 						switch (enemies[i]->type)
 						{
 						case ENEMY_TYPES::BARREL:
 							break;
 						case ENEMY_TYPES::BOOTSBARREL:
-							boots = true;
+							this->AddEnemy(ENEMY_TYPES::BOOTS, c1->rect.x, c1->rect.y);
 							break;
 						case ENEMY_TYPES::BIGBOTTLEBARREL:
-							bigbottle = true;
+							this->AddEnemy(ENEMY_TYPES::BIGBOTTLE, c1->rect.x, c1->rect.y);
 							break;
 						case ENEMY_TYPES::LITTLEBOTTLEBARREL:
-							littlebottle = true;
+							this->AddEnemy(ENEMY_TYPES::LITTLEBOTTLE, c1->rect.x, c1->rect.y);
 							break;
 						case ENEMY_TYPES::RIFLEBARREL:
-							rifle = true;
+							this->AddEnemy(ENEMY_TYPES::RIFLE, c1->rect.x, c1->rect.y);
 							break;
 						case ENEMY_TYPES::HORSEBARREL:
-							horse = true;
+							this->AddEnemy(ENEMY_TYPES::HORSE, c1->rect.x, c1->rect.y);
 							break;
 						}
 						delete enemies[i];
@@ -484,9 +484,10 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 			if (enemies[i]->type == ENEMY_TYPES::BOOTS){
 				if (c2->type == COLLIDER_PLAYER) {
 					App->player->speed += 0.3;
+					delete enemies[i];
+					enemies[i] = nullptr;
 				}
 				break;
-
 			}
 			if (enemies[i]->type == ENEMY_TYPES::HORSE) {
 				if (c2->type == COLLIDER_PLAYER) {
@@ -501,28 +502,29 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 					App->particles->bulletl.life += 75;
 					App->particles->bulletr.life += 75;
 					App->particles->bulletu.life += 75;
+					delete enemies[i];
+					enemies[i] = nullptr;
 				}
 				break;
-
 			}
 			if (enemies[i]->type == ENEMY_TYPES::BIGBOTTLE) {
 				if (c2->type == COLLIDER_PLAYER) {
 					App->player->score += 1000;
-
+					delete enemies[i];
+					enemies[i] = nullptr;
 				}
 				break;
-
 			}
 			if (enemies[i]->type == ENEMY_TYPES::LITTLEBOTTLE) {
 				if (c2->type == COLLIDER_PLAYER) {
 					App->player->score += 1000;
-
+					delete enemies[i];
+					enemies[i] = nullptr;
 				}
 				break;
-
 			}
 		}
-		if (c2->type == COLLIDER_WALL && enemies[i] != nullptr && c1->CheckCollision(c2->rect) == true && enemies[i]->GetCollider() == c1)
+		if ((c2->type == COLLIDER_WALL || c2->type == COLLIDER_BARREL) && enemies[i] != nullptr && c1->CheckCollision(c2->rect) == true && enemies[i]->GetCollider() == c1)
 		{
 			if (c1->rect.y<c2->rect.y + c2->rect.h && c1->rect.y + 3>c2->rect.y + c2->rect.h) {
 
