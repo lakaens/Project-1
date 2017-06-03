@@ -155,6 +155,8 @@ ModuleParticles::ModuleParticles()
 	playerhit.anim.loop = false;
 	playerhit.anim.speed = 0.1f;
 
+	
+
 }
 
 ModuleParticles::~ModuleParticles()

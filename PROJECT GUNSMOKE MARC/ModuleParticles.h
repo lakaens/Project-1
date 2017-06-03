@@ -30,7 +30,7 @@ struct Particle
 	Animation anim;
 	uint fx = 0;
 	iPoint position;
-	fPoint speed;
+	iPoint speed;
 	Uint32 born = 0;
 	Uint32 life = 0;
 	bool fx_played = false;
@@ -76,7 +76,6 @@ public:
 	Particle playerdead;
 	Particle deadRiffleMen;
 	Particle playerhit;
-	
 };
 
 #endif // __MODULEPARTICLES_H__

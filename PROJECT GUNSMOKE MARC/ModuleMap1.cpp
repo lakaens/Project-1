@@ -83,10 +83,10 @@ bool ModuleMap1::Start()
 	App->collision->AddCollider({ 145,2206,24,3 }, COLLIDER_WALL);
 	App->collision->AddCollider({ 145,2110,24,3 }, COLLIDER_WALL);
 
-
+	App->enemies->AddEnemy(ENEMY_TYPES::GUNMEN, 113, 2661);
 	// Enemies ---
-	/*App->enemies->AddEnemy(ENEMY_TYPES::GUNMEN, 82, 2754);
-	App->enemies->AddEnemy(ENEMY_TYPES::GUNMEN, 0, 0);
+	App->enemies->AddEnemy(ENEMY_TYPES::GUNMEN, 82, 2754);
+	/*App->enemies->AddEnemy(ENEMY_TYPES::GUNMEN, 0, 0);
 	App->enemies->AddEnemy(ENEMY_TYPES::GUNMEN, 113, 2661);
 	App->enemies->AddEnemy(ENEMY_TYPES::GUNMEN, 0, 2574);
 	App->enemies->AddEnemy(ENEMY_TYPES::GUNMEN, 48, 2565);
@@ -254,12 +254,8 @@ bool ModuleMap1::Start()
 	//App->enemies->AddEnemy(ENEMY_TYPES::BARREL, 44, 465);
 
 
-	/*App->enemies->AddEnemy(ENEMY_TYPES::BOOTS, 130, 2753);*/
-	/*App->enemies->AddEnemy(ENEMY_TYPES::HORSE, 100, 2753);*/
-	/*App->enemies->AddEnemy(ENEMY_TYPES::BULLET, 100, 2730);*/
-	/*App->enemies->AddEnemy(ENEMY_TYPES::RIFLE, 100, 2700);*/
-	/*App->enemies->AddEnemy(ENEMY_TYPES::BIGBOTTLE, 100, 2675);*/
-	/*App->enemies->AddEnemy(ENEMY_TYPES::LITTLEBOTTLE, 130, 2675);*/
+	App->enemies->AddEnemy(ENEMY_TYPES::BOOTS, 130, 2753);
+	App->enemies->AddEnemy(ENEMY_TYPES::HORSE, 100, 2753);
 	//BOSS COORDS = 111, 133, 18, 29
 	
 	

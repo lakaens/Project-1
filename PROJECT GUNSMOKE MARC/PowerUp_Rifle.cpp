@@ -19,3 +19,13 @@ PowerUp_Rifle::PowerUp_Rifle(int x, int y) :Enemy(x, y) {
 	original_pos.y = y;
 
 }
+
+
+void PowerUp_Rifle::OnCollision(Collider* c1, Collider* c2) {
+
+	if (c1->type == COLLIDER_POWERUP && c2->type == COLLIDER_PLAYER) {
+		App->particles->bulletu.life += 100;
+		App->particles->bulletl.life += 100;
+		App->particles->bulletr.life += 100;
+	}
+}

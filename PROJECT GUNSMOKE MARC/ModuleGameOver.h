@@ -19,8 +19,7 @@ public:
 
 	SDL_Texture* background = nullptr;
 	SDL_Rect stage;
-	SDL_Texture* hud = nullptr;
-	SDL_Texture* stars = nullptr;
+	int font_score = -1;
 };
 
 #endif // __MODULEGAMEOVER_H__

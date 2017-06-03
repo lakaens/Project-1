@@ -20,3 +20,16 @@ PowerUp_Bullet::PowerUp_Bullet(int x, int y) :Enemy(x, y) {
 	original_pos.y = y;
 
 }
+
+
+void PowerUp_Bullet::OnCollision(Collider* c1, Collider* c2) {
+
+	if (c1->type == COLLIDER_POWERUP && c2->type == COLLIDER_PLAYER) {
+		App->player->score += 50;
+		App->particles->bulletl.speed.y += 1;
+		App->particles->bulletl.speed.x += 1;
+		App->particles->bulletr.speed.y += 1;
+		App->particles->bulletl.speed.x += 1;
+		App->particles->bulletu.speed.y += 1;
+	}
+}

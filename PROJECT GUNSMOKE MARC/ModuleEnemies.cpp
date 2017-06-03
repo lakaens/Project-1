@@ -13,10 +13,6 @@
 #include "Enemy_RiffleMen.h"
 #include "PowerUp_Boots.h"
 #include "PowerUp_Horse.h"
-#include "PowerUp_BigBottle.h"
-#include "PowerUp_LittleBottle.h"
-#include "PowerUp_Bullet.h"
-#include "PowerUp_Rifle.h"
 #include "Enemy_Barrel.h"
 #include "Enemy_GunMenJumper.h"
 #include "Enemy_GunMenBalcony.h"
@@ -60,11 +56,7 @@ update_status ModuleEnemies::PreUpdate()
 				|| (queue[i].type == ENEMY_TYPES::GUNMEN)
 				|| (queue[i].type == ENEMY_TYPES::GUNMENBALCONY)
 				|| (queue[i].type == ENEMY_TYPES::BOOTS)
-				|| (queue[i].type == ENEMY_TYPES::HORSE)
-				|| (queue[i].type == ENEMY_TYPES::BIGBOTTLE)
-				|| (queue[i].type == ENEMY_TYPES::LITTLEBOTTLE)
-				|| (queue[i].type == ENEMY_TYPES::BULLET)
-				|| (queue[i].type == ENEMY_TYPES::RIFLE))
+				|| (queue[i].type == ENEMY_TYPES::HORSE))
 			{
 				if (queue[i].y > (abs(App->render->camera.y) / SCREEN_SIZE) - SPAWN_MARGIN)
 				{
@@ -180,75 +172,59 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 
 	if(i != MAX_ENEMIES)
 	{
-		switch (info.type)
+		switch(info.type)
 		{
-		case ENEMY_TYPES::GUNMEN:
-			enemies[i] = new Enemy_GunMen(info.x, info.y);
-			enemies[i]->type = ENEMY_TYPES::GUNMEN;
-			break;
-		case ENEMY_TYPES::BACKSTABBER:
-			enemies[i] = new Enemy_BackStabber(info.x, info.y);
-			enemies[i]->type = ENEMY_TYPES::BACKSTABBER;
-			break;
-		case ENEMY_TYPES::WINDOWSNIPERLEFT:
-			enemies[i] = new Enemy_WindowSniperLeft(info.x, info.y);
-			enemies[i]->type = ENEMY_TYPES::WINDOWSNIPERLEFT;
-			break;
-		case ENEMY_TYPES::WINDOWSNIPERRIGHT:
-			enemies[i] = new Enemy_WindowSniperRight(info.x, info.y);
-			enemies[i]->type = ENEMY_TYPES::WINDOWSNIPERRIGHT;
-			break;
-		case ENEMY_TYPES::BOMBER:
-			enemies[i] = new Enemy_Bomber(info.x, info.y);
-			enemies[i]->type = ENEMY_TYPES::BOMBER;
-			break;
-		case ENEMY_TYPES::RIFFLEMEN:
-			enemies[i] = new Enemy_RiffleMen(info.x, info.y);
-			enemies[i]->type = ENEMY_TYPES::RIFFLEMEN;
-			break;
-		case ENEMY_TYPES::BARREL:
-			enemies[i] = new Enemy_Barrel(info.x, info.y);
-			enemies[i]->type = ENEMY_TYPES::BARREL;
-			break;
-		case ENEMY_TYPES::GUNMENJUMPER:
-			enemies[i] = new Enemy_GunMenJumper(info.x, info.y);
-			enemies[i]->type = ENEMY_TYPES::GUNMENJUMPER;
-			break;
-		case ENEMY_TYPES::GUNMENBALCONY:
-			enemies[i] = new Enemy_GunMenBalcony(info.x, info.y);
-			enemies[i]->type = ENEMY_TYPES::GUNMENBALCONY;
-			break;
-		case ENEMY_TYPES::GUNMENLEFT:
-			enemies[i] = new Enemy_GunMenBalcony(info.x, info.y);
-			enemies[i]->type = ENEMY_TYPES::GUNMENLEFT;
-			break;
-		case ENEMY_TYPES::GUNMENRIGHT:
-			enemies[i] = new Enemy_GunMenBalcony(info.x, info.y);
-			enemies[i]->type = ENEMY_TYPES::GUNMENRIGHT;
-			break;
-		case ENEMY_TYPES::BOOTS:
-			enemies[i] = new PowerUp_Boots(info.x, info.y);
-			enemies[i]->type = ENEMY_TYPES::BOOTS;
-			break;
-		case ENEMY_TYPES::HORSE:
-			enemies[i] = new PowerUp_Horse(info.x, info.y);
+			case ENEMY_TYPES::GUNMEN:
+				enemies[i] = new Enemy_GunMen(info.x,info.y);
+				enemies[i]->type = ENEMY_TYPES::GUNMEN;
+				break;
+			case ENEMY_TYPES::BACKSTABBER:
+				enemies[i] = new Enemy_BackStabber(info.x, info.y);
+				enemies[i]->type = ENEMY_TYPES::BACKSTABBER;
+				break;
+			case ENEMY_TYPES::WINDOWSNIPERLEFT:
+				enemies[i] = new Enemy_WindowSniperLeft(info.x, info.y);
+				enemies[i]->type = ENEMY_TYPES::WINDOWSNIPERLEFT;
+				break;
+			case ENEMY_TYPES::WINDOWSNIPERRIGHT:
+				enemies[i] = new Enemy_WindowSniperRight(info.x, info.y);
+				enemies[i]->type = ENEMY_TYPES::WINDOWSNIPERRIGHT;
+				break;
+			case ENEMY_TYPES::BOMBER:
+				enemies[i] = new Enemy_Bomber(info.x, info.y);
+				enemies[i]->type = ENEMY_TYPES::BOMBER;
+				break;
+			case ENEMY_TYPES::RIFFLEMEN:
+				enemies[i] = new Enemy_RiffleMen(info.x, info.y);
+				enemies[i]->type = ENEMY_TYPES::RIFFLEMEN;
+				break;
+			case ENEMY_TYPES::BARREL:
+				enemies[i] = new Enemy_Barrel(info.x, info.y);
+				enemies[i]->type = ENEMY_TYPES::BARREL;
+				break;
+			case ENEMY_TYPES::GUNMENJUMPER:
+				enemies[i] = new Enemy_GunMenJumper(info.x, info.y);
+				enemies[i]->type = ENEMY_TYPES::GUNMENJUMPER;
+				break;
+			case ENEMY_TYPES::GUNMENBALCONY:
+				enemies[i] = new Enemy_GunMenBalcony(info.x, info.y);
+				enemies[i]->type = ENEMY_TYPES::GUNMENBALCONY;
+				break;
+			case ENEMY_TYPES::GUNMENLEFT:
+				enemies[i] = new Enemy_GunMenBalcony(info.x, info.y);
+				enemies[i]->type = ENEMY_TYPES::GUNMENLEFT;
+				break;
+			case ENEMY_TYPES::GUNMENRIGHT:
+				enemies[i] = new Enemy_GunMenBalcony(info.x, info.y);
+				enemies[i]->type = ENEMY_TYPES::GUNMENRIGHT;
+				break;
+			case ENEMY_TYPES::BOOTS:
+				enemies[i] = new PowerUp_Boots(info.x, info.y);
+				enemies[i]->type = ENEMY_TYPES::BOOTS;
+				break;
+			case ENEMY_TYPES::HORSE:
+				enemies[i] = new PowerUp_Horse(info.x, info.y);
 			enemies[i]->type = ENEMY_TYPES::HORSE;
-			break;
-		case ENEMY_TYPES::BIGBOTTLE:
-			enemies[i] = new BigBottle(info.x, info.y);
-			enemies[i]->type = ENEMY_TYPES::BIGBOTTLE;
-			break;
-		case ENEMY_TYPES::LITTLEBOTTLE:
-			enemies[i] = new LittleBottle(info.x, info.y);
-			enemies[i]->type = ENEMY_TYPES::LITTLEBOTTLE;
-			break;
-		case ENEMY_TYPES::BULLET:
-			enemies[i] = new PowerUp_Bullet(info.x, info.y);
-			enemies[i]->type = ENEMY_TYPES::BULLET;
-			break;
-		case ENEMY_TYPES::RIFLE:
-			enemies[i] = new PowerUp_Rifle(info.x, info.y);
-			enemies[i]->type = ENEMY_TYPES::RIFLE;
 			break;
 		}
 	}
@@ -345,56 +321,22 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 			//riffle=velocity
 			if (enemies[i]->type == ENEMY_TYPES::BOOTS){
 				if (c2->type == COLLIDER_PLAYER) {
-					App->player->speed += 0.3;
-					delete enemies[i];
-					enemies[i] = nullptr;
+					App->player->speed += 1;
+					
 				}
-				break;
-			}
-			if (enemies[i]->type == ENEMY_TYPES::BIGBOTTLE) {
-				if (c2->type == COLLIDER_PLAYER) {
-					App->player->score += 1000;
-					delete enemies[i];
-					enemies[i] = nullptr;
-				}
-				break;
-			}
-			if (enemies[i]->type == ENEMY_TYPES::LITTLEBOTTLE) {
-				if (c2->type == COLLIDER_PLAYER) {
-					App->player->score += 1000;
-					delete enemies[i];
-					enemies[i] = nullptr;
-				}
-				break;
-			}
-			if (enemies[i]->type == ENEMY_TYPES::RIFLE) {
-				if (c2->type == COLLIDER_PLAYER) {
-					App->particles->bulletu.life += 75;
-					App->particles->bulletl.life += 75;
-					App->particles->bulletr.life += 75;
-					delete enemies[i];
-					enemies[i] = nullptr;
-				}
-				break;
-			}
-			if (enemies[i]->type == ENEMY_TYPES::BULLET) {
-				if (c2->type == COLLIDER_PLAYER) {
-					App->particles->bulletl.speed.y -= 0.5;
-					App->particles->bulletl.speed.x -= 0.5;
-					App->particles->bulletr.speed.y -= 0.5;
-					App->particles->bulletr.speed.x += 0.5;
-					App->particles->bulletu.speed.y -= 0.5;
-					App->particles->bulletl.life -= 120;
-					App->particles->bulletr.life -= 120;
-					App->particles->bulletu.life -= 120;
-					delete enemies[i];
-					enemies[i] = nullptr;
-				}
-				break;
-			}
 
+			}
+			if (enemies[i]->type == ENEMY_TYPES::HORSE) {
+				if (c2->type == COLLIDER_PLAYER) {
+					horse = true;
+					delete enemies[i];
+					enemies[i] = nullptr;
+					break;
+					
+				}
+			}
 		}
-		if ((c2->type == COLLIDER_WALL || c2->type == COLLIDER_BARREL) && enemies[i] != nullptr && c1->CheckCollision(c2->rect) == true && enemies[i]->GetCollider() == c1)
+		if (c2->type == COLLIDER_WALL && enemies[i] != nullptr && c1->CheckCollision(c2->rect) == true && enemies[i]->GetCollider() == c1)
 		{
 			if (c1->rect.y<c2->rect.y + c2->rect.h && c1->rect.y + 3>c2->rect.y + c2->rect.h) {
 
