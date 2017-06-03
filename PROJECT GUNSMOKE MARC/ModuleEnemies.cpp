@@ -291,26 +291,26 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 			}
 			if (enemies[i]->type == ENEMY_TYPES::BARREL) 
 			{
-
 				if (c2->type == COLLIDER_PLAYER_SHOT) {
-					App->player->score += 50;
 					--enemies[i]->life;
 					if (enemies[i]->life == 0) {
 						App->particles->AddParticle(App->particles->deadBarrel, c1->rect.x, c1->rect.y, COLLIDER_NONE);
 						delete enemies[i];
 						enemies[i] = nullptr;
+						App->player->score += 50;
 					}
 					break;
 				}
 			}
-			if ((enemies[i]->type == ENEMY_TYPES::BOOTS)
-				|| (enemies[i]->type == ENEMY_TYPES::RIFLE)
+			if (enemies[i]->type == ENEMY_TYPES::BOOTS)
+				/*|| (enemies[i]->type == ENEMY_TYPES::RIFLE)
 				|| (enemies[i]->type == ENEMY_TYPES::BULLET)
 				|| (enemies[i]->type == ENEMY_TYPES::HORSE)
 				|| (enemies[i]->type == ENEMY_TYPES::LITTLEBOTTLE)
-				|| (enemies[i]->type == ENEMY_TYPES::BIGBOTTLE))
+				|| (enemies[i]->type == ENEMY_TYPES::BIGBOTTLE))*/
 			{
 				if (c2->type == COLLIDER_PLAYER) {
+					App->player->speed += 1;
 					delete enemies[i];
 					enemies[i] = nullptr;
 				}
