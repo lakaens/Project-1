@@ -254,8 +254,12 @@ bool ModuleMap1::Start()
 	//App->enemies->AddEnemy(ENEMY_TYPES::BARREL, 44, 465);
 
 
-	App->enemies->AddEnemy(ENEMY_TYPES::BOOTS, 130, 2753);
-	App->enemies->AddEnemy(ENEMY_TYPES::HORSE, 100, 2753);
+	/*App->enemies->AddEnemy(ENEMY_TYPES::BOOTS, 130, 2753);*/
+	/*App->enemies->AddEnemy(ENEMY_TYPES::HORSE, 100, 2753);*/
+	/*App->enemies->AddEnemy(ENEMY_TYPES::BULLET, 100, 2730);*/
+	/*App->enemies->AddEnemy(ENEMY_TYPES::RIFLE, 100, 2700);*/
+	/*App->enemies->AddEnemy(ENEMY_TYPES::BIGBOTTLE, 100, 2675);*/
+	/*App->enemies->AddEnemy(ENEMY_TYPES::LITTLEBOTTLE, 130, 2675);*/
 	//BOSS COORDS = 111, 133, 18, 29
 	
 	

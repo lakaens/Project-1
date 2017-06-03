@@ -14,7 +14,6 @@ private:
 public:
 
 	PowerUp_Bullet(int x, int y);
-	void OnCollision(Collider* c1, Collider* c2);
 };
 
 
