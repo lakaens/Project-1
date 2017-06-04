@@ -24,7 +24,7 @@ Marc Tarres : Code
 
 ![](https://github.com/lakaens/Project-1/blob/master/marc1.jpg)
 
-# Game Controls
+## Game Controls
 
 KEYBORD CONTROLS
 
