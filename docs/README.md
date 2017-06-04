@@ -51,7 +51,7 @@ Marc Tarres : Code
 -Use start button for changing the scene when needed.
   
 -Use back button for closing the game.
-## [Check a gameplay video]()!
+## [Check a gameplay video](https://www.youtube.com/watch?v=td1uS9n4KTU&feature=youtu.be)!
 ## Dowload the latest version of Gun.Smoke [here](https://github.com/lakaens/Project-1/releases)!
 ## Check out our Github repositoire [here](https://github.com/lakaens/Project-1)!
 ## See more information in the Gun.Smoke [Wiki](https://github.com/lakaens/Project-1/wiki)!
