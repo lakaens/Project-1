@@ -258,7 +258,7 @@ update_status ModuleInput::PreUpdate()
 		else
 			joy_down = KEY_IDLE;
 	}
-	
+	return UPDATE_CONTINUE;
 }
 
 
