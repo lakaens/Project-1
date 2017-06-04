@@ -12,17 +12,17 @@ Gun.Smoke is a vertical scrolling arcade game made by Capcom in 1985. The game i
 Eric Navarro de Santiago: Q&A
 
 
-![](https://github.com/lakaens/Project-1/blob/master/eric2.jpg)
+![](eric2.jpg)
 
 Albert Cayuela Naval: Management
 
 
-![](https://github.com/lakaens/Project-1/blob/master/albert.png)
+![](albert.png)
 
 Marc Tarres : Code
 
 
-![](https://github.com/lakaens/Project-1/blob/master/marc1.jpg)
+![](marc1.jpg)
 
 ## Game Controls
 
