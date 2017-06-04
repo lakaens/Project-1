@@ -179,98 +179,98 @@ bool ModuleMap1::Start()
 
 	//MAP 2 ENEMIES::::
 
-	App->enemies->AddEnemy(ENEMY_TYPES::GUNMEN,62,2725);
-	App->enemies->AddEnemy(ENEMY_TYPES::GUNMEN,123,2717);
-	App->enemies->AddEnemy(ENEMY_TYPES::GUNMEN,80,2616);
-	App->enemies->AddEnemy(ENEMY_TYPES::GUNMEN,139,2554);
-	App->enemies->AddEnemy(ENEMY_TYPES::GUNMEN,18,2490);
-	App->enemies->AddEnemy(ENEMY_TYPES::GUNMEN,70,2451);
-	App->enemies->AddEnemy(ENEMY_TYPES::GUNMEN,73,2039);
-	App->enemies->AddEnemy(ENEMY_TYPES::GUNMEN,41,1969);
-	App->enemies->AddEnemy(ENEMY_TYPES::GUNMEN,48,1975);
-	App->enemies->AddEnemy(ENEMY_TYPES::GUNMEN,143,1747);
-	App->enemies->AddEnemy(ENEMY_TYPES::GUNMEN,9,1630);
-	App->enemies->AddEnemy(ENEMY_TYPES::GUNMEN,173,1624);
-	App->enemies->AddEnemy(ENEMY_TYPES::GUNMEN,56,1527);
-	App->enemies->AddEnemy(ENEMY_TYPES::GUNMEN,110,1528);
-	App->enemies->AddEnemy(ENEMY_TYPES::GUNMEN,160,1528);
-	App->enemies->AddEnemy(ENEMY_TYPES::GUNMEN,81,1268);
-	App->enemies->AddEnemy(ENEMY_TYPES::GUNMEN,110,1085);
-	App->enemies->AddEnemy(ENEMY_TYPES::GUNMEN,107,817);
-	App->enemies->AddEnemy(ENEMY_TYPES::GUNMEN,89,764);
-	App->enemies->AddEnemy(ENEMY_TYPES::GUNMEN,155,580);
-	App->enemies->AddEnemy(ENEMY_TYPES::GUNMEN,90,321);
+	//App->enemies->AddEnemy(ENEMY_TYPES::GUNMEN,62,2725);
+	//App->enemies->AddEnemy(ENEMY_TYPES::GUNMEN,123,2717);
+	//App->enemies->AddEnemy(ENEMY_TYPES::GUNMEN,80,2616);
+	//App->enemies->AddEnemy(ENEMY_TYPES::GUNMEN,139,2554);
+	//App->enemies->AddEnemy(ENEMY_TYPES::GUNMEN,18,2490);
+	//App->enemies->AddEnemy(ENEMY_TYPES::GUNMEN,70,2451);
+	//App->enemies->AddEnemy(ENEMY_TYPES::GUNMEN,73,2039);
+	//App->enemies->AddEnemy(ENEMY_TYPES::GUNMEN,41,1969);
+	//App->enemies->AddEnemy(ENEMY_TYPES::GUNMEN,48,1975);
+	//App->enemies->AddEnemy(ENEMY_TYPES::GUNMEN,143,1747);
+	//App->enemies->AddEnemy(ENEMY_TYPES::GUNMEN,9,1630);
+	//App->enemies->AddEnemy(ENEMY_TYPES::GUNMEN,173,1624);
+	//App->enemies->AddEnemy(ENEMY_TYPES::GUNMEN,56,1527);
+	//App->enemies->AddEnemy(ENEMY_TYPES::GUNMEN,110,1528);
+	//App->enemies->AddEnemy(ENEMY_TYPES::GUNMEN,160,1528);
+	//App->enemies->AddEnemy(ENEMY_TYPES::GUNMEN,81,1268);
+	//App->enemies->AddEnemy(ENEMY_TYPES::GUNMEN,110,1085);
+	//App->enemies->AddEnemy(ENEMY_TYPES::GUNMEN,107,817);
+	//App->enemies->AddEnemy(ENEMY_TYPES::GUNMEN,89,764);
+	//App->enemies->AddEnemy(ENEMY_TYPES::GUNMEN,155,580);
+	//App->enemies->AddEnemy(ENEMY_TYPES::GUNMEN,90,321);
 
 
-	App->enemies->AddEnemy(ENEMY_TYPES::BACKSTABBER,224,2573);
-	App->enemies->AddEnemy(ENEMY_TYPES::BACKSTABBER,224,2463);
-	App->enemies->AddEnemy(ENEMY_TYPES::BACKSTABBER,224,2438);
-	App->enemies->AddEnemy(ENEMY_TYPES::BACKSTABBER,223,1972);
-	
-
-	App->enemies->AddEnemy(ENEMY_TYPES::BOMBER,59,2294 );
-	App->enemies->AddEnemy(ENEMY_TYPES::BOMBER,114,2189 );
-	App->enemies->AddEnemy(ENEMY_TYPES::BOMBER, 106,1764);
-	App->enemies->AddEnemy(ENEMY_TYPES::BOMBER, 118,1581);
-	App->enemies->AddEnemy(ENEMY_TYPES::BOMBER, 48,1454);
-	App->enemies->AddEnemy(ENEMY_TYPES::BOMBER, 165,1439);
-	App->enemies->AddEnemy(ENEMY_TYPES::BOMBER, 185,1287);
-	App->enemies->AddEnemy(ENEMY_TYPES::BOMBER, 53,1277); 
-	App->enemies->AddEnemy(ENEMY_TYPES::BOMBER, 74,1158);
-	App->enemies->AddEnemy(ENEMY_TYPES::BOMBER, 74,896);
-	App->enemies->AddEnemy(ENEMY_TYPES::BOMBER, 68,787);
-	App->enemies->AddEnemy(ENEMY_TYPES::BOMBER, 83,549);
-	App->enemies->AddEnemy(ENEMY_TYPES::BOMBER, 83,471);
-	App->enemies->AddEnemy(ENEMY_TYPES::BOMBER, 131,454);
-	App->enemies->AddEnemy(ENEMY_TYPES::BOMBER, 169,444);
-	App->enemies->AddEnemy(ENEMY_TYPES::BOMBER, 77,429);
-	App->enemies->AddEnemy(ENEMY_TYPES::BOMBER, 156,326);
-
-
-	App->enemies->AddEnemy(ENEMY_TYPES::RIFFLEMEN,83,2170 );
-	App->enemies->AddEnemy(ENEMY_TYPES::RIFFLEMEN,66,1918 );
-	App->enemies->AddEnemy(ENEMY_TYPES::RIFFLEMEN, 128,1369);
-	App->enemies->AddEnemy(ENEMY_TYPES::RIFFLEMEN, 116,672);
+	//App->enemies->AddEnemy(ENEMY_TYPES::BACKSTABBER,224,2573);
+	//App->enemies->AddEnemy(ENEMY_TYPES::BACKSTABBER,224,2463);
+	//App->enemies->AddEnemy(ENEMY_TYPES::BACKSTABBER,224,2438);
+	//App->enemies->AddEnemy(ENEMY_TYPES::BACKSTABBER,223,1972);
+	//
+	App->enemies->AddEnemy(ENEMY_TYPES::BOMBER,59,2700 );
+	//App->enemies->AddEnemy(ENEMY_TYPES::BOMBER,59,2294 );
+	//App->enemies->AddEnemy(ENEMY_TYPES::BOMBER,114,2189 );
+	//App->enemies->AddEnemy(ENEMY_TYPES::BOMBER, 106,1764);
+	//App->enemies->AddEnemy(ENEMY_TYPES::BOMBER, 118,1581);
+	//App->enemies->AddEnemy(ENEMY_TYPES::BOMBER, 48,1454);
+	//App->enemies->AddEnemy(ENEMY_TYPES::BOMBER, 165,1439);
+	//App->enemies->AddEnemy(ENEMY_TYPES::BOMBER, 185,1287);
+	//App->enemies->AddEnemy(ENEMY_TYPES::BOMBER, 53,1277); 
+	//App->enemies->AddEnemy(ENEMY_TYPES::BOMBER, 74,1158);
+	//App->enemies->AddEnemy(ENEMY_TYPES::BOMBER, 74,896);
+	//App->enemies->AddEnemy(ENEMY_TYPES::BOMBER, 68,787);
+	//App->enemies->AddEnemy(ENEMY_TYPES::BOMBER, 83,549);
+	//App->enemies->AddEnemy(ENEMY_TYPES::BOMBER, 83,471);
+	//App->enemies->AddEnemy(ENEMY_TYPES::BOMBER, 131,454);
+	//App->enemies->AddEnemy(ENEMY_TYPES::BOMBER, 169,444);
+	//App->enemies->AddEnemy(ENEMY_TYPES::BOMBER, 77,429);
+	//App->enemies->AddEnemy(ENEMY_TYPES::BOMBER, 156,326);
 
 
-	App->enemies->AddEnemy(ENEMY_TYPES::GUNMENLEFT,0,2561 );
-	App->enemies->AddEnemy(ENEMY_TYPES::GUNMENLEFT, 0,2382);
-	App->enemies->AddEnemy(ENEMY_TYPES::GUNMENLEFT, 0,2306);
-	App->enemies->AddEnemy(ENEMY_TYPES::GUNMENLEFT, 0,2053);
-	App->enemies->AddEnemy(ENEMY_TYPES::GUNMENLEFT, 0, 1881);
-	App->enemies->AddEnemy(ENEMY_TYPES::GUNMENLEFT,0,1596 );
-	App->enemies->AddEnemy(ENEMY_TYPES::GUNMENLEFT,0,1524 );
-	App->enemies->AddEnemy(ENEMY_TYPES::GUNMENLEFT,0,1460);
-	App->enemies->AddEnemy(ENEMY_TYPES::GUNMENLEFT,0,1358 );
+	//App->enemies->AddEnemy(ENEMY_TYPES::RIFFLEMEN,83,2170 );
+	//App->enemies->AddEnemy(ENEMY_TYPES::RIFFLEMEN,66,1918 );
+	//App->enemies->AddEnemy(ENEMY_TYPES::RIFFLEMEN, 128,1369);
+	//App->enemies->AddEnemy(ENEMY_TYPES::RIFFLEMEN, 116,672);
 
-	App->enemies->AddEnemy(ENEMY_TYPES::GUNMENRIGHT, 224,1870);
-	App->enemies->AddEnemy(ENEMY_TYPES::GUNMENRIGHT, 223,1683);
-	App->enemies->AddEnemy(ENEMY_TYPES::GUNMENRIGHT, 224,1661);
-	App->enemies->AddEnemy(ENEMY_TYPES::GUNMENRIGHT, 224,1340);
-	App->enemies->AddEnemy(ENEMY_TYPES::GUNMENRIGHT, 224,1269);
-	App->enemies->AddEnemy(ENEMY_TYPES::GUNMENRIGHT, 222,1161);
-	App->enemies->AddEnemy(ENEMY_TYPES::GUNMENRIGHT, 223,782);
-	App->enemies->AddEnemy(ENEMY_TYPES::GUNMENRIGHT, 224,594);
-	App->enemies->AddEnemy(ENEMY_TYPES::GUNMENRIGHT, 224,560);
-	////
-	//////barrels
-	App->enemies->AddEnemy(ENEMY_TYPES::BARREL, 164, 2753);
-	App->enemies->AddEnemy(ENEMY_TYPES::BARREL, 164, 2737);
-	App->enemies->AddEnemy(ENEMY_TYPES::BARREL, 164, 2641);
-	App->enemies->AddEnemy(ENEMY_TYPES::BARREL, 164, 2625);
-	App->enemies->AddEnemy(ENEMY_TYPES::BARREL, 160, 2001);
-	App->enemies->AddEnemy(ENEMY_TYPES::BARREL, 160, 1985);
-	App->enemies->AddEnemy(ENEMY_TYPES::BARREL, 208, 1634);
-	App->enemies->AddEnemy(ENEMY_TYPES::BARREL, 48, 1634);
-	App->enemies->AddEnemy(ENEMY_TYPES::BARREL, 208, 1458);
-	App->enemies->AddEnemy(ENEMY_TYPES::BARREL, 44, 1169);
-	App->enemies->AddEnemy(ENEMY_TYPES::BARREL, 44, 1153);
-	App->enemies->AddEnemy(ENEMY_TYPES::BARREL, 44, 946);
-	App->enemies->AddEnemy(ENEMY_TYPES::BARREL, 44, 849);
-	App->enemies->AddEnemy(ENEMY_TYPES::BARREL, 44, 833);
-	App->enemies->AddEnemy(ENEMY_TYPES::BARREL, 44, 641);
-	App->enemies->AddEnemy(ENEMY_TYPES::BARREL, 44, 625);
-	App->enemies->AddEnemy(ENEMY_TYPES::BARREL, 44, 465);
+
+	//App->enemies->AddEnemy(ENEMY_TYPES::GUNMENLEFT,0,2561 );
+	//App->enemies->AddEnemy(ENEMY_TYPES::GUNMENLEFT, 0,2382);
+	//App->enemies->AddEnemy(ENEMY_TYPES::GUNMENLEFT, 0,2306);
+	//App->enemies->AddEnemy(ENEMY_TYPES::GUNMENLEFT, 0,2053);
+	//App->enemies->AddEnemy(ENEMY_TYPES::GUNMENLEFT, 0, 1881);
+	//App->enemies->AddEnemy(ENEMY_TYPES::GUNMENLEFT,0,1596 );
+	//App->enemies->AddEnemy(ENEMY_TYPES::GUNMENLEFT,0,1524 );
+	//App->enemies->AddEnemy(ENEMY_TYPES::GUNMENLEFT,0,1460);
+	//App->enemies->AddEnemy(ENEMY_TYPES::GUNMENLEFT,0,1358 );
+
+	//App->enemies->AddEnemy(ENEMY_TYPES::GUNMENRIGHT, 224,1870);
+	//App->enemies->AddEnemy(ENEMY_TYPES::GUNMENRIGHT, 223,1683);
+	//App->enemies->AddEnemy(ENEMY_TYPES::GUNMENRIGHT, 224,1661);
+	//App->enemies->AddEnemy(ENEMY_TYPES::GUNMENRIGHT, 224,1340);
+	//App->enemies->AddEnemy(ENEMY_TYPES::GUNMENRIGHT, 224,1269);
+	//App->enemies->AddEnemy(ENEMY_TYPES::GUNMENRIGHT, 222,1161);
+	//App->enemies->AddEnemy(ENEMY_TYPES::GUNMENRIGHT, 223,782);
+	//App->enemies->AddEnemy(ENEMY_TYPES::GUNMENRIGHT, 224,594);
+	//App->enemies->AddEnemy(ENEMY_TYPES::GUNMENRIGHT, 224,560);
+	//////
+	////////barrels
+	//App->enemies->AddEnemy(ENEMY_TYPES::BARREL, 164, 2753);
+	//App->enemies->AddEnemy(ENEMY_TYPES::BARREL, 164, 2737);
+	//App->enemies->AddEnemy(ENEMY_TYPES::BARREL, 164, 2641);
+	//App->enemies->AddEnemy(ENEMY_TYPES::BARREL, 164, 2625);
+	//App->enemies->AddEnemy(ENEMY_TYPES::BARREL, 160, 2001);
+	//App->enemies->AddEnemy(ENEMY_TYPES::BARREL, 160, 1985);
+	//App->enemies->AddEnemy(ENEMY_TYPES::BARREL, 208, 1634);
+	//App->enemies->AddEnemy(ENEMY_TYPES::BARREL, 48, 1634);
+	//App->enemies->AddEnemy(ENEMY_TYPES::BARREL, 208, 1458);
+	//App->enemies->AddEnemy(ENEMY_TYPES::BARREL, 44, 1169);
+	//App->enemies->AddEnemy(ENEMY_TYPES::BARREL, 44, 1153);
+	//App->enemies->AddEnemy(ENEMY_TYPES::BARREL, 44, 946);
+	//App->enemies->AddEnemy(ENEMY_TYPES::BARREL, 44, 849);
+	//App->enemies->AddEnemy(ENEMY_TYPES::BARREL, 44, 833);
+	//App->enemies->AddEnemy(ENEMY_TYPES::BARREL, 44, 641);
+	//App->enemies->AddEnemy(ENEMY_TYPES::BARREL, 44, 625);
+	//App->enemies->AddEnemy(ENEMY_TYPES::BARREL, 44, 465);
 
 
 	//BOSS COORDS = 111, 133, 18, 29

@@ -62,6 +62,7 @@ private:
 public:
 
 	Particle bulletu;
+	Particle knife;
 	Particle bombdead;
 	Particle bomb;
 	Particle bulletl;

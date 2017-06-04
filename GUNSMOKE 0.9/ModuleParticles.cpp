@@ -172,7 +172,17 @@ ModuleParticles::ModuleParticles()
 	bombdead.anim.speed = 0.1f;
 	bombdead.anim.loop = false;
 
-	
+	knife.anim.PushBack({ 226, 58, 9, 14 });
+	knife.anim.PushBack({ 249, 59, 10, 13 });
+	knife.anim.PushBack({ 272, 60, 11, 12 });
+	knife.anim.PushBack({ 297, 60, 10, 13 });
+	knife.anim.PushBack({ 322, 60, 9, 13 });
+	knife.anim.PushBack({ 346, 60, 10, 14 });
+	knife.anim.PushBack({ 370, 60, 9, 13 });
+	knife.anim.PushBack({ 394, 59, 10, 13 });
+	knife.anim.speed = 0.3f;
+	knife.anim.loop = true;
+	knife.life = 2000;	
 
 }
 
@@ -300,7 +310,7 @@ bool Particle::Update()
 		if ((SDL_GetTicks() - born) > life) {
 			if(collider->type == COLLIDER_PLAYER_SHOT)
 				App->particles->AddParticle(App->particles->explosion, position.x, position.y, COLLIDER_NONE, PARTICLE_PLAYER_SHOT);
-		else if (collider->type == COLLIDER_ENEMY_SHOT && App->enemies->bomb==false)
+		else if (collider->type == COLLIDER_ENEMY_SHOT ||collider->type == COLLIDER_BOMB)
 			App->particles->AddParticle(App->particles->enemysimplebulletdead, position.x - 5, position.y - 5, COLLIDER_NONE, PARTICLE_NONE);
 			ret = false;
 		}

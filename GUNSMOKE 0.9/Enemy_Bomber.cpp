@@ -52,7 +52,7 @@ void Enemy_Bomber::Shoot() {
 		App->particles->bomb.speed.y = (speed.y / h)*ENEMY_SHOT_SPEED;
 
 
-		App->particles->AddParticle(App->particles->bomb, position.x + 3, position.y + 3, COLLIDER_ENEMY_SHOT);
+		App->particles->AddParticle(App->particles->bomb, position.x + 3, position.y + 3, COLLIDER_BOMB);
 
 
 		lastTime = currentTime;

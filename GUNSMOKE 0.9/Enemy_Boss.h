@@ -14,12 +14,15 @@ private:
 	Animation diagonal;
 	Animation stay;
 	Animation up;
-	
+	fPoint speed;
+	float h;
+	uint lastTime = 0;
 
 public:
 
 	Enemy_Boss(int x, int y);
 	void Move();
+	void Shoot();
 };
 
 

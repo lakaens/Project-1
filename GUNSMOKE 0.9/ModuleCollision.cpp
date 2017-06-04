@@ -63,6 +63,14 @@ ModuleCollision::ModuleCollision()
 	matrix[COLLIDER_POWERUP][COLLIDER_ENEMY_SHOT] = false;
 	matrix[COLLIDER_POWERUP][COLLIDER_BARREL] = false;
 	matrix[COLLIDER_POWERUP][COLLIDER_POWERUP] = false;
+
+	matrix[COLLIDER_BOMB][COLLIDER_WALL] = false;
+	matrix[COLLIDER_BOMB][COLLIDER_PLAYER] = false;
+	matrix[COLLIDER_BOMB][COLLIDER_ENEMY] = false;
+	matrix[COLLIDER_BOMB][COLLIDER_PLAYER_SHOT] = false;
+	matrix[COLLIDER_BOMB][COLLIDER_ENEMY_SHOT] = false;
+	matrix[COLLIDER_BOMB][COLLIDER_BOMB] = false;
+	
 }
 
 // Destructor
@@ -166,6 +174,8 @@ void ModuleCollision::DebugDraw()
 			case COLLIDER_POWERUP:
 				App->render->DrawQuad(colliders[i]->rect, 0, 255, 255, alpha);
 				break;
+			case COLLIDER_BOMB:
+				App->render->DrawQuad(colliders[i]->rect, 0, 255, 255, alpha);
 		}
 	}
 }

@@ -1,6 +1,13 @@
 #include "Application.h"
 #include "Enemy_Boss.h"
 #include "ModuleCollision.h"
+#include "SDL/include/SDL_timer.h"
+#include "ModulePlayer.h"
+#include "ModuleParticles.h"
+
+#define PI 3.14159265
+#define ENEMY_SHOOTING_SPEED 1000
+#define ENEMY_SHOT_SPEED 5.0f
 
 Enemy_Boss::Enemy_Boss(int x, int y) :Enemy(x, y) {
 
@@ -51,4 +58,28 @@ Enemy_Boss::Enemy_Boss(int x, int y) :Enemy(x, y) {
 void Enemy_Boss::Move()
 {
 	position = original_pos + path.GetCurrentSpeed(&animation);
+}
+
+void Enemy_Boss::Shoot()
+{
+	uint currentTime = SDL_GetTicks();
+	float angle;
+	speed.x = (App->player->position.x) - position.x;
+	speed.y = (App->player->position.y) - (position.y);
+	h = sqrt((pow(speed.x, 2) + pow(speed.y, 2)));
+
+
+
+	if ((currentTime > (lastTime + ENEMY_SHOOTING_SPEED)) && speed.y<125) {
+
+		App->particles->knife.speed.x = (speed.x / h)*ENEMY_SHOT_SPEED;
+		App->particles->knife.speed.y = (speed.y / h)*ENEMY_SHOT_SPEED;
+
+
+		App->particles->AddParticle(App->particles->knife, position.x + 3, position.y + 3, COLLIDER_ENEMY_SHOT);
+
+
+		lastTime = currentTime;
+	}
+
 }
