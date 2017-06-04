@@ -52,6 +52,6 @@ Marc Tarres : Code
   
 -Use back button for closing the game.
 
-
+## Dowload the latest version of Gun.Smoke [here](https://github.com/lakaens/Project-1/releases)!
 ## Check out our Github repositoire [here](https://github.com/lakaens/Project-1)!
 ## See more information in the Gun.Smoke [Wiki](https://github.com/lakaens/Project-1/wiki)!
