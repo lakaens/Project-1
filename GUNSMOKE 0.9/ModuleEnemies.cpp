@@ -408,7 +408,7 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 				break;
 			}
 		}
-		if (c2->type == COLLIDER_WALL && enemies[i] != nullptr && c1->CheckCollision(c2->rect) == true && enemies[i]->GetCollider() == c1)
+		if ((c2->type == COLLIDER_WALL || c2->type ==	COLLIDER_BARREL) && enemies[i] != nullptr && c1->CheckCollision(c2->rect) == true && enemies[i]->GetCollider() == c1)
 		{
 			if (c1->rect.y<c2->rect.y + c2->rect.h && c1->rect.y + 3>c2->rect.y + c2->rect.h) {
 

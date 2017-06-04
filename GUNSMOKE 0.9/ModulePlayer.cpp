@@ -158,12 +158,8 @@ update_status ModulePlayer::Update()
 
 	if (cameralim > 0) {
 		cameralim -= 0.5;
-		position.y -= 1;// Automatic movement
+		position.y -= 0.5;// Automatic movement
 	}
-
-		
-		
-
 		if (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT || App->input->joy_left == KEY_STATE::KEY_REPEAT) // MOVEMENT LEFT
 		{
 			if (!colleft) {

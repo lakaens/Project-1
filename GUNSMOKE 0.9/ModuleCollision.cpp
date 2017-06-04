@@ -29,7 +29,7 @@ ModuleCollision::ModuleCollision()
 	matrix[COLLIDER_ENEMY][COLLIDER_ENEMY] = false;
 	matrix[COLLIDER_ENEMY][COLLIDER_PLAYER_SHOT] = true;
 	matrix[COLLIDER_ENEMY][COLLIDER_ENEMY_SHOT] = false;
-	matrix[COLLIDER_ENEMY][COLLIDER_BARREL] = false;
+	matrix[COLLIDER_ENEMY][COLLIDER_BARREL] = true;
 	matrix[COLLIDER_ENEMY][COLLIDER_POWERUP] = false;
 
 	matrix[COLLIDER_PLAYER_SHOT][COLLIDER_WALL] = false;
@@ -51,7 +51,7 @@ ModuleCollision::ModuleCollision()
 	matrix[COLLIDER_BARREL][COLLIDER_PLAYER_SHOT] = true;
 	matrix[COLLIDER_BARREL][COLLIDER_PLAYER] = true;
 	matrix[COLLIDER_BARREL][COLLIDER_WALL] = false;
-	matrix[COLLIDER_BARREL][COLLIDER_ENEMY] = false;
+	matrix[COLLIDER_BARREL][COLLIDER_ENEMY] = true;
 	matrix[COLLIDER_BARREL][COLLIDER_ENEMY_SHOT] = false;
 	matrix[COLLIDER_BARREL][COLLIDER_BARREL] = false;
 	matrix[COLLIDER_BARREL][COLLIDER_POWERUP] = false;
