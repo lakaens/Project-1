@@ -64,7 +64,7 @@ update_status ModuleGameOver::Update()
 
 	App->render->Blit(background, 0, 0, &stage);
 
-	if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN) {
+	if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN || App->input->buttonStart == KEY_DOWN) {
 		App->fade->FadeToBlack(this, App->scene_intro);
 	}
 
