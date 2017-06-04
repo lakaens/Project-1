@@ -11,12 +11,17 @@ private:
 	Path path;
 	iPoint original_pos;
 	Animation move;
-	Animation sides;
+	Animation sides; 
+	iPoint speed;
+	float h;
+	uint lastTime = 0;
+	uint lastTime2 = 0;
 
 public:
 
 	Enemy_RiffleMen(int x, int y);
 	void Move();
+	void Shoot();
 };
 
 

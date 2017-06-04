@@ -45,10 +45,9 @@ bool ModuleSceneIntro::CleanUp()
 update_status ModuleSceneIntro::Update()
 {
 	App->render->Blit(background, 0, 0, NULL);
-	App->fonts->BlitText(10, 10, font_score, "GUNMAN-1 HI-SCORE");
+	App->fonts->BlitText(10, 10, font_score, "HI-SCORE");
 	sprintf_s(App->player->str, "%i", App->player->score);
-	App->fonts->BlitText(10, 20, font_score, App->player->str);
-	App->fonts->BlitText(81, 20, font_score, App->player->hscore);
+	App->fonts->BlitText(10, 20, font_score, App->player->hscore);
 
 	if(App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_DOWN || App->input->buttonStart == KEY_DOWN && App->fade->IsFading() == false)
 	{

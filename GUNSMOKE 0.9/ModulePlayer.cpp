@@ -158,7 +158,7 @@ update_status ModulePlayer::Update()
 
 	if (cameralim > 0) {
 		cameralim -= 0.5;
-		position.y -= 0.5;// Automatic movement
+		position.y -= 1;// Automatic movement
 	}
 
 		
@@ -352,7 +352,7 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 	}
 	
 	if (GodMode == false) {
-		if (c2->type == COLLIDER_ENEMY_SHOT || c2->type == COLLIDER_ENEMY || c2->type == COLLIDER_BOMB1 && destroyed == false && App->fade->IsFading() == false) {
+		if (c2->type == COLLIDER_ENEMY_SHOT || c2->type == COLLIDER_ENEMY || c2->type == COLLIDER_BOMB && destroyed == false && App->fade->IsFading() == false) {
 
 			if (col != nullptr) {
 				col->to_delete = true;
