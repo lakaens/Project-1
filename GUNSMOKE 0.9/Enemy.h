@@ -18,6 +18,7 @@ public:
 	int type;
 	Collider* collider;
 	int life;
+	int bosslife;
 
 public:
 	Enemy(int x, int y);

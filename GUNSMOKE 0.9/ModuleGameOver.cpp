@@ -30,13 +30,13 @@ ModuleGameOver::~ModuleGameOver()
 bool ModuleGameOver::Start()
 {
 	App->audio->musicLoad("Gunsmoke/gameover.ogg");
-
+	App->gameover->Enable();
+	
 	App->render->camera.x = App->render->camera.y = 0;
 
-	LOG("Loading space scene");
 
 	background = App->textures->Load("Gunsmoke/gameover.png");
-	font_score = App->fonts->Load("gunsmoke/Icons.png", " 0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ !¡?¿$^.:%*#()<>ªº+-=|&", 1);
+
 
 	
 
@@ -47,7 +47,7 @@ bool ModuleGameOver::Start()
 bool ModuleGameOver::CleanUp()
 {
 	LOG("Unloading space scene");
-	
+	App->gameover->Disable();
 	App->textures->Unload(background);
 	App->fonts->UnLoad(font_score);
 	return true;
@@ -56,13 +56,9 @@ bool ModuleGameOver::CleanUp()
 // Update: draw background
 update_status ModuleGameOver::Update()
 {
-	
-	App->fonts->BlitText(10, -13, font_score, "GUNMAN-1 HI-SCORE");
-	sprintf_s(App->player->str, "%i", App->player->score);
-	App->fonts->BlitText(10, 0, font_score, App->player->str);
-	App->fonts->BlitText(81, 0, font_score, App->player->hscore);
 
 	App->render->Blit(background, 0, 0, &stage);
+
 
 	if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN || App->input->buttonStart == KEY_DOWN) {
 		App->fade->FadeToBlack(this, App->scene_intro);

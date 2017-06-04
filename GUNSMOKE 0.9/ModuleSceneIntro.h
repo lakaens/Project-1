@@ -19,6 +19,7 @@ public:
 	
 	SDL_Texture* background = nullptr;
 	uint fx = 0;
+	int font_score = -1;
 };
 
 #endif // __MODULESCENEINTRO_H__

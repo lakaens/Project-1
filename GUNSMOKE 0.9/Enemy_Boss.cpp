@@ -7,7 +7,7 @@
 
 #define PI 3.14159265
 #define ENEMY_SHOOTING_SPEED 1000
-#define ENEMY_SHOT_SPEED 5.0f
+#define ENEMY_SHOT_SPEED 3.0f
 
 Enemy_Boss::Enemy_Boss(int x, int y) :Enemy(x, y) {
 
@@ -53,6 +53,8 @@ Enemy_Boss::Enemy_Boss(int x, int y) :Enemy(x, y) {
 	original_pos.x = x;
 	original_pos.y = y;
 
+
+	bosslife = 12;
 }
 
 void Enemy_Boss::Move()
@@ -76,8 +78,8 @@ void Enemy_Boss::Shoot()
 		App->particles->knife.speed.y = (speed.y / h)*ENEMY_SHOT_SPEED;
 
 
-		App->particles->AddParticle(App->particles->knife, position.x + 3, position.y + 3, COLLIDER_ENEMY_SHOT);
-
+		App->particles->AddParticle(App->particles->knife, position.x, position.y, COLLIDER_ENEMY_SHOT);
+		
 
 		lastTime = currentTime;
 	}

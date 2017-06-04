@@ -23,6 +23,9 @@
 #include "Enemy_GunMenRight.h"
 #include "ModulePlayer.h"
 #include "Enemy_Boss.h"
+#include "ModuleFadeToBlack.h"
+#include "ModuleWin.h"
+#include "ModuleGameOver.h"
 
 #define SPAWN_MARGIN 70
 
@@ -324,6 +327,21 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 					App->particles->AddParticle(App->particles->deadRiffleMen, c1->rect.x, c1->rect.y, COLLIDER_NONE);
 					delete enemies[i];
 					enemies[i] = nullptr;
+					break;
+				}
+			}
+			if (enemies[i]->type == ENEMY_TYPES::BOSS) {
+				if (c2->type == COLLIDER_PLAYER_SHOT) {
+					if (enemies[i]->bosslife > 1) {
+						--enemies[i]->bosslife;
+					}
+					else {
+						App->particles->AddParticle(App->particles->deadboss, c1->rect.x, c2->rect.y, COLLIDER_NONE);
+						delete enemies[i];
+						enemies[i] = nullptr;
+						App->player->score += 50;
+						App->fade->FadeToBlack((Module*)App->map, (Module*)App->win);
+					}
 					break;
 				}
 			}

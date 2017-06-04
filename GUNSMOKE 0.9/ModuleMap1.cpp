@@ -104,7 +104,8 @@ bool ModuleMap1::Start()
 	
 	// Enemies ---
 	
-	App->enemies->AddEnemy(ENEMY_TYPES::BOMBER,59,2294 );
+	//App->enemies->AddEnemy(ENEMY_TYPES::BOSS, 82, 2700);
+	
 	/*App->enemies->AddEnemy(ENEMY_TYPES::GUNMEN, 0, 0);
 	App->enemies->AddEnemy(ENEMY_TYPES::GUNMEN, 113, 2661);
 	App->enemies->AddEnemy(ENEMY_TYPES::GUNMEN, 0, 2574);
@@ -207,7 +208,7 @@ bool ModuleMap1::Start()
 	//App->enemies->AddEnemy(ENEMY_TYPES::BACKSTABBER,224,2438);
 	//App->enemies->AddEnemy(ENEMY_TYPES::BACKSTABBER,223,1972);
 	//
-	App->enemies->AddEnemy(ENEMY_TYPES::BOMBER,59,2700 );
+App->enemies->AddEnemy(ENEMY_TYPES::BOMBER, 82, 2700);
 	//App->enemies->AddEnemy(ENEMY_TYPES::BOMBER,59,2294 );
 	//App->enemies->AddEnemy(ENEMY_TYPES::BOMBER,114,2189 );
 	//App->enemies->AddEnemy(ENEMY_TYPES::BOMBER, 106,1764);
@@ -291,7 +292,7 @@ bool ModuleMap1::CleanUp()
 	
 	App->particles->Disable();
 	App->player->Disable();
-	
+	App->map->Disable();
 
 	return true;
 }

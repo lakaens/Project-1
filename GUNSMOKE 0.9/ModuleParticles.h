@@ -79,6 +79,7 @@ public:
 	Particle playerdead;
 	Particle deadRiffleMen;
 	Particle playerhit;
+	Particle deadboss;
 };
 
 #endif // __MODULEPARTICLES_H__

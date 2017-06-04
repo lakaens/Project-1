@@ -352,7 +352,7 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 	}
 	
 	if (GodMode == false) {
-		if (c2->type == COLLIDER_ENEMY_SHOT || c2->type == COLLIDER_ENEMY && destroyed == false && App->fade->IsFading() == false) {
+		if (c2->type == COLLIDER_ENEMY_SHOT || c2->type == COLLIDER_ENEMY || c2->type == COLLIDER_BOMB1 && destroyed == false && App->fade->IsFading() == false) {
 
 			if (col != nullptr) {
 				col->to_delete = true;
@@ -366,14 +366,14 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 					App->player->Disable();
 					cameralim = 0;
 					App->particles->AddParticle(App->particles->playerdead, position.x, position.y, COLLIDER_NONE);
-					App->fade->FadeToBlack(App->map, App->map, 2.0f);
+					App->fade->FadeToBlack((Module*)App->map, (Module*)App->map, 1.0f);
 				}
 				else if (life = 1) {
 					destroyed = true;
 					App->particles->AddParticle(App->particles->playerdead, position.x, position.y, COLLIDER_NONE);
 					cameralim = 0;
 					life = 3;
-					App->fade->FadeToBlack(App->map, App->gameover);
+					App->fade->FadeToBlack((Module*)App->map, (Module*)App->gameover);
 				}
 			}
 		}

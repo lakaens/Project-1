@@ -30,9 +30,9 @@ Application::Application()
 	modules[i++] = win = new ModuleWin();
 	modules[i++] = enemies = new ModuleEnemies();
 	modules[i++] = particles = new ModuleParticles();
-	modules[i++] = fonts = new ModuleFonts();
 	modules[i++] = player = new ModulePlayer();
 	modules[i++] = collision = new ModuleCollision();
+	modules[i++] = fonts = new ModuleFonts();
 	modules[i++] = fade = new ModuleFadeToBlack();
 	modules[i++] = audio = new ModuleAudio();
 	
