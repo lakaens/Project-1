@@ -26,7 +26,7 @@ Marc Tarres : Code
 
 ## Game Controls
 
-KEYBORD CONTROLS
+### KEYBORD CONTROLS
 
 -Use up, left, right, down arrows to move the character.
 
@@ -40,7 +40,7 @@ KEYBORD CONTROLS
 
 -Use escape for closing the game.
 
-GAMEPAD CONTROLS
+### GAMEPAD CONTROLS
   
 -Use left joystick to move the character.
   
