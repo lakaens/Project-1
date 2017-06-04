@@ -12,7 +12,7 @@ Grandpa's Flip Flop Staff
 Eric Navarro de Santiago: Q&A
 
 
-![](https://github.com/lakaens/Project-1/blob/master/eric.jpg)
+![](https://github.com/lakaens/Project-1/blob/master/eric1.jpg)
 
 Albert Cayuela Naval: Management
 
