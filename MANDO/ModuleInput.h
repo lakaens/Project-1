@@ -40,6 +40,7 @@ public:
 	KEY_STATE buttonA;
 	KEY_STATE buttonB;
 	KEY_STATE buttonX;
+	KEY_STATE buttonY;
 	KEY_STATE buttonStart;
 	KEY_STATE buttonBack;
 	KEY_STATE dpadUp;
@@ -50,21 +51,6 @@ public:
 	KEY_STATE joy_down;
 	KEY_STATE joy_left;
 	KEY_STATE joy_right;
-
-	KEY_STATE buttonA2;
-	KEY_STATE buttonB2;
-	KEY_STATE buttonX2;
-	KEY_STATE buttonStart2;
-	KEY_STATE buttonBack2;
-	KEY_STATE dpadUp2;
-	KEY_STATE dpadDown2;
-	KEY_STATE dpadLeft2;
-	KEY_STATE dpadRight2;
-	KEY_STATE joy_up2;
-	KEY_STATE joy_down2;
-	KEY_STATE joy_left2;
-	KEY_STATE joy_right2;
-
 };
 
 #endif // __ModuleInput_H__

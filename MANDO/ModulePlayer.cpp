@@ -233,7 +233,7 @@ update_status ModulePlayer::Update()
 			}
 		}
 
-		if (App->input->keyboard[SDL_SCANCODE_UP] == KEY_STATE::KEY_REPEAT && App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT) {
+		if ((App->input->keyboard[SDL_SCANCODE_UP] == KEY_STATE::KEY_REPEAT && App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT) || (App->input->joy_up == KEY_STATE::KEY_REPEAT && App->input->joy_right == KEY_STATE::KEY_REPEAT)) {
 
 
 			current_animation = &right;
@@ -242,7 +242,7 @@ update_status ModulePlayer::Update()
 			}
 		}
 
-		if (App->input->keyboard[SDL_SCANCODE_UP] == KEY_STATE::KEY_REPEAT && App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT) {
+		if ((App->input->keyboard[SDL_SCANCODE_UP] == KEY_STATE::KEY_REPEAT && App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT) || (App->input->joy_up == KEY_STATE::KEY_REPEAT && App->input->joy_left == KEY_STATE::KEY_REPEAT)) {
 
 
 			current_animation = &left;
@@ -250,7 +250,7 @@ update_status ModulePlayer::Update()
 				current_animation = &chorse;
 			}
 		}
-		if (App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT && App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT) {
+		if ((App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT && App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT) || (App->input->joy_down == KEY_STATE::KEY_REPEAT && App->input->joy_right == KEY_STATE::KEY_REPEAT)) {
 
 
 			current_animation = &left;
@@ -258,7 +258,7 @@ update_status ModulePlayer::Update()
 				current_animation = &chorse;
 			}
 		}
-		if (App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT && App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT) {
+		if ((App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT && App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT) || (App->input->joy_down == KEY_STATE::KEY_REPEAT && App->input->joy_left == KEY_STATE::KEY_REPEAT)) {
 
 
 			current_animation = &right;
@@ -266,15 +266,15 @@ update_status ModulePlayer::Update()
 				current_animation = &chorse;
 			}
 		}
-		if (App->input->keyboard[SDL_SCANCODE_C] == KEY_STATE::KEY_REPEAT || App->input->keyboard[SDL_SCANCODE_V] == KEY_STATE::KEY_REPEAT || App->input->keyboard[SDL_SCANCODE_B] == KEY_STATE::KEY_REPEAT) {
-			if (App->input->keyboard[SDL_SCANCODE_C] == KEY_STATE::KEY_REPEAT || App->input->keyboard[SDL_SCANCODE_C] == KEY_STATE::KEY_DOWN && cont <= 15)
+		if (App->input->keyboard[SDL_SCANCODE_C] == KEY_STATE::KEY_REPEAT || App->input->keyboard[SDL_SCANCODE_V] == KEY_STATE::KEY_REPEAT || App->input->keyboard[SDL_SCANCODE_B] == KEY_STATE::KEY_REPEAT || App->input->buttonX == KEY_STATE::KEY_REPEAT || App->input->buttonB == KEY_STATE::KEY_REPEAT || App->input->buttonY == KEY_STATE::KEY_REPEAT) {
+			if (App->input->keyboard[SDL_SCANCODE_C] == KEY_STATE::KEY_REPEAT || App->input->keyboard[SDL_SCANCODE_C] == KEY_STATE::KEY_DOWN || App->input->buttonX == KEY_STATE::KEY_REPEAT && cont <= 15)
 			{
 				cont++;
 				current_animation = &shootl;
 				if (App->enemies->horse == true) {
 					current_animation = &chorse;
 				}
-				if (cont == 15 || App->input->keyboard[SDL_SCANCODE_C] == KEY_STATE::KEY_DOWN) {
+				if (cont == 15 || App->input->keyboard[SDL_SCANCODE_C] == KEY_STATE::KEY_DOWN || App->input->buttonX == KEY_STATE::KEY_REPEAT) {
 					App->particles->AddParticle(App->particles->bulletl, position.x - 1, position.y + 5, COLLIDER_PLAYER_SHOT,PARTICLE_PLAYER_SHOT);
 					App->particles->AddParticle(App->particles->bulletl, position.x + 10, position.y + 5, COLLIDER_PLAYER_SHOT, PARTICLE_PLAYER_SHOT);
 					bullet++;
@@ -283,14 +283,14 @@ update_status ModulePlayer::Update()
 				}
 
 			}
-			if (App->input->keyboard[SDL_SCANCODE_V] == KEY_STATE::KEY_REPEAT || App->input->keyboard[SDL_SCANCODE_V] == KEY_STATE::KEY_DOWN&& cont <= 15)
+			if (App->input->keyboard[SDL_SCANCODE_V] == KEY_STATE::KEY_REPEAT || App->input->keyboard[SDL_SCANCODE_V] == KEY_STATE::KEY_DOWN || App->input->buttonY == KEY_STATE::KEY_REPEAT && cont <= 15)
 			{
 				cont++;
 				current_animation = &shootu;
 				if (App->enemies->horse == true) {
 					current_animation = &chorse;
 				}
-				if (cont == 15 || App->input->keyboard[SDL_SCANCODE_V] == KEY_STATE::KEY_DOWN) {
+				if (cont == 15 || App->input->keyboard[SDL_SCANCODE_V] == KEY_STATE::KEY_DOWN || App->input->buttonY == KEY_STATE::KEY_REPEAT) {
 					App->particles->AddParticle(App->particles->bulletu, position.x + 3, position.y + 5, COLLIDER_PLAYER_SHOT, PARTICLE_PLAYER_SHOT);
 					App->particles->AddParticle(App->particles->bulletu, position.x + 13, position.y + 5, COLLIDER_PLAYER_SHOT, PARTICLE_PLAYER_SHOT);
 					bullet++;
@@ -299,14 +299,14 @@ update_status ModulePlayer::Update()
 				}
 
 			}
-			if (App->input->keyboard[SDL_SCANCODE_B] == KEY_STATE::KEY_REPEAT || App->input->keyboard[SDL_SCANCODE_B] == KEY_STATE::KEY_REPEAT && cont <= 15)
+			if (App->input->keyboard[SDL_SCANCODE_B] == KEY_STATE::KEY_REPEAT || App->input->keyboard[SDL_SCANCODE_B] == KEY_STATE::KEY_REPEAT || App->input->buttonB == KEY_STATE::KEY_REPEAT && cont <= 15)
 			{
 				cont++;
 				current_animation = &shootr;
 				if (App->enemies->horse == true) {
 					current_animation = &chorse;
 				}
-				if (cont == 15 || App->input->keyboard[SDL_SCANCODE_B] == KEY_STATE::KEY_DOWN) {
+				if (cont == 15 || App->input->keyboard[SDL_SCANCODE_B] == KEY_STATE::KEY_DOWN || App->input->buttonB == KEY_STATE::KEY_REPEAT) {
 					App->particles->AddParticle(App->particles->bulletr, position.x + 5, position.y + 5, COLLIDER_PLAYER_SHOT, PARTICLE_PLAYER_SHOT);
 					App->particles->AddParticle(App->particles->bulletr, position.x + 15, position.y + 5, COLLIDER_PLAYER_SHOT, PARTICLE_PLAYER_SHOT);
 					bullet++;
@@ -316,7 +316,7 @@ update_status ModulePlayer::Update()
 
 			}
 		}
-		if (App->input->keyboard[SDL_SCANCODE_F2] == KEY_STATE::KEY_DOWN) {
+		if (App->input->keyboard[SDL_SCANCODE_F2] == KEY_STATE::KEY_DOWN || App->input->buttonA == KEY_STATE::KEY_REPEAT) {
 
 			GodMode = !GodMode;
 

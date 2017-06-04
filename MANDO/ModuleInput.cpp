@@ -95,7 +95,19 @@ update_status ModuleInput::PreUpdate()
 		else
 			buttonA = KEY_IDLE;
 	}
-
+	if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_Y) == 1) {
+		if (buttonY == KEY_IDLE)
+			buttonY = KEY_DOWN;
+		else
+			buttonY = KEY_REPEAT;
+	}
+	else
+	{
+		if (buttonY == KEY_REPEAT || buttonY == KEY_DOWN)
+			buttonY = KEY_UP;
+		else
+			buttonY = KEY_IDLE;
+	}
 	if (SDL_GameControllerGetButton(controller, SDL_CONTROLLER_BUTTON_X) == 1) {
 		if (buttonX == KEY_IDLE)
 			buttonX = KEY_DOWN;
@@ -258,7 +270,19 @@ update_status ModuleInput::PreUpdate()
 		else
 			joy_down = KEY_IDLE;
 	}
-	return UPDATE_CONTINUE;
+
+	SDL_Event event;
+	while (SDL_PollEvent(&event)) {
+		if (event.type == SDL_QUIT)
+			return update_status::UPDATE_STOP;
+	}
+
+	if (keyboard[SDL_SCANCODE_ESCAPE] || App->input->buttonBack) {
+		
+		return update_status::UPDATE_STOP;
+	}
+
+	return update_status::UPDATE_CONTINUE;
 }
 
 
