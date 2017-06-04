@@ -53,6 +53,7 @@ public:
 	bool horse = false;
 	bool AddEnemy(ENEMY_TYPES type, int x, int y);
 	bool boots = false;
+	bool bomb = false;
 
 private:
 

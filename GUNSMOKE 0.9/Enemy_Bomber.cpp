@@ -4,7 +4,7 @@
 #include "SDL\include\SDL_timer.h"
 #include "ModuleParticles.h"
 #include "ModulePlayer.h"
-
+#include "ModuleEnemies.h"
 #define ENEMY_SHOOTING_SPEED 5000
 #define ENEMY_SHOT_SPEED 1.5f
 
@@ -39,18 +39,23 @@ void Enemy_Bomber::Move()
 
 void Enemy_Bomber::Shoot() {
 	uint currentTime = SDL_GetTicks();
-	uint currentTime2 = SDL_GetTicks();
+	float angle;
 	speed.x = (App->player->position.x) - position.x;
 	speed.y = (App->player->position.y) - (position.y);
 	h = sqrt((pow(speed.x, 2) + pow(speed.y, 2)));
 
-	if ((currentTime > (lastTime + ENEMY_SHOOTING_SPEED)) && (App->player->position.x == position.x) && (App->player->position.y>position.y) && abs(speed.y<180))
-	{
-		App->particles->bomb.speed.x = 0;
-		App->particles->bomb.speed.y = ENEMY_SHOT_SPEED;//mirar si esta velocidad va bn
 
-		App->particles->AddParticle(App->particles->bomb, position.x, position.y, COLLIDER_ENEMY_SHOT);
+
+	if ((currentTime > (lastTime + ENEMY_SHOOTING_SPEED)) && speed.y<125) {
+
+		App->particles->bomb.speed.x = (speed.x / h)*ENEMY_SHOT_SPEED;
+		App->particles->bomb.speed.y = (speed.y / h)*ENEMY_SHOT_SPEED;
+
+
+		App->particles->AddParticle(App->particles->bomb, position.x + 3, position.y + 3, COLLIDER_ENEMY_SHOT);
+
 
 		lastTime = currentTime;
 	}
+	App->enemies->bomb = true;
 }

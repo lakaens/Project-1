@@ -163,6 +163,15 @@ ModuleParticles::ModuleParticles()
 	bomb.anim.speed = 0.1f;
 	bomb.life = 1000;
 
+	bombdead.anim.PushBack({ 98, 254, 19, 10 });
+	bombdead.anim.PushBack({ 137, 253, 21, 13 });
+	bombdead.anim.PushBack({ 179, 251, 21, 16 });
+	bombdead.anim.PushBack({ 222, 251, 24, 10 });
+	bombdead.anim.PushBack({ 267, 251, 25, 18 });
+	bombdead.anim.PushBack({ 311, 254, 19, 14 });
+	bombdead.anim.speed = 0.1f;
+	bombdead.anim.loop = false;
+
 	
 
 }
@@ -291,10 +300,11 @@ bool Particle::Update()
 		if ((SDL_GetTicks() - born) > life) {
 			if(collider->type == COLLIDER_PLAYER_SHOT)
 				App->particles->AddParticle(App->particles->explosion, position.x, position.y, COLLIDER_NONE, PARTICLE_PLAYER_SHOT);
-		else if (collider->type == COLLIDER_ENEMY_SHOT)
+		else if (collider->type == COLLIDER_ENEMY_SHOT && App->enemies->bomb==false)
 			App->particles->AddParticle(App->particles->enemysimplebulletdead, position.x - 5, position.y - 5, COLLIDER_NONE, PARTICLE_NONE);
 			ret = false;
 		}
+		
 	}
 	else
 		if(anim.Finished())

@@ -351,7 +351,7 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 
 	}
 	
-	if (GodMode != false) {
+	if (GodMode == false) {
 		if (c2->type == COLLIDER_ENEMY_SHOT || c2->type == COLLIDER_ENEMY && destroyed == false && App->fade->IsFading() == false) {
 
 			if (col != nullptr) {
