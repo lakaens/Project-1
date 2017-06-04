@@ -19,7 +19,7 @@ Albert Cayuela Naval: Management
 
 ![](albert.png)
 
-Marc Tarres : Code
+![Marc Tarres](https://github.com/MAtaur00) : Code
 
 
 ![](marc1.jpg)
