@@ -6,7 +6,7 @@ Gun.Smoke is a vertical scrolling arcade game made by Capcom in 1985. The game i
 
 
 ## Gun.Smoke Tribute
-![](https://www.youtube.com/watch?v=td1uS9n4KTU&feature=youtu.be)
+!(https://www.youtube.com/watch?v=td1uS9n4KTU&feature=youtu.be)
 ## Grandpa's Flip Flop Staff
 
 Eric Navarro de Santiago: Q&A
