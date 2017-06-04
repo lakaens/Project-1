@@ -54,4 +54,4 @@ Marc Tarres : Code
 
 
 ## Check out our Github repositoire [here](https://github.com/lakaens/Project-1)!
-
+## See more information in the Gun.Smoke [Wiki](https://github.com/lakaens/Project-1/wiki)!
