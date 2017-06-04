@@ -51,3 +51,7 @@ GAMEPAD CONTROLS
 -Use start button for changing the scene when needed.
   
 -Use back button for closing the game.
+
+
+Check out our Github repositoire here ![](https://github.com/lakaens/Project-1)!
+
