@@ -53,5 +53,5 @@ GAMEPAD CONTROLS
 -Use back button for closing the game.
 
 
-Check out our Github repositoire [here](https://github.com/lakaens/Project-1)!
+## Check out our Github repositoire [here](https://github.com/lakaens/Project-1)!
 
