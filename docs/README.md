@@ -18,3 +18,8 @@ Albert Cayuela Naval: Management
 
 
 ![](https://github.com/lakaens/Project-1/blob/master/albert.png)
+
+Marc Tarres : Code
+
+
+![](https://github.com/lakaens/Project-1/blob/master/marc.jpg)
