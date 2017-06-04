@@ -13,3 +13,8 @@ Eric Navarro de Santiago: Q&A
 
 
 ![](https://github.com/lakaens/Project-1/blob/master/eric.jpg)
+
+Albert Cayuela Naval: Management
+
+
+![](https://github.com/lakaens/Project-1/blob/master/albert.png)
