@@ -9,7 +9,7 @@
 
 #define MAX_KEYS 300
 
-#define JOYSTICK_DEAD_ZONE 8000
+
 
 enum KEY_STATE
 {
@@ -17,33 +17,6 @@ enum KEY_STATE
 	KEY_DOWN,
 	KEY_REPEAT,
 	KEY_UP
-};
-
-enum GAMEPAD_STATE
-{
-	PAD_BUTTON_IDLE = 0,
-	PAD_BUTTON_DOWN,
-	PAD_BUTTON_REPEAT,
-	PAD_BUTTON_KEY_UP
-};
-
-struct Gamepad {
-	GAMEPAD_STATE A = PAD_BUTTON_IDLE;
-	GAMEPAD_STATE B;
-	GAMEPAD_STATE Y;
-	GAMEPAD_STATE X;
-	GAMEPAD_STATE START;
-	GAMEPAD_STATE BACK;
-	GAMEPAD_STATE CROSS_UP;
-	GAMEPAD_STATE CROSS_DOWN;
-	GAMEPAD_STATE CROSS_LEFT;
-	GAMEPAD_STATE CROSS_RIGHT;
-	p2Point<float> movementJoystick;
-	bool joystickUp;
-	bool joystickDown;
-	bool joystickLeft;
-	bool joystickRight;
-
 };
 
 class ModuleInput : public Module
@@ -59,12 +32,39 @@ public:
 
 public:
 	KEY_STATE keyboard[MAX_KEYS];
-	Gamepad gamepad;
-	void GamepadButtons();
+	SDL_GameController *controller = nullptr;
+	SDL_GameController *controller2 = nullptr;
+	SDL_Joystick *joy = nullptr;
+	SDL_Joystick *joy2 = nullptr;
 
-private:
-	SDL_Event event;
-	SDL_GameController* gcontroller;
+	KEY_STATE buttonA;
+	KEY_STATE buttonB;
+	KEY_STATE buttonX;
+	KEY_STATE buttonStart;
+	KEY_STATE buttonBack;
+	KEY_STATE dpadUp;
+	KEY_STATE dpadDown;
+	KEY_STATE dpadLeft;
+	KEY_STATE dpadRight;
+	KEY_STATE joy_up;
+	KEY_STATE joy_down;
+	KEY_STATE joy_left;
+	KEY_STATE joy_right;
+
+	KEY_STATE buttonA2;
+	KEY_STATE buttonB2;
+	KEY_STATE buttonX2;
+	KEY_STATE buttonStart2;
+	KEY_STATE buttonBack2;
+	KEY_STATE dpadUp2;
+	KEY_STATE dpadDown2;
+	KEY_STATE dpadLeft2;
+	KEY_STATE dpadRight2;
+	KEY_STATE joy_up2;
+	KEY_STATE joy_down2;
+	KEY_STATE joy_left2;
+	KEY_STATE joy_right2;
+
 };
 
 #endif // __ModuleInput_H__
