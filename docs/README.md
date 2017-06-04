@@ -27,6 +27,7 @@ Marc Tarres : Code
 # Game Controls
 
 KEYBORD CONTROLS
+
 -Use up, left, right, down arrows to move the character.
 
 -Use key C to left shoot, key V to front shoot, key B to right shoot.
@@ -39,13 +40,14 @@ KEYBORD CONTROLS
 
 -Use escape for closing the game.
 
-  GAMEPAD CONTROLS
-  -Use left joystick to move the character.
+GAMEPAD CONTROLS
   
-  -Use x button to left shoot, y button to front shoot, b button for right shoot.
+-Use left joystick to move the character.
   
-  -Use a button for godmode.
+-Use x button to left shoot, y button to front shoot, b button for right shoot.
   
-  -Use start button for changing the scene when needed.
+-Use a button for godmode.
   
-  -Use back button for closing the game.
+-Use start button for changing the scene when needed.
+  
+-Use back button for closing the game.
